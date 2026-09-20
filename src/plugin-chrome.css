@@ -1,0 +1,249 @@
+.workspace-leaf-content[data-type="write-then-publish"] {
+  padding: 0;
+  overflow: hidden;
+}
+
+.wtp-plugin-view {
+  height: 100%;
+  overflow: hidden;
+}
+
+.wtp-root {
+  height: 100% !important;
+  max-height: 100% !important;
+  min-height: 0;
+  box-sizing: border-box;
+}
+
+.wtp-root.wtp-obsidian-plugin .workspace,
+.wtp-root.wtp-obsidian-plugin .workspace.history-open {
+  display: block !important;
+  grid-template-columns: none !important;
+  height: 100%;
+  overflow: hidden;
+}
+
+.wtp-root.wtp-obsidian-plugin .editor-panel,
+.wtp-root.wtp-obsidian-plugin [data-panel-resize="editor"] {
+  display: none !important;
+}
+
+.wtp-root.wtp-obsidian-plugin .preview-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.wtp-root.wtp-obsidian-plugin .preview-topbar {
+  position: relative;
+  top: 0;
+  z-index: 20;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  gap: 12px;
+  overflow: visible;
+}
+
+.wtp-root.wtp-obsidian-plugin .preview-topbar > div:first-child {
+  display: grid;
+  gap: 6px;
+}
+
+.wtp-root.wtp-obsidian-plugin .preview-body {
+  display: block;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  grid-template-columns: none;
+}
+
+.wtp-root.wtp-obsidian-plugin .article-settings,
+.wtp-root.wtp-obsidian-plugin .article-settings:not([hidden]) {
+  position: static;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: auto;
+  max-height: none;
+  overflow: visible;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.wtp-root.wtp-obsidian-plugin .article-settings[hidden],
+.wtp-root.wtp-obsidian-plugin .card-settings[hidden] {
+  display: none !important;
+}
+
+.wtp-root.wtp-obsidian-plugin .card-settings {
+  display: flex;
+  align-items: center;
+}
+
+.wtp-root.wtp-obsidian-plugin .article-setting-menu {
+  position: relative;
+}
+
+.wtp-root.wtp-obsidian-plugin .article-setting-menu > summary {
+  list-style: none;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--line, #e5e7eb);
+  background: var(--control-bg, #fff);
+  color: var(--control-text, #334155);
+}
+
+.wtp-root.wtp-obsidian-plugin .article-setting-menu > summary::-webkit-details-marker {
+  display: none;
+}
+
+.wtp-root.wtp-obsidian-plugin .article-setting-menu[open] > summary {
+  border-color: var(--active-border, #111827);
+  color: var(--active-text, #111827);
+  background: var(--active-bg, #f3f4f6);
+}
+
+.wtp-root.wtp-obsidian-plugin .article-setting-menu .tool-popover {
+  top: calc(100% + 8px);
+  left: auto;
+  right: 0;
+  z-index: 80;
+  display: grid;
+  gap: 8px;
+  width: 196px;
+  min-width: 196px;
+  padding: 10px;
+  border: 1px solid var(--line, #e5e7eb);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 12px 32px rgb(15 23 42 / 0.14);
+}
+
+.wtp-root.wtp-obsidian-plugin .article-setting-menu .color-guide {
+  display: block;
+  padding: 0 2px;
+}
+
+.wtp-root.wtp-obsidian-plugin .article-setting-menu .color-guide strong {
+  color: var(--ink, #111827);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.wtp-root.wtp-obsidian-plugin .article-setting-menu .article-option-grid,
+.wtp-root.wtp-obsidian-plugin .article-setting-menu .article-option-grid.three,
+.wtp-root.wtp-obsidian-plugin .article-setting-menu .article-color-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wtp-root.wtp-obsidian-plugin .article-setting-menu .article-option,
+.wtp-root.wtp-obsidian-plugin .article-setting-menu .article-color {
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 34px;
+  padding: 0 10px 0 12px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--control-text, #334155);
+  font-size: 13px;
+  font-weight: 650;
+  text-align: left;
+}
+
+.wtp-root.wtp-obsidian-plugin .article-setting-menu .article-option:hover,
+.wtp-root.wtp-obsidian-plugin .article-setting-menu .article-color:hover {
+  background: #f3f4f6;
+}
+
+.wtp-root.wtp-obsidian-plugin .article-setting-menu .article-option.active,
+.wtp-root.wtp-obsidian-plugin .article-setting-menu .article-color.active {
+  background: #111827;
+  color: #fff;
+  box-shadow: none;
+}
+
+.wtp-root.wtp-obsidian-plugin .article-setting-menu .article-color {
+  padding-left: 32px;
+}
+
+.wtp-root.wtp-obsidian-plugin .article-setting-menu .article-color::before {
+  left: 12px;
+  width: 10px;
+  height: 10px;
+  box-shadow: 0 0 0 1px rgb(15 23 42 / 0.12);
+}
+
+.wtp-root.wtp-obsidian-plugin .article-setting-menu .article-color.active::before {
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.55);
+}
+
+.wtp-root.wtp-obsidian-plugin .pages.article-mode {
+  padding: 20px 16px 40px;
+}
+
+.wtp-root.wtp-obsidian-plugin .article-preview {
+  width: min(680px, 100%);
+}
+
+.wtp-root.wtp-obsidian-plugin .mode-switch,
+.wtp-root.wtp-obsidian-plugin .mode-switch button {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.wtp-root.wtp-obsidian-plugin .history-sidebar,
+.wtp-root.wtp-obsidian-plugin [data-panel-resize="history"],
+.wtp-root.wtp-obsidian-plugin .site-footer,
+.wtp-root.wtp-obsidian-plugin #obsidianImportMenu,
+.wtp-root.wtp-obsidian-plugin #newProjectBtn,
+.wtp-root.wtp-obsidian-plugin #entryChoiceModal,
+.wtp-root.wtp-obsidian-plugin #accountModal,
+.wtp-root.wtp-obsidian-plugin #welcomeBackModal,
+.wtp-root.wtp-obsidian-plugin #wechatModal,
+.wtp-root.wtp-obsidian-plugin #onboardingTour,
+.wtp-root.wtp-obsidian-plugin #syncWechatBtn {
+  display: none !important;
+}
+
+.wtp-root .pages:not(.article-mode) {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  align-items: start;
+}
+
+.wtp-root .page-shell {
+  width: min(100%, 360px);
+}
+
+.wtp-root .page-frame canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 402 / 874;
+  background: #fff;
+}
+
+.wtp-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 12px;
+  height: 100%;
+  padding: 32px;
+  color: var(--text-muted);
+}
+
+.wtp-empty-state strong {
+  color: var(--text-normal);
+  font-size: 18px;
+}

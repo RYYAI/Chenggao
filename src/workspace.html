@@ -1,0 +1,1210 @@
+<main class="workspace">
+      <aside id="historySidebar" class="history-sidebar" aria-label="历史记录">
+        <button id="historyToggleBtn" class="history-tab" type="button" title="打开历史记录" aria-label="打开历史记录">
+          <i data-lucide="panel-left-open"></i>
+        </button>
+        <div class="history-drawer">
+          <div class="history-head">
+            <span>历史记录</span>
+            <button id="historyCloseBtn" class="icon-button ghost" type="button" title="收起历史记录" aria-label="收起历史记录">
+              <i data-lucide="panel-left-close"></i>
+            </button>
+          </div>
+          <small class="history-note">自动保存，点击恢复</small>
+          <div class="history-filter" aria-label="历史记录筛选">
+            <button type="button" class="active" data-history-filter="all">全部</button>
+            <button type="button" data-history-filter="cards">图文</button>
+            <button type="button" data-history-filter="article">长文</button>
+          </div>
+          <div id="projectHistory" class="history-list"></div>
+        </div>
+      </aside>
+      <button class="panel-resizer" data-panel-resize="history" type="button" aria-label="拖动调整历史栏宽度"></button>
+
+      <aside class="editor-panel" aria-label="编辑器">
+        <div class="brand-row">
+          <div class="brand-title">
+            <h1>成稿预览</h1>
+            <span class="brand-english">Chenggao</span>
+            <p id="pageCount">0 张图片</p>
+          </div>
+          <div class="brand-actions">
+            <button class="icon-button" id="newProjectBtn" type="button" title="新建图文" aria-label="新建图文">
+              <i data-lucide="plus"></i>
+            </button>
+            <button class="secondary-button convert-mode-button" id="convertModeBtn" type="button">
+              <i data-lucide="repeat-2"></i>
+              <span>转长文</span>
+            </button>
+            <button class="secondary-button header-mode-button" id="headerModeToggleBtn" type="button">
+              <i data-lucide="user-round"></i>
+              每页头像
+            </button>
+            <button class="icon-button" id="themeToggleBtn" type="button" title="切换黑白主题" aria-label="切换黑白主题">
+              <i data-lucide="palette"></i>
+            </button>
+          </div>
+        </div>
+
+        <section class="editor-controls" aria-label="编辑工具">
+          <div class="profile-inline">
+            <label class="avatar-picker" title="修改头像">
+              <img id="avatarPreview" alt="头像预览" />
+              <input id="avatarInput" type="file" accept="image/*" />
+            </label>
+            <input id="displayNameInput" class="compact-input name-input" type="text" aria-label="名称" />
+            <input id="handleInput" class="compact-input handle-input" type="text" aria-label="英文昵称" placeholder="可留空" />
+            <button id="cropAvatarBtn" class="tool-button" type="button" title="裁剪头像" aria-label="裁剪头像">
+              <i data-lucide="crop"></i>
+            </button>
+          </div>
+
+          <div class="toolbar" aria-label="文字样式">
+            <button type="button" class="tool-button" data-format="h1" title="大标题">H1</button>
+            <button type="button" class="tool-button" data-format="h2" title="小标题">H2</button>
+            <button type="button" class="tool-button" data-format="bold" title="加粗"><strong>B</strong></button>
+            <button type="button" class="tool-button" data-format="italic" title="斜体"><em>I</em></button>
+            <details id="underlineMenu" class="tool-menu underline-menu">
+              <summary class="tool-button" title="下划线" aria-label="下划线">
+                <i data-lucide="underline"></i>
+              </summary>
+              <div class="tool-popover underline-popover">
+                <div class="color-guide">
+                  <strong>下划线</strong>
+                  <span>线距固定 15 px。再次选择同款可取消，也可直接点“取消”。</span>
+                </div>
+                <div class="underline-options" role="group" aria-label="下划线样式">
+                  <button type="button" class="underline-option" data-format="underline-solid">
+                    <span class="underline-option-preview is-solid">实线</span>
+                  </button>
+                  <button type="button" class="underline-option" data-format="underline-dashed">
+                    <span class="underline-option-preview is-dashed">虚线</span>
+                  </button>
+                  <button type="button" class="underline-option" data-format="underline-none">
+                    <span class="underline-option-preview is-none">取消</span>
+                  </button>
+                </div>
+              </div>
+            </details>
+            <button type="button" class="tool-button" data-format="quote" title="重点引用"><i data-lucide="quote"></i></button>
+            <label class="tool-button file-tool" title="插入图片" aria-label="插入图片">
+              <i data-lucide="image-plus"></i>
+              <input id="contentImageInput" type="file" accept="image/*" multiple />
+            </label>
+            <label id="livePhotoToolbarBtn" class="tool-button file-tool feature-anchor" title="插入实况图片" aria-label="插入实况图片">
+              <i data-lucide="video"></i>
+              <span class="feature-new-badge" data-feature-badge="live" aria-label="新功能">新</span>
+              <input id="contentVideoInput" type="file" accept="video/mp4,video/quicktime,video/webm,.mp4,.mov,.webm" />
+            </label>
+            <details id="obsidianImportMenu" class="tool-menu obsidian-import-menu">
+              <summary class="tool-button feature-anchor" title="Obsidian 双向同步" aria-label="Obsidian 双向同步">
+                <i data-lucide="clipboard-paste"></i>
+                <span class="feature-new-badge" data-feature-badge="obsidian" aria-label="新功能">新</span>
+              </summary>
+              <div class="tool-popover obsidian-import-popover">
+                <div class="obsidian-import-heading">
+                  <strong>Obsidian 双向同步</strong>
+                  <span>粘贴笔记时读取图片，修改后可同步回仓库。</span>
+                </div>
+                <div class="obsidian-vault-row">
+                  <div class="obsidian-vault-actions">
+                    <button id="connectObsidianVaultBtn" class="secondary-button" type="button">
+                      <i data-lucide="folder-open"></i>
+                      连接仓库
+                    </button>
+                    <button id="syncObsidianVaultBtn" class="primary-button" type="button">
+                      <i data-lucide="upload-cloud"></i>
+                      同步回 Obsidian
+                    </button>
+                  </div>
+                  <input id="obsidianVaultFolderInput" class="obsidian-vault-folder-input" type="file" webkitdirectory directory multiple />
+                  <span id="obsidianVaultStatus">尚未连接仓库</span>
+                </div>
+                <p class="obsidian-direct-paste-hint">已连接仓库。粘贴 Obsidian Markdown 会自动读取图片；同步内容保存在仓库的“成稿预览”文件夹。</p>
+              </div>
+            </details>
+            <details id="colorMenu" class="tool-menu">
+              <summary class="tool-button color-tool" title="选中文字颜色" aria-label="选中文字颜色">
+                <i data-lucide="paintbrush"></i>
+              </summary>
+              <div class="tool-popover color-popover">
+                <div class="color-guide">
+                  <strong>文字上色</strong>
+                  <span>先选中文字和自定义颜色，再决定仅本次使用或保存到色板。</span>
+                </div>
+                <label>
+                  字体颜色
+                  <input id="inlineColorInput" type="color" value="#2563eb" />
+                </label>
+                <div class="custom-color-actions" role="group" aria-label="字体颜色保存方式">
+                  <button type="button" class="custom-color-action" data-custom-color-action data-color-kind="color" data-color-save="false">仅本次</button>
+                  <button type="button" class="custom-color-action is-save" data-custom-color-action data-color-kind="color" data-color-save="true">保存并使用</button>
+                </div>
+              </div>
+            </details>
+
+            <details id="bgColorMenu" class="tool-menu">
+              <summary class="tool-button bg-color-tool" title="选中文字背景色" aria-label="选中文字背景色">
+                <i data-lucide="highlighter"></i>
+              </summary>
+              <div class="tool-popover color-popover">
+                <div class="color-guide">
+                  <strong>背景上色</strong>
+                  <span>先选中文字和自定义背景色，再决定仅本次使用或保存到色板。</span>
+                </div>
+                <label>
+                  背景颜色
+                  <input id="inlineBgColorInput" type="color" value="#fff3a3" />
+                </label>
+                <div class="custom-color-actions" role="group" aria-label="背景颜色保存方式">
+                  <button type="button" class="custom-color-action" data-custom-color-action data-color-kind="bg" data-color-save="false">仅本次</button>
+                  <button type="button" class="custom-color-action is-save" data-custom-color-action data-color-kind="bg" data-color-save="true">保存并使用</button>
+                </div>
+                <button type="button" class="clear-inline-style-action" data-clear-inline-style="bg">
+                  <i data-lucide="eraser"></i>
+                  清除背景色
+                </button>
+              </div>
+            </details>
+
+            <button id="copyPlainTextBtn" class="tool-button" type="button" title="复制全文（去除图片与格式）" aria-label="复制全文，去除图片与格式">
+              <i data-lucide="copy"></i>
+            </button>
+
+            <details id="searchMenu" class="tool-menu">
+              <summary class="tool-button search-tool-button" title="查找替换" aria-label="查找替换">
+                <i data-lucide="search"></i>
+                <svg class="search-replace-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 8h9"></path>
+                  <path d="M10 5l3 3-3 3"></path>
+                  <path d="M20 16h-9"></path>
+                  <path d="M14 13l-3 3 3 3"></path>
+                </svg>
+              </summary>
+              <div class="tool-popover search-popover">
+                <label>
+                  查找
+                  <input id="findInput" type="text" autocomplete="off" />
+                </label>
+                <label>
+                  替换为
+                  <input id="replaceInput" type="text" autocomplete="off" />
+                </label>
+                <span id="findMatchCount" class="search-match-count" aria-live="polite"></span>
+                <button id="findNextBtn" class="secondary-button" type="button">
+                  <i data-lucide="search"></i>
+                  查找
+                </button>
+                <button id="replaceOneBtn" class="secondary-button" type="button">
+                  <i data-lucide="replace"></i>
+                  替换当前
+                </button>
+                <button id="replaceAllBtn" class="secondary-button wide" type="button">
+                  <i data-lucide="replace-all"></i>
+                  全文替换
+                </button>
+              </div>
+            </details>
+
+            <details class="tool-menu">
+              <summary class="tool-button" title="图片裁剪" aria-label="图片裁剪">
+                <i data-lucide="images"></i>
+              </summary>
+              <div class="tool-popover image-popover">
+                <div class="image-batch-controls">
+                  <label>
+                    图片宽度
+                    <span class="percent-input">
+                      <input id="imageWidthPercentInput" type="number" min="25" max="100" step="1" value="100" />
+                      <b>%</b>
+                    </span>
+                  </label>
+                  <button id="applyImageWidthBtn" class="secondary-button" type="button">
+                    批量应用
+                  </button>
+                  <label>
+                    固定宽
+                    <span class="unit-input">
+                      <input id="fixedImageWidthInput" type="number" min="80" max="780" step="1" placeholder="宽" />
+                      <b>px</b>
+                    </span>
+                  </label>
+                  <label>
+                    固定高
+                    <span class="unit-input">
+                      <input id="fixedImageHeightInput" type="number" min="80" max="1048" step="1" placeholder="高" />
+                      <b>px</b>
+                    </span>
+                  </label>
+                  <button id="applyFixedImageSizeBtn" class="secondary-button wide" type="button">
+                    应用固定宽高
+                  </button>
+                </div>
+                <div id="imageList" class="image-list"></div>
+              </div>
+            </details>
+
+            <details class="tool-menu settings-menu">
+              <summary class="tool-button" title="设计设置" aria-label="设计设置">
+                <i data-lucide="sliders-horizontal"></i>
+              </summary>
+              <div class="tool-popover settings-popover">
+                <div class="settings-grid">
+                  <label>
+                    文字色
+                    <input id="textColorInput" type="color" value="#202938" />
+                  </label>
+                  <label>
+                    强调色
+                    <input id="accentColorInput" type="color" value="#2563eb" />
+                  </label>
+                  <label>
+                    背景色
+                    <input id="bgColorInput" type="color" value="#ffffff" />
+                  </label>
+                  <label>
+                    字号
+                    <input id="fontSizeInput" type="number" min="24" max="40" value="34" />
+                  </label>
+                  <label>
+                    行距
+                    <input id="lineHeightInput" type="number" min="1" max="2.4" step="0.05" value="1.85" />
+                  </label>
+                  <label>
+                    中文字体
+                    <select id="zhFontInput">
+                      <option value="zh-system">苹方 / 系统黑体</option>
+                      <option value="zh-song">宋体</option>
+                      <option value="zh-kai">楷体</option>
+                      <option value="zh-hei">黑体</option>
+                    </select>
+                  </label>
+                  <label>
+                    英文字体
+                    <select id="enFontInput">
+                      <option value="en-system">系统无衬线</option>
+                      <option value="en-serif">Serif</option>
+                      <option value="en-rounded">Rounded</option>
+                      <option value="en-mono">Mono</option>
+                    </select>
+                  </label>
+                  <label>
+                    图片最大高
+                    <input id="imageHeightInput" type="number" min="220" max="1048" value="1048" />
+                  </label>
+                </div>
+              </div>
+            </details>
+          </div>
+
+        </section>
+
+        <textarea id="contentInput" class="editor-textarea" spellcheck="false"></textarea>
+      </aside>
+      <button class="panel-resizer" data-panel-resize="editor" type="button" aria-label="拖动调整编辑区宽度"></button>
+
+      <section id="previewPanel" class="preview-panel" aria-label="图片预览">
+        <div class="preview-topbar">
+          <div>
+            <div id="appModeSwitch" class="mode-switch" aria-label="切换工作区">
+              <button type="button" class="active" data-app-mode="cards">图文卡片</button>
+              <button type="button" data-app-mode="article">长文</button>
+            </div>
+            <h2>预览与下载</h2>
+            <span id="statusText">自动分页已开启</span>
+          </div>
+          <div class="topbar-actions">
+            <div id="cardSettings" class="card-settings">
+              <details class="tool-menu article-setting-menu">
+                <summary class="icon-button" title="图文排版" aria-label="图文排版">
+                  <i data-lucide="rows-3"></i>
+                </summary>
+                <div class="tool-popover">
+                  <div class="color-guide">
+                    <strong>图文排版</strong>
+                  </div>
+                  <button type="button" id="keepHeadingBtn" class="article-option active" aria-pressed="true">
+                    标题不落在页底
+                  </button>
+                </div>
+              </details>
+            </div>
+            <div id="articleSettings" class="article-settings" hidden>
+              <details class="tool-menu article-setting-menu">
+                <summary class="icon-button" title="主题" aria-label="主题">
+                  <i data-lucide="swatch-book"></i>
+                </summary>
+                <div class="tool-popover">
+                  <div class="color-guide">
+                    <strong>主题</strong>
+                  </div>
+                  <div class="article-option-grid">
+                    <button type="button" class="article-option active" data-article-theme="classic">经典</button>
+                    <button type="button" class="article-option" data-article-theme="elegant">优雅</button>
+                    <button type="button" class="article-option" data-article-theme="clean">简洁</button>
+                    <button type="button" class="article-option" data-article-theme="wechat">微信绿</button>
+                    <button type="button" class="article-option" data-article-theme="colorful">多彩微信</button>
+                  </div>
+                </div>
+              </details>
+              <details class="tool-menu article-setting-menu">
+                <summary class="icon-button" title="字体" aria-label="字体">
+                  <i data-lucide="type"></i>
+                </summary>
+                <div class="tool-popover">
+                  <div class="color-guide">
+                    <strong>字体</strong>
+                  </div>
+                  <div class="article-option-grid three">
+                    <button type="button" class="article-option active" data-article-font="sans">无衬线</button>
+                    <button type="button" class="article-option" data-article-font="serif">衬线</button>
+                    <button type="button" class="article-option" data-article-font="mono">等宽</button>
+                  </div>
+                </div>
+              </details>
+              <details class="tool-menu article-setting-menu">
+                <summary class="icon-button" title="字号" aria-label="字号">
+                  <i data-lucide="a-large-small"></i>
+                </summary>
+                <div class="tool-popover">
+                  <div class="color-guide">
+                    <strong>字号</strong>
+                  </div>
+                  <div class="article-option-grid three">
+                    <button type="button" class="article-option" data-article-size="small">更小</button>
+                    <button type="button" class="article-option active" data-article-size="normal">推荐</button>
+                    <button type="button" class="article-option" data-article-size="large">稍大</button>
+                  </div>
+                </div>
+              </details>
+              <details class="tool-menu article-setting-menu">
+                <summary class="icon-button" title="主题色" aria-label="主题色">
+                  <i data-lucide="pipette"></i>
+                </summary>
+                <div class="tool-popover">
+                  <div class="color-guide">
+                    <strong>主题色</strong>
+                  </div>
+                  <div class="article-color-grid">
+                    <button type="button" class="article-color active" data-article-color="#0f766e" style="--swatch:#0f766e">翡翠绿</button>
+                    <button type="button" class="article-color" data-article-color="#2563eb" style="--swatch:#2563eb">经典蓝</button>
+                    <button type="button" class="article-color" data-article-color="#ef4444" style="--swatch:#ef4444">活力橘</button>
+                    <button type="button" class="article-color" data-article-color="#7c3aed" style="--swatch:#7c3aed">薰衣紫</button>
+                    <button type="button" class="article-color" data-article-color="#111827" style="--swatch:#111827">石墨黑</button>
+                  </div>
+                </div>
+              </details>
+            </div>
+            <button id="downloadZipBtn" class="primary-button" type="button">
+              <i data-lucide="download"></i>
+              批量下载
+            </button>
+            <button id="downloadArticleBtn" class="primary-button" type="button" hidden>
+              <i data-lucide="download"></i>
+              下载长图
+            </button>
+            <button id="copyWechatBtn" class="secondary-button" type="button" hidden>
+              <i data-lucide="copy"></i>
+              复制公众号格式
+            </button>
+            <button id="syncWechatBtn" class="primary-button" type="button" hidden>
+              <i data-lucide="send"></i>
+              同步草稿箱
+            </button>
+          </div>
+        </div>
+        <div class="preview-body">
+          <div id="pages" class="pages"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-actions">
+        <button id="feedbackBtn" class="feedback-dock-button" type="button" aria-label="反馈问题" aria-haspopup="dialog" aria-controls="feedbackModal">
+          <i data-lucide="message-square-warning"></i>
+          <span>问题反馈</span>
+        </button>
+        <div id="accountDock" class="account-dock">
+        <div id="accountMenu" class="account-menu hidden" role="dialog" aria-label="账号菜单">
+          <div class="account-menu-summary">
+            <span class="account-menu-avatar"><i data-lucide="circle-user-round"></i></span>
+            <div>
+              <strong id="accountMenuTitle">游客模式</strong>
+              <span id="accountMenuDescription">草稿仅临时保存在当前标签页</span>
+            </div>
+          </div>
+          <section id="accountMenuSwitchSection" class="account-menu-switch" hidden aria-label="已登录账号">
+            <div class="account-menu-switch-heading">
+              <strong>已登录账号</strong>
+              <span>点击即可切换</span>
+            </div>
+            <div id="accountMenuAccountList" class="account-account-list"></div>
+            <button id="accountMenuAddBtn" class="account-menu-text-button account-menu-add" type="button">
+              <i data-lucide="user-plus"></i>添加其他账号
+            </button>
+          </section>
+          <div class="account-menu-actions">
+            <button id="accountMenuLoginBtn" class="primary-button" type="button">
+              <i data-lucide="log-in"></i>登录并同步
+            </button>
+            <button id="accountMenuManageBtn" class="secondary-button" type="button" hidden>
+              <i data-lucide="settings"></i>账号设置
+            </button>
+            <button id="accountMenuSwitchBtn" class="secondary-button" type="button" hidden>
+              <i data-lucide="arrow-left-right"></i>切换账号
+            </button>
+            <button id="accountMenuWhatsNewBtn" class="account-menu-text-button" type="button">
+              <i data-lucide="sparkles"></i>本次更新
+              <span class="account-menu-new-dot" data-feature-badge="updates" aria-label="有新功能"></span>
+            </button>
+            <button id="accountMenuSignOutBtn" class="account-menu-text-button danger" type="button" hidden>
+              <i data-lucide="log-out"></i>退出登录
+            </button>
+          </div>
+          <p id="accountMenuHint" class="account-menu-hint">继续使用游客模式无需操作，点击菜单外即可关闭。</p>
+        </div>
+        <button class="account-dock-button feature-anchor" id="accountBtn" type="button" title="账号与登录" aria-label="打开账号菜单" aria-controls="accountMenu" aria-expanded="false">
+          <span class="account-status-dot" aria-hidden="true"></span>
+          <i data-lucide="circle-user-round"></i>
+          <span id="accountButtonLabel">账号</span>
+          <span class="feature-new-badge compact" data-feature-badge="account" aria-label="新功能">新</span>
+          <i class="account-dock-chevron" data-lucide="chevron-up"></i>
+        </button>
+        </div>
+      </div>
+      <nav class="site-credit" hidden aria-hidden="true">
+        <span class="site-credit-by"></span>
+        <a hidden href="#" aria-hidden="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/></svg>
+        </a>
+        <a hidden class="is-cjk" href="#" aria-hidden="true">
+          <span aria-hidden="true">红</span>
+        </a>
+        <a hidden href="#" aria-hidden="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+        </a>
+        <a hidden href="#" aria-hidden="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+      </nav>
+    </footer>
+
+    <div id="entryChoiceModal" class="entry-choice-modal" role="dialog" aria-modal="true" aria-labelledby="entryChoiceTitle">
+      <section class="entry-choice-card">
+        <div id="entryChoiceLoading" class="entry-choice-loading" aria-live="polite">
+          <span class="entry-choice-spinner" aria-hidden="true"></span>
+          <strong>正在检查登录状态…</strong>
+          <p>登录过的用户会直接进入自己的工作区。</p>
+        </div>
+        <div id="entryChoiceContent" class="entry-choice-content" hidden>
+          <header class="entry-choice-head">
+            <span class="entry-choice-brand">成稿预览</span>
+            <h2 id="entryChoiceTitle">这次想怎么使用？</h2>
+            <p>临时排版可以直接进入；需要长期保存和跨设备使用时再登录。</p>
+          </header>
+          <div id="entryChoiceNotice" class="entry-choice-notice" hidden></div>
+          <div class="entry-choice-options">
+            <article class="entry-choice-option guest-option">
+              <span class="entry-choice-option-icon"><i data-lucide="zap"></i></span>
+              <div>
+                <span class="entry-choice-kicker">临时使用</span>
+                <h3>游客模式</h3>
+                <p>不注册，直接排版和导出。内容只留在当前浏览器标签页，关闭后不保证保留。</p>
+              </div>
+              <ul>
+                <li><i data-lucide="check"></i>立即开始，不上传云端</li>
+                <li><i data-lucide="clock-3"></i>适合一次性、紧急排版</li>
+              </ul>
+              <button id="chooseGuestBtn" class="secondary-button entry-choice-button" type="button">
+                以游客身份进入<i data-lucide="arrow-right"></i>
+              </button>
+            </article>
+            <article class="entry-choice-option account-option">
+              <span class="entry-choice-recommended">长期使用推荐</span>
+              <span class="entry-choice-option-icon"><i data-lucide="cloud-check"></i></span>
+              <div>
+                <span class="entry-choice-kicker">长期保存</span>
+                <h3>登录工作区</h3>
+                <p>按账号保存头像、昵称、图文和素材，换设备登录后仍能继续编辑。</p>
+              </div>
+              <ul>
+                <li><i data-lucide="check"></i>自动同步到 Supabase</li>
+                <li><i data-lucide="check"></i>不同账号的数据相互隔离</li>
+              </ul>
+              <span id="entryChoiceReturningHint" class="entry-choice-returning" hidden></span>
+              <button id="chooseLoginBtn" class="primary-button entry-choice-button" type="button">
+                登录并长期保存<i data-lucide="arrow-right"></i>
+              </button>
+            </article>
+          </div>
+          <p class="entry-choice-footnote">之后也可以通过右下角的账号入口随时登录或退出。</p>
+        </div>
+      </section>
+    </div>
+
+    <div id="welcomeBackModal" class="welcome-back-modal hidden" role="dialog" aria-modal="true" aria-labelledby="welcomeBackTitle">
+      <section class="welcome-back-card">
+        <button id="welcomeBackCloseBtn" class="icon-button ghost welcome-back-close" type="button" title="关闭" aria-label="直接进入工作区">
+          <i data-lucide="x"></i>
+        </button>
+        <header class="welcome-back-head">
+          <h2 id="welcomeBackTitle">欢迎回来，操作方式没有变</h2>
+          <p>你仍然可以像以前一样直接排版和下载。</p>
+        </header>
+        <div class="welcome-back-features" aria-label="本次新增功能">
+          <article>
+            <span class="welcome-back-feature-icon"><i data-lucide="layout-grid"></i></span>
+            <div><strong>双图拼图</strong><p>点选图片后按右侧 ＋，把第二张图拼在右边</p></div>
+            <span class="welcome-back-feature-state">新功能</span>
+          </article>
+          <article>
+            <span class="welcome-back-feature-icon"><i data-lucide="sliders-horizontal"></i></span>
+            <div><strong>拼图调整</strong><p>弹窗里选整体比例、左右互换、两张图分别裁剪</p></div>
+            <span class="welcome-back-feature-state">新功能</span>
+          </article>
+          <article>
+            <span class="welcome-back-feature-icon"><i data-lucide="bold"></i></span>
+            <div><strong>多行加粗</strong><p>跨行选中加粗、斜体逐行生效，再点一次取消</p></div>
+            <span class="welcome-back-feature-state">已修复</span>
+          </article>
+          <article>
+            <span class="welcome-back-feature-icon"><i data-lucide="crop"></i></span>
+            <div><strong>裁剪与切换账号</strong><p>裁剪框角柄在边缘也能拖动；切换账号后预览立即刷新</p></div>
+            <span class="welcome-back-feature-state">已修复</span>
+          </article>
+        </div>
+        <div class="welcome-back-actions">
+          <button id="welcomeBackDirectBtn" class="primary-button" type="button">直接进入工作区</button>
+          <button id="welcomeBackTourBtn" class="secondary-button" type="button">用 30 秒看看新功能</button>
+        </div>
+        <p class="welcome-back-footnote">本欢迎页在当前版本仅显示一次，之后可从右下角“本次更新”重新查看。</p>
+      </section>
+    </div>
+
+    <div id="accountModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="accountModalTitle">
+      <div class="modal-card account-modal-card">
+        <button id="accountCloseBtn" class="icon-button ghost account-modal-close" type="button" title="关闭" aria-label="关闭账号面板">
+          <i data-lucide="x"></i>
+        </button>
+
+        <aside class="account-value-pane">
+          <span class="account-value-brand">成稿预览</span>
+          <h3 id="accountModalTitle">登录后，<br />继续上次的创作</h3>
+          <div class="account-benefits" aria-label="登录后可用功能">
+            <div class="account-benefit-row">
+              <span class="account-benefit-icon"><i data-lucide="user-round"></i></span>
+              <div><strong>同步头像与昵称</strong><span>在所有设备上保持一致</span></div>
+            </div>
+            <div class="account-benefit-row">
+              <span class="account-benefit-icon"><i data-lucide="file-text"></i></span>
+              <div><strong>保存图文草稿</strong><span>自动保存，不再丢失</span></div>
+            </div>
+            <div class="account-benefit-row">
+              <span class="account-benefit-icon"><i data-lucide="laptop"></i></span>
+              <div><strong>跨设备继续编辑</strong><span>随时随地继续你的创作</span></div>
+            </div>
+          </div>
+        </aside>
+
+        <section class="account-modal-body">
+          <div id="accountConfigNotice" class="account-notice" hidden></div>
+
+          <div id="accountOauth" class="account-oauth" hidden>
+            <button id="accountGoogleBtn" class="account-oauth-button" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path fill="#4285F4" d="M23.06 12.25c0-.85-.08-1.67-.22-2.45H12v4.64h6.2a5.3 5.3 0 0 1-2.3 3.48v2.89h3.72c2.17-2 3.44-4.95 3.44-8.56z"/>
+                <path fill="#34A853" d="M12 23.5c3.11 0 5.72-1.03 7.62-2.79l-3.72-2.89c-1.03.69-2.35 1.1-3.9 1.1-3 0-5.54-2.03-6.45-4.75H1.7v2.98A11.5 11.5 0 0 0 12 23.5z"/>
+                <path fill="#FBBC05" d="M5.55 14.17a6.9 6.9 0 0 1 0-4.34V6.85H1.7a11.5 11.5 0 0 0 0 10.3l3.85-2.98z"/>
+                <path fill="#EA4335" d="M12 4.75c1.69 0 3.21.58 4.4 1.72l3.3-3.3C17.72 1.3 15.11.25 12 .25A11.5 11.5 0 0 0 1.7 6.85l3.85 2.98C6.46 7.11 9 4.75 12 4.75z"/>
+              </svg>
+              使用 Google 账号继续
+            </button>
+            <p class="account-oauth-hint">用 Gmail 的话最快，不用等确认邮件。</p>
+            <div class="account-oauth-divider"><span>或者用邮箱</span></div>
+          </div>
+
+          <form id="accountAuthForm" class="account-auth-form">
+            <div class="account-auth-mode" role="tablist" aria-label="选择账号操作">
+              <button id="accountSignInModeBtn" class="is-active" type="button" role="tab" aria-selected="true">
+                登录
+              </button>
+              <button id="accountSignUpBtn" type="button" role="tab" aria-selected="false">
+                注册
+              </button>
+            </div>
+            <label>
+              <span>邮箱</span>
+              <input id="accountEmailInput" type="email" autocomplete="email" placeholder="name@example.com" required />
+            </label>
+            <label>
+              <span>密码</span>
+              <span class="account-input-wrap">
+                <input id="accountPasswordInput" type="password" autocomplete="current-password" minlength="8" placeholder="至少 8 位" required />
+                <button id="accountPasswordToggleBtn" class="account-password-toggle" type="button" title="显示密码" aria-label="显示密码">
+                  <i data-lucide="eye"></i>
+                </button>
+              </span>
+            </label>
+            <label id="accountPasswordConfirmField" hidden>
+              <span>再次输入密码</span>
+              <input id="accountPasswordConfirmInput" type="password" autocomplete="new-password" minlength="8" placeholder="再次输入相同密码" />
+            </label>
+            <label id="accountNewPasswordField" hidden>
+              <span>设置新密码</span>
+              <input id="accountNewPasswordInput" type="password" autocomplete="new-password" minlength="8" placeholder="至少 8 位" />
+            </label>
+            <div class="account-auth-actions">
+              <button id="accountSignInBtn" class="primary-button" type="submit">登录</button>
+            </div>
+            <button id="accountResendConfirmationBtn" class="account-resend-confirmation" type="button" hidden>
+              没有收到确认邮件？<span>重新发送</span>
+            </button>
+            <button id="accountForgotPasswordBtn" class="account-resend-confirmation" type="button">
+              忘记密码？<span>发送重置邮件</span>
+            </button>
+          </form>
+
+          <section id="accountSignedIn" class="account-signed-in" hidden>
+            <div class="account-user-card">
+              <img id="accountAvatar" alt="账号头像" />
+              <div>
+                <strong id="accountDisplayName">已登录</strong>
+                <span id="accountEmail"></span>
+              </div>
+              <span class="account-online"><i data-lucide="cloud-check"></i>已连接</span>
+            </div>
+            <div class="account-sync-card">
+              <strong>云端图文</strong>
+              <span id="accountSyncStatus">正在读取账号数据…</span>
+            </div>
+            <div class="account-switch-panel">
+              <div class="account-switch-heading">
+                <div>
+                  <strong>已登录账号</strong>
+                  <span>点击即可切换，不需要退出</span>
+                </div>
+                <i data-lucide="arrow-left-right" aria-hidden="true"></i>
+              </div>
+              <div id="accountModalAccountList" class="account-account-list"></div>
+              <button id="accountAddAnotherBtn" class="secondary-button account-wide-button" type="button">
+                <i data-lucide="user-plus"></i>
+                添加其他账号
+              </button>
+            </div>
+            <button id="accountImportLocalBtn" class="secondary-button account-wide-button" type="button">
+              <i data-lucide="cloud-upload"></i>
+              把游客 / 旧本机草稿导入此账号
+            </button>
+            <button id="accountSignOutBtn" class="ghost-button account-wide-button" type="button">退出登录</button>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <div id="feedbackModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="feedbackModalTitle" tabindex="-1">
+      <div class="modal-card feedback-modal-card">
+        <div class="modal-head feedback-modal-head">
+          <div>
+            <span class="feedback-kicker">成稿预览</span>
+            <h3 id="feedbackModalTitle">反馈问题</h3>
+            <p>把遇到的问题写清楚，截图可以帮助我更快定位。</p>
+          </div>
+          <button id="feedbackCloseBtn" class="icon-button ghost" type="button" title="关闭" aria-label="关闭问题反馈">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <form
+          id="feedbackForm"
+          class="feedback-form"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          <input type="hidden" name="_subject" value="【成稿预览】新的问题反馈" />
+          <input type="hidden" name="_template" value="table" />
+          <input class="feedback-honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <label class="feedback-field">
+            <span>问题描述 <b aria-hidden="true">*</b></span>
+            <textarea id="feedbackMessageInput" name="问题描述" minlength="5" maxlength="2000" rows="6" placeholder="例如：我选中了两行文字，点击下划线后，预览里出现了 {{underline…" required></textarea>
+            <small><span id="feedbackMessageCount">0</span> / 2000</small>
+          </label>
+          <label class="feedback-field">
+            <span>联系方式 <em>选填</em></span>
+            <input id="feedbackContactInput" name="联系方式" type="text" maxlength="120" placeholder="邮箱、微信或其他方便回复的方式" />
+          </label>
+          <div class="feedback-upload-field">
+            <div class="feedback-upload-heading">
+              <span>问题截图 <em>选填</em></span>
+              <small>最多 3 张，总计不超过 8MB</small>
+            </div>
+            <label id="feedbackUploadDropzone" class="feedback-upload-dropzone" for="feedbackImageInput">
+              <i data-lucide="image-plus"></i>
+              <strong>点击上传图片</strong>
+              <span>支持 PNG、JPG、WebP、GIF，也可以拖到这里</span>
+              <input id="feedbackImageInput" name="attachment" type="file" accept="image/png,image/jpeg,image/webp,image/gif" multiple />
+            </label>
+            <div id="feedbackImageList" class="feedback-image-list" aria-live="polite"></div>
+          </div>
+          <p class="feedback-privacy">
+            请勿上传密码、密钥等敏感信息。反馈由
+            <a href="https://formsubmit.co/privacy.pdf" target="_blank" rel="noopener noreferrer">FormSubmit</a>
+            转发，可能保留表单记录 30 天。
+          </p>
+          <p id="feedbackNotice" class="feedback-notice" role="status" aria-live="polite">
+            不会读取或上传当前草稿。
+          </p>
+          <div class="feedback-actions">
+            <button id="feedbackCancelBtn" class="secondary-button" type="button">取消</button>
+            <button id="feedbackSubmitBtn" class="primary-button" type="submit">
+              <i data-lucide="send"></i>
+              发送反馈
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="pairModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="pairModalTitle">
+      <div class="modal-card pair-modal-card">
+        <div class="modal-head">
+          <div>
+            <h3 id="pairModalTitle">调整拼图</h3>
+            <p>选择整体比例，两张图可分别裁剪或删除；关闭不保存，点「完成」才生效</p>
+          </div>
+          <button id="pairCloseBtn" class="icon-button ghost" type="button" title="关闭" aria-label="关闭拼图调整">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <div class="pair-editor">
+          <div id="pairPreview" class="pair-preview">
+            <div class="pair-cell">
+              <canvas id="pairCanvasLeft"></canvas>
+              <div class="pair-cell-actions">
+                <button id="pairCropLeftBtn" class="secondary-button" type="button" aria-label="裁剪左图">
+                  <i data-lucide="crop"></i>
+                  裁剪
+                </button>
+                <button id="pairDropLeftBtn" class="secondary-button" type="button" aria-label="删除左图，只保留右图">
+                  <i data-lucide="trash-2"></i>
+                  删除
+                </button>
+              </div>
+            </div>
+            <div class="pair-cell">
+              <canvas id="pairCanvasRight"></canvas>
+              <div class="pair-cell-actions">
+                <button id="pairCropRightBtn" class="secondary-button" type="button" aria-label="裁剪右图">
+                  <i data-lucide="crop"></i>
+                  裁剪
+                </button>
+                <button id="pairDropRightBtn" class="secondary-button" type="button" aria-label="删除右图，只保留左图">
+                  <i data-lucide="trash-2"></i>
+                  删除
+                </button>
+              </div>
+            </div>
+          </div>
+          <aside class="pair-controls">
+            <div>
+              <div class="section-title">整体比例</div>
+              <div class="ratio-grid">
+                <button class="ratio-button" type="button" data-pair-ratio="16x9">16:9 宽幅</button>
+                <button class="ratio-button" type="button" data-pair-ratio="3x2">3:2</button>
+                <button class="ratio-button" type="button" data-pair-ratio="4x3">4:3</button>
+                <button class="ratio-button" type="button" data-pair-ratio="1x1">1:1 方形</button>
+              </div>
+            </div>
+            <div class="pair-actions">
+              <button id="pairSwapBtn" class="secondary-button" type="button">
+                <i data-lucide="arrow-left-right"></i>
+                左右互换
+              </button>
+              <button id="pairDoneBtn" class="primary-button" type="button">
+                <i data-lucide="check"></i>
+                完成
+              </button>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+
+    <div id="cropModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="cropTitle">
+      <div class="modal-card">
+        <div class="modal-head">
+          <div>
+            <h3 id="cropTitle">裁剪图片</h3>
+            <p id="cropSubtitle">拖动裁剪框，选择要保留的区域</p>
+          </div>
+          <button id="cropCloseBtn" class="icon-button ghost" type="button" title="关闭" aria-label="关闭裁剪">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <div class="crop-layout">
+          <div class="crop-stage">
+            <canvas id="cropCanvas" width="720" height="500"></canvas>
+          </div>
+          <aside class="crop-controls">
+            <div>
+              <div class="section-title">比例</div>
+              <div class="ratio-grid">
+                <button class="ratio-button active" type="button" data-ratio="free">自由</button>
+                <button class="ratio-button" type="button" data-ratio="original">原图</button>
+                <button class="ratio-button" type="button" data-ratio="1">1:1</button>
+                <button class="ratio-button" type="button" data-ratio="1.333333">4:3</button>
+                <button class="ratio-button" type="button" data-ratio="1.777778">16:9</button>
+                <button class="ratio-button" type="button" data-ratio="0.75">3:4</button>
+                <button class="ratio-button" type="button" data-ratio="0.5625">9:16</button>
+              </div>
+            </div>
+            <div class="crop-actions">
+              <button id="cropResetBtn" class="secondary-button" type="button">
+                <i data-lucide="rotate-ccw"></i>
+                恢复原图
+              </button>
+              <button id="cropApplyBtn" class="primary-button" type="button">
+                <i data-lucide="check"></i>
+                应用裁剪
+              </button>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+
+    <div id="wechatModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="wechatModalTitle">
+      <div class="modal-card wechat-modal-card">
+        <div class="modal-head">
+          <div>
+            <h3 id="wechatModalTitle">同步到公众号草稿箱</h3>
+            <p>确认标题和封面后创建草稿，不会直接发布。</p>
+          </div>
+          <button id="wechatCloseBtn" class="icon-button ghost" type="button" title="关闭" aria-label="关闭公众号同步">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <div class="wechat-sync-form">
+          <label class="wechat-field">
+            <span>文章标题</span>
+            <input id="wechatTitleInput" type="text" maxlength="64" />
+          </label>
+          <label class="wechat-field">
+            <span>作者（选填）</span>
+            <input id="wechatAuthorInput" type="text" maxlength="32" placeholder="留空则不显示作者" />
+          </label>
+          <div class="wechat-cover-field">
+            <div id="wechatCoverPreview" class="wechat-cover-preview">
+              <i data-lucide="image"></i>
+              <span>请选择封面</span>
+            </div>
+            <div class="wechat-cover-copy">
+              <strong>草稿封面</strong>
+              <span id="wechatCoverHint">默认使用正文第一张图片，也可以单独上传。</span>
+              <label class="secondary-button wechat-cover-button">
+                <i data-lucide="image-plus"></i>
+                更换封面
+                <input id="wechatCoverInput" type="file" accept="image/png,image/jpeg,image/webp,image/gif" />
+              </label>
+            </div>
+          </div>
+          <div id="wechatServiceStatus" class="wechat-service-status">正在检查本机公众号同步服务…</div>
+          <div class="wechat-sync-actions">
+            <button id="wechatCancelBtn" class="secondary-button" type="button">取消</button>
+            <button id="wechatConfirmBtn" class="primary-button" type="button" disabled>
+              <i data-lucide="send"></i>
+              确认同步到草稿箱
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="livePhotoModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="livePhotoModalTitle">
+      <div class="modal-card live-photo-modal-card">
+        <div class="modal-head">
+          <div>
+            <h3 id="livePhotoModalTitle">插入实况图片</h3>
+            <p>先把视频作为内容素材插入图文；右侧会自动识别并生成实况发布包，合成在本机浏览器里完成，原视频不会上传。</p>
+          </div>
+          <button id="livePhotoCloseBtn" class="icon-button ghost" type="button" title="关闭" aria-label="关闭实况照片制作">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <div class="live-photo-layout">
+          <section class="live-photo-preview-column" aria-label="实况照片预览">
+            <div id="livePhotoPreview" class="live-photo-preview">
+              <video id="livePhotoVideo" muted loop playsinline></video>
+              <canvas id="livePhotoCropCanvas" width="720" height="520" aria-label="拖动或缩放实况画面裁剪框"></canvas>
+              <div id="livePhotoEmpty" class="live-photo-empty">
+                <i data-lucide="video"></i>
+                <strong>选择一段视频</strong>
+                <span>选择比例后可直接拖动和缩放裁剪框</span>
+              </div>
+              <span class="live-photo-badge"><i data-lucide="aperture"></i>LIVE</span>
+            </div>
+            <p class="live-photo-preview-note">拖动白色裁剪框调整位置，拖动四角缩放；只裁切画面，不拉伸视频。</p>
+          </section>
+
+          <form id="livePhotoForm" class="live-photo-form">
+            <div class="live-photo-section">
+              <div class="live-photo-section-title">
+                <strong>视频素材</strong>
+                <span id="livePhotoVideoMeta">支持 MP4、MOV、WebM，单个文件不超过 350MB</span>
+              </div>
+              <label class="secondary-button live-photo-file-button">
+                <i data-lucide="video"></i>
+                <span id="livePhotoFileLabel">选择视频</span>
+                <em id="livePhotoFileSwap" class="live-photo-file-swap" hidden>更换素材</em>
+                <input id="livePhotoVideoInput" type="file" accept="video/mp4,video/quicktime,video/webm,.mp4,.mov,.webm" />
+              </label>
+            </div>
+
+            <div class="live-photo-section">
+              <div class="live-photo-section-title">
+                <strong>实况时长</strong>
+                <span id="livePhotoDurationHint">成片固定 5 秒</span>
+              </div>
+              <div class="live-photo-platforms" role="group" aria-label="实况时长">
+                <button type="button" data-live-duration="3">3 秒</button>
+                <button class="active" type="button" data-live-duration="5">5 秒</button>
+                <button type="button" data-live-duration="8">8 秒</button>
+              </div>
+            </div>
+
+            <div class="live-photo-section">
+              <div class="live-photo-section-title">
+                <strong>倍速</strong>
+                <span id="livePhotoSpeedHint">原速播放</span>
+              </div>
+              <div class="live-photo-platforms" role="group" aria-label="播放倍速">
+                <button class="active" type="button" data-live-speed="1">原速</button>
+                <button type="button" data-live-speed="1.5">1.5×</button>
+                <button type="button" data-live-speed="2">2×</button>
+                <button type="button" data-live-speed="3">3×</button>
+              </div>
+            </div>
+
+            <div class="live-photo-section">
+              <div class="live-photo-section-title">
+                <strong>画面比例</strong>
+                <span>只裁切画面，不拉伸视频</span>
+              </div>
+              <div class="ratio-grid live-photo-ratio-grid" role="group" aria-label="实况画面比例">
+                <button class="ratio-button" type="button" data-live-ratio="free">自由</button>
+                <button class="ratio-button active" type="button" data-live-ratio="original">原视频</button>
+                <button class="ratio-button" type="button" data-live-ratio="1">1:1</button>
+                <button class="ratio-button" type="button" data-live-ratio="1.333333">4:3</button>
+                <button class="ratio-button" type="button" data-live-ratio="1.777778">16:9</button>
+                <button class="ratio-button" type="button" data-live-ratio="0.75">3:4</button>
+                <button class="ratio-button" type="button" data-live-ratio="0.5625">9:16</button>
+              </div>
+              <label id="livePhotoCustomRatioRow" class="live-photo-custom-ratio" hidden>
+                <span>自由宽高比 <output id="livePhotoCustomRatioOutput">0.75</output></span>
+                <input id="livePhotoCustomRatioInput" type="range" min="0.4" max="2.5" step="0.01" value="0.75" />
+              </label>
+            </div>
+
+            <div id="livePhotoTrimRow" class="live-photo-trim" hidden>
+              <div class="live-photo-trim-head">
+                <span>截取片段</span>
+                <output id="livePhotoTrimOutput">第 0.0 – 5.0 秒</output>
+              </div>
+              <div id="livePhotoTrimTrack" class="live-photo-trim-track" role="slider" tabindex="0"
+                   aria-label="拖动选择实况片段" aria-valuemin="0" aria-valuenow="0" aria-valuemax="0">
+                <div id="livePhotoTrimStrip" class="live-photo-trim-strip" aria-hidden="true"></div>
+                <div id="livePhotoTrimWindow" class="live-photo-trim-window" aria-hidden="true">
+                  <span class="live-photo-trim-grip"></span>
+                </div>
+              </div>
+              <input id="livePhotoStartInput" type="hidden" value="0" />
+              <small id="livePhotoTrimHint">拖动方框选择要做成实况的片段</small>
+            </div>
+            <input id="livePhotoCoverInput" type="hidden" value="0.2" />
+
+            <label class="live-photo-sound-row">
+              <input id="livePhotoSoundInput" type="checkbox" checked />
+              <span>保留原视频声音<small>实况在 iPhone 上长按播放时会有声音</small></span>
+            </label>
+
+            <div id="livePhotoServiceStatus" class="wechat-service-status">实况设置会跟随这段视频保存，右侧下载时自动应用。</div>
+            <div class="live-photo-actions">
+              <button id="livePhotoCancelBtn" class="secondary-button" type="button">取消</button>
+              <button id="livePhotoGenerateBtn" class="primary-button" type="submit" disabled>
+                <i data-lucide="image-plus"></i>
+                插入图文
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div id="livePhotoHandoffModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="livePhotoHandoffTitle">
+      <div class="modal-card live-photo-handoff-card">
+        <div class="modal-head">
+          <div>
+            <h3 id="livePhotoHandoffTitle">实况导出</h3>
+            <p id="livePhotoHandoffSummary">Live Photo 已生成，可以直接交接到手机。</p>
+          </div>
+          <button id="livePhotoHandoffCloseBtn" class="icon-button ghost" type="button" title="关闭" aria-label="关闭导出结果">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <div class="live-photo-handoff-layout">
+          <section class="live-photo-handoff-preview" aria-label="导出效果预览">
+            <div id="livePhotoHandoffPreview" class="live-photo-handoff-preview-main"></div>
+            <p id="livePhotoHandoffPreviewHint" class="live-photo-handoff-preview-hint" hidden>长按预览可以查看动态效果</p>
+            <div id="livePhotoHandoffThumbnails" class="live-photo-handoff-thumbnails" aria-label="全部导出页面"></div>
+          </section>
+          <section class="live-photo-handoff-results" aria-label="导出操作">
+            <div id="livePhotoHandoffDevice" class="live-photo-handoff-device" hidden>
+              <i data-lucide="circle-check-big" aria-hidden="true"></i>
+              <strong id="livePhotoHandoffDeviceLabel">已检测：Mac · Safari</strong>
+            </div>
+            <div class="live-photo-handoff-summary-block">
+              <strong id="livePhotoHandoffCount">你会下载到什么？</strong>
+              <span id="livePhotoHandoffDetail">1 张实况照片</span>
+            </div>
+            <div id="livePhotoHandoffFiles" class="live-photo-handoff-files" aria-label="下载包内容"></div>
+            <section id="livePhotoHandoffProgress" class="export-progress export-progress-compact" aria-live="polite" aria-label="实况下载处理进度" hidden>
+              <div class="export-progress-card handoff-progress-card">
+                <div class="export-progress-copy handoff-progress-copy">
+                  <strong id="livePhotoHandoffProgressTitle">正在整理下载文件</strong>
+                  <span id="livePhotoHandoffProgressDetail">请稍候，完成后会自动开始下载。</span>
+                </div>
+                <div class="handoff-progress-ring-wrap" aria-hidden="true">
+                  <span class="export-progress-icon handoff-progress-ring"><i data-lucide="loader-circle"></i></span>
+                  <strong id="livePhotoHandoffProgressPercent" class="export-progress-percent">0%</strong>
+                </div>
+                <div id="livePhotoHandoffProgressSteps" class="handoff-progress-steps" aria-label="页面处理状态"></div>
+                <span id="livePhotoHandoffProgressMeta" class="export-progress-meta">已用时 0 秒</span>
+                <div id="livePhotoHandoffProgressBar" class="export-progress-track" role="progressbar" aria-label="批量下载进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="正在处理">
+                  <span id="livePhotoHandoffProgressFill" class="export-progress-fill"></span>
+                </div>
+              </div>
+            </section>
+            <div class="live-photo-handoff-primary-actions">
+              <button id="livePhotoHandoffDownloadBtn" class="primary-button" type="button">
+                <i data-lucide="download"></i>下载实况照片
+              </button>
+              <button id="livePhotoHandoffRevealBtn" class="secondary-button" type="button" hidden>
+                <i data-lucide="folder-open"></i>在 Finder 中找到
+              </button>
+              <button id="livePhotoHandoffAirdropBtn" class="secondary-button" type="button" hidden aria-hidden="true" tabindex="-1"></button>
+            </div>
+            <p id="livePhotoHandoffHint" class="live-photo-handoff-hint">下载的是一个 ZIP 压缩包，解压后即可看到完整实况照片。</p>
+            <button id="livePhotoHandoffCancelBtn" class="live-photo-handoff-cancel" type="button">取消</button>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <!-- 必须保持为 body 直属层：iPad Safari 会裁剪 grid/overflow 面板里的 fixed 选词工具栏。 -->
+    <div id="selectionToolbar" class="selection-toolbar" role="toolbar" aria-label="选中文字样式" hidden>
+      <div class="selection-toolbar-row">
+        <button type="button" class="selection-tool-button selection-format-button" data-format="h1" title="大标题">H1</button>
+        <button type="button" class="selection-tool-button selection-format-button" data-format="h2" title="小标题">H2</button>
+        <button type="button" class="selection-tool-button selection-format-button" data-format="bold" title="加粗"><strong>B</strong></button>
+        <button type="button" class="selection-tool-button selection-format-button" data-format="italic" title="斜体"><em>I</em></button>
+        <button id="selectionUnderlineBtn" class="selection-tool-button selection-format-button" type="button" title="下划线" aria-label="下划线">
+          <i data-lucide="underline"></i>
+        </button>
+        <button type="button" class="selection-tool-button selection-format-button" data-format="quote" title="重点引用" aria-label="重点引用"><i data-lucide="quote"></i></button>
+        <button id="selectionColorBtn" class="selection-tool-button" type="button" title="字体颜色" aria-label="字体颜色">
+          <i data-lucide="type"></i>
+          <span id="selectionColorDot" class="selection-color-dot" aria-hidden="true"></span>
+        </button>
+        <button id="selectionBgColorBtn" class="selection-tool-button" type="button" title="背景色" aria-label="背景色">
+          <i data-lucide="highlighter"></i>
+          <span id="selectionBgColorDot" class="selection-color-dot" aria-hidden="true"></span>
+        </button>
+      </div>
+      <div id="selectionColorPalette" class="selection-palette" hidden>
+        <div id="selectionColorSwatches" class="selection-swatches"></div>
+        <details class="selection-custom-color-disclosure">
+          <summary data-custom-color-toggle>
+            <span>自定义颜色</span>
+            <span class="selection-custom-color-chip is-text" aria-hidden="true"></span>
+          </summary>
+          <div class="selection-custom-color-body">
+            <label class="selection-custom-color">
+              选择颜色
+              <input id="selectionCustomColorInput" type="color" value="#2563eb" />
+            </label>
+            <div class="custom-color-actions" role="group" aria-label="字体颜色保存方式">
+              <button type="button" class="custom-color-action" data-custom-color-action data-color-kind="color" data-color-save="false">仅本次</button>
+              <button type="button" class="custom-color-action is-save" data-custom-color-action data-color-kind="color" data-color-save="true">保存并使用</button>
+            </div>
+          </div>
+        </details>
+      </div>
+      <div id="selectionBgPalette" class="selection-palette" hidden>
+        <button type="button" class="clear-inline-style-action" data-clear-inline-style="bg">
+          <i data-lucide="eraser"></i>
+          清除背景色
+        </button>
+        <div id="selectionBgSwatches" class="selection-swatches"></div>
+        <details class="selection-custom-color-disclosure">
+          <summary data-custom-color-toggle>
+            <span>自定义背景色</span>
+            <span class="selection-custom-color-chip is-bg" aria-hidden="true"></span>
+          </summary>
+          <div class="selection-custom-color-body">
+            <label class="selection-custom-color">
+              选择背景色
+              <input id="selectionCustomBgInput" type="color" value="#fff3a3" />
+            </label>
+            <div class="custom-color-actions" role="group" aria-label="背景颜色保存方式">
+              <button type="button" class="custom-color-action" data-custom-color-action data-color-kind="bg" data-color-save="false">仅本次</button>
+              <button type="button" class="custom-color-action is-save" data-custom-color-action data-color-kind="bg" data-color-save="true">保存并使用</button>
+            </div>
+          </div>
+        </details>
+      </div>
+      <div id="selectionUnderlinePalette" class="selection-palette selection-underline-palette" hidden>
+        <div class="selection-underline-options" role="group" aria-label="下划线样式">
+          <button type="button" class="selection-underline-option" data-format="underline-solid">
+            <span class="underline-option-preview is-solid">实线</span>
+          </button>
+          <button type="button" class="selection-underline-option" data-format="underline-dashed">
+            <span class="underline-option-preview is-dashed">虚线</span>
+          </button>
+          <button type="button" class="selection-underline-option" data-format="underline-none">
+            <span class="underline-option-preview is-none">取消</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 必须保持为 body 直属层：iPad Safari 会裁剪 sticky/overflow 面板里的 fixed 下载遮罩。 -->
+    <section id="exportProgress" class="export-progress" aria-live="polite" aria-label="导出处理进度" hidden>
+      <div class="export-progress-card">
+        <span class="export-progress-icon" aria-hidden="true"><i data-lucide="loader-circle"></i></span>
+        <div class="export-progress-copy">
+          <strong id="exportProgressTitle">正在准备导出</strong>
+          <span id="exportProgressDetail">系统正在处理，请不要关闭页面。</span>
+        </div>
+        <strong id="exportProgressPercent" class="export-progress-percent">0%</strong>
+        <span id="exportProgressMeta" class="export-progress-meta">已用时 0 秒</span>
+        <div id="exportProgressBar" class="export-progress-track" role="progressbar" aria-label="导出进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="正在处理">
+          <span id="exportProgressFill" class="export-progress-fill"></span>
+        </div>
+      </div>
+    </section>
+
+    <div id="onboardingTour" class="onboarding-tour hidden" role="dialog" aria-modal="true" aria-labelledby="onboardingTitle">
+      <div id="onboardingFocus" class="onboarding-focus" aria-hidden="true"></div>
+      <section id="onboardingTooltip" class="onboarding-tooltip">
+        <span id="onboardingArrow" class="onboarding-arrow" aria-hidden="true"></span>
+        <h3 id="onboardingTitle">先创建自己的内容</h3>
+        <p id="onboardingBody">左侧两个内容是示例模板。点击这里，新建你的图文卡片或公众号长文。</p>
+        <button id="onboardingActionBtn" class="onboarding-action-button secondary-button" type="button" hidden></button>
+        <div class="onboarding-actions">
+          <span id="onboardingProgress">1 / 4</span>
+          <div>
+            <button id="onboardingSkipBtn" class="secondary-button" type="button">跳过</button>
+            <button id="onboardingNextBtn" class="primary-button" type="button">下一步</button>
+          </div>
+        </div>
+      </section>
+    </div>
