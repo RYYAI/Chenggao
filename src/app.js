@@ -25,6 +25,12 @@ const EXPORT_IMAGE_MIME = "image/png";
 const DEFAULT_HANDLE = "";
 const EXPORT_IMAGE_EXTENSION = ".png";
 const EXPORT_ZIP_COMPRESSION = "STORE";
+function t(key, vars) {
+  const translate = window.__chenggaoT;
+  if (typeof translate === "function") return translate(key, vars);
+  return key;
+}
+
 const LIVE_PHOTO_API_BASE = window.location.protocol === "file:" ? "http://127.0.0.1:5173" : "";
 const LIVE_PHOTO_LOCAL_GUIDE_URL = "";
 const OBSIDIAN_VAULT_DB = "writeThenPublishObsidianVault";
@@ -1032,7 +1038,7 @@ function updateKeepHeadingButton() {
   const on = state.keepHeadingWithBody !== false;
   els.keepHeading.classList.toggle("active", on);
   els.keepHeading.setAttribute("aria-pressed", on ? "true" : "false");
-  els.keepHeading.title = on ? "标题不落在页底：已开启" : "标题不落在页底：已关闭";
+  els.keepHeading.title = on ? t("layout.keepHeadingOn") : t("layout.keepHeadingOff");
 }
 
 async function toggleKeepHeadingWithBody() {
@@ -1040,8 +1046,8 @@ async function toggleKeepHeadingWithBody() {
   updateKeepHeadingButton();
   await render();
   els.status.textContent = state.keepHeadingWithBody !== false
-    ? "已开启：标题尽量不单独出现在页底"
-    : "已关闭：标题按原位置分页";
+    ? t("layout.keepHeadingEnabled")
+    : t("layout.keepHeadingDisabled");
 }
 
 function updateHeaderModeButton() {
@@ -1087,7 +1093,7 @@ function updateAppMode() {
   if (els.headerModeToggle) els.headerModeToggle.hidden = state.appMode === "article";
 }
 
-function showCardRenderPlaceholder(message = "正在生成图文卡片…") {
+function showCardRenderPlaceholder(message = t("status.renderingCards")) {
   if (!els.pages) return;
   els.pages.className = "pages";
   els.pages.innerHTML = `<div class="empty-state">${escapeHtml(message)}</div>`;
@@ -8008,7 +8014,7 @@ function serializeArticleForWechat() {
     article = els.pages.querySelector(".article-preview");
   }
   if (!article || !readForm().content.trim()) {
-    throw new Error("长文内容为空，请先输入正文。");
+    throw new Error(t("error.emptyArticle"));
   }
 
   const clone = article.cloneNode(true);
@@ -8076,7 +8082,7 @@ async function writeRichClipboard(html, text) {
   const copied = document.execCommand("copy");
   selection.removeAllRanges();
   holder.remove();
-  if (!copied) throw new Error("浏览器没有允许复制。");
+  if (!copied) throw new Error(t("error.copyBlocked"));
 }
 
 async function copyArticleToWechat() {
@@ -8085,13 +8091,13 @@ async function copyArticleToWechat() {
     await writeRichClipboard(serialized.html, serialized.text);
     if (isPluginMode() && pluginHost()?.saveWechatHtml) {
       const path = await pluginHost().saveWechatHtml(serialized.html);
-      els.status.textContent = `已复制公众号富文本，并保存 ${path}`;
+      els.status.textContent = t("status.copiedWechatSaved", { path });
       pluginHost().notify?.(els.status.textContent);
       return;
     }
-    els.status.textContent = "已复制公众号富文本，可直接粘贴到公众号编辑器";
+    els.status.textContent = t("status.copiedWechat");
   } catch (error) {
-    els.status.textContent = error?.message || "复制失败，请允许浏览器访问剪贴板。";
+    els.status.textContent = error?.message || t("error.copyFailed");
   }
 }
 
@@ -9209,9 +9215,9 @@ async function render() {
     console.error(error);
     if (seq !== renderSequence) return;
     if (state.appMode === "cards") {
-      showCardRenderPlaceholder(error?.message || "图文卡片生成失败，请检查正文后再试");
+        showCardRenderPlaceholder(error?.message || t("error.renderCards"));
     }
-    if (els.status) els.status.textContent = error?.message || "图文卡片生成失败";
+    if (els.status) els.status.textContent = error?.message || t("error.renderCards");
   }
 }
 
@@ -9310,7 +9316,7 @@ function drawPreview(canvases) {
   if (!canvases.length) {
     const empty = document.createElement("div");
     empty.className = "empty-state";
-    empty.textContent = "暂无内容";
+    empty.textContent = t("status.empty");
     els.pages.append(empty);
   }
 
@@ -9350,8 +9356,8 @@ function drawPreview(canvases) {
   const livePageCount = canvases.filter((canvas) => liveImageHitsForCanvas(canvas).length).length;
   els.pageCount.textContent = `${canvases.length} 张图片${livePageCount ? ` · ${livePageCount} 张实况` : ""}`;
   els.status.textContent = livePageCount && needsLivePhotoStaticFallback()
-    ? `已生成 ${canvases.length} 张 · ${livePageCount} 张实况；当前站点尚未连接云端实况服务`
-    : `已生成 ${canvases.length} 张${livePageCount ? `，其中 ${livePageCount} 张会自动导出 Live Photo` : ""}，高清尺寸 ${OUTPUT_CANVAS_WIDTH}x${OUTPUT_CANVAS_HEIGHT}`;
+        ? t("status.generated", { n: canvases.length, width: OUTPUT_CANVAS_WIDTH, height: OUTPUT_CANVAS_HEIGHT })
+    : t("status.generated", { n: canvases.length, width: OUTPUT_CANVAS_WIDTH, height: OUTPUT_CANVAS_HEIGHT });
   syncExportBusyState();
   if (window.lucide) window.lucide.createIcons();
 }
@@ -11511,9 +11517,9 @@ async function chooseSaveTarget(filename, mimeType, extension) {
 async function saveBlob(blob, filename, writable = null) {
   if (isPluginMode() || writable?.plugin) {
     const host = pluginHost();
-    if (!host?.saveExport) throw new Error("Obsidian 插件未准备好导出。");
+    if (!host?.saveExport) throw new Error(t("error.pluginExport"));
     const path = await host.saveExport(blob, writable?.filename || filename);
-    host.notify?.(`已保存 ${path}`);
+    host.notify?.(t("status.savedPath", { path }));
     return;
   }
   if (writable) {
@@ -11587,33 +11593,33 @@ async function downloadArticleImage() {
 
   const article = els.pages.querySelector(".article-preview");
   if (!article) {
-    els.status.textContent = "长文生成失败，请先检查内容";
+    els.status.textContent = t("error.renderArticle");
     return;
   }
 
   if (!window.html2canvas) {
-    els.status.textContent = "长图下载组件未加载，请刷新页面后重试";
+    els.status.textContent = t("error.html2canvas");
     return;
   }
 
   if (!beginExportProgress("main", {
-    title: "正在生成长文图片",
-    detail: "正在准备完整文章画面…",
+    title: t("progress.article"),
+    detail: t("progress.articlePrepare"),
     value: 5,
   })) return;
 
   const filename = "chenggao-article.png";
   try {
-    updateExportProgress("main", { title: "请选择保存位置", detail: "确认后会开始生成高清长图。", value: 18 });
+    updateExportProgress("main", { title: t("progress.article"), detail: t("progress.articlePrepare"), value: 18 });
     const writable = await chooseSaveTarget(filename, EXPORT_IMAGE_MIME, EXPORT_IMAGE_EXTENSION);
     if (writable === false) {
-      els.status.textContent = "已取消下载";
-      finishExportProgress("main", { cancelled: true, title: "长图下载已取消", detail: "没有写入任何文件。" });
+      els.status.textContent = t("status.cancelled");
+      finishExportProgress("main", { cancelled: true, title: t("status.cancelled"), detail: t("status.cancelled") });
       return;
     }
 
-    els.status.textContent = "正在生成长图...";
-    updateExportProgress("main", { title: "正在渲染完整长文", detail: "正在合成长文主题、文字和图片…", value: 42 });
+    els.status.textContent = t("progress.article");
+    updateExportProgress("main", { title: t("progress.article"), detail: t("progress.articleRender"), value: 42 });
     const canvas = await window.html2canvas(article, {
       // 编辑/导出按钮只是预览里的操作入口，不该被印进长图。
       ignoreElements: (node) => node.classList?.contains("article-live-actions"),
@@ -11629,16 +11635,16 @@ async function downloadArticleImage() {
       windowWidth: Math.max(document.documentElement.clientWidth, article.scrollWidth),
       windowHeight: Math.max(document.documentElement.clientHeight, article.scrollHeight),
     });
-    updateExportProgress("main", { title: "正在生成 PNG", detail: "长文画面已渲染，正在转换为高清图片…", value: 82 });
+    updateExportProgress("main", { title: t("progress.articlePng"), detail: t("progress.articlePng"), value: 82 });
     const blob = await canvasToLosslessPngBlob(canvas);
-    if (!blob) throw new Error("长图生成失败，请调整内容后再试");
-    updateExportProgress("main", { title: "正在保存长图", detail: "图片已经生成，正在写入下载位置…", value: 96 });
+    if (!blob) throw new Error(t("error.exportArticle"));
+    updateExportProgress("main", { title: t("progress.articleSave"), detail: t("progress.articlePng"), value: 96 });
     await saveBlob(blob, filename, writable);
-    els.status.textContent = writable ? `已保存 ${filename}` : `已交给浏览器下载 ${filename}`;
-    finishExportProgress("main", { title: "长图下载完成", detail: els.status.textContent });
+    els.status.textContent = t("status.savedPath", { path: filename });
+    finishExportProgress("main", { title: t("progress.articleDone"), detail: els.status.textContent });
   } catch (error) {
-    els.status.textContent = error?.message || "长图下载失败，请稍后重试";
-    finishExportProgress("main", { success: false, title: "长图下载失败", detail: els.status.textContent });
+    els.status.textContent = error?.message || t("error.exportArticle");
+    finishExportProgress("main", { success: false, title: t("progress.articleFail"), detail: els.status.textContent });
   }
 }
 
@@ -11678,10 +11684,10 @@ async function isZipBlob(blob) {
 
 async function downloadCanvasesToPluginVault() {
   const host = pluginHost();
-  if (!host?.saveImage) throw new Error("Obsidian 插件未准备好导出。");
+  if (!host?.saveImage) throw new Error(t("error.pluginExport"));
   if (!beginExportProgress("main", {
-    title: "正在导出图片",
-    detail: "正在写入笔记同级的图片文件夹…",
+    title: t("progress.exportImages"),
+    detail: t("progress.exportImagesDetail"),
     value: 8,
   })) return;
 
@@ -11689,24 +11695,24 @@ async function downloadCanvasesToPluginVault() {
   try {
     for (const [index, canvas] of state.canvases.entries()) {
       updateExportProgress("main", {
-        title: `正在导出 ${index + 1}/${state.canvases.length}`,
-        detail: "正在生成高清 PNG…",
+        title: t("progress.exportPage", { current: index + 1, total: state.canvases.length }),
+        detail: t("progress.exportPng"),
         current: index + 1,
         total: state.canvases.length,
         value: 10 + (index / state.canvases.length) * 80,
       });
       const blob = await canvasToLosslessPngBlob(canvas);
-      if (!blob) throw new Error("图片生成失败，请调整内容后再试");
+      if (!blob) throw new Error(t("error.renderCards"));
       const filename = `layout-page-${String(index + 1).padStart(2, "0")}.png`;
       paths.push(await host.saveImage(blob, filename));
     }
-    const folder = paths[0]?.split("/").slice(0, -1).join("/") || "图片";
-    els.status.textContent = `已导出 ${paths.length} 张图片到 ${folder}`;
+    const folder = paths[0]?.split("/").slice(0, -1).join("/") || t("folder.images");
+    els.status.textContent = t("status.exportedImages", { n: paths.length, folder });
     host.notify?.(els.status.textContent);
-    finishExportProgress("main", { title: "图片导出完成", detail: els.status.textContent });
+    finishExportProgress("main", { title: t("progress.exportDone"), detail: els.status.textContent });
   } catch (error) {
-    els.status.textContent = error?.message || "导出图片失败";
-    finishExportProgress("main", { success: false, title: "图片导出失败", detail: els.status.textContent });
+    els.status.textContent = error?.message || t("error.exportImages");
+    finishExportProgress("main", { success: false, title: t("progress.exportFail"), detail: els.status.textContent });
   }
 }
 
@@ -12366,14 +12372,18 @@ function applyPluginHostUi() {
   appShell().classList.add("local-deployment", "wtp-obsidian-plugin");
   appShell().classList.remove("entry-choice-pending", "cloud-session-checking");
   if (els.downloadZip) {
-    els.downloadZip.innerHTML = '<i data-lucide="download"></i> 导出图片';
+    const label = els.downloadZip.querySelector("[data-i18n]") || els.downloadZip.querySelector("span");
+    if (label) label.textContent = t("action.exportImages");
   }
   if (els.downloadArticle) {
-    els.downloadArticle.innerHTML = '<i data-lucide="download"></i> 导出长图';
+    const label = els.downloadArticle.querySelector("[data-i18n]") || els.downloadArticle.querySelector("span");
+    if (label) label.textContent = t("action.exportArticle");
   }
   if (els.status) {
     const host = pluginHost();
-    els.status.textContent = host?.notePath ? `正在排版 ${host.notePath}` : "正在排版当前笔记";
+    els.status.textContent = host?.notePath
+      ? t("preview.statusNote", { path: host.notePath })
+      : t("preview.statusCurrent");
   }
 }
 
@@ -12395,7 +12405,7 @@ async function persistPluginNote() {
       attachments: exportData.attachments,
     });
   } catch (error) {
-    els.status.textContent = error?.message || "写回当前笔记失败";
+    els.status.textContent = error?.message || t("error.writeNote");
   }
 }
 

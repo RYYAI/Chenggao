@@ -55,12 +55,12 @@ var require_html2canvas = __commonJS({
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
       }
       var __assign = function() {
-        __assign = Object.assign || function __assign2(t) {
+        __assign = Object.assign || function __assign2(t3) {
           for (var s, i2 = 1, n = arguments.length; i2 < n; i2++) {
             s = arguments[i2];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t3[p] = s[p];
           }
-          return t;
+          return t3;
         };
         return __assign.apply(this, arguments);
       };
@@ -93,9 +93,9 @@ var require_html2canvas = __commonJS({
       }
       function __generator(thisArg, body) {
         var _ = { label: 0, sent: function() {
-          if (t[0] & 1) throw t[1];
-          return t[1];
-        }, trys: [], ops: [] }, f2, y, t, g;
+          if (t3[0] & 1) throw t3[1];
+          return t3[1];
+        }, trys: [], ops: [] }, f2, y, t3, g;
         return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
           return this;
         }), g;
@@ -107,12 +107,12 @@ var require_html2canvas = __commonJS({
         function step(op) {
           if (f2) throw new TypeError("Generator is already executing.");
           while (_) try {
-            if (f2 = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
+            if (f2 = 1, y && (t3 = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t3 = y["return"]) && t3.call(y), 0) : y.next) && !(t3 = t3.call(y, op[1])).done) return t3;
+            if (y = 0, t3) op = [op[0] & 2, t3.value];
             switch (op[0]) {
               case 0:
               case 1:
-                t = op;
+                t3 = op;
                 break;
               case 4:
                 _.label++;
@@ -127,25 +127,25 @@ var require_html2canvas = __commonJS({
                 _.trys.pop();
                 continue;
               default:
-                if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                if (!(t3 = _.trys, t3 = t3.length > 0 && t3[t3.length - 1]) && (op[0] === 6 || op[0] === 2)) {
                   _ = 0;
                   continue;
                 }
-                if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                if (op[0] === 3 && (!t3 || op[1] > t3[0] && op[1] < t3[3])) {
                   _.label = op[1];
                   break;
                 }
-                if (op[0] === 6 && _.label < t[1]) {
-                  _.label = t[1];
-                  t = op;
+                if (op[0] === 6 && _.label < t3[1]) {
+                  _.label = t3[1];
+                  t3 = op;
                   break;
                 }
-                if (t && _.label < t[2]) {
-                  _.label = t[2];
+                if (t3 && _.label < t3[2]) {
+                  _.label = t3[2];
                   _.ops.push(op);
                   break;
                 }
-                if (t[2]) _.ops.pop();
+                if (t3[2]) _.ops.pop();
                 _.trys.pop();
                 continue;
             }
@@ -154,7 +154,7 @@ var require_html2canvas = __commonJS({
             op = [6, e2];
             y = 0;
           } finally {
-            f2 = t = 0;
+            f2 = t3 = 0;
           }
           if (op[0] & 5) throw op[1];
           return { value: op[0] ? op[1] : void 0, done: true };
@@ -1779,7 +1779,7 @@ var require_html2canvas = __commonJS({
         }
         return 0;
       };
-      function hue2rgb(t1, t2, hue) {
+      function hue2rgb(t1, t22, hue) {
         if (hue < 0) {
           hue += 1;
         }
@@ -1787,11 +1787,11 @@ var require_html2canvas = __commonJS({
           hue -= 1;
         }
         if (hue < 1 / 6) {
-          return (t2 - t1) * hue * 6 + t1;
+          return (t22 - t1) * hue * 6 + t1;
         } else if (hue < 1 / 2) {
-          return t2;
+          return t22;
         } else if (hue < 2 / 3) {
-          return (t2 - t1) * 6 * (2 / 3 - hue) + t1;
+          return (t22 - t1) * 6 * (2 / 3 - hue) + t1;
         } else {
           return t1;
         }
@@ -1806,11 +1806,11 @@ var require_html2canvas = __commonJS({
         if (s === 0) {
           return pack(l * 255, l * 255, l * 255, 1);
         }
-        var t2 = l <= 0.5 ? l * (s + 1) : l + s - l * s;
-        var t1 = l * 2 - t2;
-        var r = hue2rgb(t1, t2, h + 1 / 3);
-        var g = hue2rgb(t1, t2, h);
-        var b = hue2rgb(t1, t2, h - 1 / 3);
+        var t22 = l <= 0.5 ? l * (s + 1) : l + s - l * s;
+        var t1 = l * 2 - t22;
+        var r = hue2rgb(t1, t22, h + 1 / 3);
+        var g = hue2rgb(t1, t22, h);
+        var b = hue2rgb(t1, t22, h - 1 / 3);
         return pack(r * 255, g * 255, b * 255, a2);
       };
       var SUPPORTED_COLOR_FUNCTIONS = {
@@ -5859,8 +5859,8 @@ var require_html2canvas = __commonJS({
           return Vector2;
         })()
       );
-      var lerp = function(a2, b, t) {
-        return new Vector(a2.x + (b.x - a2.x) * t, a2.y + (b.y - a2.y) * t);
+      var lerp = function(a2, b, t3) {
+        return new Vector(a2.x + (b.x - a2.x) * t3, a2.y + (b.y - a2.y) * t3);
       };
       var BezierCurve = (
         /** @class */
@@ -5872,13 +5872,13 @@ var require_html2canvas = __commonJS({
             this.endControl = endControl;
             this.end = end;
           }
-          BezierCurve2.prototype.subdivide = function(t, firstHalf) {
-            var ab = lerp(this.start, this.startControl, t);
-            var bc = lerp(this.startControl, this.endControl, t);
-            var cd = lerp(this.endControl, this.end, t);
-            var abbc = lerp(ab, bc, t);
-            var bccd = lerp(bc, cd, t);
-            var dest = lerp(abbc, bccd, t);
+          BezierCurve2.prototype.subdivide = function(t3, firstHalf) {
+            var ab = lerp(this.start, this.startControl, t3);
+            var bc = lerp(this.startControl, this.endControl, t3);
+            var cd = lerp(this.endControl, this.end, t3);
+            var abbc = lerp(ab, bc, t3);
+            var bccd = lerp(bc, cd, t3);
+            var dest = lerp(abbc, bccd, t3);
             return firstHalf ? new BezierCurve2(this.start, ab, abbc, dest) : new BezierCurve2(dest, bccd, cd, this.end);
           };
           BezierCurve2.prototype.add = function(deltaX, deltaY) {
@@ -7829,53 +7829,53 @@ var require_jszip_min = __commonJS({
         function u(r, e2) {
           if (!o[r]) {
             if (!a[r]) {
-              var t = "function" == typeof require && require;
-              if (!e2 && t) return t(r, true);
+              var t3 = "function" == typeof require && require;
+              if (!e2 && t3) return t3(r, true);
               if (l) return l(r, true);
               var n = new Error("Cannot find module '" + r + "'");
               throw n.code = "MODULE_NOT_FOUND", n;
             }
             var i = o[r] = { exports: {} };
             a[r][0].call(i.exports, function(e3) {
-              var t2 = a[r][1][e3];
-              return u(t2 || e3);
+              var t4 = a[r][1][e3];
+              return u(t4 || e3);
             }, i, i.exports, s, a, o, h);
           }
           return o[r].exports;
         }
         for (var l = "function" == typeof require && require, e = 0; e < h.length; e++) u(h[e]);
         return u;
-      })({ 1: [function(e, t, r) {
+      })({ 1: [function(e, t3, r) {
         "use strict";
         var d = e("./utils"), c = e("./support"), p = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
         r.encode = function(e2) {
-          for (var t2, r2, n, i, s, a, o, h = [], u = 0, l = e2.length, f = l, c2 = "string" !== d.getTypeOf(e2); u < e2.length; ) f = l - u, n = c2 ? (t2 = e2[u++], r2 = u < l ? e2[u++] : 0, u < l ? e2[u++] : 0) : (t2 = e2.charCodeAt(u++), r2 = u < l ? e2.charCodeAt(u++) : 0, u < l ? e2.charCodeAt(u++) : 0), i = t2 >> 2, s = (3 & t2) << 4 | r2 >> 4, a = 1 < f ? (15 & r2) << 2 | n >> 6 : 64, o = 2 < f ? 63 & n : 64, h.push(p.charAt(i) + p.charAt(s) + p.charAt(a) + p.charAt(o));
+          for (var t4, r2, n, i, s, a, o, h = [], u = 0, l = e2.length, f = l, c2 = "string" !== d.getTypeOf(e2); u < e2.length; ) f = l - u, n = c2 ? (t4 = e2[u++], r2 = u < l ? e2[u++] : 0, u < l ? e2[u++] : 0) : (t4 = e2.charCodeAt(u++), r2 = u < l ? e2.charCodeAt(u++) : 0, u < l ? e2.charCodeAt(u++) : 0), i = t4 >> 2, s = (3 & t4) << 4 | r2 >> 4, a = 1 < f ? (15 & r2) << 2 | n >> 6 : 64, o = 2 < f ? 63 & n : 64, h.push(p.charAt(i) + p.charAt(s) + p.charAt(a) + p.charAt(o));
           return h.join("");
         }, r.decode = function(e2) {
-          var t2, r2, n, i, s, a, o = 0, h = 0, u = "data:";
+          var t4, r2, n, i, s, a, o = 0, h = 0, u = "data:";
           if (e2.substr(0, u.length) === u) throw new Error("Invalid base64 input, it looks like a data url.");
           var l, f = 3 * (e2 = e2.replace(/[^A-Za-z0-9+/=]/g, "")).length / 4;
           if (e2.charAt(e2.length - 1) === p.charAt(64) && f--, e2.charAt(e2.length - 2) === p.charAt(64) && f--, f % 1 != 0) throw new Error("Invalid base64 input, bad content length.");
-          for (l = c.uint8array ? new Uint8Array(0 | f) : new Array(0 | f); o < e2.length; ) t2 = p.indexOf(e2.charAt(o++)) << 2 | (i = p.indexOf(e2.charAt(o++))) >> 4, r2 = (15 & i) << 4 | (s = p.indexOf(e2.charAt(o++))) >> 2, n = (3 & s) << 6 | (a = p.indexOf(e2.charAt(o++))), l[h++] = t2, 64 !== s && (l[h++] = r2), 64 !== a && (l[h++] = n);
+          for (l = c.uint8array ? new Uint8Array(0 | f) : new Array(0 | f); o < e2.length; ) t4 = p.indexOf(e2.charAt(o++)) << 2 | (i = p.indexOf(e2.charAt(o++))) >> 4, r2 = (15 & i) << 4 | (s = p.indexOf(e2.charAt(o++))) >> 2, n = (3 & s) << 6 | (a = p.indexOf(e2.charAt(o++))), l[h++] = t4, 64 !== s && (l[h++] = r2), 64 !== a && (l[h++] = n);
           return l;
         };
-      }, { "./support": 30, "./utils": 32 }], 2: [function(e, t, r) {
+      }, { "./support": 30, "./utils": 32 }], 2: [function(e, t3, r) {
         "use strict";
         var n = e("./external"), i = e("./stream/DataWorker"), s = e("./stream/Crc32Probe"), a = e("./stream/DataLengthProbe");
-        function o(e2, t2, r2, n2, i2) {
-          this.compressedSize = e2, this.uncompressedSize = t2, this.crc32 = r2, this.compression = n2, this.compressedContent = i2;
+        function o(e2, t4, r2, n2, i2) {
+          this.compressedSize = e2, this.uncompressedSize = t4, this.crc32 = r2, this.compression = n2, this.compressedContent = i2;
         }
         o.prototype = { getContentWorker: function() {
-          var e2 = new i(n.Promise.resolve(this.compressedContent)).pipe(this.compression.uncompressWorker()).pipe(new a("data_length")), t2 = this;
+          var e2 = new i(n.Promise.resolve(this.compressedContent)).pipe(this.compression.uncompressWorker()).pipe(new a("data_length")), t4 = this;
           return e2.on("end", function() {
-            if (this.streamInfo.data_length !== t2.uncompressedSize) throw new Error("Bug : uncompressed data size mismatch");
+            if (this.streamInfo.data_length !== t4.uncompressedSize) throw new Error("Bug : uncompressed data size mismatch");
           }), e2;
         }, getCompressedWorker: function() {
           return new i(n.Promise.resolve(this.compressedContent)).withStreamInfo("compressedSize", this.compressedSize).withStreamInfo("uncompressedSize", this.uncompressedSize).withStreamInfo("crc32", this.crc32).withStreamInfo("compression", this.compression);
-        } }, o.createWorkerFrom = function(e2, t2, r2) {
-          return e2.pipe(new s()).pipe(new a("uncompressedSize")).pipe(t2.compressWorker(r2)).pipe(new a("compressedSize")).withStreamInfo("compression", t2);
-        }, t.exports = o;
-      }, { "./external": 6, "./stream/Crc32Probe": 25, "./stream/DataLengthProbe": 26, "./stream/DataWorker": 27 }], 3: [function(e, t, r) {
+        } }, o.createWorkerFrom = function(e2, t4, r2) {
+          return e2.pipe(new s()).pipe(new a("uncompressedSize")).pipe(t4.compressWorker(r2)).pipe(new a("compressedSize")).withStreamInfo("compression", t4);
+        }, t3.exports = o;
+      }, { "./external": 6, "./stream/Crc32Probe": 25, "./stream/DataLengthProbe": 26, "./stream/DataWorker": 27 }], 3: [function(e, t3, r) {
         "use strict";
         var n = e("./stream/GenericWorker");
         r.STORE = { magic: "\0\0", compressWorker: function() {
@@ -7883,42 +7883,42 @@ var require_jszip_min = __commonJS({
         }, uncompressWorker: function() {
           return new n("STORE decompression");
         } }, r.DEFLATE = e("./flate");
-      }, { "./flate": 7, "./stream/GenericWorker": 28 }], 4: [function(e, t, r) {
+      }, { "./flate": 7, "./stream/GenericWorker": 28 }], 4: [function(e, t3, r) {
         "use strict";
         var n = e("./utils");
         var o = (function() {
-          for (var e2, t2 = [], r2 = 0; r2 < 256; r2++) {
+          for (var e2, t4 = [], r2 = 0; r2 < 256; r2++) {
             e2 = r2;
             for (var n2 = 0; n2 < 8; n2++) e2 = 1 & e2 ? 3988292384 ^ e2 >>> 1 : e2 >>> 1;
-            t2[r2] = e2;
+            t4[r2] = e2;
           }
-          return t2;
+          return t4;
         })();
-        t.exports = function(e2, t2) {
-          return void 0 !== e2 && e2.length ? "string" !== n.getTypeOf(e2) ? (function(e3, t3, r2, n2) {
+        t3.exports = function(e2, t4) {
+          return void 0 !== e2 && e2.length ? "string" !== n.getTypeOf(e2) ? (function(e3, t5, r2, n2) {
             var i = o, s = n2 + r2;
             e3 ^= -1;
-            for (var a = n2; a < s; a++) e3 = e3 >>> 8 ^ i[255 & (e3 ^ t3[a])];
+            for (var a = n2; a < s; a++) e3 = e3 >>> 8 ^ i[255 & (e3 ^ t5[a])];
             return -1 ^ e3;
-          })(0 | t2, e2, e2.length, 0) : (function(e3, t3, r2, n2) {
+          })(0 | t4, e2, e2.length, 0) : (function(e3, t5, r2, n2) {
             var i = o, s = n2 + r2;
             e3 ^= -1;
-            for (var a = n2; a < s; a++) e3 = e3 >>> 8 ^ i[255 & (e3 ^ t3.charCodeAt(a))];
+            for (var a = n2; a < s; a++) e3 = e3 >>> 8 ^ i[255 & (e3 ^ t5.charCodeAt(a))];
             return -1 ^ e3;
-          })(0 | t2, e2, e2.length, 0) : 0;
+          })(0 | t4, e2, e2.length, 0) : 0;
         };
-      }, { "./utils": 32 }], 5: [function(e, t, r) {
+      }, { "./utils": 32 }], 5: [function(e, t3, r) {
         "use strict";
         r.base64 = false, r.binary = false, r.dir = false, r.createFolders = true, r.date = null, r.compression = null, r.compressionOptions = null, r.comment = null, r.unixPermissions = null, r.dosPermissions = null;
-      }, {}], 6: [function(e, t, r) {
+      }, {}], 6: [function(e, t3, r) {
         "use strict";
         var n = null;
-        n = "undefined" != typeof Promise ? Promise : e("lie"), t.exports = { Promise: n };
-      }, { lie: 37 }], 7: [function(e, t, r) {
+        n = "undefined" != typeof Promise ? Promise : e("lie"), t3.exports = { Promise: n };
+      }, { lie: 37 }], 7: [function(e, t3, r) {
         "use strict";
         var n = "undefined" != typeof Uint8Array && "undefined" != typeof Uint16Array && "undefined" != typeof Uint32Array, i = e("pako"), s = e("./utils"), a = e("./stream/GenericWorker"), o = n ? "uint8array" : "array";
-        function h(e2, t2) {
-          a.call(this, "FlateWorker/" + e2), this._pako = null, this._pakoAction = e2, this._pakoOptions = t2, this.meta = {};
+        function h(e2, t4) {
+          a.call(this, "FlateWorker/" + e2), this._pako = null, this._pakoAction = e2, this._pakoOptions = t4, this.meta = {};
         }
         r.magic = "\b\0", s.inherits(h, a), h.prototype.processChunk = function(e2) {
           this.meta = e2.meta, null === this._pako && this._createPako(), this._pako.push(s.transformTo(o, e2.data), false);
@@ -7928,31 +7928,31 @@ var require_jszip_min = __commonJS({
           a.prototype.cleanUp.call(this), this._pako = null;
         }, h.prototype._createPako = function() {
           this._pako = new i[this._pakoAction]({ raw: true, level: this._pakoOptions.level || -1 });
-          var t2 = this;
+          var t4 = this;
           this._pako.onData = function(e2) {
-            t2.push({ data: e2, meta: t2.meta });
+            t4.push({ data: e2, meta: t4.meta });
           };
         }, r.compressWorker = function(e2) {
           return new h("Deflate", e2);
         }, r.uncompressWorker = function() {
           return new h("Inflate", {});
         };
-      }, { "./stream/GenericWorker": 28, "./utils": 32, pako: 38 }], 8: [function(e, t, r) {
+      }, { "./stream/GenericWorker": 28, "./utils": 32, pako: 38 }], 8: [function(e, t3, r) {
         "use strict";
-        function A(e2, t2) {
+        function A(e2, t4) {
           var r2, n2 = "";
-          for (r2 = 0; r2 < t2; r2++) n2 += String.fromCharCode(255 & e2), e2 >>>= 8;
+          for (r2 = 0; r2 < t4; r2++) n2 += String.fromCharCode(255 & e2), e2 >>>= 8;
           return n2;
         }
-        function n(e2, t2, r2, n2, i2, s2) {
+        function n(e2, t4, r2, n2, i2, s2) {
           var a, o, h = e2.file, u = e2.compression, l = s2 !== O.utf8encode, f = I.transformTo("string", s2(h.name)), c = I.transformTo("string", O.utf8encode(h.name)), d = h.comment, p = I.transformTo("string", s2(d)), m = I.transformTo("string", O.utf8encode(d)), _ = c.length !== h.name.length, g = m.length !== d.length, b = "", v = "", y = "", w = h.dir, k = h.date, x = { crc32: 0, compressedSize: 0, uncompressedSize: 0 };
-          t2 && !r2 || (x.crc32 = e2.crc32, x.compressedSize = e2.compressedSize, x.uncompressedSize = e2.uncompressedSize);
+          t4 && !r2 || (x.crc32 = e2.crc32, x.compressedSize = e2.compressedSize, x.uncompressedSize = e2.uncompressedSize);
           var S = 0;
-          t2 && (S |= 8), l || !_ && !g || (S |= 2048);
+          t4 && (S |= 8), l || !_ && !g || (S |= 2048);
           var z = 0, C = 0;
-          w && (z |= 16), "UNIX" === i2 ? (C = 798, z |= (function(e3, t3) {
+          w && (z |= 16), "UNIX" === i2 ? (C = 798, z |= (function(e3, t5) {
             var r3 = e3;
-            return e3 || (r3 = t3 ? 16893 : 33204), (65535 & r3) << 16;
+            return e3 || (r3 = t5 ? 16893 : 33204), (65535 & r3) << 16;
           })(h.unixPermissions, w)) : (C = 20, z |= (function(e3) {
             return 63 & (e3 || 0);
           })(h.dosPermissions)), a = k.getUTCHours(), a <<= 6, a |= k.getUTCMinutes(), a <<= 5, a |= k.getUTCSeconds() / 2, o = k.getUTCFullYear() - 1980, o <<= 4, o |= k.getUTCMonth() + 1, o <<= 5, o |= k.getUTCDate(), _ && (v = A(1, 1) + A(B(f), 4) + c, b += "up" + A(v.length, 2) + v), g && (y = A(1, 1) + A(B(p), 4) + m, b += "uc" + A(y.length, 2) + y);
@@ -7960,152 +7960,152 @@ var require_jszip_min = __commonJS({
           return E += "\n\0", E += A(S, 2), E += u.magic, E += A(a, 2), E += A(o, 2), E += A(x.crc32, 4), E += A(x.compressedSize, 4), E += A(x.uncompressedSize, 4), E += A(f.length, 2), E += A(b.length, 2), { fileRecord: R.LOCAL_FILE_HEADER + E + f + b, dirRecord: R.CENTRAL_FILE_HEADER + A(C, 2) + E + A(p.length, 2) + "\0\0\0\0" + A(z, 4) + A(n2, 4) + f + b + p };
         }
         var I = e("../utils"), i = e("../stream/GenericWorker"), O = e("../utf8"), B = e("../crc32"), R = e("../signature");
-        function s(e2, t2, r2, n2) {
-          i.call(this, "ZipFileWorker"), this.bytesWritten = 0, this.zipComment = t2, this.zipPlatform = r2, this.encodeFileName = n2, this.streamFiles = e2, this.accumulate = false, this.contentBuffer = [], this.dirRecords = [], this.currentSourceOffset = 0, this.entriesCount = 0, this.currentFile = null, this._sources = [];
+        function s(e2, t4, r2, n2) {
+          i.call(this, "ZipFileWorker"), this.bytesWritten = 0, this.zipComment = t4, this.zipPlatform = r2, this.encodeFileName = n2, this.streamFiles = e2, this.accumulate = false, this.contentBuffer = [], this.dirRecords = [], this.currentSourceOffset = 0, this.entriesCount = 0, this.currentFile = null, this._sources = [];
         }
         I.inherits(s, i), s.prototype.push = function(e2) {
-          var t2 = e2.meta.percent || 0, r2 = this.entriesCount, n2 = this._sources.length;
-          this.accumulate ? this.contentBuffer.push(e2) : (this.bytesWritten += e2.data.length, i.prototype.push.call(this, { data: e2.data, meta: { currentFile: this.currentFile, percent: r2 ? (t2 + 100 * (r2 - n2 - 1)) / r2 : 100 } }));
+          var t4 = e2.meta.percent || 0, r2 = this.entriesCount, n2 = this._sources.length;
+          this.accumulate ? this.contentBuffer.push(e2) : (this.bytesWritten += e2.data.length, i.prototype.push.call(this, { data: e2.data, meta: { currentFile: this.currentFile, percent: r2 ? (t4 + 100 * (r2 - n2 - 1)) / r2 : 100 } }));
         }, s.prototype.openedSource = function(e2) {
           this.currentSourceOffset = this.bytesWritten, this.currentFile = e2.file.name;
-          var t2 = this.streamFiles && !e2.file.dir;
-          if (t2) {
-            var r2 = n(e2, t2, false, this.currentSourceOffset, this.zipPlatform, this.encodeFileName);
+          var t4 = this.streamFiles && !e2.file.dir;
+          if (t4) {
+            var r2 = n(e2, t4, false, this.currentSourceOffset, this.zipPlatform, this.encodeFileName);
             this.push({ data: r2.fileRecord, meta: { percent: 0 } });
           } else this.accumulate = true;
         }, s.prototype.closedSource = function(e2) {
           this.accumulate = false;
-          var t2 = this.streamFiles && !e2.file.dir, r2 = n(e2, t2, true, this.currentSourceOffset, this.zipPlatform, this.encodeFileName);
-          if (this.dirRecords.push(r2.dirRecord), t2) this.push({ data: (function(e3) {
+          var t4 = this.streamFiles && !e2.file.dir, r2 = n(e2, t4, true, this.currentSourceOffset, this.zipPlatform, this.encodeFileName);
+          if (this.dirRecords.push(r2.dirRecord), t4) this.push({ data: (function(e3) {
             return R.DATA_DESCRIPTOR + A(e3.crc32, 4) + A(e3.compressedSize, 4) + A(e3.uncompressedSize, 4);
           })(e2), meta: { percent: 100 } });
           else for (this.push({ data: r2.fileRecord, meta: { percent: 0 } }); this.contentBuffer.length; ) this.push(this.contentBuffer.shift());
           this.currentFile = null;
         }, s.prototype.flush = function() {
-          for (var e2 = this.bytesWritten, t2 = 0; t2 < this.dirRecords.length; t2++) this.push({ data: this.dirRecords[t2], meta: { percent: 100 } });
-          var r2 = this.bytesWritten - e2, n2 = (function(e3, t3, r3, n3, i2) {
+          for (var e2 = this.bytesWritten, t4 = 0; t4 < this.dirRecords.length; t4++) this.push({ data: this.dirRecords[t4], meta: { percent: 100 } });
+          var r2 = this.bytesWritten - e2, n2 = (function(e3, t5, r3, n3, i2) {
             var s2 = I.transformTo("string", i2(n3));
-            return R.CENTRAL_DIRECTORY_END + "\0\0\0\0" + A(e3, 2) + A(e3, 2) + A(t3, 4) + A(r3, 4) + A(s2.length, 2) + s2;
+            return R.CENTRAL_DIRECTORY_END + "\0\0\0\0" + A(e3, 2) + A(e3, 2) + A(t5, 4) + A(r3, 4) + A(s2.length, 2) + s2;
           })(this.dirRecords.length, r2, e2, this.zipComment, this.encodeFileName);
           this.push({ data: n2, meta: { percent: 100 } });
         }, s.prototype.prepareNextSource = function() {
           this.previous = this._sources.shift(), this.openedSource(this.previous.streamInfo), this.isPaused ? this.previous.pause() : this.previous.resume();
         }, s.prototype.registerPrevious = function(e2) {
           this._sources.push(e2);
-          var t2 = this;
+          var t4 = this;
           return e2.on("data", function(e3) {
-            t2.processChunk(e3);
+            t4.processChunk(e3);
           }), e2.on("end", function() {
-            t2.closedSource(t2.previous.streamInfo), t2._sources.length ? t2.prepareNextSource() : t2.end();
+            t4.closedSource(t4.previous.streamInfo), t4._sources.length ? t4.prepareNextSource() : t4.end();
           }), e2.on("error", function(e3) {
-            t2.error(e3);
+            t4.error(e3);
           }), this;
         }, s.prototype.resume = function() {
           return !!i.prototype.resume.call(this) && (!this.previous && this._sources.length ? (this.prepareNextSource(), true) : this.previous || this._sources.length || this.generatedError ? void 0 : (this.end(), true));
         }, s.prototype.error = function(e2) {
-          var t2 = this._sources;
+          var t4 = this._sources;
           if (!i.prototype.error.call(this, e2)) return false;
-          for (var r2 = 0; r2 < t2.length; r2++) try {
-            t2[r2].error(e2);
+          for (var r2 = 0; r2 < t4.length; r2++) try {
+            t4[r2].error(e2);
           } catch (e3) {
           }
           return true;
         }, s.prototype.lock = function() {
           i.prototype.lock.call(this);
-          for (var e2 = this._sources, t2 = 0; t2 < e2.length; t2++) e2[t2].lock();
-        }, t.exports = s;
-      }, { "../crc32": 4, "../signature": 23, "../stream/GenericWorker": 28, "../utf8": 31, "../utils": 32 }], 9: [function(e, t, r) {
+          for (var e2 = this._sources, t4 = 0; t4 < e2.length; t4++) e2[t4].lock();
+        }, t3.exports = s;
+      }, { "../crc32": 4, "../signature": 23, "../stream/GenericWorker": 28, "../utf8": 31, "../utils": 32 }], 9: [function(e, t3, r) {
         "use strict";
         var u = e("../compressions"), n = e("./ZipFileWorker");
-        r.generateWorker = function(e2, a, t2) {
-          var o = new n(a.streamFiles, t2, a.platform, a.encodeFileName), h = 0;
+        r.generateWorker = function(e2, a, t4) {
+          var o = new n(a.streamFiles, t4, a.platform, a.encodeFileName), h = 0;
           try {
-            e2.forEach(function(e3, t3) {
+            e2.forEach(function(e3, t5) {
               h++;
-              var r2 = (function(e4, t4) {
-                var r3 = e4 || t4, n3 = u[r3];
+              var r2 = (function(e4, t6) {
+                var r3 = e4 || t6, n3 = u[r3];
                 if (!n3) throw new Error(r3 + " is not a valid compression method !");
                 return n3;
-              })(t3.options.compression, a.compression), n2 = t3.options.compressionOptions || a.compressionOptions || {}, i = t3.dir, s = t3.date;
-              t3._compressWorker(r2, n2).withStreamInfo("file", { name: e3, dir: i, date: s, comment: t3.comment || "", unixPermissions: t3.unixPermissions, dosPermissions: t3.dosPermissions }).pipe(o);
+              })(t5.options.compression, a.compression), n2 = t5.options.compressionOptions || a.compressionOptions || {}, i = t5.dir, s = t5.date;
+              t5._compressWorker(r2, n2).withStreamInfo("file", { name: e3, dir: i, date: s, comment: t5.comment || "", unixPermissions: t5.unixPermissions, dosPermissions: t5.dosPermissions }).pipe(o);
             }), o.entriesCount = h;
           } catch (e3) {
             o.error(e3);
           }
           return o;
         };
-      }, { "../compressions": 3, "./ZipFileWorker": 8 }], 10: [function(e, t, r) {
+      }, { "../compressions": 3, "./ZipFileWorker": 8 }], 10: [function(e, t3, r) {
         "use strict";
         function n() {
           if (!(this instanceof n)) return new n();
           if (arguments.length) throw new Error("The constructor with parameters has been removed in JSZip 3.0, please check the upgrade guide.");
           this.files = /* @__PURE__ */ Object.create(null), this.comment = null, this.root = "", this.clone = function() {
             var e2 = new n();
-            for (var t2 in this) "function" != typeof this[t2] && (e2[t2] = this[t2]);
+            for (var t4 in this) "function" != typeof this[t4] && (e2[t4] = this[t4]);
             return e2;
           };
         }
-        (n.prototype = e("./object")).loadAsync = e("./load"), n.support = e("./support"), n.defaults = e("./defaults"), n.version = "3.10.2", n.loadAsync = function(e2, t2) {
-          return new n().loadAsync(e2, t2);
-        }, n.external = e("./external"), t.exports = n;
-      }, { "./defaults": 5, "./external": 6, "./load": 11, "./object": 15, "./support": 30 }], 11: [function(e, t, r) {
+        (n.prototype = e("./object")).loadAsync = e("./load"), n.support = e("./support"), n.defaults = e("./defaults"), n.version = "3.10.2", n.loadAsync = function(e2, t4) {
+          return new n().loadAsync(e2, t4);
+        }, n.external = e("./external"), t3.exports = n;
+      }, { "./defaults": 5, "./external": 6, "./load": 11, "./object": 15, "./support": 30 }], 11: [function(e, t3, r) {
         "use strict";
         var u = e("./utils"), i = e("./external"), n = e("./utf8"), s = e("./zipEntries"), a = e("./stream/Crc32Probe"), l = e("./nodejsUtils");
         function f(n2) {
-          return new i.Promise(function(e2, t2) {
+          return new i.Promise(function(e2, t4) {
             var r2 = n2.decompressed.getContentWorker().pipe(new a());
             r2.on("error", function(e3) {
-              t2(e3);
+              t4(e3);
             }).on("end", function() {
-              r2.streamInfo.crc32 !== n2.decompressed.crc32 ? t2(new Error("Corrupted zip : CRC32 mismatch")) : e2();
+              r2.streamInfo.crc32 !== n2.decompressed.crc32 ? t4(new Error("Corrupted zip : CRC32 mismatch")) : e2();
             }).resume();
           });
         }
-        t.exports = function(e2, o) {
+        t3.exports = function(e2, o) {
           var h = this;
           return o = u.extend(o || {}, { base64: false, checkCRC32: false, optimizedBinaryString: false, createFolders: false, decodeFileName: n.utf8decode }), l.isNode && l.isStream(e2) ? i.Promise.reject(new Error("JSZip can't accept a stream when loading a zip file.")) : u.prepareContent("the loaded zip file", e2, true, o.optimizedBinaryString, o.base64).then(function(e3) {
-            var t2 = new s(o);
-            return t2.load(e3), t2;
+            var t4 = new s(o);
+            return t4.load(e3), t4;
           }).then(function(e3) {
-            var t2 = [i.Promise.resolve(e3)], r2 = e3.files;
-            if (o.checkCRC32) for (var n2 = 0; n2 < r2.length; n2++) t2.push(f(r2[n2]));
-            return i.Promise.all(t2);
+            var t4 = [i.Promise.resolve(e3)], r2 = e3.files;
+            if (o.checkCRC32) for (var n2 = 0; n2 < r2.length; n2++) t4.push(f(r2[n2]));
+            return i.Promise.all(t4);
           }).then(function(e3) {
-            for (var t2 = e3.shift(), r2 = t2.files, n2 = 0; n2 < r2.length; n2++) {
+            for (var t4 = e3.shift(), r2 = t4.files, n2 = 0; n2 < r2.length; n2++) {
               var i2 = r2[n2], s2 = i2.fileNameStr, a2 = u.resolve(i2.fileNameStr);
               h.file(a2, i2.decompressed, { binary: true, optimizedBinaryString: true, date: i2.date, dir: i2.dir, comment: i2.fileCommentStr.length ? i2.fileCommentStr : null, unixPermissions: i2.unixPermissions, dosPermissions: i2.dosPermissions, createFolders: o.createFolders }), i2.dir || (h.file(a2).unsafeOriginalName = s2);
             }
-            return t2.zipComment.length && (h.comment = t2.zipComment), h;
+            return t4.zipComment.length && (h.comment = t4.zipComment), h;
           });
         };
-      }, { "./external": 6, "./nodejsUtils": 14, "./stream/Crc32Probe": 25, "./utf8": 31, "./utils": 32, "./zipEntries": 33 }], 12: [function(e, t, r) {
+      }, { "./external": 6, "./nodejsUtils": 14, "./stream/Crc32Probe": 25, "./utf8": 31, "./utils": 32, "./zipEntries": 33 }], 12: [function(e, t3, r) {
         "use strict";
         var n = e("../utils"), i = e("../stream/GenericWorker");
-        function s(e2, t2) {
-          i.call(this, "Nodejs stream input adapter for " + e2), this._upstreamEnded = false, this._bindStream(t2);
+        function s(e2, t4) {
+          i.call(this, "Nodejs stream input adapter for " + e2), this._upstreamEnded = false, this._bindStream(t4);
         }
         n.inherits(s, i), s.prototype._bindStream = function(e2) {
-          var t2 = this;
+          var t4 = this;
           (this._stream = e2).pause(), e2.on("data", function(e3) {
-            t2.push({ data: e3, meta: { percent: 0 } });
+            t4.push({ data: e3, meta: { percent: 0 } });
           }).on("error", function(e3) {
-            t2.isPaused ? this.generatedError = e3 : t2.error(e3);
+            t4.isPaused ? this.generatedError = e3 : t4.error(e3);
           }).on("end", function() {
-            t2.isPaused ? t2._upstreamEnded = true : t2.end();
+            t4.isPaused ? t4._upstreamEnded = true : t4.end();
           });
         }, s.prototype.pause = function() {
           return !!i.prototype.pause.call(this) && (this._stream.pause(), true);
         }, s.prototype.resume = function() {
           return !!i.prototype.resume.call(this) && (this._upstreamEnded ? this.end() : this._stream.resume(), true);
-        }, t.exports = s;
-      }, { "../stream/GenericWorker": 28, "../utils": 32 }], 13: [function(e, t, r) {
+        }, t3.exports = s;
+      }, { "../stream/GenericWorker": 28, "../utils": 32 }], 13: [function(e, t3, r) {
         "use strict";
         var i = e("readable-stream").Readable;
-        function n(e2, t2, r2) {
-          i.call(this, t2), this._helper = e2;
+        function n(e2, t4, r2) {
+          i.call(this, t4), this._helper = e2;
           var n2 = this;
-          e2.on("data", function(e3, t3) {
-            n2.push(e3) || n2._helper.pause(), r2 && r2(t3);
+          e2.on("data", function(e3, t5) {
+            n2.push(e3) || n2._helper.pause(), r2 && r2(t5);
           }).on("error", function(e3) {
             n2.emit("error", e3);
           }).on("end", function() {
@@ -8114,42 +8114,42 @@ var require_jszip_min = __commonJS({
         }
         e("../utils").inherits(n, i), n.prototype._read = function() {
           this._helper.resume();
-        }, t.exports = n;
-      }, { "../utils": 32, "readable-stream": 16 }], 14: [function(e, t, r) {
+        }, t3.exports = n;
+      }, { "../utils": 32, "readable-stream": 16 }], 14: [function(e, t3, r) {
         "use strict";
-        t.exports = { isNode: "undefined" != typeof Buffer, newBufferFrom: function(e2, t2) {
-          if (Buffer.from && Buffer.from !== Uint8Array.from) return Buffer.from(e2, t2);
+        t3.exports = { isNode: "undefined" != typeof Buffer, newBufferFrom: function(e2, t4) {
+          if (Buffer.from && Buffer.from !== Uint8Array.from) return Buffer.from(e2, t4);
           if ("number" == typeof e2) throw new Error('The "data" argument must not be a number');
-          return new Buffer(e2, t2);
+          return new Buffer(e2, t4);
         }, allocBuffer: function(e2) {
           if (Buffer.alloc) return Buffer.alloc(e2);
-          var t2 = new Buffer(e2);
-          return t2.fill(0), t2;
+          var t4 = new Buffer(e2);
+          return t4.fill(0), t4;
         }, isBuffer: function(e2) {
           return Buffer.isBuffer(e2);
         }, isStream: function(e2) {
           return e2 && "function" == typeof e2.on && "function" == typeof e2.pause && "function" == typeof e2.resume;
         } };
-      }, {}], 15: [function(e, t, r) {
+      }, {}], 15: [function(e, t3, r) {
         "use strict";
-        function s(e2, t2, r2) {
-          var n2, i2 = u.getTypeOf(t2), s2 = u.extend(r2 || {}, f);
+        function s(e2, t4, r2) {
+          var n2, i2 = u.getTypeOf(t4), s2 = u.extend(r2 || {}, f);
           s2.date = s2.date || /* @__PURE__ */ new Date(), null !== s2.compression && (s2.compression = s2.compression.toUpperCase()), "string" == typeof s2.unixPermissions && (s2.unixPermissions = parseInt(s2.unixPermissions, 8)), s2.unixPermissions && 16384 & s2.unixPermissions && (s2.dir = true), s2.dosPermissions && 16 & s2.dosPermissions && (s2.dir = true), s2.dir && (e2 = g(e2)), s2.createFolders && (n2 = _(e2)) && b.call(this, n2, true);
           var a2 = "string" === i2 && false === s2.binary && false === s2.base64;
-          r2 && void 0 !== r2.binary || (s2.binary = !a2), (t2 instanceof c && 0 === t2.uncompressedSize || s2.dir || !t2 || 0 === t2.length) && (s2.base64 = false, s2.binary = true, t2 = "", s2.compression = "STORE", i2 = "string");
+          r2 && void 0 !== r2.binary || (s2.binary = !a2), (t4 instanceof c && 0 === t4.uncompressedSize || s2.dir || !t4 || 0 === t4.length) && (s2.base64 = false, s2.binary = true, t4 = "", s2.compression = "STORE", i2 = "string");
           var o2 = null;
-          o2 = t2 instanceof c || t2 instanceof l ? t2 : p.isNode && p.isStream(t2) ? new m(e2, t2) : u.prepareContent(e2, t2, s2.binary, s2.optimizedBinaryString, s2.base64);
+          o2 = t4 instanceof c || t4 instanceof l ? t4 : p.isNode && p.isStream(t4) ? new m(e2, t4) : u.prepareContent(e2, t4, s2.binary, s2.optimizedBinaryString, s2.base64);
           var h2 = new d(e2, o2, s2);
           this.files[e2] = h2;
         }
         var i = e("./utf8"), u = e("./utils"), l = e("./stream/GenericWorker"), a = e("./stream/StreamHelper"), f = e("./defaults"), c = e("./compressedObject"), d = e("./zipObject"), o = e("./generate"), p = e("./nodejsUtils"), m = e("./nodejs/NodejsStreamInputAdapter"), _ = function(e2) {
           "/" === e2.slice(-1) && (e2 = e2.substring(0, e2.length - 1));
-          var t2 = e2.lastIndexOf("/");
-          return 0 < t2 ? e2.substring(0, t2) : "";
+          var t4 = e2.lastIndexOf("/");
+          return 0 < t4 ? e2.substring(0, t4) : "";
         }, g = function(e2) {
           return "/" !== e2.slice(-1) && (e2 += "/"), e2;
-        }, b = function(e2, t2) {
-          return t2 = void 0 !== t2 ? t2 : f.createFolders, e2 = g(e2), this.files[e2] || s.call(this, e2, null, { dir: true, createFolders: t2 }), this.files[e2];
+        }, b = function(e2, t4) {
+          return t4 = void 0 !== t4 ? t4 : f.createFolders, e2 = g(e2), this.files[e2] || s.call(this, e2, null, { dir: true, createFolders: t4 }), this.files[e2];
         };
         function h(e2) {
           return "[object RegExp]" === Object.prototype.toString.call(e2);
@@ -8157,81 +8157,81 @@ var require_jszip_min = __commonJS({
         var n = { load: function() {
           throw new Error("This method has been removed in JSZip 3.0, please check the upgrade guide.");
         }, forEach: function(e2) {
-          var t2, r2, n2;
-          for (t2 in this.files) n2 = this.files[t2], (r2 = t2.slice(this.root.length, t2.length)) && t2.slice(0, this.root.length) === this.root && e2(r2, n2);
+          var t4, r2, n2;
+          for (t4 in this.files) n2 = this.files[t4], (r2 = t4.slice(this.root.length, t4.length)) && t4.slice(0, this.root.length) === this.root && e2(r2, n2);
         }, filter: function(r2) {
           var n2 = [];
-          return this.forEach(function(e2, t2) {
-            r2(e2, t2) && n2.push(t2);
+          return this.forEach(function(e2, t4) {
+            r2(e2, t4) && n2.push(t4);
           }), n2;
-        }, file: function(e2, t2, r2) {
-          if (1 !== arguments.length) return e2 = this.root + e2, s.call(this, e2, t2, r2), this;
+        }, file: function(e2, t4, r2) {
+          if (1 !== arguments.length) return e2 = this.root + e2, s.call(this, e2, t4, r2), this;
           if (h(e2)) {
             var n2 = e2;
-            return this.filter(function(e3, t3) {
-              return !t3.dir && n2.test(e3);
+            return this.filter(function(e3, t5) {
+              return !t5.dir && n2.test(e3);
             });
           }
           var i2 = this.files[this.root + e2];
           return i2 && !i2.dir ? i2 : null;
         }, folder: function(r2) {
           if (!r2) return this;
-          if (h(r2)) return this.filter(function(e3, t3) {
-            return t3.dir && r2.test(e3);
+          if (h(r2)) return this.filter(function(e3, t5) {
+            return t5.dir && r2.test(e3);
           });
-          var e2 = this.root + r2, t2 = b.call(this, e2), n2 = this.clone();
-          return n2.root = t2.name, n2;
+          var e2 = this.root + r2, t4 = b.call(this, e2), n2 = this.clone();
+          return n2.root = t4.name, n2;
         }, remove: function(r2) {
           r2 = this.root + r2;
           var e2 = this.files[r2];
           if (e2 || ("/" !== r2.slice(-1) && (r2 += "/"), e2 = this.files[r2]), e2 && !e2.dir) delete this.files[r2];
-          else for (var t2 = this.filter(function(e3, t3) {
-            return t3.name.slice(0, r2.length) === r2;
-          }), n2 = 0; n2 < t2.length; n2++) delete this.files[t2[n2].name];
+          else for (var t4 = this.filter(function(e3, t5) {
+            return t5.name.slice(0, r2.length) === r2;
+          }), n2 = 0; n2 < t4.length; n2++) delete this.files[t4[n2].name];
           return this;
         }, generate: function() {
           throw new Error("This method has been removed in JSZip 3.0, please check the upgrade guide.");
         }, generateInternalStream: function(e2) {
-          var t2, r2 = {};
+          var t4, r2 = {};
           try {
             if ((r2 = u.extend(e2 || {}, { streamFiles: false, compression: "STORE", compressionOptions: null, type: "", platform: "DOS", comment: null, mimeType: "application/zip", encodeFileName: i.utf8encode })).type = r2.type.toLowerCase(), r2.compression = r2.compression.toUpperCase(), "binarystring" === r2.type && (r2.type = "string"), !r2.type) throw new Error("No output type specified.");
             u.checkSupport(r2.type), "darwin" !== r2.platform && "freebsd" !== r2.platform && "linux" !== r2.platform && "sunos" !== r2.platform || (r2.platform = "UNIX"), "win32" === r2.platform && (r2.platform = "DOS");
             var n2 = r2.comment || this.comment || "";
-            t2 = o.generateWorker(this, r2, n2);
+            t4 = o.generateWorker(this, r2, n2);
           } catch (e3) {
-            (t2 = new l("error")).error(e3);
+            (t4 = new l("error")).error(e3);
           }
-          return new a(t2, r2.type || "string", r2.mimeType);
-        }, generateAsync: function(e2, t2) {
-          return this.generateInternalStream(e2).accumulate(t2);
-        }, generateNodeStream: function(e2, t2) {
-          return (e2 = e2 || {}).type || (e2.type = "nodebuffer"), this.generateInternalStream(e2).toNodejsStream(t2);
+          return new a(t4, r2.type || "string", r2.mimeType);
+        }, generateAsync: function(e2, t4) {
+          return this.generateInternalStream(e2).accumulate(t4);
+        }, generateNodeStream: function(e2, t4) {
+          return (e2 = e2 || {}).type || (e2.type = "nodebuffer"), this.generateInternalStream(e2).toNodejsStream(t4);
         } };
-        t.exports = n;
-      }, { "./compressedObject": 2, "./defaults": 5, "./generate": 9, "./nodejs/NodejsStreamInputAdapter": 12, "./nodejsUtils": 14, "./stream/GenericWorker": 28, "./stream/StreamHelper": 29, "./utf8": 31, "./utils": 32, "./zipObject": 35 }], 16: [function(e, t, r) {
+        t3.exports = n;
+      }, { "./compressedObject": 2, "./defaults": 5, "./generate": 9, "./nodejs/NodejsStreamInputAdapter": 12, "./nodejsUtils": 14, "./stream/GenericWorker": 28, "./stream/StreamHelper": 29, "./utf8": 31, "./utils": 32, "./zipObject": 35 }], 16: [function(e, t3, r) {
         "use strict";
-        t.exports = e("stream");
-      }, { stream: void 0 }], 17: [function(e, t, r) {
+        t3.exports = e("stream");
+      }, { stream: void 0 }], 17: [function(e, t3, r) {
         "use strict";
         var n = e("./DataReader");
         function i(e2) {
           n.call(this, e2);
-          for (var t2 = 0; t2 < this.data.length; t2++) e2[t2] = 255 & e2[t2];
+          for (var t4 = 0; t4 < this.data.length; t4++) e2[t4] = 255 & e2[t4];
         }
         e("../utils").inherits(i, n), i.prototype.byteAt = function(e2) {
           return this.data[this.zero + e2];
         }, i.prototype.lastIndexOfSignature = function(e2) {
-          for (var t2 = e2.charCodeAt(0), r2 = e2.charCodeAt(1), n2 = e2.charCodeAt(2), i2 = e2.charCodeAt(3), s = this.length - 4; 0 <= s; --s) if (this.data[s] === t2 && this.data[s + 1] === r2 && this.data[s + 2] === n2 && this.data[s + 3] === i2) return s - this.zero;
+          for (var t4 = e2.charCodeAt(0), r2 = e2.charCodeAt(1), n2 = e2.charCodeAt(2), i2 = e2.charCodeAt(3), s = this.length - 4; 0 <= s; --s) if (this.data[s] === t4 && this.data[s + 1] === r2 && this.data[s + 2] === n2 && this.data[s + 3] === i2) return s - this.zero;
           return -1;
         }, i.prototype.readAndCheckSignature = function(e2) {
-          var t2 = e2.charCodeAt(0), r2 = e2.charCodeAt(1), n2 = e2.charCodeAt(2), i2 = e2.charCodeAt(3), s = this.readData(4);
-          return t2 === s[0] && r2 === s[1] && n2 === s[2] && i2 === s[3];
+          var t4 = e2.charCodeAt(0), r2 = e2.charCodeAt(1), n2 = e2.charCodeAt(2), i2 = e2.charCodeAt(3), s = this.readData(4);
+          return t4 === s[0] && r2 === s[1] && n2 === s[2] && i2 === s[3];
         }, i.prototype.readData = function(e2) {
           if (this.checkOffset(e2), 0 === e2) return [];
-          var t2 = this.data.slice(this.zero + this.index, this.zero + this.index + e2);
-          return this.index += e2, t2;
-        }, t.exports = i;
-      }, { "../utils": 32, "./DataReader": 18 }], 18: [function(e, t, r) {
+          var t4 = this.data.slice(this.zero + this.index, this.zero + this.index + e2);
+          return this.index += e2, t4;
+        }, t3.exports = i;
+      }, { "../utils": 32, "./DataReader": 18 }], 18: [function(e, t3, r) {
         "use strict";
         var n = e("../utils");
         function i(e2) {
@@ -8247,8 +8247,8 @@ var require_jszip_min = __commonJS({
           this.setIndex(this.index + e2);
         }, byteAt: function() {
         }, readInt: function(e2) {
-          var t2, r2 = 0;
-          for (this.checkOffset(e2), t2 = this.index + e2 - 1; t2 >= this.index; t2--) r2 = (r2 << 8) + this.byteAt(t2);
+          var t4, r2 = 0;
+          for (this.checkOffset(e2), t4 = this.index + e2 - 1; t4 >= this.index; t4--) r2 = (r2 << 8) + this.byteAt(t4);
           return this.index += e2, r2;
         }, readString: function(e2) {
           return n.transformTo("string", this.readData(e2));
@@ -8258,8 +8258,8 @@ var require_jszip_min = __commonJS({
         }, readDate: function() {
           var e2 = this.readInt(4);
           return new Date(Date.UTC(1980 + (e2 >> 25 & 127), (e2 >> 21 & 15) - 1, e2 >> 16 & 31, e2 >> 11 & 31, e2 >> 5 & 63, (31 & e2) << 1));
-        } }, t.exports = i;
-      }, { "../utils": 32 }], 19: [function(e, t, r) {
+        } }, t3.exports = i;
+      }, { "../utils": 32 }], 19: [function(e, t3, r) {
         "use strict";
         var n = e("./Uint8ArrayReader");
         function i(e2) {
@@ -8267,10 +8267,10 @@ var require_jszip_min = __commonJS({
         }
         e("../utils").inherits(i, n), i.prototype.readData = function(e2) {
           this.checkOffset(e2);
-          var t2 = this.data.slice(this.zero + this.index, this.zero + this.index + e2);
-          return this.index += e2, t2;
-        }, t.exports = i;
-      }, { "../utils": 32, "./Uint8ArrayReader": 21 }], 20: [function(e, t, r) {
+          var t4 = this.data.slice(this.zero + this.index, this.zero + this.index + e2);
+          return this.index += e2, t4;
+        }, t3.exports = i;
+      }, { "../utils": 32, "./Uint8ArrayReader": 21 }], 20: [function(e, t3, r) {
         "use strict";
         var n = e("./DataReader");
         function i(e2) {
@@ -8284,10 +8284,10 @@ var require_jszip_min = __commonJS({
           return e2 === this.readData(4);
         }, i.prototype.readData = function(e2) {
           this.checkOffset(e2);
-          var t2 = this.data.slice(this.zero + this.index, this.zero + this.index + e2);
-          return this.index += e2, t2;
-        }, t.exports = i;
-      }, { "../utils": 32, "./DataReader": 18 }], 21: [function(e, t, r) {
+          var t4 = this.data.slice(this.zero + this.index, this.zero + this.index + e2);
+          return this.index += e2, t4;
+        }, t3.exports = i;
+      }, { "../utils": 32, "./DataReader": 18 }], 21: [function(e, t3, r) {
         "use strict";
         var n = e("./ArrayReader");
         function i(e2) {
@@ -8295,20 +8295,20 @@ var require_jszip_min = __commonJS({
         }
         e("../utils").inherits(i, n), i.prototype.readData = function(e2) {
           if (this.checkOffset(e2), 0 === e2) return new Uint8Array(0);
-          var t2 = this.data.subarray(this.zero + this.index, this.zero + this.index + e2);
-          return this.index += e2, t2;
-        }, t.exports = i;
-      }, { "../utils": 32, "./ArrayReader": 17 }], 22: [function(e, t, r) {
+          var t4 = this.data.subarray(this.zero + this.index, this.zero + this.index + e2);
+          return this.index += e2, t4;
+        }, t3.exports = i;
+      }, { "../utils": 32, "./ArrayReader": 17 }], 22: [function(e, t3, r) {
         "use strict";
         var n = e("../utils"), i = e("../support"), s = e("./ArrayReader"), a = e("./StringReader"), o = e("./NodeBufferReader"), h = e("./Uint8ArrayReader");
-        t.exports = function(e2) {
-          var t2 = n.getTypeOf(e2);
-          return n.checkSupport(t2), "string" !== t2 || i.uint8array ? "nodebuffer" === t2 ? new o(e2) : i.uint8array ? new h(n.transformTo("uint8array", e2)) : new s(n.transformTo("array", e2)) : new a(e2);
+        t3.exports = function(e2) {
+          var t4 = n.getTypeOf(e2);
+          return n.checkSupport(t4), "string" !== t4 || i.uint8array ? "nodebuffer" === t4 ? new o(e2) : i.uint8array ? new h(n.transformTo("uint8array", e2)) : new s(n.transformTo("array", e2)) : new a(e2);
         };
-      }, { "../support": 30, "../utils": 32, "./ArrayReader": 17, "./NodeBufferReader": 19, "./StringReader": 20, "./Uint8ArrayReader": 21 }], 23: [function(e, t, r) {
+      }, { "../support": 30, "../utils": 32, "./ArrayReader": 17, "./NodeBufferReader": 19, "./StringReader": 20, "./Uint8ArrayReader": 21 }], 23: [function(e, t3, r) {
         "use strict";
         r.LOCAL_FILE_HEADER = "PK", r.CENTRAL_FILE_HEADER = "PK", r.CENTRAL_DIRECTORY_END = "PK", r.ZIP64_CENTRAL_DIRECTORY_LOCATOR = "PK\x07", r.ZIP64_CENTRAL_DIRECTORY_END = "PK", r.DATA_DESCRIPTOR = "PK\x07\b";
-      }, {}], 24: [function(e, t, r) {
+      }, {}], 24: [function(e, t3, r) {
         "use strict";
         var n = e("./GenericWorker"), i = e("../utils");
         function s(e2) {
@@ -8316,8 +8316,8 @@ var require_jszip_min = __commonJS({
         }
         i.inherits(s, n), s.prototype.processChunk = function(e2) {
           this.push({ data: i.transformTo(this.destType, e2.data), meta: e2.meta });
-        }, t.exports = s;
-      }, { "../utils": 32, "./GenericWorker": 28 }], 25: [function(e, t, r) {
+        }, t3.exports = s;
+      }, { "../utils": 32, "./GenericWorker": 28 }], 25: [function(e, t3, r) {
         "use strict";
         var n = e("./GenericWorker"), i = e("../crc32");
         function s() {
@@ -8325,8 +8325,8 @@ var require_jszip_min = __commonJS({
         }
         e("../utils").inherits(s, n), s.prototype.processChunk = function(e2) {
           this.streamInfo.crc32 = i(e2.data, this.streamInfo.crc32 || 0), this.push(e2);
-        }, t.exports = s;
-      }, { "../crc32": 4, "../utils": 32, "./GenericWorker": 28 }], 26: [function(e, t, r) {
+        }, t3.exports = s;
+      }, { "../crc32": 4, "../utils": 32, "./GenericWorker": 28 }], 26: [function(e, t3, r) {
         "use strict";
         var n = e("../utils"), i = e("./GenericWorker");
         function s(e2) {
@@ -8334,21 +8334,21 @@ var require_jszip_min = __commonJS({
         }
         n.inherits(s, i), s.prototype.processChunk = function(e2) {
           if (e2) {
-            var t2 = this.streamInfo[this.propName] || 0;
-            this.streamInfo[this.propName] = t2 + e2.data.length;
+            var t4 = this.streamInfo[this.propName] || 0;
+            this.streamInfo[this.propName] = t4 + e2.data.length;
           }
           i.prototype.processChunk.call(this, e2);
-        }, t.exports = s;
-      }, { "../utils": 32, "./GenericWorker": 28 }], 27: [function(e, t, r) {
+        }, t3.exports = s;
+      }, { "../utils": 32, "./GenericWorker": 28 }], 27: [function(e, t3, r) {
         "use strict";
         var n = e("../utils"), i = e("./GenericWorker");
         function s(e2) {
           i.call(this, "DataWorker");
-          var t2 = this;
+          var t4 = this;
           this.dataIsReady = false, this.index = 0, this.max = 0, this.data = null, this.type = "", this._tickScheduled = false, e2.then(function(e3) {
-            t2.dataIsReady = true, t2.data = e3, t2.max = e3 && e3.length || 0, t2.type = n.getTypeOf(e3), t2.isPaused || t2._tickAndRepeat();
+            t4.dataIsReady = true, t4.data = e3, t4.max = e3 && e3.length || 0, t4.type = n.getTypeOf(e3), t4.isPaused || t4._tickAndRepeat();
           }, function(e3) {
-            t2.error(e3);
+            t4.error(e3);
           });
         }
         n.inherits(s, i), s.prototype.cleanUp = function() {
@@ -8359,22 +8359,22 @@ var require_jszip_min = __commonJS({
           this._tickScheduled = false, this.isPaused || this.isFinished || (this._tick(), this.isFinished || (n.delay(this._tickAndRepeat, [], this), this._tickScheduled = true));
         }, s.prototype._tick = function() {
           if (this.isPaused || this.isFinished) return false;
-          var e2 = null, t2 = Math.min(this.max, this.index + 16384);
+          var e2 = null, t4 = Math.min(this.max, this.index + 16384);
           if (this.index >= this.max) return this.end();
           switch (this.type) {
             case "string":
-              e2 = this.data.substring(this.index, t2);
+              e2 = this.data.substring(this.index, t4);
               break;
             case "uint8array":
-              e2 = this.data.subarray(this.index, t2);
+              e2 = this.data.subarray(this.index, t4);
               break;
             case "array":
             case "nodebuffer":
-              e2 = this.data.slice(this.index, t2);
+              e2 = this.data.slice(this.index, t4);
           }
-          return this.index = t2, this.push({ data: e2, meta: { percent: this.max ? this.index / this.max * 100 : 0 } });
-        }, t.exports = s;
-      }, { "../utils": 32, "./GenericWorker": 28 }], 28: [function(e, t, r) {
+          return this.index = t4, this.push({ data: e2, meta: { percent: this.max ? this.index / this.max * 100 : 0 } });
+        }, t3.exports = s;
+      }, { "../utils": 32, "./GenericWorker": 28 }], 28: [function(e, t3, r) {
         "use strict";
         function n(e2) {
           this.name = e2 || "default", this.streamInfo = {}, this.generatedError = null, this.extraStreamInfo = {}, this.isPaused = true, this.isFinished = false, this.isLocked = false, this._listeners = { data: [], end: [], error: [] }, this.previous = null;
@@ -8392,24 +8392,24 @@ var require_jszip_min = __commonJS({
           return true;
         }, error: function(e2) {
           return !this.isFinished && (this.isPaused ? this.generatedError = e2 : (this.isFinished = true, this.emit("error", e2), this.previous && this.previous.error(e2), this.cleanUp()), true);
-        }, on: function(e2, t2) {
-          return this._listeners[e2].push(t2), this;
+        }, on: function(e2, t4) {
+          return this._listeners[e2].push(t4), this;
         }, cleanUp: function() {
           this.streamInfo = this.generatedError = this.extraStreamInfo = null, this._listeners = [];
-        }, emit: function(e2, t2) {
-          if (this._listeners[e2]) for (var r2 = 0; r2 < this._listeners[e2].length; r2++) this._listeners[e2][r2].call(this, t2);
+        }, emit: function(e2, t4) {
+          if (this._listeners[e2]) for (var r2 = 0; r2 < this._listeners[e2].length; r2++) this._listeners[e2][r2].call(this, t4);
         }, pipe: function(e2) {
           return e2.registerPrevious(this);
         }, registerPrevious: function(e2) {
           if (this.isLocked) throw new Error("The stream '" + this + "' has already been used.");
           this.streamInfo = e2.streamInfo, this.mergeStreamInfo(), this.previous = e2;
-          var t2 = this;
+          var t4 = this;
           return e2.on("data", function(e3) {
-            t2.processChunk(e3);
+            t4.processChunk(e3);
           }), e2.on("end", function() {
-            t2.end();
+            t4.end();
           }), e2.on("error", function(e3) {
-            t2.error(e3);
+            t4.error(e3);
           }), this;
         }, pause: function() {
           return !this.isPaused && !this.isFinished && (this.isPaused = true, this.previous && this.previous.pause(), true);
@@ -8420,8 +8420,8 @@ var require_jszip_min = __commonJS({
         }, flush: function() {
         }, processChunk: function(e2) {
           this.push(e2);
-        }, withStreamInfo: function(e2, t2) {
-          return this.extraStreamInfo[e2] = t2, this.mergeStreamInfo(), this;
+        }, withStreamInfo: function(e2, t4) {
+          return this.extraStreamInfo[e2] = t4, this.mergeStreamInfo(), this;
         }, mergeStreamInfo: function() {
           for (var e2 in this.extraStreamInfo) Object.prototype.hasOwnProperty.call(this.extraStreamInfo, e2) && (this.streamInfo[e2] = this.extraStreamInfo[e2]);
         }, lock: function() {
@@ -8430,8 +8430,8 @@ var require_jszip_min = __commonJS({
         }, toString: function() {
           var e2 = "Worker " + this.name;
           return this.previous ? this.previous + " -> " + e2 : e2;
-        } }, t.exports = n;
-      }, {}], 29: [function(e, t, r) {
+        } }, t3.exports = n;
+      }, {}], 29: [function(e, t3, r) {
         "use strict";
         var h = e("../utils"), i = e("./ConvertWorker"), s = e("./GenericWorker"), u = e("../base64"), n = e("../support"), a = e("../external"), o = null;
         if (n.nodestream) try {
@@ -8439,41 +8439,41 @@ var require_jszip_min = __commonJS({
         } catch (e2) {
         }
         function l(e2, o2) {
-          return new a.Promise(function(t2, r2) {
+          return new a.Promise(function(t4, r2) {
             var n2 = [], i2 = e2._internalType, s2 = e2._outputType, a2 = e2._mimeType;
-            e2.on("data", function(e3, t3) {
-              n2.push(e3), o2 && o2(t3);
+            e2.on("data", function(e3, t5) {
+              n2.push(e3), o2 && o2(t5);
             }).on("error", function(e3) {
               n2 = [], r2(e3);
             }).on("end", function() {
               try {
-                var e3 = (function(e4, t3, r3) {
+                var e3 = (function(e4, t5, r3) {
                   switch (e4) {
                     case "blob":
-                      return h.newBlob(h.transformTo("arraybuffer", t3), r3);
+                      return h.newBlob(h.transformTo("arraybuffer", t5), r3);
                     case "base64":
-                      return u.encode(t3);
+                      return u.encode(t5);
                     default:
-                      return h.transformTo(e4, t3);
+                      return h.transformTo(e4, t5);
                   }
-                })(s2, (function(e4, t3) {
+                })(s2, (function(e4, t5) {
                   var r3, n3 = 0, i3 = null, s3 = 0;
-                  for (r3 = 0; r3 < t3.length; r3++) s3 += t3[r3].length;
+                  for (r3 = 0; r3 < t5.length; r3++) s3 += t5[r3].length;
                   switch (e4) {
                     case "string":
-                      return t3.join("");
+                      return t5.join("");
                     case "array":
-                      return Array.prototype.concat.apply([], t3);
+                      return Array.prototype.concat.apply([], t5);
                     case "uint8array":
-                      for (i3 = new Uint8Array(s3), r3 = 0; r3 < t3.length; r3++) i3.set(t3[r3], n3), n3 += t3[r3].length;
+                      for (i3 = new Uint8Array(s3), r3 = 0; r3 < t5.length; r3++) i3.set(t5[r3], n3), n3 += t5[r3].length;
                       return i3;
                     case "nodebuffer":
-                      return Buffer.concat(t3);
+                      return Buffer.concat(t5);
                     default:
                       throw new Error("concat : unsupported type '" + e4 + "'");
                   }
                 })(i2, n2), a2);
-                t2(e3);
+                t4(e3);
               } catch (e4) {
                 r2(e4);
               }
@@ -8481,9 +8481,9 @@ var require_jszip_min = __commonJS({
             }).resume();
           });
         }
-        function f(e2, t2, r2) {
-          var n2 = t2;
-          switch (t2) {
+        function f(e2, t4, r2) {
+          var n2 = t4;
+          switch (t4) {
             case "blob":
             case "arraybuffer":
               n2 = "uint8array";
@@ -8492,19 +8492,19 @@ var require_jszip_min = __commonJS({
               n2 = "string";
           }
           try {
-            this._internalType = n2, this._outputType = t2, this._mimeType = r2, h.checkSupport(n2), this._worker = e2.pipe(new i(n2)), e2.lock();
+            this._internalType = n2, this._outputType = t4, this._mimeType = r2, h.checkSupport(n2), this._worker = e2.pipe(new i(n2)), e2.lock();
           } catch (e3) {
             this._worker = new s("error"), this._worker.error(e3);
           }
         }
         f.prototype = { accumulate: function(e2) {
           return l(this, e2);
-        }, on: function(e2, t2) {
+        }, on: function(e2, t4) {
           var r2 = this;
           return "data" === e2 ? this._worker.on(e2, function(e3) {
-            t2.call(r2, e3.data, e3.meta);
+            t4.call(r2, e3.data, e3.meta);
           }) : this._worker.on(e2, function() {
-            h.delay(t2, arguments, r2);
+            h.delay(t4, arguments, r2);
           }), this;
         }, resume: function() {
           return h.delay(this._worker.resume, [], this._worker), this;
@@ -8513,8 +8513,8 @@ var require_jszip_min = __commonJS({
         }, toNodejsStream: function(e2) {
           if (h.checkSupport("nodestream"), "nodebuffer" !== this._outputType) throw new Error(this._outputType + " is not supported by this method");
           return new o(this, { objectMode: "nodebuffer" !== this._outputType }, e2);
-        } }, t.exports = f;
-      }, { "../base64": 1, "../external": 6, "../nodejs/NodejsStreamOutputAdapter": 13, "../support": 30, "../utils": 32, "./ConvertWorker": 24, "./GenericWorker": 28 }], 30: [function(e, t, r) {
+        } }, t3.exports = f;
+      }, { "../base64": 1, "../external": 6, "../nodejs/NodejsStreamOutputAdapter": 13, "../support": 30, "../utils": 32, "./ConvertWorker": 24, "./GenericWorker": 28 }], 30: [function(e, t3, r) {
         "use strict";
         if (r.base64 = true, r.array = true, r.string = true, r.arraybuffer = "undefined" != typeof ArrayBuffer && "undefined" != typeof Uint8Array, r.nodebuffer = "undefined" != typeof Buffer, r.uint8array = "undefined" != typeof Uint8Array, "undefined" == typeof ArrayBuffer) r.blob = false;
         else {
@@ -8535,7 +8535,7 @@ var require_jszip_min = __commonJS({
         } catch (e2) {
           r.nodestream = false;
         }
-      }, { "readable-stream": 16 }], 31: [function(e, t, s) {
+      }, { "readable-stream": 16 }], 31: [function(e, t3, s) {
         "use strict";
         for (var o = e("./utils"), h = e("./support"), r = e("./nodejsUtils"), n = e("./stream/GenericWorker"), u = new Array(256), i = 0; i < 256; i++) u[i] = 252 <= i ? 6 : 248 <= i ? 5 : 240 <= i ? 4 : 224 <= i ? 3 : 192 <= i ? 2 : 1;
         u[254] = u[254] = 1;
@@ -8547,73 +8547,73 @@ var require_jszip_min = __commonJS({
         }
         s.utf8encode = function(e2) {
           return h.nodebuffer ? r.newBufferFrom(e2, "utf-8") : (function(e3) {
-            var t2, r2, n2, i2, s2, a2 = e3.length, o2 = 0;
+            var t4, r2, n2, i2, s2, a2 = e3.length, o2 = 0;
             for (i2 = 0; i2 < a2; i2++) 55296 == (64512 & (r2 = e3.charCodeAt(i2))) && i2 + 1 < a2 && 56320 == (64512 & (n2 = e3.charCodeAt(i2 + 1))) && (r2 = 65536 + (r2 - 55296 << 10) + (n2 - 56320), i2++), o2 += r2 < 128 ? 1 : r2 < 2048 ? 2 : r2 < 65536 ? 3 : 4;
-            for (t2 = h.uint8array ? new Uint8Array(o2) : new Array(o2), i2 = s2 = 0; s2 < o2; i2++) 55296 == (64512 & (r2 = e3.charCodeAt(i2))) && i2 + 1 < a2 && 56320 == (64512 & (n2 = e3.charCodeAt(i2 + 1))) && (r2 = 65536 + (r2 - 55296 << 10) + (n2 - 56320), i2++), r2 < 128 ? t2[s2++] = r2 : (r2 < 2048 ? t2[s2++] = 192 | r2 >>> 6 : (r2 < 65536 ? t2[s2++] = 224 | r2 >>> 12 : (t2[s2++] = 240 | r2 >>> 18, t2[s2++] = 128 | r2 >>> 12 & 63), t2[s2++] = 128 | r2 >>> 6 & 63), t2[s2++] = 128 | 63 & r2);
-            return t2;
+            for (t4 = h.uint8array ? new Uint8Array(o2) : new Array(o2), i2 = s2 = 0; s2 < o2; i2++) 55296 == (64512 & (r2 = e3.charCodeAt(i2))) && i2 + 1 < a2 && 56320 == (64512 & (n2 = e3.charCodeAt(i2 + 1))) && (r2 = 65536 + (r2 - 55296 << 10) + (n2 - 56320), i2++), r2 < 128 ? t4[s2++] = r2 : (r2 < 2048 ? t4[s2++] = 192 | r2 >>> 6 : (r2 < 65536 ? t4[s2++] = 224 | r2 >>> 12 : (t4[s2++] = 240 | r2 >>> 18, t4[s2++] = 128 | r2 >>> 12 & 63), t4[s2++] = 128 | r2 >>> 6 & 63), t4[s2++] = 128 | 63 & r2);
+            return t4;
           })(e2);
         }, s.utf8decode = function(e2) {
           return h.nodebuffer ? o.transformTo("nodebuffer", e2).toString("utf-8") : (function(e3) {
-            var t2, r2, n2, i2, s2 = e3.length, a2 = new Array(2 * s2);
-            for (t2 = r2 = 0; t2 < s2; ) if ((n2 = e3[t2++]) < 128) a2[r2++] = n2;
-            else if (4 < (i2 = u[n2])) a2[r2++] = 65533, t2 += i2 - 1;
+            var t4, r2, n2, i2, s2 = e3.length, a2 = new Array(2 * s2);
+            for (t4 = r2 = 0; t4 < s2; ) if ((n2 = e3[t4++]) < 128) a2[r2++] = n2;
+            else if (4 < (i2 = u[n2])) a2[r2++] = 65533, t4 += i2 - 1;
             else {
-              for (n2 &= 2 === i2 ? 31 : 3 === i2 ? 15 : 7; 1 < i2 && t2 < s2; ) n2 = n2 << 6 | 63 & e3[t2++], i2--;
+              for (n2 &= 2 === i2 ? 31 : 3 === i2 ? 15 : 7; 1 < i2 && t4 < s2; ) n2 = n2 << 6 | 63 & e3[t4++], i2--;
               1 < i2 ? a2[r2++] = 65533 : n2 < 65536 ? a2[r2++] = n2 : (n2 -= 65536, a2[r2++] = 55296 | n2 >> 10 & 1023, a2[r2++] = 56320 | 1023 & n2);
             }
             return a2.length !== r2 && (a2.subarray ? a2 = a2.subarray(0, r2) : a2.length = r2), o.applyFromCharCode(a2);
           })(e2 = o.transformTo(h.uint8array ? "uint8array" : "array", e2));
         }, o.inherits(a, n), a.prototype.processChunk = function(e2) {
-          var t2 = o.transformTo(h.uint8array ? "uint8array" : "array", e2.data);
+          var t4 = o.transformTo(h.uint8array ? "uint8array" : "array", e2.data);
           if (this.leftOver && this.leftOver.length) {
             if (h.uint8array) {
-              var r2 = t2;
-              (t2 = new Uint8Array(r2.length + this.leftOver.length)).set(this.leftOver, 0), t2.set(r2, this.leftOver.length);
-            } else t2 = this.leftOver.concat(t2);
+              var r2 = t4;
+              (t4 = new Uint8Array(r2.length + this.leftOver.length)).set(this.leftOver, 0), t4.set(r2, this.leftOver.length);
+            } else t4 = this.leftOver.concat(t4);
             this.leftOver = null;
           }
-          var n2 = (function(e3, t3) {
+          var n2 = (function(e3, t5) {
             var r3;
-            for ((t3 = t3 || e3.length) > e3.length && (t3 = e3.length), r3 = t3 - 1; 0 <= r3 && 128 == (192 & e3[r3]); ) r3--;
-            return r3 < 0 ? t3 : 0 === r3 ? t3 : r3 + u[e3[r3]] > t3 ? r3 : t3;
-          })(t2), i2 = t2;
-          n2 !== t2.length && (h.uint8array ? (i2 = t2.subarray(0, n2), this.leftOver = t2.subarray(n2, t2.length)) : (i2 = t2.slice(0, n2), this.leftOver = t2.slice(n2, t2.length))), this.push({ data: s.utf8decode(i2), meta: e2.meta });
+            for ((t5 = t5 || e3.length) > e3.length && (t5 = e3.length), r3 = t5 - 1; 0 <= r3 && 128 == (192 & e3[r3]); ) r3--;
+            return r3 < 0 ? t5 : 0 === r3 ? t5 : r3 + u[e3[r3]] > t5 ? r3 : t5;
+          })(t4), i2 = t4;
+          n2 !== t4.length && (h.uint8array ? (i2 = t4.subarray(0, n2), this.leftOver = t4.subarray(n2, t4.length)) : (i2 = t4.slice(0, n2), this.leftOver = t4.slice(n2, t4.length))), this.push({ data: s.utf8decode(i2), meta: e2.meta });
         }, a.prototype.flush = function() {
           this.leftOver && this.leftOver.length && (this.push({ data: s.utf8decode(this.leftOver), meta: {} }), this.leftOver = null);
         }, s.Utf8DecodeWorker = a, o.inherits(l, n), l.prototype.processChunk = function(e2) {
           this.push({ data: s.utf8encode(e2.data), meta: e2.meta });
         }, s.Utf8EncodeWorker = l;
-      }, { "./nodejsUtils": 14, "./stream/GenericWorker": 28, "./support": 30, "./utils": 32 }], 32: [function(e, t, a) {
+      }, { "./nodejsUtils": 14, "./stream/GenericWorker": 28, "./support": 30, "./utils": 32 }], 32: [function(e, t3, a) {
         "use strict";
         var o = e("./support"), h = e("./base64"), r = e("./nodejsUtils"), u = e("./external");
         function n(e2) {
           return e2;
         }
-        function l(e2, t2) {
-          for (var r2 = 0; r2 < e2.length; ++r2) t2[r2] = 255 & e2.charCodeAt(r2);
-          return t2;
+        function l(e2, t4) {
+          for (var r2 = 0; r2 < e2.length; ++r2) t4[r2] = 255 & e2.charCodeAt(r2);
+          return t4;
         }
-        e("setimmediate"), a.newBlob = function(t2, r2) {
+        e("setimmediate"), a.newBlob = function(t4, r2) {
           a.checkSupport("blob");
           try {
-            return new Blob([t2], { type: r2 });
+            return new Blob([t4], { type: r2 });
           } catch (e2) {
             try {
               var n2 = new (self.BlobBuilder || self.WebKitBlobBuilder || self.MozBlobBuilder || self.MSBlobBuilder)();
-              return n2.append(t2), n2.getBlob(r2);
+              return n2.append(t4), n2.getBlob(r2);
             } catch (e3) {
               throw new Error("Bug : can't construct the Blob.");
             }
           }
         };
-        var i = { stringifyByChunk: function(e2, t2, r2) {
+        var i = { stringifyByChunk: function(e2, t4, r2) {
           var n2 = [], i2 = 0, s2 = e2.length;
           if (s2 <= r2) return String.fromCharCode.apply(null, e2);
-          for (; i2 < s2; ) "array" === t2 || "nodebuffer" === t2 ? n2.push(String.fromCharCode.apply(null, e2.slice(i2, Math.min(i2 + r2, s2)))) : n2.push(String.fromCharCode.apply(null, e2.subarray(i2, Math.min(i2 + r2, s2)))), i2 += r2;
+          for (; i2 < s2; ) "array" === t4 || "nodebuffer" === t4 ? n2.push(String.fromCharCode.apply(null, e2.slice(i2, Math.min(i2 + r2, s2)))) : n2.push(String.fromCharCode.apply(null, e2.subarray(i2, Math.min(i2 + r2, s2)))), i2 += r2;
           return n2.join("");
         }, stringifyByChar: function(e2) {
-          for (var t2 = "", r2 = 0; r2 < e2.length; r2++) t2 += String.fromCharCode(e2[r2]);
-          return t2;
+          for (var t4 = "", r2 = 0; r2 < e2.length; r2++) t4 += String.fromCharCode(e2[r2]);
+          return t4;
         }, applyCanBeUsed: { uint8array: (function() {
           try {
             return o.uint8array && 1 === String.fromCharCode.apply(null, new Uint8Array(1)).length;
@@ -8628,17 +8628,17 @@ var require_jszip_min = __commonJS({
           }
         })() } };
         function s(e2) {
-          var t2 = 65536, r2 = a.getTypeOf(e2), n2 = true;
-          if ("uint8array" === r2 ? n2 = i.applyCanBeUsed.uint8array : "nodebuffer" === r2 && (n2 = i.applyCanBeUsed.nodebuffer), n2) for (; 1 < t2; ) try {
-            return i.stringifyByChunk(e2, r2, t2);
+          var t4 = 65536, r2 = a.getTypeOf(e2), n2 = true;
+          if ("uint8array" === r2 ? n2 = i.applyCanBeUsed.uint8array : "nodebuffer" === r2 && (n2 = i.applyCanBeUsed.nodebuffer), n2) for (; 1 < t4; ) try {
+            return i.stringifyByChunk(e2, r2, t4);
           } catch (e3) {
-            t2 = Math.floor(t2 / 2);
+            t4 = Math.floor(t4 / 2);
           }
           return i.stringifyByChar(e2);
         }
-        function f(e2, t2) {
-          for (var r2 = 0; r2 < e2.length; r2++) t2[r2] = e2[r2];
-          return t2;
+        function f(e2, t4) {
+          for (var r2 = 0; r2 < e2.length; r2++) t4[r2] = e2[r2];
+          return t4;
         }
         a.applyFromCharCode = s;
         var c = {};
@@ -8676,57 +8676,57 @@ var require_jszip_min = __commonJS({
           return c.nodebuffer.uint8array(e2).buffer;
         }, uint8array: function(e2) {
           return f(e2, new Uint8Array(e2.length));
-        }, nodebuffer: n }, a.transformTo = function(e2, t2) {
-          if (t2 = t2 || "", !e2) return t2;
+        }, nodebuffer: n }, a.transformTo = function(e2, t4) {
+          if (t4 = t4 || "", !e2) return t4;
           a.checkSupport(e2);
-          var r2 = a.getTypeOf(t2);
-          return c[r2][e2](t2);
+          var r2 = a.getTypeOf(t4);
+          return c[r2][e2](t4);
         }, a.resolve = function(e2) {
-          for (var t2 = e2.split("/"), r2 = [], n2 = 0; n2 < t2.length; n2++) {
-            var i2 = t2[n2];
-            "." === i2 || "" === i2 && 0 !== n2 && n2 !== t2.length - 1 || (".." === i2 ? r2.pop() : r2.push(i2));
+          for (var t4 = e2.split("/"), r2 = [], n2 = 0; n2 < t4.length; n2++) {
+            var i2 = t4[n2];
+            "." === i2 || "" === i2 && 0 !== n2 && n2 !== t4.length - 1 || (".." === i2 ? r2.pop() : r2.push(i2));
           }
           return r2.join("/");
         }, a.getTypeOf = function(e2) {
           if ("string" == typeof e2) return "string";
-          var t2 = Object.prototype.toString.call(e2);
-          return "[object Array]" === t2 ? "array" : o.nodebuffer && r.isBuffer(e2) ? "nodebuffer" : o.uint8array && "[object Uint8Array]" === t2 ? "uint8array" : o.arraybuffer && "[object ArrayBuffer]" === t2 ? "arraybuffer" : void 0;
+          var t4 = Object.prototype.toString.call(e2);
+          return "[object Array]" === t4 ? "array" : o.nodebuffer && r.isBuffer(e2) ? "nodebuffer" : o.uint8array && "[object Uint8Array]" === t4 ? "uint8array" : o.arraybuffer && "[object ArrayBuffer]" === t4 ? "arraybuffer" : void 0;
         }, a.checkSupport = function(e2) {
           if (!o[e2.toLowerCase()]) throw new Error(e2 + " is not supported by this platform");
         }, a.MAX_VALUE_16BITS = 65535, a.MAX_VALUE_32BITS = -1, a.pretty = function(e2) {
-          var t2, r2, n2 = "";
-          for (r2 = 0; r2 < (e2 || "").length; r2++) n2 += "\\x" + ((t2 = e2.charCodeAt(r2)) < 16 ? "0" : "") + t2.toString(16).toUpperCase();
+          var t4, r2, n2 = "";
+          for (r2 = 0; r2 < (e2 || "").length; r2++) n2 += "\\x" + ((t4 = e2.charCodeAt(r2)) < 16 ? "0" : "") + t4.toString(16).toUpperCase();
           return n2;
-        }, a.delay = function(e2, t2, r2) {
+        }, a.delay = function(e2, t4, r2) {
           setImmediate(function() {
-            e2.apply(r2 || null, t2 || []);
+            e2.apply(r2 || null, t4 || []);
           });
-        }, a.inherits = function(e2, t2) {
+        }, a.inherits = function(e2, t4) {
           function r2() {
           }
-          r2.prototype = t2.prototype, e2.prototype = new r2();
+          r2.prototype = t4.prototype, e2.prototype = new r2();
         }, a.extend = function() {
-          var e2, t2, r2 = {};
-          for (e2 = 0; e2 < arguments.length; e2++) for (t2 in arguments[e2]) Object.prototype.hasOwnProperty.call(arguments[e2], t2) && void 0 === r2[t2] && (r2[t2] = arguments[e2][t2]);
+          var e2, t4, r2 = {};
+          for (e2 = 0; e2 < arguments.length; e2++) for (t4 in arguments[e2]) Object.prototype.hasOwnProperty.call(arguments[e2], t4) && void 0 === r2[t4] && (r2[t4] = arguments[e2][t4]);
           return r2;
         }, a.prepareContent = function(r2, e2, n2, i2, s2) {
           return u.Promise.resolve(e2).then(function(n3) {
-            return o.blob && (n3 instanceof Blob || -1 !== ["[object File]", "[object Blob]"].indexOf(Object.prototype.toString.call(n3))) ? void 0 !== Blob.prototype.arrayBuffer ? n3.arrayBuffer() : "undefined" != typeof FileReader ? new u.Promise(function(t2, r3) {
+            return o.blob && (n3 instanceof Blob || -1 !== ["[object File]", "[object Blob]"].indexOf(Object.prototype.toString.call(n3))) ? void 0 !== Blob.prototype.arrayBuffer ? n3.arrayBuffer() : "undefined" != typeof FileReader ? new u.Promise(function(t4, r3) {
               var e3 = new FileReader();
               e3.onload = function(e4) {
-                t2(e4.target.result);
+                t4(e4.target.result);
               }, e3.onerror = function(e4) {
                 r3(e4.target.error);
               }, e3.readAsArrayBuffer(n3);
             }) : u.Promise.reject(new Error(r2 + " is a Blob, but we have no way of reading it.")) : n3;
           }).then(function(e3) {
-            var t2 = a.getTypeOf(e3);
-            return t2 ? ("arraybuffer" === t2 ? e3 = a.transformTo("uint8array", e3) : "string" === t2 && (s2 ? e3 = h.decode(e3) : n2 && true !== i2 && (e3 = (function(e4) {
+            var t4 = a.getTypeOf(e3);
+            return t4 ? ("arraybuffer" === t4 ? e3 = a.transformTo("uint8array", e3) : "string" === t4 && (s2 ? e3 = h.decode(e3) : n2 && true !== i2 && (e3 = (function(e4) {
               return l(e4, o.uint8array ? new Uint8Array(e4.length) : new Array(e4.length));
             })(e3))), e3) : u.Promise.reject(new Error("Can't read the data of '" + r2 + "'. Is it in a supported JavaScript type (String, Blob, ArrayBuffer, etc) ?"));
           });
         };
-      }, { "./base64": 1, "./external": 6, "./nodejsUtils": 14, "./support": 30, setimmediate: 54 }], 33: [function(e, t, r) {
+      }, { "./base64": 1, "./external": 6, "./nodejsUtils": 14, "./support": 30, setimmediate: 54 }], 33: [function(e, t3, r) {
         "use strict";
         var n = e("./reader/readerFor"), i = e("./utils"), s = e("./signature"), a = e("./zipEntry"), o = e("./support");
         function h(e2) {
@@ -8735,26 +8735,26 @@ var require_jszip_min = __commonJS({
         h.prototype = { checkSignature: function(e2) {
           if (!this.reader.readAndCheckSignature(e2)) {
             this.reader.index -= 4;
-            var t2 = this.reader.readString(4);
-            throw new Error("Corrupted zip or bug: unexpected signature (" + i.pretty(t2) + ", expected " + i.pretty(e2) + ")");
+            var t4 = this.reader.readString(4);
+            throw new Error("Corrupted zip or bug: unexpected signature (" + i.pretty(t4) + ", expected " + i.pretty(e2) + ")");
           }
-        }, isSignature: function(e2, t2) {
+        }, isSignature: function(e2, t4) {
           var r2 = this.reader.index;
           this.reader.setIndex(e2);
-          var n2 = this.reader.readString(4) === t2;
+          var n2 = this.reader.readString(4) === t4;
           return this.reader.setIndex(r2), n2;
         }, readBlockEndOfCentral: function() {
           this.diskNumber = this.reader.readInt(2), this.diskWithCentralDirStart = this.reader.readInt(2), this.centralDirRecordsOnThisDisk = this.reader.readInt(2), this.centralDirRecords = this.reader.readInt(2), this.centralDirSize = this.reader.readInt(4), this.centralDirOffset = this.reader.readInt(4), this.zipCommentLength = this.reader.readInt(2);
-          var e2 = this.reader.readData(this.zipCommentLength), t2 = o.uint8array ? "uint8array" : "array", r2 = i.transformTo(t2, e2);
+          var e2 = this.reader.readData(this.zipCommentLength), t4 = o.uint8array ? "uint8array" : "array", r2 = i.transformTo(t4, e2);
           this.zipComment = this.loadOptions.decodeFileName(r2);
         }, readBlockZip64EndOfCentral: function() {
           this.zip64EndOfCentralSize = this.reader.readInt(8), this.reader.skip(4), this.diskNumber = this.reader.readInt(4), this.diskWithCentralDirStart = this.reader.readInt(4), this.centralDirRecordsOnThisDisk = this.reader.readInt(8), this.centralDirRecords = this.reader.readInt(8), this.centralDirSize = this.reader.readInt(8), this.centralDirOffset = this.reader.readInt(8), this.zip64ExtensibleData = {};
-          for (var e2, t2, r2, n2 = this.zip64EndOfCentralSize - 44; 0 < n2; ) e2 = this.reader.readInt(2), t2 = this.reader.readInt(4), r2 = this.reader.readData(t2), this.zip64ExtensibleData[e2] = { id: e2, length: t2, value: r2 };
+          for (var e2, t4, r2, n2 = this.zip64EndOfCentralSize - 44; 0 < n2; ) e2 = this.reader.readInt(2), t4 = this.reader.readInt(4), r2 = this.reader.readData(t4), this.zip64ExtensibleData[e2] = { id: e2, length: t4, value: r2 };
         }, readBlockZip64EndOfCentralLocator: function() {
           if (this.diskWithZip64CentralDirStart = this.reader.readInt(4), this.relativeOffsetEndOfZip64CentralDir = this.reader.readInt(8), this.disksCount = this.reader.readInt(4), 1 < this.disksCount) throw new Error("Multi-volumes zip are not supported");
         }, readLocalFiles: function() {
-          var e2, t2;
-          for (e2 = 0; e2 < this.files.length; e2++) t2 = this.files[e2], this.reader.setIndex(t2.localHeaderOffset), this.checkSignature(s.LOCAL_FILE_HEADER), t2.readLocalPart(this.reader), t2.handleUTF8(), t2.processAttributes();
+          var e2, t4;
+          for (e2 = 0; e2 < this.files.length; e2++) t4 = this.files[e2], this.reader.setIndex(t4.localHeaderOffset), this.checkSignature(s.LOCAL_FILE_HEADER), t4.readLocalPart(this.reader), t4.handleUTF8(), t4.processAttributes();
         }, readCentralDir: function() {
           var e2;
           for (this.reader.setIndex(this.centralDirOffset); this.reader.readAndCheckSignature(s.CENTRAL_FILE_HEADER); ) (e2 = new a({ zip64: this.zip64 }, this.loadOptions)).readCentralPart(this.reader), this.files.push(e2);
@@ -8763,7 +8763,7 @@ var require_jszip_min = __commonJS({
           var e2 = this.reader.lastIndexOfSignature(s.CENTRAL_DIRECTORY_END);
           if (e2 < 0) throw !this.isSignature(0, s.LOCAL_FILE_HEADER) ? new Error("Can't find end of central directory : is this a zip file ? If it is, see https://stuk.github.io/jszip/documentation/howto/read_zip.html") : new Error("Corrupted zip: can't find end of central directory");
           this.reader.setIndex(e2);
-          var t2 = e2;
+          var t4 = e2;
           if (this.checkSignature(s.CENTRAL_DIRECTORY_END), this.readBlockEndOfCentral(), this.diskNumber === i.MAX_VALUE_16BITS || this.diskWithCentralDirStart === i.MAX_VALUE_16BITS || this.centralDirRecordsOnThisDisk === i.MAX_VALUE_16BITS || this.centralDirRecords === i.MAX_VALUE_16BITS || this.centralDirSize === i.MAX_VALUE_32BITS || this.centralDirOffset === i.MAX_VALUE_32BITS) {
             if (this.zip64 = true, (e2 = this.reader.lastIndexOfSignature(s.ZIP64_CENTRAL_DIRECTORY_LOCATOR)) < 0) throw new Error("Corrupted zip: can't find the ZIP64 end of central directory locator");
             if (this.reader.setIndex(e2), this.checkSignature(s.ZIP64_CENTRAL_DIRECTORY_LOCATOR), this.readBlockZip64EndOfCentralLocator(), !this.isSignature(this.relativeOffsetEndOfZip64CentralDir, s.ZIP64_CENTRAL_DIRECTORY_END) && (this.relativeOffsetEndOfZip64CentralDir = this.reader.lastIndexOfSignature(s.ZIP64_CENTRAL_DIRECTORY_END), this.relativeOffsetEndOfZip64CentralDir < 0)) throw new Error("Corrupted zip: can't find the ZIP64 end of central directory");
@@ -8771,37 +8771,37 @@ var require_jszip_min = __commonJS({
           }
           var r2 = this.centralDirOffset + this.centralDirSize;
           this.zip64 && (r2 += 20, r2 += 12 + this.zip64EndOfCentralSize);
-          var n2 = t2 - r2;
-          if (0 < n2) this.isSignature(t2, s.CENTRAL_FILE_HEADER) || (this.reader.zero = n2);
+          var n2 = t4 - r2;
+          if (0 < n2) this.isSignature(t4, s.CENTRAL_FILE_HEADER) || (this.reader.zero = n2);
           else if (n2 < 0) throw new Error("Corrupted zip: missing " + Math.abs(n2) + " bytes.");
         }, prepareReader: function(e2) {
           this.reader = n(e2);
         }, load: function(e2) {
           this.prepareReader(e2), this.readEndOfCentral(), this.readCentralDir(), this.readLocalFiles();
-        } }, t.exports = h;
-      }, { "./reader/readerFor": 22, "./signature": 23, "./support": 30, "./utils": 32, "./zipEntry": 34 }], 34: [function(e, t, r) {
+        } }, t3.exports = h;
+      }, { "./reader/readerFor": 22, "./signature": 23, "./support": 30, "./utils": 32, "./zipEntry": 34 }], 34: [function(e, t3, r) {
         "use strict";
         var n = e("./reader/readerFor"), s = e("./utils"), i = e("./compressedObject"), a = e("./crc32"), o = e("./utf8"), h = e("./compressions"), u = e("./support");
-        function l(e2, t2) {
-          this.options = e2, this.loadOptions = t2;
+        function l(e2, t4) {
+          this.options = e2, this.loadOptions = t4;
         }
         l.prototype = { isEncrypted: function() {
           return 1 == (1 & this.bitFlag);
         }, useUTF8: function() {
           return 2048 == (2048 & this.bitFlag);
         }, readLocalPart: function(e2) {
-          var t2, r2;
+          var t4, r2;
           if (e2.skip(22), this.fileNameLength = e2.readInt(2), r2 = e2.readInt(2), this.fileName = e2.readData(this.fileNameLength), e2.skip(r2), -1 === this.compressedSize || -1 === this.uncompressedSize) throw new Error("Bug or corrupted zip : didn't get enough information from the central directory (compressedSize === -1 || uncompressedSize === -1)");
-          if (null === (t2 = (function(e3) {
-            for (var t3 in h) if (Object.prototype.hasOwnProperty.call(h, t3) && h[t3].magic === e3) return h[t3];
+          if (null === (t4 = (function(e3) {
+            for (var t5 in h) if (Object.prototype.hasOwnProperty.call(h, t5) && h[t5].magic === e3) return h[t5];
             return null;
           })(this.compressionMethod))) throw new Error("Corrupted zip : compression " + s.pretty(this.compressionMethod) + " unknown (inner file : " + s.transformTo("string", this.fileName) + ")");
-          this.decompressed = new i(this.compressedSize, this.uncompressedSize, this.crc32, t2, e2.readData(this.compressedSize));
+          this.decompressed = new i(this.compressedSize, this.uncompressedSize, this.crc32, t4, e2.readData(this.compressedSize));
         }, readCentralPart: function(e2) {
           this.versionMadeBy = e2.readInt(2), e2.skip(2), this.bitFlag = e2.readInt(2), this.compressionMethod = e2.readString(2), this.date = e2.readDate(), this.crc32 = e2.readInt(4), this.compressedSize = e2.readInt(4), this.uncompressedSize = e2.readInt(4);
-          var t2 = e2.readInt(2);
+          var t4 = e2.readInt(2);
           if (this.extraFieldsLength = e2.readInt(2), this.fileCommentLength = e2.readInt(2), this.diskNumberStart = e2.readInt(2), this.internalFileAttributes = e2.readInt(2), this.externalFileAttributes = e2.readInt(4), this.localHeaderOffset = e2.readInt(4), this.isEncrypted()) throw new Error("Encrypted zip are not supported");
-          e2.skip(t2), this.readExtraFields(e2), this.parseZIP64ExtraField(e2), this.fileComment = e2.readData(this.fileCommentLength);
+          e2.skip(t4), this.readExtraFields(e2), this.parseZIP64ExtraField(e2), this.fileComment = e2.readData(this.fileCommentLength);
         }, processAttributes: function() {
           this.unixPermissions = null, this.dosPermissions = null;
           var e2 = this.versionMadeBy >> 8;
@@ -8812,15 +8812,15 @@ var require_jszip_min = __commonJS({
             this.uncompressedSize === s.MAX_VALUE_32BITS && (this.uncompressedSize = e2.readInt(8)), this.compressedSize === s.MAX_VALUE_32BITS && (this.compressedSize = e2.readInt(8)), this.localHeaderOffset === s.MAX_VALUE_32BITS && (this.localHeaderOffset = e2.readInt(8)), this.diskNumberStart === s.MAX_VALUE_32BITS && (this.diskNumberStart = e2.readInt(4));
           }
         }, readExtraFields: function(e2) {
-          var t2, r2, n2, i2 = e2.index + this.extraFieldsLength;
-          for (this.extraFields || (this.extraFields = {}); e2.index + 4 < i2; ) t2 = e2.readInt(2), r2 = e2.readInt(2), n2 = e2.readData(r2), this.extraFields[t2] = { id: t2, length: r2, value: n2 };
+          var t4, r2, n2, i2 = e2.index + this.extraFieldsLength;
+          for (this.extraFields || (this.extraFields = {}); e2.index + 4 < i2; ) t4 = e2.readInt(2), r2 = e2.readInt(2), n2 = e2.readData(r2), this.extraFields[t4] = { id: t4, length: r2, value: n2 };
           e2.setIndex(i2);
         }, handleUTF8: function() {
           var e2 = u.uint8array ? "uint8array" : "array";
           if (this.useUTF8()) this.fileNameStr = o.utf8decode(this.fileName), this.fileCommentStr = o.utf8decode(this.fileComment);
           else {
-            var t2 = this.findExtraFieldUnicodePath();
-            if (null !== t2) this.fileNameStr = t2;
+            var t4 = this.findExtraFieldUnicodePath();
+            if (null !== t4) this.fileNameStr = t4;
             else {
               var r2 = s.transformTo(e2, this.fileName);
               this.fileNameStr = this.loadOptions.decodeFileName(r2);
@@ -8835,80 +8835,80 @@ var require_jszip_min = __commonJS({
         }, findExtraFieldUnicodePath: function() {
           var e2 = this.extraFields[28789];
           if (e2) {
-            var t2 = n(e2.value);
-            return 1 !== t2.readInt(1) ? null : a(this.fileName) !== t2.readInt(4) ? null : o.utf8decode(t2.readData(e2.length - 5));
+            var t4 = n(e2.value);
+            return 1 !== t4.readInt(1) ? null : a(this.fileName) !== t4.readInt(4) ? null : o.utf8decode(t4.readData(e2.length - 5));
           }
           return null;
         }, findExtraFieldUnicodeComment: function() {
           var e2 = this.extraFields[25461];
           if (e2) {
-            var t2 = n(e2.value);
-            return 1 !== t2.readInt(1) ? null : a(this.fileComment) !== t2.readInt(4) ? null : o.utf8decode(t2.readData(e2.length - 5));
+            var t4 = n(e2.value);
+            return 1 !== t4.readInt(1) ? null : a(this.fileComment) !== t4.readInt(4) ? null : o.utf8decode(t4.readData(e2.length - 5));
           }
           return null;
-        } }, t.exports = l;
-      }, { "./compressedObject": 2, "./compressions": 3, "./crc32": 4, "./reader/readerFor": 22, "./support": 30, "./utf8": 31, "./utils": 32 }], 35: [function(e, t, r) {
+        } }, t3.exports = l;
+      }, { "./compressedObject": 2, "./compressions": 3, "./crc32": 4, "./reader/readerFor": 22, "./support": 30, "./utf8": 31, "./utils": 32 }], 35: [function(e, t3, r) {
         "use strict";
-        function n(e2, t2, r2) {
-          this.name = e2, this.dir = r2.dir, this.date = r2.date, this.comment = r2.comment, this.unixPermissions = r2.unixPermissions, this.dosPermissions = r2.dosPermissions, this._data = t2, this._dataBinary = r2.binary, this.options = { compression: r2.compression, compressionOptions: r2.compressionOptions };
+        function n(e2, t4, r2) {
+          this.name = e2, this.dir = r2.dir, this.date = r2.date, this.comment = r2.comment, this.unixPermissions = r2.unixPermissions, this.dosPermissions = r2.dosPermissions, this._data = t4, this._dataBinary = r2.binary, this.options = { compression: r2.compression, compressionOptions: r2.compressionOptions };
         }
         var s = e("./stream/StreamHelper"), i = e("./stream/DataWorker"), a = e("./utf8"), o = e("./compressedObject"), h = e("./stream/GenericWorker");
         n.prototype = { internalStream: function(e2) {
-          var t2 = null, r2 = "string";
+          var t4 = null, r2 = "string";
           try {
             if (!e2) throw new Error("No output type specified.");
             var n2 = "string" === (r2 = e2.toLowerCase()) || "text" === r2;
-            "binarystring" !== r2 && "text" !== r2 || (r2 = "string"), t2 = this._decompressWorker();
+            "binarystring" !== r2 && "text" !== r2 || (r2 = "string"), t4 = this._decompressWorker();
             var i2 = !this._dataBinary;
-            i2 && !n2 && (t2 = t2.pipe(new a.Utf8EncodeWorker())), !i2 && n2 && (t2 = t2.pipe(new a.Utf8DecodeWorker()));
+            i2 && !n2 && (t4 = t4.pipe(new a.Utf8EncodeWorker())), !i2 && n2 && (t4 = t4.pipe(new a.Utf8DecodeWorker()));
           } catch (e3) {
-            (t2 = new h("error")).error(e3);
+            (t4 = new h("error")).error(e3);
           }
-          return new s(t2, r2, "");
-        }, async: function(e2, t2) {
-          return this.internalStream(e2).accumulate(t2);
-        }, nodeStream: function(e2, t2) {
-          return this.internalStream(e2 || "nodebuffer").toNodejsStream(t2);
-        }, _compressWorker: function(e2, t2) {
+          return new s(t4, r2, "");
+        }, async: function(e2, t4) {
+          return this.internalStream(e2).accumulate(t4);
+        }, nodeStream: function(e2, t4) {
+          return this.internalStream(e2 || "nodebuffer").toNodejsStream(t4);
+        }, _compressWorker: function(e2, t4) {
           if (this._data instanceof o && this._data.compression.magic === e2.magic) return this._data.getCompressedWorker();
           var r2 = this._decompressWorker();
-          return this._dataBinary || (r2 = r2.pipe(new a.Utf8EncodeWorker())), o.createWorkerFrom(r2, e2, t2);
+          return this._dataBinary || (r2 = r2.pipe(new a.Utf8EncodeWorker())), o.createWorkerFrom(r2, e2, t4);
         }, _decompressWorker: function() {
           return this._data instanceof o ? this._data.getContentWorker() : this._data instanceof h ? this._data : new i(this._data);
         } };
         for (var u = ["asText", "asBinary", "asNodeBuffer", "asUint8Array", "asArrayBuffer"], l = function() {
           throw new Error("This method has been removed in JSZip 3.0, please check the upgrade guide.");
         }, f = 0; f < u.length; f++) n.prototype[u[f]] = l;
-        t.exports = n;
-      }, { "./compressedObject": 2, "./stream/DataWorker": 27, "./stream/GenericWorker": 28, "./stream/StreamHelper": 29, "./utf8": 31 }], 36: [function(e, l, t) {
-        (function(t2) {
+        t3.exports = n;
+      }, { "./compressedObject": 2, "./stream/DataWorker": 27, "./stream/GenericWorker": 28, "./stream/StreamHelper": 29, "./utf8": 31 }], 36: [function(e, l, t3) {
+        (function(t4) {
           "use strict";
-          var r, n, e2 = t2.MutationObserver || t2.WebKitMutationObserver;
+          var r, n, e2 = t4.MutationObserver || t4.WebKitMutationObserver;
           if (e2) {
-            var i = 0, s = new e2(u), a = t2.document.createTextNode("");
+            var i = 0, s = new e2(u), a = t4.document.createTextNode("");
             s.observe(a, { characterData: true }), r = function() {
               a.data = i = ++i % 2;
             };
-          } else if (t2.setImmediate || void 0 === t2.MessageChannel) r = "document" in t2 && "onreadystatechange" in t2.document.createElement("script") ? function() {
-            var e3 = t2.document.createElement("script");
+          } else if (t4.setImmediate || void 0 === t4.MessageChannel) r = "document" in t4 && "onreadystatechange" in t4.document.createElement("script") ? function() {
+            var e3 = t4.document.createElement("script");
             e3.onreadystatechange = function() {
               u(), e3.onreadystatechange = null, e3.parentNode.removeChild(e3), e3 = null;
-            }, t2.document.documentElement.appendChild(e3);
+            }, t4.document.documentElement.appendChild(e3);
           } : function() {
             setTimeout(u, 0);
           };
           else {
-            var o = new t2.MessageChannel();
+            var o = new t4.MessageChannel();
             o.port1.onmessage = u, r = function() {
               o.port2.postMessage(0);
             };
           }
           var h = [];
           function u() {
-            var e3, t3;
+            var e3, t5;
             n = true;
             for (var r2 = h.length; r2; ) {
-              for (t3 = h, h = [], e3 = -1; ++e3 < r2; ) t3[e3]();
+              for (t5 = h, h = [], e3 = -1; ++e3 < r2; ) t5[e3]();
               r2 = h.length;
             }
             n = false;
@@ -8917,7 +8917,7 @@ var require_jszip_min = __commonJS({
             1 !== h.push(e3) || n || r();
           };
         }).call(this, "undefined" != typeof global ? global : "undefined" != typeof self ? self : "undefined" != typeof window ? window : {});
-      }, {}], 37: [function(e, t, r) {
+      }, {}], 37: [function(e, t3, r) {
         "use strict";
         var i = e("immediate");
         function u() {
@@ -8927,66 +8927,66 @@ var require_jszip_min = __commonJS({
           if ("function" != typeof e2) throw new TypeError("resolver must be a function");
           this.state = n, this.queue = [], this.outcome = void 0, e2 !== u && d(this, e2);
         }
-        function h(e2, t2, r2) {
-          this.promise = e2, "function" == typeof t2 && (this.onFulfilled = t2, this.callFulfilled = this.otherCallFulfilled), "function" == typeof r2 && (this.onRejected = r2, this.callRejected = this.otherCallRejected);
+        function h(e2, t4, r2) {
+          this.promise = e2, "function" == typeof t4 && (this.onFulfilled = t4, this.callFulfilled = this.otherCallFulfilled), "function" == typeof r2 && (this.onRejected = r2, this.callRejected = this.otherCallRejected);
         }
-        function f(t2, r2, n2) {
+        function f(t4, r2, n2) {
           i(function() {
             var e2;
             try {
               e2 = r2(n2);
             } catch (e3) {
-              return l.reject(t2, e3);
+              return l.reject(t4, e3);
             }
-            e2 === t2 ? l.reject(t2, new TypeError("Cannot resolve promise with itself")) : l.resolve(t2, e2);
+            e2 === t4 ? l.reject(t4, new TypeError("Cannot resolve promise with itself")) : l.resolve(t4, e2);
           });
         }
         function c(e2) {
-          var t2 = e2 && e2.then;
-          if (e2 && ("object" == typeof e2 || "function" == typeof e2) && "function" == typeof t2) return function() {
-            t2.apply(e2, arguments);
+          var t4 = e2 && e2.then;
+          if (e2 && ("object" == typeof e2 || "function" == typeof e2) && "function" == typeof t4) return function() {
+            t4.apply(e2, arguments);
           };
         }
-        function d(t2, e2) {
+        function d(t4, e2) {
           var r2 = false;
           function n2(e3) {
-            r2 || (r2 = true, l.reject(t2, e3));
+            r2 || (r2 = true, l.reject(t4, e3));
           }
           function i2(e3) {
-            r2 || (r2 = true, l.resolve(t2, e3));
+            r2 || (r2 = true, l.resolve(t4, e3));
           }
           var s2 = p(function() {
             e2(i2, n2);
           });
           "error" === s2.status && n2(s2.value);
         }
-        function p(e2, t2) {
+        function p(e2, t4) {
           var r2 = {};
           try {
-            r2.value = e2(t2), r2.status = "success";
+            r2.value = e2(t4), r2.status = "success";
           } catch (e3) {
             r2.status = "error", r2.value = e3;
           }
           return r2;
         }
-        (t.exports = o).prototype.finally = function(t2) {
-          if ("function" != typeof t2) return this;
+        (t3.exports = o).prototype.finally = function(t4) {
+          if ("function" != typeof t4) return this;
           var r2 = this.constructor;
           return this.then(function(e2) {
-            return r2.resolve(t2()).then(function() {
+            return r2.resolve(t4()).then(function() {
               return e2;
             });
           }, function(e2) {
-            return r2.resolve(t2()).then(function() {
+            return r2.resolve(t4()).then(function() {
               throw e2;
             });
           });
         }, o.prototype.catch = function(e2) {
           return this.then(null, e2);
-        }, o.prototype.then = function(e2, t2) {
-          if ("function" != typeof e2 && this.state === a || "function" != typeof t2 && this.state === s) return this;
+        }, o.prototype.then = function(e2, t4) {
+          if ("function" != typeof e2 && this.state === a || "function" != typeof t4 && this.state === s) return this;
           var r2 = new this.constructor(u);
-          this.state !== n ? f(r2, this.state === a ? e2 : t2, this.outcome) : this.queue.push(new h(r2, e2, t2));
+          this.state !== n ? f(r2, this.state === a ? e2 : t4, this.outcome) : this.queue.push(new h(r2, e2, t4));
           return r2;
         }, h.prototype.callFulfilled = function(e2) {
           l.resolve(this.promise, e2);
@@ -8996,48 +8996,48 @@ var require_jszip_min = __commonJS({
           l.reject(this.promise, e2);
         }, h.prototype.otherCallRejected = function(e2) {
           f(this.promise, this.onRejected, e2);
-        }, l.resolve = function(e2, t2) {
-          var r2 = p(c, t2);
+        }, l.resolve = function(e2, t4) {
+          var r2 = p(c, t4);
           if ("error" === r2.status) return l.reject(e2, r2.value);
           var n2 = r2.value;
           if (n2) d(e2, n2);
           else {
-            e2.state = a, e2.outcome = t2;
-            for (var i2 = -1, s2 = e2.queue.length; ++i2 < s2; ) e2.queue[i2].callFulfilled(t2);
+            e2.state = a, e2.outcome = t4;
+            for (var i2 = -1, s2 = e2.queue.length; ++i2 < s2; ) e2.queue[i2].callFulfilled(t4);
           }
           return e2;
-        }, l.reject = function(e2, t2) {
-          e2.state = s, e2.outcome = t2;
-          for (var r2 = -1, n2 = e2.queue.length; ++r2 < n2; ) e2.queue[r2].callRejected(t2);
+        }, l.reject = function(e2, t4) {
+          e2.state = s, e2.outcome = t4;
+          for (var r2 = -1, n2 = e2.queue.length; ++r2 < n2; ) e2.queue[r2].callRejected(t4);
           return e2;
         }, o.resolve = function(e2) {
           if (e2 instanceof this) return e2;
           return l.resolve(new this(u), e2);
         }, o.reject = function(e2) {
-          var t2 = new this(u);
-          return l.reject(t2, e2);
+          var t4 = new this(u);
+          return l.reject(t4, e2);
         }, o.all = function(e2) {
           var r2 = this;
           if ("[object Array]" !== Object.prototype.toString.call(e2)) return this.reject(new TypeError("must be an array"));
           var n2 = e2.length, i2 = false;
           if (!n2) return this.resolve([]);
-          var s2 = new Array(n2), a2 = 0, t2 = -1, o2 = new this(u);
-          for (; ++t2 < n2; ) h2(e2[t2], t2);
+          var s2 = new Array(n2), a2 = 0, t4 = -1, o2 = new this(u);
+          for (; ++t4 < n2; ) h2(e2[t4], t4);
           return o2;
-          function h2(e3, t3) {
+          function h2(e3, t5) {
             r2.resolve(e3).then(function(e4) {
-              s2[t3] = e4, ++a2 !== n2 || i2 || (i2 = true, l.resolve(o2, s2));
+              s2[t5] = e4, ++a2 !== n2 || i2 || (i2 = true, l.resolve(o2, s2));
             }, function(e4) {
               i2 || (i2 = true, l.reject(o2, e4));
             });
           }
         }, o.race = function(e2) {
-          var t2 = this;
+          var t4 = this;
           if ("[object Array]" !== Object.prototype.toString.call(e2)) return this.reject(new TypeError("must be an array"));
           var r2 = e2.length, n2 = false;
           if (!r2) return this.resolve([]);
           var i2 = -1, s2 = new this(u);
-          for (; ++i2 < r2; ) a2 = e2[i2], t2.resolve(a2).then(function(e3) {
+          for (; ++i2 < r2; ) a2 = e2[i2], t4.resolve(a2).then(function(e3) {
             n2 || (n2 = true, l.resolve(s2, e3));
           }, function(e3) {
             n2 || (n2 = true, l.reject(s2, e3));
@@ -9045,35 +9045,35 @@ var require_jszip_min = __commonJS({
           var a2;
           return s2;
         };
-      }, { immediate: 36 }], 38: [function(e, t, r) {
+      }, { immediate: 36 }], 38: [function(e, t3, r) {
         "use strict";
         var n = {};
-        (0, e("./lib/utils/common").assign)(n, e("./lib/deflate"), e("./lib/inflate"), e("./lib/zlib/constants")), t.exports = n;
-      }, { "./lib/deflate": 39, "./lib/inflate": 40, "./lib/utils/common": 41, "./lib/zlib/constants": 44 }], 39: [function(e, t, r) {
+        (0, e("./lib/utils/common").assign)(n, e("./lib/deflate"), e("./lib/inflate"), e("./lib/zlib/constants")), t3.exports = n;
+      }, { "./lib/deflate": 39, "./lib/inflate": 40, "./lib/utils/common": 41, "./lib/zlib/constants": 44 }], 39: [function(e, t3, r) {
         "use strict";
         var a = e("./zlib/deflate"), o = e("./utils/common"), h = e("./utils/strings"), i = e("./zlib/messages"), s = e("./zlib/zstream"), u = Object.prototype.toString, l = 0, f = -1, c = 0, d = 8;
         function p(e2) {
           if (!(this instanceof p)) return new p(e2);
           this.options = o.assign({ level: f, method: d, chunkSize: 16384, windowBits: 15, memLevel: 8, strategy: c, to: "" }, e2 || {});
-          var t2 = this.options;
-          t2.raw && 0 < t2.windowBits ? t2.windowBits = -t2.windowBits : t2.gzip && 0 < t2.windowBits && t2.windowBits < 16 && (t2.windowBits += 16), this.err = 0, this.msg = "", this.ended = false, this.chunks = [], this.strm = new s(), this.strm.avail_out = 0;
-          var r2 = a.deflateInit2(this.strm, t2.level, t2.method, t2.windowBits, t2.memLevel, t2.strategy);
+          var t4 = this.options;
+          t4.raw && 0 < t4.windowBits ? t4.windowBits = -t4.windowBits : t4.gzip && 0 < t4.windowBits && t4.windowBits < 16 && (t4.windowBits += 16), this.err = 0, this.msg = "", this.ended = false, this.chunks = [], this.strm = new s(), this.strm.avail_out = 0;
+          var r2 = a.deflateInit2(this.strm, t4.level, t4.method, t4.windowBits, t4.memLevel, t4.strategy);
           if (r2 !== l) throw new Error(i[r2]);
-          if (t2.header && a.deflateSetHeader(this.strm, t2.header), t2.dictionary) {
+          if (t4.header && a.deflateSetHeader(this.strm, t4.header), t4.dictionary) {
             var n2;
-            if (n2 = "string" == typeof t2.dictionary ? h.string2buf(t2.dictionary) : "[object ArrayBuffer]" === u.call(t2.dictionary) ? new Uint8Array(t2.dictionary) : t2.dictionary, (r2 = a.deflateSetDictionary(this.strm, n2)) !== l) throw new Error(i[r2]);
+            if (n2 = "string" == typeof t4.dictionary ? h.string2buf(t4.dictionary) : "[object ArrayBuffer]" === u.call(t4.dictionary) ? new Uint8Array(t4.dictionary) : t4.dictionary, (r2 = a.deflateSetDictionary(this.strm, n2)) !== l) throw new Error(i[r2]);
             this._dict_set = true;
           }
         }
-        function n(e2, t2) {
-          var r2 = new p(t2);
+        function n(e2, t4) {
+          var r2 = new p(t4);
           if (r2.push(e2, true), r2.err) throw r2.msg || i[r2.err];
           return r2.result;
         }
-        p.prototype.push = function(e2, t2) {
+        p.prototype.push = function(e2, t4) {
           var r2, n2, i2 = this.strm, s2 = this.options.chunkSize;
           if (this.ended) return false;
-          n2 = t2 === ~~t2 ? t2 : true === t2 ? 4 : 0, "string" == typeof e2 ? i2.input = h.string2buf(e2) : "[object ArrayBuffer]" === u.call(e2) ? i2.input = new Uint8Array(e2) : i2.input = e2, i2.next_in = 0, i2.avail_in = i2.input.length;
+          n2 = t4 === ~~t4 ? t4 : true === t4 ? 4 : 0, "string" == typeof e2 ? i2.input = h.string2buf(e2) : "[object ArrayBuffer]" === u.call(e2) ? i2.input = new Uint8Array(e2) : i2.input = e2, i2.next_in = 0, i2.avail_in = i2.input.length;
           do {
             if (0 === i2.avail_out && (i2.output = new o.Buf8(s2), i2.next_out = 0, i2.avail_out = s2), 1 !== (r2 = a.deflate(i2, n2)) && r2 !== l) return this.onEnd(r2), !(this.ended = true);
             0 !== i2.avail_out && (0 !== i2.avail_in || 4 !== n2 && 2 !== n2) || ("string" === this.options.to ? this.onData(h.buf2binstring(o.shrinkBuf(i2.output, i2.next_out))) : this.onData(o.shrinkBuf(i2.output, i2.next_out)));
@@ -9083,32 +9083,32 @@ var require_jszip_min = __commonJS({
           this.chunks.push(e2);
         }, p.prototype.onEnd = function(e2) {
           e2 === l && ("string" === this.options.to ? this.result = this.chunks.join("") : this.result = o.flattenChunks(this.chunks)), this.chunks = [], this.err = e2, this.msg = this.strm.msg;
-        }, r.Deflate = p, r.deflate = n, r.deflateRaw = function(e2, t2) {
-          return (t2 = t2 || {}).raw = true, n(e2, t2);
-        }, r.gzip = function(e2, t2) {
-          return (t2 = t2 || {}).gzip = true, n(e2, t2);
+        }, r.Deflate = p, r.deflate = n, r.deflateRaw = function(e2, t4) {
+          return (t4 = t4 || {}).raw = true, n(e2, t4);
+        }, r.gzip = function(e2, t4) {
+          return (t4 = t4 || {}).gzip = true, n(e2, t4);
         };
-      }, { "./utils/common": 41, "./utils/strings": 42, "./zlib/deflate": 46, "./zlib/messages": 51, "./zlib/zstream": 53 }], 40: [function(e, t, r) {
+      }, { "./utils/common": 41, "./utils/strings": 42, "./zlib/deflate": 46, "./zlib/messages": 51, "./zlib/zstream": 53 }], 40: [function(e, t3, r) {
         "use strict";
         var c = e("./zlib/inflate"), d = e("./utils/common"), p = e("./utils/strings"), m = e("./zlib/constants"), n = e("./zlib/messages"), i = e("./zlib/zstream"), s = e("./zlib/gzheader"), _ = Object.prototype.toString;
         function a(e2) {
           if (!(this instanceof a)) return new a(e2);
           this.options = d.assign({ chunkSize: 16384, windowBits: 0, to: "" }, e2 || {});
-          var t2 = this.options;
-          t2.raw && 0 <= t2.windowBits && t2.windowBits < 16 && (t2.windowBits = -t2.windowBits, 0 === t2.windowBits && (t2.windowBits = -15)), !(0 <= t2.windowBits && t2.windowBits < 16) || e2 && e2.windowBits || (t2.windowBits += 32), 15 < t2.windowBits && t2.windowBits < 48 && 0 == (15 & t2.windowBits) && (t2.windowBits |= 15), this.err = 0, this.msg = "", this.ended = false, this.chunks = [], this.strm = new i(), this.strm.avail_out = 0;
-          var r2 = c.inflateInit2(this.strm, t2.windowBits);
+          var t4 = this.options;
+          t4.raw && 0 <= t4.windowBits && t4.windowBits < 16 && (t4.windowBits = -t4.windowBits, 0 === t4.windowBits && (t4.windowBits = -15)), !(0 <= t4.windowBits && t4.windowBits < 16) || e2 && e2.windowBits || (t4.windowBits += 32), 15 < t4.windowBits && t4.windowBits < 48 && 0 == (15 & t4.windowBits) && (t4.windowBits |= 15), this.err = 0, this.msg = "", this.ended = false, this.chunks = [], this.strm = new i(), this.strm.avail_out = 0;
+          var r2 = c.inflateInit2(this.strm, t4.windowBits);
           if (r2 !== m.Z_OK) throw new Error(n[r2]);
           this.header = new s(), c.inflateGetHeader(this.strm, this.header);
         }
-        function o(e2, t2) {
-          var r2 = new a(t2);
+        function o(e2, t4) {
+          var r2 = new a(t4);
           if (r2.push(e2, true), r2.err) throw r2.msg || n[r2.err];
           return r2.result;
         }
-        a.prototype.push = function(e2, t2) {
+        a.prototype.push = function(e2, t4) {
           var r2, n2, i2, s2, a2, o2, h = this.strm, u = this.options.chunkSize, l = this.options.dictionary, f = false;
           if (this.ended) return false;
-          n2 = t2 === ~~t2 ? t2 : true === t2 ? m.Z_FINISH : m.Z_NO_FLUSH, "string" == typeof e2 ? h.input = p.binstring2buf(e2) : "[object ArrayBuffer]" === _.call(e2) ? h.input = new Uint8Array(e2) : h.input = e2, h.next_in = 0, h.avail_in = h.input.length;
+          n2 = t4 === ~~t4 ? t4 : true === t4 ? m.Z_FINISH : m.Z_NO_FLUSH, "string" == typeof e2 ? h.input = p.binstring2buf(e2) : "[object ArrayBuffer]" === _.call(e2) ? h.input = new Uint8Array(e2) : h.input = e2, h.next_in = 0, h.avail_in = h.input.length;
           do {
             if (0 === h.avail_out && (h.output = new d.Buf8(u), h.next_out = 0, h.avail_out = u), (r2 = c.inflate(h, m.Z_NO_FLUSH)) === m.Z_NEED_DICT && l && (o2 = "string" == typeof l ? p.string2buf(l) : "[object ArrayBuffer]" === _.call(l) ? new Uint8Array(l) : l, r2 = c.inflateSetDictionary(this.strm, o2)), r2 === m.Z_BUF_ERROR && true === f && (r2 = m.Z_OK, f = false), r2 !== m.Z_STREAM_END && r2 !== m.Z_OK) return this.onEnd(r2), !(this.ended = true);
             h.next_out && (0 !== h.avail_out && r2 !== m.Z_STREAM_END && (0 !== h.avail_in || n2 !== m.Z_FINISH && n2 !== m.Z_SYNC_FLUSH) || ("string" === this.options.to ? (i2 = p.utf8border(h.output, h.next_out), s2 = h.next_out - i2, a2 = p.buf2string(h.output, i2), h.next_out = s2, h.avail_out = u - s2, s2 && d.arraySet(h.output, h.output, i2, s2, 0), this.onData(a2)) : this.onData(d.shrinkBuf(h.output, h.next_out)))), 0 === h.avail_in && 0 === h.avail_out && (f = true);
@@ -9118,41 +9118,41 @@ var require_jszip_min = __commonJS({
           this.chunks.push(e2);
         }, a.prototype.onEnd = function(e2) {
           e2 === m.Z_OK && ("string" === this.options.to ? this.result = this.chunks.join("") : this.result = d.flattenChunks(this.chunks)), this.chunks = [], this.err = e2, this.msg = this.strm.msg;
-        }, r.Inflate = a, r.inflate = o, r.inflateRaw = function(e2, t2) {
-          return (t2 = t2 || {}).raw = true, o(e2, t2);
+        }, r.Inflate = a, r.inflate = o, r.inflateRaw = function(e2, t4) {
+          return (t4 = t4 || {}).raw = true, o(e2, t4);
         }, r.ungzip = o;
-      }, { "./utils/common": 41, "./utils/strings": 42, "./zlib/constants": 44, "./zlib/gzheader": 47, "./zlib/inflate": 49, "./zlib/messages": 51, "./zlib/zstream": 53 }], 41: [function(e, t, r) {
+      }, { "./utils/common": 41, "./utils/strings": 42, "./zlib/constants": 44, "./zlib/gzheader": 47, "./zlib/inflate": 49, "./zlib/messages": 51, "./zlib/zstream": 53 }], 41: [function(e, t3, r) {
         "use strict";
         var n = "undefined" != typeof Uint8Array && "undefined" != typeof Uint16Array && "undefined" != typeof Int32Array;
         r.assign = function(e2) {
-          for (var t2 = Array.prototype.slice.call(arguments, 1); t2.length; ) {
-            var r2 = t2.shift();
+          for (var t4 = Array.prototype.slice.call(arguments, 1); t4.length; ) {
+            var r2 = t4.shift();
             if (r2) {
               if ("object" != typeof r2) throw new TypeError(r2 + "must be non-object");
               for (var n2 in r2) r2.hasOwnProperty(n2) && (e2[n2] = r2[n2]);
             }
           }
           return e2;
-        }, r.shrinkBuf = function(e2, t2) {
-          return e2.length === t2 ? e2 : e2.subarray ? e2.subarray(0, t2) : (e2.length = t2, e2);
+        }, r.shrinkBuf = function(e2, t4) {
+          return e2.length === t4 ? e2 : e2.subarray ? e2.subarray(0, t4) : (e2.length = t4, e2);
         };
-        var i = { arraySet: function(e2, t2, r2, n2, i2) {
-          if (t2.subarray && e2.subarray) e2.set(t2.subarray(r2, r2 + n2), i2);
-          else for (var s2 = 0; s2 < n2; s2++) e2[i2 + s2] = t2[r2 + s2];
+        var i = { arraySet: function(e2, t4, r2, n2, i2) {
+          if (t4.subarray && e2.subarray) e2.set(t4.subarray(r2, r2 + n2), i2);
+          else for (var s2 = 0; s2 < n2; s2++) e2[i2 + s2] = t4[r2 + s2];
         }, flattenChunks: function(e2) {
-          var t2, r2, n2, i2, s2, a;
-          for (t2 = n2 = 0, r2 = e2.length; t2 < r2; t2++) n2 += e2[t2].length;
-          for (a = new Uint8Array(n2), t2 = i2 = 0, r2 = e2.length; t2 < r2; t2++) s2 = e2[t2], a.set(s2, i2), i2 += s2.length;
+          var t4, r2, n2, i2, s2, a;
+          for (t4 = n2 = 0, r2 = e2.length; t4 < r2; t4++) n2 += e2[t4].length;
+          for (a = new Uint8Array(n2), t4 = i2 = 0, r2 = e2.length; t4 < r2; t4++) s2 = e2[t4], a.set(s2, i2), i2 += s2.length;
           return a;
-        } }, s = { arraySet: function(e2, t2, r2, n2, i2) {
-          for (var s2 = 0; s2 < n2; s2++) e2[i2 + s2] = t2[r2 + s2];
+        } }, s = { arraySet: function(e2, t4, r2, n2, i2) {
+          for (var s2 = 0; s2 < n2; s2++) e2[i2 + s2] = t4[r2 + s2];
         }, flattenChunks: function(e2) {
           return [].concat.apply([], e2);
         } };
         r.setTyped = function(e2) {
           e2 ? (r.Buf8 = Uint8Array, r.Buf16 = Uint16Array, r.Buf32 = Int32Array, r.assign(r, i)) : (r.Buf8 = Array, r.Buf16 = Array, r.Buf32 = Array, r.assign(r, s));
         }, r.setTyped(n);
-      }, {}], 42: [function(e, t, r) {
+      }, {}], 42: [function(e, t3, r) {
         "use strict";
         var h = e("./common"), i = true, s = true;
         try {
@@ -9166,23 +9166,23 @@ var require_jszip_min = __commonJS({
           s = false;
         }
         for (var u = new h.Buf8(256), n = 0; n < 256; n++) u[n] = 252 <= n ? 6 : 248 <= n ? 5 : 240 <= n ? 4 : 224 <= n ? 3 : 192 <= n ? 2 : 1;
-        function l(e2, t2) {
-          if (t2 < 65537 && (e2.subarray && s || !e2.subarray && i)) return String.fromCharCode.apply(null, h.shrinkBuf(e2, t2));
-          for (var r2 = "", n2 = 0; n2 < t2; n2++) r2 += String.fromCharCode(e2[n2]);
+        function l(e2, t4) {
+          if (t4 < 65537 && (e2.subarray && s || !e2.subarray && i)) return String.fromCharCode.apply(null, h.shrinkBuf(e2, t4));
+          for (var r2 = "", n2 = 0; n2 < t4; n2++) r2 += String.fromCharCode(e2[n2]);
           return r2;
         }
         u[254] = u[254] = 1, r.string2buf = function(e2) {
-          var t2, r2, n2, i2, s2, a = e2.length, o = 0;
+          var t4, r2, n2, i2, s2, a = e2.length, o = 0;
           for (i2 = 0; i2 < a; i2++) 55296 == (64512 & (r2 = e2.charCodeAt(i2))) && i2 + 1 < a && 56320 == (64512 & (n2 = e2.charCodeAt(i2 + 1))) && (r2 = 65536 + (r2 - 55296 << 10) + (n2 - 56320), i2++), o += r2 < 128 ? 1 : r2 < 2048 ? 2 : r2 < 65536 ? 3 : 4;
-          for (t2 = new h.Buf8(o), i2 = s2 = 0; s2 < o; i2++) 55296 == (64512 & (r2 = e2.charCodeAt(i2))) && i2 + 1 < a && 56320 == (64512 & (n2 = e2.charCodeAt(i2 + 1))) && (r2 = 65536 + (r2 - 55296 << 10) + (n2 - 56320), i2++), r2 < 128 ? t2[s2++] = r2 : (r2 < 2048 ? t2[s2++] = 192 | r2 >>> 6 : (r2 < 65536 ? t2[s2++] = 224 | r2 >>> 12 : (t2[s2++] = 240 | r2 >>> 18, t2[s2++] = 128 | r2 >>> 12 & 63), t2[s2++] = 128 | r2 >>> 6 & 63), t2[s2++] = 128 | 63 & r2);
-          return t2;
+          for (t4 = new h.Buf8(o), i2 = s2 = 0; s2 < o; i2++) 55296 == (64512 & (r2 = e2.charCodeAt(i2))) && i2 + 1 < a && 56320 == (64512 & (n2 = e2.charCodeAt(i2 + 1))) && (r2 = 65536 + (r2 - 55296 << 10) + (n2 - 56320), i2++), r2 < 128 ? t4[s2++] = r2 : (r2 < 2048 ? t4[s2++] = 192 | r2 >>> 6 : (r2 < 65536 ? t4[s2++] = 224 | r2 >>> 12 : (t4[s2++] = 240 | r2 >>> 18, t4[s2++] = 128 | r2 >>> 12 & 63), t4[s2++] = 128 | r2 >>> 6 & 63), t4[s2++] = 128 | 63 & r2);
+          return t4;
         }, r.buf2binstring = function(e2) {
           return l(e2, e2.length);
         }, r.binstring2buf = function(e2) {
-          for (var t2 = new h.Buf8(e2.length), r2 = 0, n2 = t2.length; r2 < n2; r2++) t2[r2] = e2.charCodeAt(r2);
-          return t2;
-        }, r.buf2string = function(e2, t2) {
-          var r2, n2, i2, s2, a = t2 || e2.length, o = new Array(2 * a);
+          for (var t4 = new h.Buf8(e2.length), r2 = 0, n2 = t4.length; r2 < n2; r2++) t4[r2] = e2.charCodeAt(r2);
+          return t4;
+        }, r.buf2string = function(e2, t4) {
+          var r2, n2, i2, s2, a = t4 || e2.length, o = new Array(2 * a);
           for (r2 = n2 = 0; r2 < a; ) if ((i2 = e2[r2++]) < 128) o[n2++] = i2;
           else if (4 < (s2 = u[i2])) o[n2++] = 65533, r2 += s2 - 1;
           else {
@@ -9190,96 +9190,96 @@ var require_jszip_min = __commonJS({
             1 < s2 ? o[n2++] = 65533 : i2 < 65536 ? o[n2++] = i2 : (i2 -= 65536, o[n2++] = 55296 | i2 >> 10 & 1023, o[n2++] = 56320 | 1023 & i2);
           }
           return l(o, n2);
-        }, r.utf8border = function(e2, t2) {
+        }, r.utf8border = function(e2, t4) {
           var r2;
-          for ((t2 = t2 || e2.length) > e2.length && (t2 = e2.length), r2 = t2 - 1; 0 <= r2 && 128 == (192 & e2[r2]); ) r2--;
-          return r2 < 0 ? t2 : 0 === r2 ? t2 : r2 + u[e2[r2]] > t2 ? r2 : t2;
+          for ((t4 = t4 || e2.length) > e2.length && (t4 = e2.length), r2 = t4 - 1; 0 <= r2 && 128 == (192 & e2[r2]); ) r2--;
+          return r2 < 0 ? t4 : 0 === r2 ? t4 : r2 + u[e2[r2]] > t4 ? r2 : t4;
         };
-      }, { "./common": 41 }], 43: [function(e, t, r) {
+      }, { "./common": 41 }], 43: [function(e, t3, r) {
         "use strict";
-        t.exports = function(e2, t2, r2, n) {
+        t3.exports = function(e2, t4, r2, n) {
           for (var i = 65535 & e2 | 0, s = e2 >>> 16 & 65535 | 0, a = 0; 0 !== r2; ) {
-            for (r2 -= a = 2e3 < r2 ? 2e3 : r2; s = s + (i = i + t2[n++] | 0) | 0, --a; ) ;
+            for (r2 -= a = 2e3 < r2 ? 2e3 : r2; s = s + (i = i + t4[n++] | 0) | 0, --a; ) ;
             i %= 65521, s %= 65521;
           }
           return i | s << 16 | 0;
         };
-      }, {}], 44: [function(e, t, r) {
+      }, {}], 44: [function(e, t3, r) {
         "use strict";
-        t.exports = { Z_NO_FLUSH: 0, Z_PARTIAL_FLUSH: 1, Z_SYNC_FLUSH: 2, Z_FULL_FLUSH: 3, Z_FINISH: 4, Z_BLOCK: 5, Z_TREES: 6, Z_OK: 0, Z_STREAM_END: 1, Z_NEED_DICT: 2, Z_ERRNO: -1, Z_STREAM_ERROR: -2, Z_DATA_ERROR: -3, Z_BUF_ERROR: -5, Z_NO_COMPRESSION: 0, Z_BEST_SPEED: 1, Z_BEST_COMPRESSION: 9, Z_DEFAULT_COMPRESSION: -1, Z_FILTERED: 1, Z_HUFFMAN_ONLY: 2, Z_RLE: 3, Z_FIXED: 4, Z_DEFAULT_STRATEGY: 0, Z_BINARY: 0, Z_TEXT: 1, Z_UNKNOWN: 2, Z_DEFLATED: 8 };
-      }, {}], 45: [function(e, t, r) {
+        t3.exports = { Z_NO_FLUSH: 0, Z_PARTIAL_FLUSH: 1, Z_SYNC_FLUSH: 2, Z_FULL_FLUSH: 3, Z_FINISH: 4, Z_BLOCK: 5, Z_TREES: 6, Z_OK: 0, Z_STREAM_END: 1, Z_NEED_DICT: 2, Z_ERRNO: -1, Z_STREAM_ERROR: -2, Z_DATA_ERROR: -3, Z_BUF_ERROR: -5, Z_NO_COMPRESSION: 0, Z_BEST_SPEED: 1, Z_BEST_COMPRESSION: 9, Z_DEFAULT_COMPRESSION: -1, Z_FILTERED: 1, Z_HUFFMAN_ONLY: 2, Z_RLE: 3, Z_FIXED: 4, Z_DEFAULT_STRATEGY: 0, Z_BINARY: 0, Z_TEXT: 1, Z_UNKNOWN: 2, Z_DEFLATED: 8 };
+      }, {}], 45: [function(e, t3, r) {
         "use strict";
         var o = (function() {
-          for (var e2, t2 = [], r2 = 0; r2 < 256; r2++) {
+          for (var e2, t4 = [], r2 = 0; r2 < 256; r2++) {
             e2 = r2;
             for (var n = 0; n < 8; n++) e2 = 1 & e2 ? 3988292384 ^ e2 >>> 1 : e2 >>> 1;
-            t2[r2] = e2;
+            t4[r2] = e2;
           }
-          return t2;
+          return t4;
         })();
-        t.exports = function(e2, t2, r2, n) {
+        t3.exports = function(e2, t4, r2, n) {
           var i = o, s = n + r2;
           e2 ^= -1;
-          for (var a = n; a < s; a++) e2 = e2 >>> 8 ^ i[255 & (e2 ^ t2[a])];
+          for (var a = n; a < s; a++) e2 = e2 >>> 8 ^ i[255 & (e2 ^ t4[a])];
           return -1 ^ e2;
         };
-      }, {}], 46: [function(e, t, r) {
+      }, {}], 46: [function(e, t3, r) {
         "use strict";
         var h, c = e("../utils/common"), u = e("./trees"), d = e("./adler32"), p = e("./crc32"), n = e("./messages"), l = 0, f = 4, m = 0, _ = -2, g = -1, b = 4, i = 2, v = 8, y = 9, s = 286, a = 30, o = 19, w = 2 * s + 1, k = 15, x = 3, S = 258, z = S + x + 1, C = 42, E = 113, A = 1, I = 2, O = 3, B = 4;
-        function R(e2, t2) {
-          return e2.msg = n[t2], t2;
+        function R(e2, t4) {
+          return e2.msg = n[t4], t4;
         }
         function T(e2) {
           return (e2 << 1) - (4 < e2 ? 9 : 0);
         }
         function D(e2) {
-          for (var t2 = e2.length; 0 <= --t2; ) e2[t2] = 0;
+          for (var t4 = e2.length; 0 <= --t4; ) e2[t4] = 0;
         }
         function F(e2) {
-          var t2 = e2.state, r2 = t2.pending;
-          r2 > e2.avail_out && (r2 = e2.avail_out), 0 !== r2 && (c.arraySet(e2.output, t2.pending_buf, t2.pending_out, r2, e2.next_out), e2.next_out += r2, t2.pending_out += r2, e2.total_out += r2, e2.avail_out -= r2, t2.pending -= r2, 0 === t2.pending && (t2.pending_out = 0));
+          var t4 = e2.state, r2 = t4.pending;
+          r2 > e2.avail_out && (r2 = e2.avail_out), 0 !== r2 && (c.arraySet(e2.output, t4.pending_buf, t4.pending_out, r2, e2.next_out), e2.next_out += r2, t4.pending_out += r2, e2.total_out += r2, e2.avail_out -= r2, t4.pending -= r2, 0 === t4.pending && (t4.pending_out = 0));
         }
-        function N(e2, t2) {
-          u._tr_flush_block(e2, 0 <= e2.block_start ? e2.block_start : -1, e2.strstart - e2.block_start, t2), e2.block_start = e2.strstart, F(e2.strm);
+        function N(e2, t4) {
+          u._tr_flush_block(e2, 0 <= e2.block_start ? e2.block_start : -1, e2.strstart - e2.block_start, t4), e2.block_start = e2.strstart, F(e2.strm);
         }
-        function U(e2, t2) {
-          e2.pending_buf[e2.pending++] = t2;
+        function U(e2, t4) {
+          e2.pending_buf[e2.pending++] = t4;
         }
-        function P(e2, t2) {
-          e2.pending_buf[e2.pending++] = t2 >>> 8 & 255, e2.pending_buf[e2.pending++] = 255 & t2;
+        function P(e2, t4) {
+          e2.pending_buf[e2.pending++] = t4 >>> 8 & 255, e2.pending_buf[e2.pending++] = 255 & t4;
         }
-        function L(e2, t2) {
+        function L(e2, t4) {
           var r2, n2, i2 = e2.max_chain_length, s2 = e2.strstart, a2 = e2.prev_length, o2 = e2.nice_match, h2 = e2.strstart > e2.w_size - z ? e2.strstart - (e2.w_size - z) : 0, u2 = e2.window, l2 = e2.w_mask, f2 = e2.prev, c2 = e2.strstart + S, d2 = u2[s2 + a2 - 1], p2 = u2[s2 + a2];
           e2.prev_length >= e2.good_match && (i2 >>= 2), o2 > e2.lookahead && (o2 = e2.lookahead);
           do {
-            if (u2[(r2 = t2) + a2] === p2 && u2[r2 + a2 - 1] === d2 && u2[r2] === u2[s2] && u2[++r2] === u2[s2 + 1]) {
+            if (u2[(r2 = t4) + a2] === p2 && u2[r2 + a2 - 1] === d2 && u2[r2] === u2[s2] && u2[++r2] === u2[s2 + 1]) {
               s2 += 2, r2++;
               do {
               } while (u2[++s2] === u2[++r2] && u2[++s2] === u2[++r2] && u2[++s2] === u2[++r2] && u2[++s2] === u2[++r2] && u2[++s2] === u2[++r2] && u2[++s2] === u2[++r2] && u2[++s2] === u2[++r2] && u2[++s2] === u2[++r2] && s2 < c2);
               if (n2 = S - (c2 - s2), s2 = c2 - S, a2 < n2) {
-                if (e2.match_start = t2, o2 <= (a2 = n2)) break;
+                if (e2.match_start = t4, o2 <= (a2 = n2)) break;
                 d2 = u2[s2 + a2 - 1], p2 = u2[s2 + a2];
               }
             }
-          } while ((t2 = f2[t2 & l2]) > h2 && 0 != --i2);
+          } while ((t4 = f2[t4 & l2]) > h2 && 0 != --i2);
           return a2 <= e2.lookahead ? a2 : e2.lookahead;
         }
         function j(e2) {
-          var t2, r2, n2, i2, s2, a2, o2, h2, u2, l2, f2 = e2.w_size;
+          var t4, r2, n2, i2, s2, a2, o2, h2, u2, l2, f2 = e2.w_size;
           do {
             if (i2 = e2.window_size - e2.lookahead - e2.strstart, e2.strstart >= f2 + (f2 - z)) {
-              for (c.arraySet(e2.window, e2.window, f2, f2, 0), e2.match_start -= f2, e2.strstart -= f2, e2.block_start -= f2, t2 = r2 = e2.hash_size; n2 = e2.head[--t2], e2.head[t2] = f2 <= n2 ? n2 - f2 : 0, --r2; ) ;
-              for (t2 = r2 = f2; n2 = e2.prev[--t2], e2.prev[t2] = f2 <= n2 ? n2 - f2 : 0, --r2; ) ;
+              for (c.arraySet(e2.window, e2.window, f2, f2, 0), e2.match_start -= f2, e2.strstart -= f2, e2.block_start -= f2, t4 = r2 = e2.hash_size; n2 = e2.head[--t4], e2.head[t4] = f2 <= n2 ? n2 - f2 : 0, --r2; ) ;
+              for (t4 = r2 = f2; n2 = e2.prev[--t4], e2.prev[t4] = f2 <= n2 ? n2 - f2 : 0, --r2; ) ;
               i2 += f2;
             }
             if (0 === e2.strm.avail_in) break;
             if (a2 = e2.strm, o2 = e2.window, h2 = e2.strstart + e2.lookahead, u2 = i2, l2 = void 0, l2 = a2.avail_in, u2 < l2 && (l2 = u2), r2 = 0 === l2 ? 0 : (a2.avail_in -= l2, c.arraySet(o2, a2.input, a2.next_in, l2, h2), 1 === a2.state.wrap ? a2.adler = d(a2.adler, o2, l2, h2) : 2 === a2.state.wrap && (a2.adler = p(a2.adler, o2, l2, h2)), a2.next_in += l2, a2.total_in += l2, l2), e2.lookahead += r2, e2.lookahead + e2.insert >= x) for (s2 = e2.strstart - e2.insert, e2.ins_h = e2.window[s2], e2.ins_h = (e2.ins_h << e2.hash_shift ^ e2.window[s2 + 1]) & e2.hash_mask; e2.insert && (e2.ins_h = (e2.ins_h << e2.hash_shift ^ e2.window[s2 + x - 1]) & e2.hash_mask, e2.prev[s2 & e2.w_mask] = e2.head[e2.ins_h], e2.head[e2.ins_h] = s2, s2++, e2.insert--, !(e2.lookahead + e2.insert < x)); ) ;
           } while (e2.lookahead < z && 0 !== e2.strm.avail_in);
         }
-        function Z(e2, t2) {
+        function Z(e2, t4) {
           for (var r2, n2; ; ) {
             if (e2.lookahead < z) {
-              if (j(e2), e2.lookahead < z && t2 === l) return A;
+              if (j(e2), e2.lookahead < z && t4 === l) return A;
               if (0 === e2.lookahead) break;
             }
             if (r2 = 0, e2.lookahead >= x && (e2.ins_h = (e2.ins_h << e2.hash_shift ^ e2.window[e2.strstart + x - 1]) & e2.hash_mask, r2 = e2.prev[e2.strstart & e2.w_mask] = e2.head[e2.ins_h], e2.head[e2.ins_h] = e2.strstart), 0 !== r2 && e2.strstart - r2 <= e2.w_size - z && (e2.match_length = L(e2, r2)), e2.match_length >= x) if (n2 = u._tr_tally(e2, e2.strstart - e2.match_start, e2.match_length - x), e2.lookahead -= e2.match_length, e2.match_length <= e2.max_lazy_match && e2.lookahead >= x) {
@@ -9289,12 +9289,12 @@ var require_jszip_min = __commonJS({
             else n2 = u._tr_tally(e2, 0, e2.window[e2.strstart]), e2.lookahead--, e2.strstart++;
             if (n2 && (N(e2, false), 0 === e2.strm.avail_out)) return A;
           }
-          return e2.insert = e2.strstart < x - 1 ? e2.strstart : x - 1, t2 === f ? (N(e2, true), 0 === e2.strm.avail_out ? O : B) : e2.last_lit && (N(e2, false), 0 === e2.strm.avail_out) ? A : I;
+          return e2.insert = e2.strstart < x - 1 ? e2.strstart : x - 1, t4 === f ? (N(e2, true), 0 === e2.strm.avail_out ? O : B) : e2.last_lit && (N(e2, false), 0 === e2.strm.avail_out) ? A : I;
         }
-        function W(e2, t2) {
+        function W(e2, t4) {
           for (var r2, n2, i2; ; ) {
             if (e2.lookahead < z) {
-              if (j(e2), e2.lookahead < z && t2 === l) return A;
+              if (j(e2), e2.lookahead < z && t4 === l) return A;
               if (0 === e2.lookahead) break;
             }
             if (r2 = 0, e2.lookahead >= x && (e2.ins_h = (e2.ins_h << e2.hash_shift ^ e2.window[e2.strstart + x - 1]) & e2.hash_mask, r2 = e2.prev[e2.strstart & e2.w_mask] = e2.head[e2.ins_h], e2.head[e2.ins_h] = e2.strstart), e2.prev_length = e2.match_length, e2.prev_match = e2.match_start, e2.match_length = x - 1, 0 !== r2 && e2.prev_length < e2.max_lazy_match && e2.strstart - r2 <= e2.w_size - z && (e2.match_length = L(e2, r2), e2.match_length <= 5 && (1 === e2.strategy || e2.match_length === x && 4096 < e2.strstart - e2.match_start) && (e2.match_length = x - 1)), e2.prev_length >= x && e2.match_length <= e2.prev_length) {
@@ -9304,37 +9304,37 @@ var require_jszip_min = __commonJS({
               if ((n2 = u._tr_tally(e2, 0, e2.window[e2.strstart - 1])) && N(e2, false), e2.strstart++, e2.lookahead--, 0 === e2.strm.avail_out) return A;
             } else e2.match_available = 1, e2.strstart++, e2.lookahead--;
           }
-          return e2.match_available && (n2 = u._tr_tally(e2, 0, e2.window[e2.strstart - 1]), e2.match_available = 0), e2.insert = e2.strstart < x - 1 ? e2.strstart : x - 1, t2 === f ? (N(e2, true), 0 === e2.strm.avail_out ? O : B) : e2.last_lit && (N(e2, false), 0 === e2.strm.avail_out) ? A : I;
+          return e2.match_available && (n2 = u._tr_tally(e2, 0, e2.window[e2.strstart - 1]), e2.match_available = 0), e2.insert = e2.strstart < x - 1 ? e2.strstart : x - 1, t4 === f ? (N(e2, true), 0 === e2.strm.avail_out ? O : B) : e2.last_lit && (N(e2, false), 0 === e2.strm.avail_out) ? A : I;
         }
-        function M(e2, t2, r2, n2, i2) {
-          this.good_length = e2, this.max_lazy = t2, this.nice_length = r2, this.max_chain = n2, this.func = i2;
+        function M(e2, t4, r2, n2, i2) {
+          this.good_length = e2, this.max_lazy = t4, this.nice_length = r2, this.max_chain = n2, this.func = i2;
         }
         function H() {
           this.strm = null, this.status = 0, this.pending_buf = null, this.pending_buf_size = 0, this.pending_out = 0, this.pending = 0, this.wrap = 0, this.gzhead = null, this.gzindex = 0, this.method = v, this.last_flush = -1, this.w_size = 0, this.w_bits = 0, this.w_mask = 0, this.window = null, this.window_size = 0, this.prev = null, this.head = null, this.ins_h = 0, this.hash_size = 0, this.hash_bits = 0, this.hash_mask = 0, this.hash_shift = 0, this.block_start = 0, this.match_length = 0, this.prev_match = 0, this.match_available = 0, this.strstart = 0, this.match_start = 0, this.lookahead = 0, this.prev_length = 0, this.max_chain_length = 0, this.max_lazy_match = 0, this.level = 0, this.strategy = 0, this.good_match = 0, this.nice_match = 0, this.dyn_ltree = new c.Buf16(2 * w), this.dyn_dtree = new c.Buf16(2 * (2 * a + 1)), this.bl_tree = new c.Buf16(2 * (2 * o + 1)), D(this.dyn_ltree), D(this.dyn_dtree), D(this.bl_tree), this.l_desc = null, this.d_desc = null, this.bl_desc = null, this.bl_count = new c.Buf16(k + 1), this.heap = new c.Buf16(2 * s + 1), D(this.heap), this.heap_len = 0, this.heap_max = 0, this.depth = new c.Buf16(2 * s + 1), D(this.depth), this.l_buf = 0, this.lit_bufsize = 0, this.last_lit = 0, this.d_buf = 0, this.opt_len = 0, this.static_len = 0, this.matches = 0, this.insert = 0, this.bi_buf = 0, this.bi_valid = 0;
         }
         function G(e2) {
-          var t2;
-          return e2 && e2.state ? (e2.total_in = e2.total_out = 0, e2.data_type = i, (t2 = e2.state).pending = 0, t2.pending_out = 0, t2.wrap < 0 && (t2.wrap = -t2.wrap), t2.status = t2.wrap ? C : E, e2.adler = 2 === t2.wrap ? 0 : 1, t2.last_flush = l, u._tr_init(t2), m) : R(e2, _);
+          var t4;
+          return e2 && e2.state ? (e2.total_in = e2.total_out = 0, e2.data_type = i, (t4 = e2.state).pending = 0, t4.pending_out = 0, t4.wrap < 0 && (t4.wrap = -t4.wrap), t4.status = t4.wrap ? C : E, e2.adler = 2 === t4.wrap ? 0 : 1, t4.last_flush = l, u._tr_init(t4), m) : R(e2, _);
         }
         function K(e2) {
-          var t2 = G(e2);
-          return t2 === m && (function(e3) {
+          var t4 = G(e2);
+          return t4 === m && (function(e3) {
             e3.window_size = 2 * e3.w_size, D(e3.head), e3.max_lazy_match = h[e3.level].max_lazy, e3.good_match = h[e3.level].good_length, e3.nice_match = h[e3.level].nice_length, e3.max_chain_length = h[e3.level].max_chain, e3.strstart = 0, e3.block_start = 0, e3.lookahead = 0, e3.insert = 0, e3.match_length = e3.prev_length = x - 1, e3.match_available = 0, e3.ins_h = 0;
-          })(e2.state), t2;
+          })(e2.state), t4;
         }
-        function Y(e2, t2, r2, n2, i2, s2) {
+        function Y(e2, t4, r2, n2, i2, s2) {
           if (!e2) return _;
           var a2 = 1;
-          if (t2 === g && (t2 = 6), n2 < 0 ? (a2 = 0, n2 = -n2) : 15 < n2 && (a2 = 2, n2 -= 16), i2 < 1 || y < i2 || r2 !== v || n2 < 8 || 15 < n2 || t2 < 0 || 9 < t2 || s2 < 0 || b < s2) return R(e2, _);
+          if (t4 === g && (t4 = 6), n2 < 0 ? (a2 = 0, n2 = -n2) : 15 < n2 && (a2 = 2, n2 -= 16), i2 < 1 || y < i2 || r2 !== v || n2 < 8 || 15 < n2 || t4 < 0 || 9 < t4 || s2 < 0 || b < s2) return R(e2, _);
           8 === n2 && (n2 = 9);
           var o2 = new H();
-          return (e2.state = o2).strm = e2, o2.wrap = a2, o2.gzhead = null, o2.w_bits = n2, o2.w_size = 1 << o2.w_bits, o2.w_mask = o2.w_size - 1, o2.hash_bits = i2 + 7, o2.hash_size = 1 << o2.hash_bits, o2.hash_mask = o2.hash_size - 1, o2.hash_shift = ~~((o2.hash_bits + x - 1) / x), o2.window = new c.Buf8(2 * o2.w_size), o2.head = new c.Buf16(o2.hash_size), o2.prev = new c.Buf16(o2.w_size), o2.lit_bufsize = 1 << i2 + 6, o2.pending_buf_size = 4 * o2.lit_bufsize, o2.pending_buf = new c.Buf8(o2.pending_buf_size), o2.d_buf = 1 * o2.lit_bufsize, o2.l_buf = 3 * o2.lit_bufsize, o2.level = t2, o2.strategy = s2, o2.method = r2, K(e2);
+          return (e2.state = o2).strm = e2, o2.wrap = a2, o2.gzhead = null, o2.w_bits = n2, o2.w_size = 1 << o2.w_bits, o2.w_mask = o2.w_size - 1, o2.hash_bits = i2 + 7, o2.hash_size = 1 << o2.hash_bits, o2.hash_mask = o2.hash_size - 1, o2.hash_shift = ~~((o2.hash_bits + x - 1) / x), o2.window = new c.Buf8(2 * o2.w_size), o2.head = new c.Buf16(o2.hash_size), o2.prev = new c.Buf16(o2.w_size), o2.lit_bufsize = 1 << i2 + 6, o2.pending_buf_size = 4 * o2.lit_bufsize, o2.pending_buf = new c.Buf8(o2.pending_buf_size), o2.d_buf = 1 * o2.lit_bufsize, o2.l_buf = 3 * o2.lit_bufsize, o2.level = t4, o2.strategy = s2, o2.method = r2, K(e2);
         }
-        h = [new M(0, 0, 0, 0, function(e2, t2) {
+        h = [new M(0, 0, 0, 0, function(e2, t4) {
           var r2 = 65535;
           for (r2 > e2.pending_buf_size - 5 && (r2 = e2.pending_buf_size - 5); ; ) {
             if (e2.lookahead <= 1) {
-              if (j(e2), 0 === e2.lookahead && t2 === l) return A;
+              if (j(e2), 0 === e2.lookahead && t4 === l) return A;
               if (0 === e2.lookahead) break;
             }
             e2.strstart += e2.lookahead, e2.lookahead = 0;
@@ -9342,16 +9342,16 @@ var require_jszip_min = __commonJS({
             if ((0 === e2.strstart || e2.strstart >= n2) && (e2.lookahead = e2.strstart - n2, e2.strstart = n2, N(e2, false), 0 === e2.strm.avail_out)) return A;
             if (e2.strstart - e2.block_start >= e2.w_size - z && (N(e2, false), 0 === e2.strm.avail_out)) return A;
           }
-          return e2.insert = 0, t2 === f ? (N(e2, true), 0 === e2.strm.avail_out ? O : B) : (e2.strstart > e2.block_start && (N(e2, false), e2.strm.avail_out), A);
-        }), new M(4, 4, 8, 4, Z), new M(4, 5, 16, 8, Z), new M(4, 6, 32, 32, Z), new M(4, 4, 16, 16, W), new M(8, 16, 32, 32, W), new M(8, 16, 128, 128, W), new M(8, 32, 128, 256, W), new M(32, 128, 258, 1024, W), new M(32, 258, 258, 4096, W)], r.deflateInit = function(e2, t2) {
-          return Y(e2, t2, v, 15, 8, 0);
-        }, r.deflateInit2 = Y, r.deflateReset = K, r.deflateResetKeep = G, r.deflateSetHeader = function(e2, t2) {
-          return e2 && e2.state ? 2 !== e2.state.wrap ? _ : (e2.state.gzhead = t2, m) : _;
-        }, r.deflate = function(e2, t2) {
+          return e2.insert = 0, t4 === f ? (N(e2, true), 0 === e2.strm.avail_out ? O : B) : (e2.strstart > e2.block_start && (N(e2, false), e2.strm.avail_out), A);
+        }), new M(4, 4, 8, 4, Z), new M(4, 5, 16, 8, Z), new M(4, 6, 32, 32, Z), new M(4, 4, 16, 16, W), new M(8, 16, 32, 32, W), new M(8, 16, 128, 128, W), new M(8, 32, 128, 256, W), new M(32, 128, 258, 1024, W), new M(32, 258, 258, 4096, W)], r.deflateInit = function(e2, t4) {
+          return Y(e2, t4, v, 15, 8, 0);
+        }, r.deflateInit2 = Y, r.deflateReset = K, r.deflateResetKeep = G, r.deflateSetHeader = function(e2, t4) {
+          return e2 && e2.state ? 2 !== e2.state.wrap ? _ : (e2.state.gzhead = t4, m) : _;
+        }, r.deflate = function(e2, t4) {
           var r2, n2, i2, s2;
-          if (!e2 || !e2.state || 5 < t2 || t2 < 0) return e2 ? R(e2, _) : _;
-          if (n2 = e2.state, !e2.output || !e2.input && 0 !== e2.avail_in || 666 === n2.status && t2 !== f) return R(e2, 0 === e2.avail_out ? -5 : _);
-          if (n2.strm = e2, r2 = n2.last_flush, n2.last_flush = t2, n2.status === C) if (2 === n2.wrap) e2.adler = 0, U(n2, 31), U(n2, 139), U(n2, 8), n2.gzhead ? (U(n2, (n2.gzhead.text ? 1 : 0) + (n2.gzhead.hcrc ? 2 : 0) + (n2.gzhead.extra ? 4 : 0) + (n2.gzhead.name ? 8 : 0) + (n2.gzhead.comment ? 16 : 0)), U(n2, 255 & n2.gzhead.time), U(n2, n2.gzhead.time >> 8 & 255), U(n2, n2.gzhead.time >> 16 & 255), U(n2, n2.gzhead.time >> 24 & 255), U(n2, 9 === n2.level ? 2 : 2 <= n2.strategy || n2.level < 2 ? 4 : 0), U(n2, 255 & n2.gzhead.os), n2.gzhead.extra && n2.gzhead.extra.length && (U(n2, 255 & n2.gzhead.extra.length), U(n2, n2.gzhead.extra.length >> 8 & 255)), n2.gzhead.hcrc && (e2.adler = p(e2.adler, n2.pending_buf, n2.pending, 0)), n2.gzindex = 0, n2.status = 69) : (U(n2, 0), U(n2, 0), U(n2, 0), U(n2, 0), U(n2, 0), U(n2, 9 === n2.level ? 2 : 2 <= n2.strategy || n2.level < 2 ? 4 : 0), U(n2, 3), n2.status = E);
+          if (!e2 || !e2.state || 5 < t4 || t4 < 0) return e2 ? R(e2, _) : _;
+          if (n2 = e2.state, !e2.output || !e2.input && 0 !== e2.avail_in || 666 === n2.status && t4 !== f) return R(e2, 0 === e2.avail_out ? -5 : _);
+          if (n2.strm = e2, r2 = n2.last_flush, n2.last_flush = t4, n2.status === C) if (2 === n2.wrap) e2.adler = 0, U(n2, 31), U(n2, 139), U(n2, 8), n2.gzhead ? (U(n2, (n2.gzhead.text ? 1 : 0) + (n2.gzhead.hcrc ? 2 : 0) + (n2.gzhead.extra ? 4 : 0) + (n2.gzhead.name ? 8 : 0) + (n2.gzhead.comment ? 16 : 0)), U(n2, 255 & n2.gzhead.time), U(n2, n2.gzhead.time >> 8 & 255), U(n2, n2.gzhead.time >> 16 & 255), U(n2, n2.gzhead.time >> 24 & 255), U(n2, 9 === n2.level ? 2 : 2 <= n2.strategy || n2.level < 2 ? 4 : 0), U(n2, 255 & n2.gzhead.os), n2.gzhead.extra && n2.gzhead.extra.length && (U(n2, 255 & n2.gzhead.extra.length), U(n2, n2.gzhead.extra.length >> 8 & 255)), n2.gzhead.hcrc && (e2.adler = p(e2.adler, n2.pending_buf, n2.pending, 0)), n2.gzindex = 0, n2.status = 69) : (U(n2, 0), U(n2, 0), U(n2, 0), U(n2, 0), U(n2, 0), U(n2, 9 === n2.level ? 2 : 2 <= n2.strategy || n2.level < 2 ? 4 : 0), U(n2, 3), n2.status = E);
           else {
             var a2 = v + (n2.w_bits - 8 << 4) << 8;
             a2 |= (2 <= n2.strategy || n2.level < 2 ? 0 : n2.level < 6 ? 1 : 6 === n2.level ? 2 : 3) << 6, 0 !== n2.strstart && (a2 |= 32), a2 += 31 - a2 % 31, n2.status = E, P(n2, a2), 0 !== n2.strstart && (P(n2, e2.adler >>> 16), P(n2, 65535 & e2.adler)), e2.adler = 1;
@@ -9384,22 +9384,22 @@ var require_jszip_min = __commonJS({
           } else n2.status = 103;
           if (103 === n2.status && (n2.gzhead.hcrc ? (n2.pending + 2 > n2.pending_buf_size && F(e2), n2.pending + 2 <= n2.pending_buf_size && (U(n2, 255 & e2.adler), U(n2, e2.adler >> 8 & 255), e2.adler = 0, n2.status = E)) : n2.status = E), 0 !== n2.pending) {
             if (F(e2), 0 === e2.avail_out) return n2.last_flush = -1, m;
-          } else if (0 === e2.avail_in && T(t2) <= T(r2) && t2 !== f) return R(e2, -5);
+          } else if (0 === e2.avail_in && T(t4) <= T(r2) && t4 !== f) return R(e2, -5);
           if (666 === n2.status && 0 !== e2.avail_in) return R(e2, -5);
-          if (0 !== e2.avail_in || 0 !== n2.lookahead || t2 !== l && 666 !== n2.status) {
-            var o2 = 2 === n2.strategy ? (function(e3, t3) {
+          if (0 !== e2.avail_in || 0 !== n2.lookahead || t4 !== l && 666 !== n2.status) {
+            var o2 = 2 === n2.strategy ? (function(e3, t5) {
               for (var r3; ; ) {
                 if (0 === e3.lookahead && (j(e3), 0 === e3.lookahead)) {
-                  if (t3 === l) return A;
+                  if (t5 === l) return A;
                   break;
                 }
                 if (e3.match_length = 0, r3 = u._tr_tally(e3, 0, e3.window[e3.strstart]), e3.lookahead--, e3.strstart++, r3 && (N(e3, false), 0 === e3.strm.avail_out)) return A;
               }
-              return e3.insert = 0, t3 === f ? (N(e3, true), 0 === e3.strm.avail_out ? O : B) : e3.last_lit && (N(e3, false), 0 === e3.strm.avail_out) ? A : I;
-            })(n2, t2) : 3 === n2.strategy ? (function(e3, t3) {
+              return e3.insert = 0, t5 === f ? (N(e3, true), 0 === e3.strm.avail_out ? O : B) : e3.last_lit && (N(e3, false), 0 === e3.strm.avail_out) ? A : I;
+            })(n2, t4) : 3 === n2.strategy ? (function(e3, t5) {
               for (var r3, n3, i3, s3, a3 = e3.window; ; ) {
                 if (e3.lookahead <= S) {
-                  if (j(e3), e3.lookahead <= S && t3 === l) return A;
+                  if (j(e3), e3.lookahead <= S && t5 === l) return A;
                   if (0 === e3.lookahead) break;
                 }
                 if (e3.match_length = 0, e3.lookahead >= x && 0 < e3.strstart && (n3 = a3[i3 = e3.strstart - 1]) === a3[++i3] && n3 === a3[++i3] && n3 === a3[++i3]) {
@@ -9410,35 +9410,35 @@ var require_jszip_min = __commonJS({
                 }
                 if (e3.match_length >= x ? (r3 = u._tr_tally(e3, 1, e3.match_length - x), e3.lookahead -= e3.match_length, e3.strstart += e3.match_length, e3.match_length = 0) : (r3 = u._tr_tally(e3, 0, e3.window[e3.strstart]), e3.lookahead--, e3.strstart++), r3 && (N(e3, false), 0 === e3.strm.avail_out)) return A;
               }
-              return e3.insert = 0, t3 === f ? (N(e3, true), 0 === e3.strm.avail_out ? O : B) : e3.last_lit && (N(e3, false), 0 === e3.strm.avail_out) ? A : I;
-            })(n2, t2) : h[n2.level].func(n2, t2);
+              return e3.insert = 0, t5 === f ? (N(e3, true), 0 === e3.strm.avail_out ? O : B) : e3.last_lit && (N(e3, false), 0 === e3.strm.avail_out) ? A : I;
+            })(n2, t4) : h[n2.level].func(n2, t4);
             if (o2 !== O && o2 !== B || (n2.status = 666), o2 === A || o2 === O) return 0 === e2.avail_out && (n2.last_flush = -1), m;
-            if (o2 === I && (1 === t2 ? u._tr_align(n2) : 5 !== t2 && (u._tr_stored_block(n2, 0, 0, false), 3 === t2 && (D(n2.head), 0 === n2.lookahead && (n2.strstart = 0, n2.block_start = 0, n2.insert = 0))), F(e2), 0 === e2.avail_out)) return n2.last_flush = -1, m;
+            if (o2 === I && (1 === t4 ? u._tr_align(n2) : 5 !== t4 && (u._tr_stored_block(n2, 0, 0, false), 3 === t4 && (D(n2.head), 0 === n2.lookahead && (n2.strstart = 0, n2.block_start = 0, n2.insert = 0))), F(e2), 0 === e2.avail_out)) return n2.last_flush = -1, m;
           }
-          return t2 !== f ? m : n2.wrap <= 0 ? 1 : (2 === n2.wrap ? (U(n2, 255 & e2.adler), U(n2, e2.adler >> 8 & 255), U(n2, e2.adler >> 16 & 255), U(n2, e2.adler >> 24 & 255), U(n2, 255 & e2.total_in), U(n2, e2.total_in >> 8 & 255), U(n2, e2.total_in >> 16 & 255), U(n2, e2.total_in >> 24 & 255)) : (P(n2, e2.adler >>> 16), P(n2, 65535 & e2.adler)), F(e2), 0 < n2.wrap && (n2.wrap = -n2.wrap), 0 !== n2.pending ? m : 1);
+          return t4 !== f ? m : n2.wrap <= 0 ? 1 : (2 === n2.wrap ? (U(n2, 255 & e2.adler), U(n2, e2.adler >> 8 & 255), U(n2, e2.adler >> 16 & 255), U(n2, e2.adler >> 24 & 255), U(n2, 255 & e2.total_in), U(n2, e2.total_in >> 8 & 255), U(n2, e2.total_in >> 16 & 255), U(n2, e2.total_in >> 24 & 255)) : (P(n2, e2.adler >>> 16), P(n2, 65535 & e2.adler)), F(e2), 0 < n2.wrap && (n2.wrap = -n2.wrap), 0 !== n2.pending ? m : 1);
         }, r.deflateEnd = function(e2) {
-          var t2;
-          return e2 && e2.state ? (t2 = e2.state.status) !== C && 69 !== t2 && 73 !== t2 && 91 !== t2 && 103 !== t2 && t2 !== E && 666 !== t2 ? R(e2, _) : (e2.state = null, t2 === E ? R(e2, -3) : m) : _;
-        }, r.deflateSetDictionary = function(e2, t2) {
-          var r2, n2, i2, s2, a2, o2, h2, u2, l2 = t2.length;
+          var t4;
+          return e2 && e2.state ? (t4 = e2.state.status) !== C && 69 !== t4 && 73 !== t4 && 91 !== t4 && 103 !== t4 && t4 !== E && 666 !== t4 ? R(e2, _) : (e2.state = null, t4 === E ? R(e2, -3) : m) : _;
+        }, r.deflateSetDictionary = function(e2, t4) {
+          var r2, n2, i2, s2, a2, o2, h2, u2, l2 = t4.length;
           if (!e2 || !e2.state) return _;
           if (2 === (s2 = (r2 = e2.state).wrap) || 1 === s2 && r2.status !== C || r2.lookahead) return _;
-          for (1 === s2 && (e2.adler = d(e2.adler, t2, l2, 0)), r2.wrap = 0, l2 >= r2.w_size && (0 === s2 && (D(r2.head), r2.strstart = 0, r2.block_start = 0, r2.insert = 0), u2 = new c.Buf8(r2.w_size), c.arraySet(u2, t2, l2 - r2.w_size, r2.w_size, 0), t2 = u2, l2 = r2.w_size), a2 = e2.avail_in, o2 = e2.next_in, h2 = e2.input, e2.avail_in = l2, e2.next_in = 0, e2.input = t2, j(r2); r2.lookahead >= x; ) {
+          for (1 === s2 && (e2.adler = d(e2.adler, t4, l2, 0)), r2.wrap = 0, l2 >= r2.w_size && (0 === s2 && (D(r2.head), r2.strstart = 0, r2.block_start = 0, r2.insert = 0), u2 = new c.Buf8(r2.w_size), c.arraySet(u2, t4, l2 - r2.w_size, r2.w_size, 0), t4 = u2, l2 = r2.w_size), a2 = e2.avail_in, o2 = e2.next_in, h2 = e2.input, e2.avail_in = l2, e2.next_in = 0, e2.input = t4, j(r2); r2.lookahead >= x; ) {
             for (n2 = r2.strstart, i2 = r2.lookahead - (x - 1); r2.ins_h = (r2.ins_h << r2.hash_shift ^ r2.window[n2 + x - 1]) & r2.hash_mask, r2.prev[n2 & r2.w_mask] = r2.head[r2.ins_h], r2.head[r2.ins_h] = n2, n2++, --i2; ) ;
             r2.strstart = n2, r2.lookahead = x - 1, j(r2);
           }
           return r2.strstart += r2.lookahead, r2.block_start = r2.strstart, r2.insert = r2.lookahead, r2.lookahead = 0, r2.match_length = r2.prev_length = x - 1, r2.match_available = 0, e2.next_in = o2, e2.input = h2, e2.avail_in = a2, r2.wrap = s2, m;
         }, r.deflateInfo = "pako deflate (from Nodeca project)";
-      }, { "../utils/common": 41, "./adler32": 43, "./crc32": 45, "./messages": 51, "./trees": 52 }], 47: [function(e, t, r) {
+      }, { "../utils/common": 41, "./adler32": 43, "./crc32": 45, "./messages": 51, "./trees": 52 }], 47: [function(e, t3, r) {
         "use strict";
-        t.exports = function() {
+        t3.exports = function() {
           this.text = 0, this.time = 0, this.xflags = 0, this.os = 0, this.extra = null, this.extra_len = 0, this.name = "", this.comment = "", this.hcrc = 0, this.done = false;
         };
-      }, {}], 48: [function(e, t, r) {
+      }, {}], 48: [function(e, t3, r) {
         "use strict";
-        t.exports = function(e2, t2) {
+        t3.exports = function(e2, t4) {
           var r2, n, i, s, a, o, h, u, l, f, c, d, p, m, _, g, b, v, y, w, k, x, S, z, C;
-          r2 = e2.state, n = e2.next_in, z = e2.input, i = n + (e2.avail_in - 5), s = e2.next_out, C = e2.output, a = s - (t2 - e2.avail_out), o = s + (e2.avail_out - 257), h = r2.dmax, u = r2.wsize, l = r2.whave, f = r2.wnext, c = r2.window, d = r2.hold, p = r2.bits, m = r2.lencode, _ = r2.distcode, g = (1 << r2.lenbits) - 1, b = (1 << r2.distbits) - 1;
+          r2 = e2.state, n = e2.next_in, z = e2.input, i = n + (e2.avail_in - 5), s = e2.next_out, C = e2.output, a = s - (t4 - e2.avail_out), o = s + (e2.avail_out - 257), h = r2.dmax, u = r2.wsize, l = r2.whave, f = r2.wnext, c = r2.window, d = r2.hold, p = r2.bits, m = r2.lencode, _ = r2.distcode, g = (1 << r2.lenbits) - 1, b = (1 << r2.distbits) - 1;
           e: do {
             p < 15 && (d += z[n++] << p, p += 8, d += z[n++] << p, p += 8), v = m[d & g];
             t: for (; ; ) {
@@ -9506,7 +9506,7 @@ var require_jszip_min = __commonJS({
           } while (n < i && s < o);
           n -= w = p >> 3, d &= (1 << (p -= w << 3)) - 1, e2.next_in = n, e2.next_out = s, e2.avail_in = n < i ? i - n + 5 : 5 - (n - i), e2.avail_out = s < o ? o - s + 257 : 257 - (s - o), r2.hold = d, r2.bits = p;
         };
-      }, {}], 49: [function(e, t, r) {
+      }, {}], 49: [function(e, t3, r) {
         "use strict";
         var I = e("../utils/common"), O = e("./adler32"), B = e("./crc32"), R = e("./inffast"), T = e("./inftrees"), D = 1, F = 2, N = 0, U = -2, P = 1, n = 852, i = 592;
         function L(e2) {
@@ -9516,41 +9516,41 @@ var require_jszip_min = __commonJS({
           this.mode = 0, this.last = false, this.wrap = 0, this.havedict = false, this.flags = 0, this.dmax = 0, this.check = 0, this.total = 0, this.head = null, this.wbits = 0, this.wsize = 0, this.whave = 0, this.wnext = 0, this.window = null, this.hold = 0, this.bits = 0, this.length = 0, this.offset = 0, this.extra = 0, this.lencode = null, this.distcode = null, this.lenbits = 0, this.distbits = 0, this.ncode = 0, this.nlen = 0, this.ndist = 0, this.have = 0, this.next = null, this.lens = new I.Buf16(320), this.work = new I.Buf16(288), this.lendyn = null, this.distdyn = null, this.sane = 0, this.back = 0, this.was = 0;
         }
         function a(e2) {
-          var t2;
-          return e2 && e2.state ? (t2 = e2.state, e2.total_in = e2.total_out = t2.total = 0, e2.msg = "", t2.wrap && (e2.adler = 1 & t2.wrap), t2.mode = P, t2.last = 0, t2.havedict = 0, t2.dmax = 32768, t2.head = null, t2.hold = 0, t2.bits = 0, t2.lencode = t2.lendyn = new I.Buf32(n), t2.distcode = t2.distdyn = new I.Buf32(i), t2.sane = 1, t2.back = -1, N) : U;
+          var t4;
+          return e2 && e2.state ? (t4 = e2.state, e2.total_in = e2.total_out = t4.total = 0, e2.msg = "", t4.wrap && (e2.adler = 1 & t4.wrap), t4.mode = P, t4.last = 0, t4.havedict = 0, t4.dmax = 32768, t4.head = null, t4.hold = 0, t4.bits = 0, t4.lencode = t4.lendyn = new I.Buf32(n), t4.distcode = t4.distdyn = new I.Buf32(i), t4.sane = 1, t4.back = -1, N) : U;
         }
         function o(e2) {
-          var t2;
-          return e2 && e2.state ? ((t2 = e2.state).wsize = 0, t2.whave = 0, t2.wnext = 0, a(e2)) : U;
+          var t4;
+          return e2 && e2.state ? ((t4 = e2.state).wsize = 0, t4.whave = 0, t4.wnext = 0, a(e2)) : U;
         }
-        function h(e2, t2) {
+        function h(e2, t4) {
           var r2, n2;
-          return e2 && e2.state ? (n2 = e2.state, t2 < 0 ? (r2 = 0, t2 = -t2) : (r2 = 1 + (t2 >> 4), t2 < 48 && (t2 &= 15)), t2 && (t2 < 8 || 15 < t2) ? U : (null !== n2.window && n2.wbits !== t2 && (n2.window = null), n2.wrap = r2, n2.wbits = t2, o(e2))) : U;
+          return e2 && e2.state ? (n2 = e2.state, t4 < 0 ? (r2 = 0, t4 = -t4) : (r2 = 1 + (t4 >> 4), t4 < 48 && (t4 &= 15)), t4 && (t4 < 8 || 15 < t4) ? U : (null !== n2.window && n2.wbits !== t4 && (n2.window = null), n2.wrap = r2, n2.wbits = t4, o(e2))) : U;
         }
-        function u(e2, t2) {
+        function u(e2, t4) {
           var r2, n2;
-          return e2 ? (n2 = new s(), (e2.state = n2).window = null, (r2 = h(e2, t2)) !== N && (e2.state = null), r2) : U;
+          return e2 ? (n2 = new s(), (e2.state = n2).window = null, (r2 = h(e2, t4)) !== N && (e2.state = null), r2) : U;
         }
         var l, f, c = true;
         function j(e2) {
           if (c) {
-            var t2;
-            for (l = new I.Buf32(512), f = new I.Buf32(32), t2 = 0; t2 < 144; ) e2.lens[t2++] = 8;
-            for (; t2 < 256; ) e2.lens[t2++] = 9;
-            for (; t2 < 280; ) e2.lens[t2++] = 7;
-            for (; t2 < 288; ) e2.lens[t2++] = 8;
-            for (T(D, e2.lens, 0, 288, l, 0, e2.work, { bits: 9 }), t2 = 0; t2 < 32; ) e2.lens[t2++] = 5;
+            var t4;
+            for (l = new I.Buf32(512), f = new I.Buf32(32), t4 = 0; t4 < 144; ) e2.lens[t4++] = 8;
+            for (; t4 < 256; ) e2.lens[t4++] = 9;
+            for (; t4 < 280; ) e2.lens[t4++] = 7;
+            for (; t4 < 288; ) e2.lens[t4++] = 8;
+            for (T(D, e2.lens, 0, 288, l, 0, e2.work, { bits: 9 }), t4 = 0; t4 < 32; ) e2.lens[t4++] = 5;
             T(F, e2.lens, 0, 32, f, 0, e2.work, { bits: 5 }), c = false;
           }
           e2.lencode = l, e2.lenbits = 9, e2.distcode = f, e2.distbits = 5;
         }
-        function Z(e2, t2, r2, n2) {
+        function Z(e2, t4, r2, n2) {
           var i2, s2 = e2.state;
-          return null === s2.window && (s2.wsize = 1 << s2.wbits, s2.wnext = 0, s2.whave = 0, s2.window = new I.Buf8(s2.wsize)), n2 >= s2.wsize ? (I.arraySet(s2.window, t2, r2 - s2.wsize, s2.wsize, 0), s2.wnext = 0, s2.whave = s2.wsize) : (n2 < (i2 = s2.wsize - s2.wnext) && (i2 = n2), I.arraySet(s2.window, t2, r2 - n2, i2, s2.wnext), (n2 -= i2) ? (I.arraySet(s2.window, t2, r2 - n2, n2, 0), s2.wnext = n2, s2.whave = s2.wsize) : (s2.wnext += i2, s2.wnext === s2.wsize && (s2.wnext = 0), s2.whave < s2.wsize && (s2.whave += i2))), 0;
+          return null === s2.window && (s2.wsize = 1 << s2.wbits, s2.wnext = 0, s2.whave = 0, s2.window = new I.Buf8(s2.wsize)), n2 >= s2.wsize ? (I.arraySet(s2.window, t4, r2 - s2.wsize, s2.wsize, 0), s2.wnext = 0, s2.whave = s2.wsize) : (n2 < (i2 = s2.wsize - s2.wnext) && (i2 = n2), I.arraySet(s2.window, t4, r2 - n2, i2, s2.wnext), (n2 -= i2) ? (I.arraySet(s2.window, t4, r2 - n2, n2, 0), s2.wnext = n2, s2.whave = s2.wsize) : (s2.wnext += i2, s2.wnext === s2.wsize && (s2.wnext = 0), s2.whave < s2.wsize && (s2.whave += i2))), 0;
         }
         r.inflateReset = o, r.inflateReset2 = h, r.inflateResetKeep = a, r.inflateInit = function(e2) {
           return u(e2, 15);
-        }, r.inflateInit2 = u, r.inflate = function(e2, t2) {
+        }, r.inflateInit2 = u, r.inflate = function(e2, t4) {
           var r2, n2, i2, s2, a2, o2, h2, u2, l2, f2, c2, d, p, m, _, g, b, v, y, w, k, x, S, z, C = 0, E = new I.Buf8(4), A = [16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15];
           if (!e2 || !e2.state || !e2.output || !e2.input && 0 !== e2.avail_in) return U;
           12 === (r2 = e2.state).mode && (r2.mode = 13), a2 = e2.next_out, i2 = e2.output, h2 = e2.avail_out, s2 = e2.next_in, n2 = e2.input, o2 = e2.avail_in, u2 = r2.hold, l2 = r2.bits, f2 = o2, c2 = h2, x = N;
@@ -9659,7 +9659,7 @@ var require_jszip_min = __commonJS({
               if (0 === r2.havedict) return e2.next_out = a2, e2.avail_out = h2, e2.next_in = s2, e2.avail_in = o2, r2.hold = u2, r2.bits = l2, 2;
               e2.adler = r2.check = 1, r2.mode = 12;
             case 12:
-              if (5 === t2 || 6 === t2) break e;
+              if (5 === t4 || 6 === t4) break e;
             case 13:
               if (r2.last) {
                 u2 >>>= 7 & l2, l2 -= 7 & l2, r2.mode = 27;
@@ -9674,7 +9674,7 @@ var require_jszip_min = __commonJS({
                   r2.mode = 14;
                   break;
                 case 1:
-                  if (j(r2), r2.mode = 20, 6 !== t2) break;
+                  if (j(r2), r2.mode = 20, 6 !== t4) break;
                   u2 >>>= 2, l2 -= 2;
                   break e;
                 case 2:
@@ -9694,7 +9694,7 @@ var require_jszip_min = __commonJS({
                 e2.msg = "invalid stored block lengths", r2.mode = 30;
                 break;
               }
-              if (r2.length = 65535 & u2, l2 = u2 = 0, r2.mode = 15, 6 === t2) break e;
+              if (r2.length = 65535 & u2, l2 = u2 = 0, r2.mode = 15, 6 === t4) break e;
             case 15:
               r2.mode = 16;
             case 16:
@@ -9780,7 +9780,7 @@ var require_jszip_min = __commonJS({
                 e2.msg = "invalid distances set", r2.mode = 30;
                 break;
               }
-              if (r2.mode = 20, 6 === t2) break e;
+              if (r2.mode = 20, 6 === t4) break e;
             case 20:
               r2.mode = 21;
             case 21:
@@ -9905,39 +9905,39 @@ var require_jszip_min = __commonJS({
             default:
               return U;
           }
-          return e2.next_out = a2, e2.avail_out = h2, e2.next_in = s2, e2.avail_in = o2, r2.hold = u2, r2.bits = l2, (r2.wsize || c2 !== e2.avail_out && r2.mode < 30 && (r2.mode < 27 || 4 !== t2)) && Z(e2, e2.output, e2.next_out, c2 - e2.avail_out) ? (r2.mode = 31, -4) : (f2 -= e2.avail_in, c2 -= e2.avail_out, e2.total_in += f2, e2.total_out += c2, r2.total += c2, r2.wrap && c2 && (e2.adler = r2.check = r2.flags ? B(r2.check, i2, c2, e2.next_out - c2) : O(r2.check, i2, c2, e2.next_out - c2)), e2.data_type = r2.bits + (r2.last ? 64 : 0) + (12 === r2.mode ? 128 : 0) + (20 === r2.mode || 15 === r2.mode ? 256 : 0), (0 == f2 && 0 === c2 || 4 === t2) && x === N && (x = -5), x);
+          return e2.next_out = a2, e2.avail_out = h2, e2.next_in = s2, e2.avail_in = o2, r2.hold = u2, r2.bits = l2, (r2.wsize || c2 !== e2.avail_out && r2.mode < 30 && (r2.mode < 27 || 4 !== t4)) && Z(e2, e2.output, e2.next_out, c2 - e2.avail_out) ? (r2.mode = 31, -4) : (f2 -= e2.avail_in, c2 -= e2.avail_out, e2.total_in += f2, e2.total_out += c2, r2.total += c2, r2.wrap && c2 && (e2.adler = r2.check = r2.flags ? B(r2.check, i2, c2, e2.next_out - c2) : O(r2.check, i2, c2, e2.next_out - c2)), e2.data_type = r2.bits + (r2.last ? 64 : 0) + (12 === r2.mode ? 128 : 0) + (20 === r2.mode || 15 === r2.mode ? 256 : 0), (0 == f2 && 0 === c2 || 4 === t4) && x === N && (x = -5), x);
         }, r.inflateEnd = function(e2) {
           if (!e2 || !e2.state) return U;
-          var t2 = e2.state;
-          return t2.window && (t2.window = null), e2.state = null, N;
-        }, r.inflateGetHeader = function(e2, t2) {
+          var t4 = e2.state;
+          return t4.window && (t4.window = null), e2.state = null, N;
+        }, r.inflateGetHeader = function(e2, t4) {
           var r2;
-          return e2 && e2.state ? 0 == (2 & (r2 = e2.state).wrap) ? U : ((r2.head = t2).done = false, N) : U;
-        }, r.inflateSetDictionary = function(e2, t2) {
-          var r2, n2 = t2.length;
-          return e2 && e2.state ? 0 !== (r2 = e2.state).wrap && 11 !== r2.mode ? U : 11 === r2.mode && O(1, t2, n2, 0) !== r2.check ? -3 : Z(e2, t2, n2, n2) ? (r2.mode = 31, -4) : (r2.havedict = 1, N) : U;
+          return e2 && e2.state ? 0 == (2 & (r2 = e2.state).wrap) ? U : ((r2.head = t4).done = false, N) : U;
+        }, r.inflateSetDictionary = function(e2, t4) {
+          var r2, n2 = t4.length;
+          return e2 && e2.state ? 0 !== (r2 = e2.state).wrap && 11 !== r2.mode ? U : 11 === r2.mode && O(1, t4, n2, 0) !== r2.check ? -3 : Z(e2, t4, n2, n2) ? (r2.mode = 31, -4) : (r2.havedict = 1, N) : U;
         }, r.inflateInfo = "pako inflate (from Nodeca project)";
-      }, { "../utils/common": 41, "./adler32": 43, "./crc32": 45, "./inffast": 48, "./inftrees": 50 }], 50: [function(e, t, r) {
+      }, { "../utils/common": 41, "./adler32": 43, "./crc32": 45, "./inffast": 48, "./inftrees": 50 }], 50: [function(e, t3, r) {
         "use strict";
         var D = e("../utils/common"), F = [3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 17, 19, 23, 27, 31, 35, 43, 51, 59, 67, 83, 99, 115, 131, 163, 195, 227, 258, 0, 0], N = [16, 16, 16, 16, 16, 16, 16, 16, 17, 17, 17, 17, 18, 18, 18, 18, 19, 19, 19, 19, 20, 20, 20, 20, 21, 21, 21, 21, 16, 72, 78], U = [1, 2, 3, 4, 5, 7, 9, 13, 17, 25, 33, 49, 65, 97, 129, 193, 257, 385, 513, 769, 1025, 1537, 2049, 3073, 4097, 6145, 8193, 12289, 16385, 24577, 0, 0], P = [16, 16, 16, 16, 17, 17, 18, 18, 19, 19, 20, 20, 21, 21, 22, 22, 23, 23, 24, 24, 25, 25, 26, 26, 27, 27, 28, 28, 29, 29, 64, 64];
-        t.exports = function(e2, t2, r2, n, i, s, a, o) {
+        t3.exports = function(e2, t4, r2, n, i, s, a, o) {
           var h, u, l, f, c, d, p, m, _, g = o.bits, b = 0, v = 0, y = 0, w = 0, k = 0, x = 0, S = 0, z = 0, C = 0, E = 0, A = null, I = 0, O = new D.Buf16(16), B = new D.Buf16(16), R = null, T = 0;
           for (b = 0; b <= 15; b++) O[b] = 0;
-          for (v = 0; v < n; v++) O[t2[r2 + v]]++;
+          for (v = 0; v < n; v++) O[t4[r2 + v]]++;
           for (k = g, w = 15; 1 <= w && 0 === O[w]; w--) ;
           if (w < k && (k = w), 0 === w) return i[s++] = 20971520, i[s++] = 20971520, o.bits = 1, 0;
           for (y = 1; y < w && 0 === O[y]; y++) ;
           for (k < y && (k = y), b = z = 1; b <= 15; b++) if (z <<= 1, (z -= O[b]) < 0) return -1;
           if (0 < z && (0 === e2 || 1 !== w)) return -1;
           for (B[1] = 0, b = 1; b < 15; b++) B[b + 1] = B[b] + O[b];
-          for (v = 0; v < n; v++) 0 !== t2[r2 + v] && (a[B[t2[r2 + v]]++] = v);
+          for (v = 0; v < n; v++) 0 !== t4[r2 + v] && (a[B[t4[r2 + v]]++] = v);
           if (d = 0 === e2 ? (A = R = a, 19) : 1 === e2 ? (A = F, I -= 257, R = N, T -= 257, 256) : (A = U, R = P, -1), b = y, c = s, S = v = E = 0, l = -1, f = (C = 1 << (x = k)) - 1, 1 === e2 && 852 < C || 2 === e2 && 592 < C) return 1;
           for (; ; ) {
             for (p = b - S, _ = a[v] < d ? (m = 0, a[v]) : a[v] > d ? (m = R[T + a[v]], A[I + a[v]]) : (m = 96, 0), h = 1 << b - S, y = u = 1 << x; i[c + (E >> S) + (u -= h)] = p << 24 | m << 16 | _ | 0, 0 !== u; ) ;
             for (h = 1 << b - 1; E & h; ) h >>= 1;
             if (0 !== h ? (E &= h - 1, E += h) : E = 0, v++, 0 == --O[b]) {
               if (b === w) break;
-              b = t2[r2 + a[v]];
+              b = t4[r2 + a[v]];
             }
             if (k < b && (E & f) !== l) {
               for (0 === S && (S = k), c += y, z = 1 << (x = b - S); x + S < w && !((z -= O[x + S]) <= 0); ) x++, z <<= 1;
@@ -9947,14 +9947,14 @@ var require_jszip_min = __commonJS({
           }
           return 0 !== E && (i[c + E] = b - S << 24 | 64 << 16 | 0), o.bits = k, 0;
         };
-      }, { "../utils/common": 41 }], 51: [function(e, t, r) {
+      }, { "../utils/common": 41 }], 51: [function(e, t3, r) {
         "use strict";
-        t.exports = { 2: "need dictionary", 1: "stream end", 0: "", "-1": "file error", "-2": "stream error", "-3": "data error", "-4": "insufficient memory", "-5": "buffer error", "-6": "incompatible version" };
-      }, {}], 52: [function(e, t, r) {
+        t3.exports = { 2: "need dictionary", 1: "stream end", 0: "", "-1": "file error", "-2": "stream error", "-3": "data error", "-4": "insufficient memory", "-5": "buffer error", "-6": "incompatible version" };
+      }, {}], 52: [function(e, t3, r) {
         "use strict";
         var i = e("../utils/common"), o = 0, h = 1;
         function n(e2) {
-          for (var t2 = e2.length; 0 <= --t2; ) e2[t2] = 0;
+          for (var t4 = e2.length; 0 <= --t4; ) e2[t4] = 0;
         }
         var s = 0, a = 29, u = 256, l = u + 1 + a, f = 30, c = 19, _ = 2 * l + 1, g = 15, d = 16, p = 7, m = 256, b = 16, v = 17, y = 18, w = [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 0], k = [0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13], x = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 7], S = [16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15], z = new Array(2 * (l + 2));
         n(z);
@@ -9967,67 +9967,67 @@ var require_jszip_min = __commonJS({
         var I = new Array(a);
         n(I);
         var O, B, R, T = new Array(f);
-        function D(e2, t2, r2, n2, i2) {
-          this.static_tree = e2, this.extra_bits = t2, this.extra_base = r2, this.elems = n2, this.max_length = i2, this.has_stree = e2 && e2.length;
+        function D(e2, t4, r2, n2, i2) {
+          this.static_tree = e2, this.extra_bits = t4, this.extra_base = r2, this.elems = n2, this.max_length = i2, this.has_stree = e2 && e2.length;
         }
-        function F(e2, t2) {
-          this.dyn_tree = e2, this.max_code = 0, this.stat_desc = t2;
+        function F(e2, t4) {
+          this.dyn_tree = e2, this.max_code = 0, this.stat_desc = t4;
         }
         function N(e2) {
           return e2 < 256 ? E[e2] : E[256 + (e2 >>> 7)];
         }
-        function U(e2, t2) {
-          e2.pending_buf[e2.pending++] = 255 & t2, e2.pending_buf[e2.pending++] = t2 >>> 8 & 255;
+        function U(e2, t4) {
+          e2.pending_buf[e2.pending++] = 255 & t4, e2.pending_buf[e2.pending++] = t4 >>> 8 & 255;
         }
-        function P(e2, t2, r2) {
-          e2.bi_valid > d - r2 ? (e2.bi_buf |= t2 << e2.bi_valid & 65535, U(e2, e2.bi_buf), e2.bi_buf = t2 >> d - e2.bi_valid, e2.bi_valid += r2 - d) : (e2.bi_buf |= t2 << e2.bi_valid & 65535, e2.bi_valid += r2);
+        function P(e2, t4, r2) {
+          e2.bi_valid > d - r2 ? (e2.bi_buf |= t4 << e2.bi_valid & 65535, U(e2, e2.bi_buf), e2.bi_buf = t4 >> d - e2.bi_valid, e2.bi_valid += r2 - d) : (e2.bi_buf |= t4 << e2.bi_valid & 65535, e2.bi_valid += r2);
         }
-        function L(e2, t2, r2) {
-          P(e2, r2[2 * t2], r2[2 * t2 + 1]);
+        function L(e2, t4, r2) {
+          P(e2, r2[2 * t4], r2[2 * t4 + 1]);
         }
-        function j(e2, t2) {
-          for (var r2 = 0; r2 |= 1 & e2, e2 >>>= 1, r2 <<= 1, 0 < --t2; ) ;
+        function j(e2, t4) {
+          for (var r2 = 0; r2 |= 1 & e2, e2 >>>= 1, r2 <<= 1, 0 < --t4; ) ;
           return r2 >>> 1;
         }
-        function Z(e2, t2, r2) {
+        function Z(e2, t4, r2) {
           var n2, i2, s2 = new Array(g + 1), a2 = 0;
           for (n2 = 1; n2 <= g; n2++) s2[n2] = a2 = a2 + r2[n2 - 1] << 1;
-          for (i2 = 0; i2 <= t2; i2++) {
+          for (i2 = 0; i2 <= t4; i2++) {
             var o2 = e2[2 * i2 + 1];
             0 !== o2 && (e2[2 * i2] = j(s2[o2]++, o2));
           }
         }
         function W(e2) {
-          var t2;
-          for (t2 = 0; t2 < l; t2++) e2.dyn_ltree[2 * t2] = 0;
-          for (t2 = 0; t2 < f; t2++) e2.dyn_dtree[2 * t2] = 0;
-          for (t2 = 0; t2 < c; t2++) e2.bl_tree[2 * t2] = 0;
+          var t4;
+          for (t4 = 0; t4 < l; t4++) e2.dyn_ltree[2 * t4] = 0;
+          for (t4 = 0; t4 < f; t4++) e2.dyn_dtree[2 * t4] = 0;
+          for (t4 = 0; t4 < c; t4++) e2.bl_tree[2 * t4] = 0;
           e2.dyn_ltree[2 * m] = 1, e2.opt_len = e2.static_len = 0, e2.last_lit = e2.matches = 0;
         }
         function M(e2) {
           8 < e2.bi_valid ? U(e2, e2.bi_buf) : 0 < e2.bi_valid && (e2.pending_buf[e2.pending++] = e2.bi_buf), e2.bi_buf = 0, e2.bi_valid = 0;
         }
-        function H(e2, t2, r2, n2) {
-          var i2 = 2 * t2, s2 = 2 * r2;
-          return e2[i2] < e2[s2] || e2[i2] === e2[s2] && n2[t2] <= n2[r2];
+        function H(e2, t4, r2, n2) {
+          var i2 = 2 * t4, s2 = 2 * r2;
+          return e2[i2] < e2[s2] || e2[i2] === e2[s2] && n2[t4] <= n2[r2];
         }
-        function G(e2, t2, r2) {
-          for (var n2 = e2.heap[r2], i2 = r2 << 1; i2 <= e2.heap_len && (i2 < e2.heap_len && H(t2, e2.heap[i2 + 1], e2.heap[i2], e2.depth) && i2++, !H(t2, n2, e2.heap[i2], e2.depth)); ) e2.heap[r2] = e2.heap[i2], r2 = i2, i2 <<= 1;
+        function G(e2, t4, r2) {
+          for (var n2 = e2.heap[r2], i2 = r2 << 1; i2 <= e2.heap_len && (i2 < e2.heap_len && H(t4, e2.heap[i2 + 1], e2.heap[i2], e2.depth) && i2++, !H(t4, n2, e2.heap[i2], e2.depth)); ) e2.heap[r2] = e2.heap[i2], r2 = i2, i2 <<= 1;
           e2.heap[r2] = n2;
         }
-        function K(e2, t2, r2) {
+        function K(e2, t4, r2) {
           var n2, i2, s2, a2, o2 = 0;
-          if (0 !== e2.last_lit) for (; n2 = e2.pending_buf[e2.d_buf + 2 * o2] << 8 | e2.pending_buf[e2.d_buf + 2 * o2 + 1], i2 = e2.pending_buf[e2.l_buf + o2], o2++, 0 === n2 ? L(e2, i2, t2) : (L(e2, (s2 = A[i2]) + u + 1, t2), 0 !== (a2 = w[s2]) && P(e2, i2 -= I[s2], a2), L(e2, s2 = N(--n2), r2), 0 !== (a2 = k[s2]) && P(e2, n2 -= T[s2], a2)), o2 < e2.last_lit; ) ;
-          L(e2, m, t2);
+          if (0 !== e2.last_lit) for (; n2 = e2.pending_buf[e2.d_buf + 2 * o2] << 8 | e2.pending_buf[e2.d_buf + 2 * o2 + 1], i2 = e2.pending_buf[e2.l_buf + o2], o2++, 0 === n2 ? L(e2, i2, t4) : (L(e2, (s2 = A[i2]) + u + 1, t4), 0 !== (a2 = w[s2]) && P(e2, i2 -= I[s2], a2), L(e2, s2 = N(--n2), r2), 0 !== (a2 = k[s2]) && P(e2, n2 -= T[s2], a2)), o2 < e2.last_lit; ) ;
+          L(e2, m, t4);
         }
-        function Y(e2, t2) {
-          var r2, n2, i2, s2 = t2.dyn_tree, a2 = t2.stat_desc.static_tree, o2 = t2.stat_desc.has_stree, h2 = t2.stat_desc.elems, u2 = -1;
+        function Y(e2, t4) {
+          var r2, n2, i2, s2 = t4.dyn_tree, a2 = t4.stat_desc.static_tree, o2 = t4.stat_desc.has_stree, h2 = t4.stat_desc.elems, u2 = -1;
           for (e2.heap_len = 0, e2.heap_max = _, r2 = 0; r2 < h2; r2++) 0 !== s2[2 * r2] ? (e2.heap[++e2.heap_len] = u2 = r2, e2.depth[r2] = 0) : s2[2 * r2 + 1] = 0;
           for (; e2.heap_len < 2; ) s2[2 * (i2 = e2.heap[++e2.heap_len] = u2 < 2 ? ++u2 : 0)] = 1, e2.depth[i2] = 0, e2.opt_len--, o2 && (e2.static_len -= a2[2 * i2 + 1]);
-          for (t2.max_code = u2, r2 = e2.heap_len >> 1; 1 <= r2; r2--) G(e2, s2, r2);
+          for (t4.max_code = u2, r2 = e2.heap_len >> 1; 1 <= r2; r2--) G(e2, s2, r2);
           for (i2 = h2; r2 = e2.heap[1], e2.heap[1] = e2.heap[e2.heap_len--], G(e2, s2, 1), n2 = e2.heap[1], e2.heap[--e2.heap_max] = r2, e2.heap[--e2.heap_max] = n2, s2[2 * i2] = s2[2 * r2] + s2[2 * n2], e2.depth[i2] = (e2.depth[r2] >= e2.depth[n2] ? e2.depth[r2] : e2.depth[n2]) + 1, s2[2 * r2 + 1] = s2[2 * n2 + 1] = i2, e2.heap[1] = i2++, G(e2, s2, 1), 2 <= e2.heap_len; ) ;
-          e2.heap[--e2.heap_max] = e2.heap[1], (function(e3, t3) {
-            var r3, n3, i3, s3, a3, o3, h3 = t3.dyn_tree, u3 = t3.max_code, l2 = t3.stat_desc.static_tree, f2 = t3.stat_desc.has_stree, c2 = t3.stat_desc.extra_bits, d2 = t3.stat_desc.extra_base, p2 = t3.stat_desc.max_length, m2 = 0;
+          e2.heap[--e2.heap_max] = e2.heap[1], (function(e3, t5) {
+            var r3, n3, i3, s3, a3, o3, h3 = t5.dyn_tree, u3 = t5.max_code, l2 = t5.stat_desc.static_tree, f2 = t5.stat_desc.has_stree, c2 = t5.stat_desc.extra_bits, d2 = t5.stat_desc.extra_base, p2 = t5.stat_desc.max_length, m2 = 0;
             for (s3 = 0; s3 <= g; s3++) e3.bl_count[s3] = 0;
             for (h3[2 * e3.heap[e3.heap_max] + 1] = 0, r3 = e3.heap_max + 1; r3 < _; r3++) p2 < (s3 = h3[2 * h3[2 * (n3 = e3.heap[r3]) + 1] + 1] + 1) && (s3 = p2, m2++), h3[2 * n3 + 1] = s3, u3 < n3 || (e3.bl_count[s3]++, a3 = 0, d2 <= n3 && (a3 = c2[n3 - d2]), o3 = h3[2 * n3], e3.opt_len += o3 * (s3 + a3), f2 && (e3.static_len += o3 * (l2[2 * n3 + 1] + a3)));
             if (0 !== m2) {
@@ -10037,15 +10037,15 @@ var require_jszip_min = __commonJS({
               } while (0 < m2);
               for (s3 = p2; 0 !== s3; s3--) for (n3 = e3.bl_count[s3]; 0 !== n3; ) u3 < (i3 = e3.heap[--r3]) || (h3[2 * i3 + 1] !== s3 && (e3.opt_len += (s3 - h3[2 * i3 + 1]) * h3[2 * i3], h3[2 * i3 + 1] = s3), n3--);
             }
-          })(e2, t2), Z(s2, u2, e2.bl_count);
+          })(e2, t4), Z(s2, u2, e2.bl_count);
         }
-        function X2(e2, t2, r2) {
-          var n2, i2, s2 = -1, a2 = t2[1], o2 = 0, h2 = 7, u2 = 4;
-          for (0 === a2 && (h2 = 138, u2 = 3), t2[2 * (r2 + 1) + 1] = 65535, n2 = 0; n2 <= r2; n2++) i2 = a2, a2 = t2[2 * (n2 + 1) + 1], ++o2 < h2 && i2 === a2 || (o2 < u2 ? e2.bl_tree[2 * i2] += o2 : 0 !== i2 ? (i2 !== s2 && e2.bl_tree[2 * i2]++, e2.bl_tree[2 * b]++) : o2 <= 10 ? e2.bl_tree[2 * v]++ : e2.bl_tree[2 * y]++, s2 = i2, u2 = (o2 = 0) === a2 ? (h2 = 138, 3) : i2 === a2 ? (h2 = 6, 3) : (h2 = 7, 4));
+        function X2(e2, t4, r2) {
+          var n2, i2, s2 = -1, a2 = t4[1], o2 = 0, h2 = 7, u2 = 4;
+          for (0 === a2 && (h2 = 138, u2 = 3), t4[2 * (r2 + 1) + 1] = 65535, n2 = 0; n2 <= r2; n2++) i2 = a2, a2 = t4[2 * (n2 + 1) + 1], ++o2 < h2 && i2 === a2 || (o2 < u2 ? e2.bl_tree[2 * i2] += o2 : 0 !== i2 ? (i2 !== s2 && e2.bl_tree[2 * i2]++, e2.bl_tree[2 * b]++) : o2 <= 10 ? e2.bl_tree[2 * v]++ : e2.bl_tree[2 * y]++, s2 = i2, u2 = (o2 = 0) === a2 ? (h2 = 138, 3) : i2 === a2 ? (h2 = 6, 3) : (h2 = 7, 4));
         }
-        function V(e2, t2, r2) {
-          var n2, i2, s2 = -1, a2 = t2[1], o2 = 0, h2 = 7, u2 = 4;
-          for (0 === a2 && (h2 = 138, u2 = 3), n2 = 0; n2 <= r2; n2++) if (i2 = a2, a2 = t2[2 * (n2 + 1) + 1], !(++o2 < h2 && i2 === a2)) {
+        function V(e2, t4, r2) {
+          var n2, i2, s2 = -1, a2 = t4[1], o2 = 0, h2 = 7, u2 = 4;
+          for (0 === a2 && (h2 = 138, u2 = 3), n2 = 0; n2 <= r2; n2++) if (i2 = a2, a2 = t4[2 * (n2 + 1) + 1], !(++o2 < h2 && i2 === a2)) {
             if (o2 < u2) for (; L(e2, i2, e2.bl_tree), 0 != --o2; ) ;
             else 0 !== i2 ? (i2 !== s2 && (L(e2, i2, e2.bl_tree), o2--), L(e2, b, e2.bl_tree), P(e2, o2 - 3, 2)) : o2 <= 10 ? (L(e2, v, e2.bl_tree), P(e2, o2 - 3, 3)) : (L(e2, y, e2.bl_tree), P(e2, o2 - 11, 7));
             s2 = i2, u2 = (o2 = 0) === a2 ? (h2 = 138, 3) : i2 === a2 ? (h2 = 6, 3) : (h2 = 7, 4);
@@ -10053,18 +10053,18 @@ var require_jszip_min = __commonJS({
         }
         n(T);
         var q = false;
-        function J(e2, t2, r2, n2) {
-          P(e2, (s << 1) + (n2 ? 1 : 0), 3), (function(e3, t3, r3, n3) {
-            M(e3), n3 && (U(e3, r3), U(e3, ~r3)), i.arraySet(e3.pending_buf, e3.window, t3, r3, e3.pending), e3.pending += r3;
-          })(e2, t2, r2, true);
+        function J(e2, t4, r2, n2) {
+          P(e2, (s << 1) + (n2 ? 1 : 0), 3), (function(e3, t5, r3, n3) {
+            M(e3), n3 && (U(e3, r3), U(e3, ~r3)), i.arraySet(e3.pending_buf, e3.window, t5, r3, e3.pending), e3.pending += r3;
+          })(e2, t4, r2, true);
         }
         r._tr_init = function(e2) {
           q || ((function() {
-            var e3, t2, r2, n2, i2, s2 = new Array(g + 1);
+            var e3, t4, r2, n2, i2, s2 = new Array(g + 1);
             for (n2 = r2 = 0; n2 < a - 1; n2++) for (I[n2] = r2, e3 = 0; e3 < 1 << w[n2]; e3++) A[r2++] = n2;
             for (A[r2 - 1] = n2, n2 = i2 = 0; n2 < 16; n2++) for (T[n2] = i2, e3 = 0; e3 < 1 << k[n2]; e3++) E[i2++] = n2;
             for (i2 >>= 7; n2 < f; n2++) for (T[n2] = i2 << 7, e3 = 0; e3 < 1 << k[n2] - 7; e3++) E[256 + i2++] = n2;
-            for (t2 = 0; t2 <= g; t2++) s2[t2] = 0;
+            for (t4 = 0; t4 <= g; t4++) s2[t4] = 0;
             for (e3 = 0; e3 <= 143; ) z[2 * e3 + 1] = 8, e3++, s2[8]++;
             for (; e3 <= 255; ) z[2 * e3 + 1] = 9, e3++, s2[9]++;
             for (; e3 <= 279; ) z[2 * e3 + 1] = 7, e3++, s2[7]++;
@@ -10072,69 +10072,69 @@ var require_jszip_min = __commonJS({
             for (Z(z, l + 1, s2), e3 = 0; e3 < f; e3++) C[2 * e3 + 1] = 5, C[2 * e3] = j(e3, 5);
             O = new D(z, w, u + 1, l, g), B = new D(C, k, 0, f, g), R = new D(new Array(0), x, 0, c, p);
           })(), q = true), e2.l_desc = new F(e2.dyn_ltree, O), e2.d_desc = new F(e2.dyn_dtree, B), e2.bl_desc = new F(e2.bl_tree, R), e2.bi_buf = 0, e2.bi_valid = 0, W(e2);
-        }, r._tr_stored_block = J, r._tr_flush_block = function(e2, t2, r2, n2) {
+        }, r._tr_stored_block = J, r._tr_flush_block = function(e2, t4, r2, n2) {
           var i2, s2, a2 = 0;
           0 < e2.level ? (2 === e2.strm.data_type && (e2.strm.data_type = (function(e3) {
-            var t3, r3 = 4093624447;
-            for (t3 = 0; t3 <= 31; t3++, r3 >>>= 1) if (1 & r3 && 0 !== e3.dyn_ltree[2 * t3]) return o;
+            var t5, r3 = 4093624447;
+            for (t5 = 0; t5 <= 31; t5++, r3 >>>= 1) if (1 & r3 && 0 !== e3.dyn_ltree[2 * t5]) return o;
             if (0 !== e3.dyn_ltree[18] || 0 !== e3.dyn_ltree[20] || 0 !== e3.dyn_ltree[26]) return h;
-            for (t3 = 32; t3 < u; t3++) if (0 !== e3.dyn_ltree[2 * t3]) return h;
+            for (t5 = 32; t5 < u; t5++) if (0 !== e3.dyn_ltree[2 * t5]) return h;
             return o;
           })(e2)), Y(e2, e2.l_desc), Y(e2, e2.d_desc), a2 = (function(e3) {
-            var t3;
-            for (X2(e3, e3.dyn_ltree, e3.l_desc.max_code), X2(e3, e3.dyn_dtree, e3.d_desc.max_code), Y(e3, e3.bl_desc), t3 = c - 1; 3 <= t3 && 0 === e3.bl_tree[2 * S[t3] + 1]; t3--) ;
-            return e3.opt_len += 3 * (t3 + 1) + 5 + 5 + 4, t3;
-          })(e2), i2 = e2.opt_len + 3 + 7 >>> 3, (s2 = e2.static_len + 3 + 7 >>> 3) <= i2 && (i2 = s2)) : i2 = s2 = r2 + 5, r2 + 4 <= i2 && -1 !== t2 ? J(e2, t2, r2, n2) : 4 === e2.strategy || s2 === i2 ? (P(e2, 2 + (n2 ? 1 : 0), 3), K(e2, z, C)) : (P(e2, 4 + (n2 ? 1 : 0), 3), (function(e3, t3, r3, n3) {
+            var t5;
+            for (X2(e3, e3.dyn_ltree, e3.l_desc.max_code), X2(e3, e3.dyn_dtree, e3.d_desc.max_code), Y(e3, e3.bl_desc), t5 = c - 1; 3 <= t5 && 0 === e3.bl_tree[2 * S[t5] + 1]; t5--) ;
+            return e3.opt_len += 3 * (t5 + 1) + 5 + 5 + 4, t5;
+          })(e2), i2 = e2.opt_len + 3 + 7 >>> 3, (s2 = e2.static_len + 3 + 7 >>> 3) <= i2 && (i2 = s2)) : i2 = s2 = r2 + 5, r2 + 4 <= i2 && -1 !== t4 ? J(e2, t4, r2, n2) : 4 === e2.strategy || s2 === i2 ? (P(e2, 2 + (n2 ? 1 : 0), 3), K(e2, z, C)) : (P(e2, 4 + (n2 ? 1 : 0), 3), (function(e3, t5, r3, n3) {
             var i3;
-            for (P(e3, t3 - 257, 5), P(e3, r3 - 1, 5), P(e3, n3 - 4, 4), i3 = 0; i3 < n3; i3++) P(e3, e3.bl_tree[2 * S[i3] + 1], 3);
-            V(e3, e3.dyn_ltree, t3 - 1), V(e3, e3.dyn_dtree, r3 - 1);
+            for (P(e3, t5 - 257, 5), P(e3, r3 - 1, 5), P(e3, n3 - 4, 4), i3 = 0; i3 < n3; i3++) P(e3, e3.bl_tree[2 * S[i3] + 1], 3);
+            V(e3, e3.dyn_ltree, t5 - 1), V(e3, e3.dyn_dtree, r3 - 1);
           })(e2, e2.l_desc.max_code + 1, e2.d_desc.max_code + 1, a2 + 1), K(e2, e2.dyn_ltree, e2.dyn_dtree)), W(e2), n2 && M(e2);
-        }, r._tr_tally = function(e2, t2, r2) {
-          return e2.pending_buf[e2.d_buf + 2 * e2.last_lit] = t2 >>> 8 & 255, e2.pending_buf[e2.d_buf + 2 * e2.last_lit + 1] = 255 & t2, e2.pending_buf[e2.l_buf + e2.last_lit] = 255 & r2, e2.last_lit++, 0 === t2 ? e2.dyn_ltree[2 * r2]++ : (e2.matches++, t2--, e2.dyn_ltree[2 * (A[r2] + u + 1)]++, e2.dyn_dtree[2 * N(t2)]++), e2.last_lit === e2.lit_bufsize - 1;
+        }, r._tr_tally = function(e2, t4, r2) {
+          return e2.pending_buf[e2.d_buf + 2 * e2.last_lit] = t4 >>> 8 & 255, e2.pending_buf[e2.d_buf + 2 * e2.last_lit + 1] = 255 & t4, e2.pending_buf[e2.l_buf + e2.last_lit] = 255 & r2, e2.last_lit++, 0 === t4 ? e2.dyn_ltree[2 * r2]++ : (e2.matches++, t4--, e2.dyn_ltree[2 * (A[r2] + u + 1)]++, e2.dyn_dtree[2 * N(t4)]++), e2.last_lit === e2.lit_bufsize - 1;
         }, r._tr_align = function(e2) {
           P(e2, 2, 3), L(e2, m, z), (function(e3) {
             16 === e3.bi_valid ? (U(e3, e3.bi_buf), e3.bi_buf = 0, e3.bi_valid = 0) : 8 <= e3.bi_valid && (e3.pending_buf[e3.pending++] = 255 & e3.bi_buf, e3.bi_buf >>= 8, e3.bi_valid -= 8);
           })(e2);
         };
-      }, { "../utils/common": 41 }], 53: [function(e, t, r) {
+      }, { "../utils/common": 41 }], 53: [function(e, t3, r) {
         "use strict";
-        t.exports = function() {
+        t3.exports = function() {
           this.input = null, this.next_in = 0, this.avail_in = 0, this.total_in = 0, this.output = null, this.next_out = 0, this.avail_out = 0, this.total_out = 0, this.msg = "", this.state = null, this.data_type = 2, this.adler = 0;
         };
-      }, {}], 54: [function(e, t, r) {
+      }, {}], 54: [function(e, t3, r) {
         (function(e2) {
           !(function(r2, n) {
             "use strict";
             if (!r2.setImmediate) {
-              var i, s, t2, a, o = 1, h = {}, u = false, l = r2.document, e3 = Object.getPrototypeOf && Object.getPrototypeOf(r2);
+              var i, s, t4, a, o = 1, h = {}, u = false, l = r2.document, e3 = Object.getPrototypeOf && Object.getPrototypeOf(r2);
               e3 = e3 && e3.setTimeout ? e3 : r2, i = "[object process]" === {}.toString.call(r2.process) ? function(e4) {
                 process.nextTick(function() {
                   c(e4);
                 });
               } : (function() {
                 if (r2.postMessage && !r2.importScripts) {
-                  var e4 = true, t3 = r2.onmessage;
+                  var e4 = true, t5 = r2.onmessage;
                   return r2.onmessage = function() {
                     e4 = false;
-                  }, r2.postMessage("", "*"), r2.onmessage = t3, e4;
+                  }, r2.postMessage("", "*"), r2.onmessage = t5, e4;
                 }
               })() ? (a = "setImmediate$" + Math.random() + "$", r2.addEventListener ? r2.addEventListener("message", d, false) : r2.attachEvent("onmessage", d), function(e4) {
                 r2.postMessage(a + e4, "*");
-              }) : r2.MessageChannel ? ((t2 = new MessageChannel()).port1.onmessage = function(e4) {
+              }) : r2.MessageChannel ? ((t4 = new MessageChannel()).port1.onmessage = function(e4) {
                 c(e4.data);
               }, function(e4) {
-                t2.port2.postMessage(e4);
+                t4.port2.postMessage(e4);
               }) : l && "onreadystatechange" in l.createElement("script") ? (s = l.documentElement, function(e4) {
-                var t3 = l.createElement("script");
-                t3.onreadystatechange = function() {
-                  c(e4), t3.onreadystatechange = null, s.removeChild(t3), t3 = null;
-                }, s.appendChild(t3);
+                var t5 = l.createElement("script");
+                t5.onreadystatechange = function() {
+                  c(e4), t5.onreadystatechange = null, s.removeChild(t5), t5 = null;
+                }, s.appendChild(t5);
               }) : function(e4) {
                 setTimeout(c, 0, e4);
               }, e3.setImmediate = function(e4) {
                 "function" != typeof e4 && (e4 = new Function("" + e4));
-                for (var t3 = new Array(arguments.length - 1), r3 = 0; r3 < t3.length; r3++) t3[r3] = arguments[r3 + 1];
-                var n2 = { callback: e4, args: t3 };
+                for (var t5 = new Array(arguments.length - 1), r3 = 0; r3 < t5.length; r3++) t5[r3] = arguments[r3 + 1];
+                var n2 = { callback: e4, args: t5 };
                 return h[o] = n2, i(o), o++;
               }, e3.clearImmediate = f;
             }
@@ -10144,29 +10144,29 @@ var require_jszip_min = __commonJS({
             function c(e4) {
               if (u) setTimeout(c, 0, e4);
               else {
-                var t3 = h[e4];
-                if (t3) {
+                var t5 = h[e4];
+                if (t5) {
                   u = true;
                   try {
                     !(function(e5) {
-                      var t4 = e5.callback, r3 = e5.args;
+                      var t6 = e5.callback, r3 = e5.args;
                       switch (r3.length) {
                         case 0:
-                          t4();
+                          t6();
                           break;
                         case 1:
-                          t4(r3[0]);
+                          t6(r3[0]);
                           break;
                         case 2:
-                          t4(r3[0], r3[1]);
+                          t6(r3[0], r3[1]);
                           break;
                         case 3:
-                          t4(r3[0], r3[1], r3[2]);
+                          t6(r3[0], r3[1], r3[2]);
                           break;
                         default:
-                          t4.apply(n, r3);
+                          t6.apply(n, r3);
                       }
-                    })(t3);
+                    })(t5);
                   } finally {
                     f(e4), u = false;
                   }
@@ -10202,11 +10202,221 @@ var CHENGGAO_ICON_SVG = `
 <path d="M58 72h14" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
 `.trim();
 
+// src/i18n.ts
+var EN = {
+  "plugin.name": "Chenggao",
+  "command.openPreview": "Open layout preview",
+  "command.copyWechat": "Copy WeChat article format",
+  "command.exportImages": "Export images next to the note",
+  "menu.openWith": "Open with Chenggao",
+  "notice.openNoteFirst": "Open a Markdown note first.",
+  "notice.cannotSplit": "Could not open the preview pane.",
+  "empty.title": "Open a Markdown note first",
+  "empty.body": "Keep editing in Obsidian on the left. Cards or the article preview will appear here.",
+  "tab.title": "Chenggao",
+  "tab.titleNote": "Chenggao \xB7 {name}",
+  "error.noteMissing": "The current note no longer exists.",
+  "error.imageRead": "Could not read the image.",
+  "error.pluginExport": "Chenggao is not ready to export.",
+  "error.copyBlocked": "The browser blocked clipboard access.",
+  "error.copyFailed": "Copy failed. Allow clipboard access and try again.",
+  "error.exportImages": "Could not export images.",
+  "error.exportArticle": "Could not export the article image.",
+  "error.renderCards": "Could not render cards. Check the note and try again.",
+  "error.renderArticle": "Could not render the article. Check the note first.",
+  "error.html2canvas": "The image exporter is not loaded. Reload Obsidian and try again.",
+  "error.writeNote": "Could not write back to the note.",
+  "error.emptyArticle": "The article is empty.",
+  "preview.aria": "Preview",
+  "preview.heading": "Preview and export",
+  "preview.statusReady": "Auto pagination is on",
+  "preview.statusNote": "Laying out {path}",
+  "preview.statusCurrent": "Laying out the current note",
+  "mode.aria": "Preview mode",
+  "mode.cards": "Cards",
+  "mode.article": "Article",
+  "layout.title": "Card layout",
+  "layout.keepHeading": "Keep headings off the last line",
+  "layout.keepHeadingOn": "Keep headings off the last line: on",
+  "layout.keepHeadingOff": "Keep headings off the last line: off",
+  "layout.keepHeadingEnabled": "On: a heading will move to the next page with its body when it would sit alone at the bottom.",
+  "layout.keepHeadingDisabled": "Off: headings paginate where they land.",
+  "theme.title": "Theme",
+  "theme.classic": "Classic",
+  "theme.elegant": "Elegant",
+  "theme.clean": "Clean",
+  "theme.wechat": "WeChat green",
+  "theme.colorful": "Colorful WeChat",
+  "font.title": "Font",
+  "font.sans": "Sans",
+  "font.serif": "Serif",
+  "font.mono": "Mono",
+  "size.title": "Size",
+  "size.small": "Smaller",
+  "size.normal": "Default",
+  "size.large": "Larger",
+  "color.title": "Accent",
+  "color.teal": "Jade",
+  "color.blue": "Blue",
+  "color.orange": "Coral",
+  "color.purple": "Violet",
+  "color.black": "Ink",
+  "action.exportImages": "Export images",
+  "action.exportArticle": "Export long image",
+  "action.copyWechat": "Copy WeChat format",
+  "status.copiedWechatSaved": "Copied WeChat rich text and saved {path}",
+  "status.copiedWechat": "Copied WeChat rich text. Paste it into the WeChat editor.",
+  "status.exportedImages": "Exported {n} image(s) to {folder}",
+  "status.savedPath": "Saved {path}",
+  "status.renderingCards": "Rendering cards\u2026",
+  "status.empty": "Nothing to preview yet",
+  "status.generated": "Generated {n} page(s), {width}\xD7{height} px",
+  "status.cancelled": "Export cancelled",
+  "progress.exportImages": "Exporting images",
+  "progress.exportImagesDetail": "Writing into the Images folder next to the note\u2026",
+  "progress.exportPage": "Exporting {current}/{total}",
+  "progress.exportPng": "Creating high-resolution PNG\u2026",
+  "progress.exportDone": "Images exported",
+  "progress.exportFail": "Image export failed",
+  "progress.article": "Creating the article image",
+  "progress.articlePrepare": "Preparing the full article\u2026",
+  "progress.articleRender": "Rendering theme, text, and images\u2026",
+  "progress.articlePng": "Converting to a high-resolution PNG\u2026",
+  "progress.articleSave": "Saving the long image\u2026",
+  "progress.articleDone": "Article image exported",
+  "progress.articleFail": "Article image export failed",
+  "unnamed": "Untitled",
+  "folder.images": "Images"
+};
+var ZH = {
+  "plugin.name": "\u6210\u7A3F\u9884\u89C8",
+  "command.openPreview": "\u6253\u5F00\u6392\u7248\u9884\u89C8",
+  "command.copyWechat": "\u590D\u5236\u516C\u4F17\u53F7\u683C\u5F0F",
+  "command.exportImages": "\u5BFC\u51FA\u56FE\u7247\u5230\u540C\u7EA7\u56FE\u7247\u6587\u4EF6\u5939",
+  "menu.openWith": "\u7528\u6210\u7A3F\u9884\u89C8\u6253\u5F00",
+  "notice.openNoteFirst": "\u8BF7\u5148\u6253\u5F00\u4E00\u7BC7 Markdown \u7B14\u8BB0\u3002",
+  "notice.cannotSplit": "\u65E0\u6CD5\u6253\u5F00\u9884\u89C8\u5206\u680F\u3002",
+  "empty.title": "\u5148\u6253\u5F00\u4E00\u7BC7 Markdown \u7B14\u8BB0",
+  "empty.body": "\u5DE6\u4FA7\u7EE7\u7EED\u7528 Obsidian \u7F16\u8F91\uFF0C\u8FD9\u91CC\u4F1A\u663E\u793A\u56FE\u6587\u5361\u7247\u6216\u957F\u6587\u9884\u89C8\u3002",
+  "tab.title": "\u6210\u7A3F\u9884\u89C8",
+  "tab.titleNote": "\u6210\u7A3F\u9884\u89C8 \xB7 {name}",
+  "error.noteMissing": "\u5F53\u524D\u7B14\u8BB0\u5DF2\u4E0D\u5B58\u5728\u3002",
+  "error.imageRead": "\u56FE\u7247\u8BFB\u53D6\u5931\u8D25\u3002",
+  "error.pluginExport": "\u63D2\u4EF6\u8FD8\u6CA1\u51C6\u5907\u597D\u5BFC\u51FA\u3002",
+  "error.copyBlocked": "\u6D4F\u89C8\u5668\u6CA1\u6709\u5141\u8BB8\u590D\u5236\u3002",
+  "error.copyFailed": "\u590D\u5236\u5931\u8D25\uFF0C\u8BF7\u5141\u8BB8\u6D4F\u89C8\u5668\u8BBF\u95EE\u526A\u8D34\u677F\u3002",
+  "error.exportImages": "\u5BFC\u51FA\u56FE\u7247\u5931\u8D25",
+  "error.exportArticle": "\u957F\u56FE\u4E0B\u8F7D\u5931\u8D25\uFF0C\u8BF7\u7A0D\u540E\u91CD\u8BD5",
+  "error.renderCards": "\u56FE\u6587\u5361\u7247\u751F\u6210\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u6B63\u6587\u540E\u518D\u8BD5",
+  "error.renderArticle": "\u957F\u6587\u751F\u6210\u5931\u8D25\uFF0C\u8BF7\u5148\u68C0\u67E5\u5185\u5BB9",
+  "error.html2canvas": "\u957F\u56FE\u4E0B\u8F7D\u7EC4\u4EF6\u672A\u52A0\u8F7D\uFF0C\u8BF7\u5237\u65B0\u9875\u9762\u540E\u91CD\u8BD5",
+  "error.writeNote": "\u5199\u56DE\u5F53\u524D\u7B14\u8BB0\u5931\u8D25",
+  "error.emptyArticle": "\u957F\u6587\u5185\u5BB9\u4E3A\u7A7A\uFF0C\u8BF7\u5148\u8F93\u5165\u6B63\u6587\u3002",
+  "preview.aria": "\u56FE\u7247\u9884\u89C8",
+  "preview.heading": "\u9884\u89C8\u4E0E\u4E0B\u8F7D",
+  "preview.statusReady": "\u81EA\u52A8\u5206\u9875\u5DF2\u5F00\u542F",
+  "preview.statusNote": "\u6B63\u5728\u6392\u7248 {path}",
+  "preview.statusCurrent": "\u6B63\u5728\u6392\u7248\u5F53\u524D\u7B14\u8BB0",
+  "mode.aria": "\u5207\u6362\u5DE5\u4F5C\u533A",
+  "mode.cards": "\u56FE\u6587\u5361\u7247",
+  "mode.article": "\u957F\u6587",
+  "layout.title": "\u56FE\u6587\u6392\u7248",
+  "layout.keepHeading": "\u6807\u9898\u4E0D\u843D\u5728\u9875\u5E95",
+  "layout.keepHeadingOn": "\u6807\u9898\u4E0D\u843D\u5728\u9875\u5E95\uFF1A\u5DF2\u5F00\u542F",
+  "layout.keepHeadingOff": "\u6807\u9898\u4E0D\u843D\u5728\u9875\u5E95\uFF1A\u5DF2\u5173\u95ED",
+  "layout.keepHeadingEnabled": "\u5DF2\u5F00\u542F\uFF1A\u6807\u9898\u5C3D\u91CF\u4E0D\u5355\u72EC\u51FA\u73B0\u5728\u9875\u5E95",
+  "layout.keepHeadingDisabled": "\u5DF2\u5173\u95ED\uFF1A\u6807\u9898\u6309\u539F\u4F4D\u7F6E\u5206\u9875",
+  "theme.title": "\u4E3B\u9898",
+  "theme.classic": "\u7ECF\u5178",
+  "theme.elegant": "\u4F18\u96C5",
+  "theme.clean": "\u7B80\u6D01",
+  "theme.wechat": "\u5FAE\u4FE1\u7EFF",
+  "theme.colorful": "\u591A\u5F69\u5FAE\u4FE1",
+  "font.title": "\u5B57\u4F53",
+  "font.sans": "\u65E0\u886C\u7EBF",
+  "font.serif": "\u886C\u7EBF",
+  "font.mono": "\u7B49\u5BBD",
+  "size.title": "\u5B57\u53F7",
+  "size.small": "\u66F4\u5C0F",
+  "size.normal": "\u63A8\u8350",
+  "size.large": "\u7A0D\u5927",
+  "color.title": "\u4E3B\u9898\u8272",
+  "color.teal": "\u7FE1\u7FE0\u7EFF",
+  "color.blue": "\u7ECF\u5178\u84DD",
+  "color.orange": "\u6D3B\u529B\u6A58",
+  "color.purple": "\u85B0\u8863\u7D2B",
+  "color.black": "\u77F3\u58A8\u9ED1",
+  "action.exportImages": "\u5BFC\u51FA\u56FE\u7247",
+  "action.exportArticle": "\u5BFC\u51FA\u957F\u56FE",
+  "action.copyWechat": "\u590D\u5236\u516C\u4F17\u53F7\u683C\u5F0F",
+  "status.copiedWechatSaved": "\u5DF2\u590D\u5236\u516C\u4F17\u53F7\u5BCC\u6587\u672C\uFF0C\u5E76\u4FDD\u5B58 {path}",
+  "status.copiedWechat": "\u5DF2\u590D\u5236\u516C\u4F17\u53F7\u5BCC\u6587\u672C\uFF0C\u53EF\u76F4\u63A5\u7C98\u8D34\u5230\u516C\u4F17\u53F7\u7F16\u8F91\u5668",
+  "status.exportedImages": "\u5DF2\u5BFC\u51FA {n} \u5F20\u56FE\u7247\u5230 {folder}",
+  "status.savedPath": "\u5DF2\u4FDD\u5B58 {path}",
+  "status.renderingCards": "\u6B63\u5728\u751F\u6210\u56FE\u6587\u5361\u7247\u2026",
+  "status.empty": "\u6682\u65E0\u5185\u5BB9",
+  "status.generated": "\u5DF2\u751F\u6210 {n} \u5F20\uFF0C\u9AD8\u6E05\u5C3A\u5BF8 {width}x{height}",
+  "status.cancelled": "\u5DF2\u53D6\u6D88\u4E0B\u8F7D",
+  "progress.exportImages": "\u6B63\u5728\u5BFC\u51FA\u56FE\u7247",
+  "progress.exportImagesDetail": "\u6B63\u5728\u5199\u5165\u7B14\u8BB0\u540C\u7EA7\u7684\u56FE\u7247\u6587\u4EF6\u5939\u2026",
+  "progress.exportPage": "\u6B63\u5728\u5BFC\u51FA {current}/{total}",
+  "progress.exportPng": "\u6B63\u5728\u751F\u6210\u9AD8\u6E05 PNG\u2026",
+  "progress.exportDone": "\u56FE\u7247\u5BFC\u51FA\u5B8C\u6210",
+  "progress.exportFail": "\u56FE\u7247\u5BFC\u51FA\u5931\u8D25",
+  "progress.article": "\u6B63\u5728\u751F\u6210\u957F\u6587\u56FE\u7247",
+  "progress.articlePrepare": "\u6B63\u5728\u51C6\u5907\u5B8C\u6574\u6587\u7AE0\u753B\u9762\u2026",
+  "progress.articleRender": "\u6B63\u5728\u5408\u6210\u957F\u6587\u4E3B\u9898\u3001\u6587\u5B57\u548C\u56FE\u7247\u2026",
+  "progress.articlePng": "\u957F\u6587\u753B\u9762\u5DF2\u6E32\u67D3\uFF0C\u6B63\u5728\u8F6C\u6362\u4E3A\u9AD8\u6E05\u56FE\u7247\u2026",
+  "progress.articleSave": "\u56FE\u7247\u5DF2\u7ECF\u751F\u6210\uFF0C\u6B63\u5728\u5199\u5165\u4E0B\u8F7D\u4F4D\u7F6E\u2026",
+  "progress.articleDone": "\u957F\u56FE\u4E0B\u8F7D\u5B8C\u6210",
+  "progress.articleFail": "\u957F\u56FE\u4E0B\u8F7D\u5931\u8D25",
+  "unnamed": "\u672A\u547D\u540D",
+  "folder.images": "\u56FE\u7247"
+};
+function detectLocale() {
+  var _a2;
+  const runtime = ((_a2 = window.obsidianApiGetLanguage) == null ? void 0 : _a2.call(window)) || "";
+  const stored = typeof localStorage !== "undefined" ? localStorage.getItem("language") || "" : "";
+  const language = runtime || stored;
+  return /^zh/i.test(language) ? "zh" : "en";
+}
+var TABLES = { en: EN, zh: ZH };
+var locale = "en";
+function t(key, vars) {
+  let value = TABLES[locale][key] || EN[key];
+  if (vars) {
+    for (const [name, replacement] of Object.entries(vars)) {
+      value = value.replaceAll(`{${name}}`, String(replacement));
+    }
+  }
+  return value;
+}
+function applyI18n(root) {
+  root.querySelectorAll("[data-i18n]").forEach((el) => {
+    const key = el.dataset.i18n;
+    if (key) el.textContent = t(key);
+  });
+  root.querySelectorAll("[data-i18n-title]").forEach((el) => {
+    const key = el.dataset.i18nTitle;
+    if (key) el.setAttribute("title", t(key));
+  });
+  root.querySelectorAll("[data-i18n-aria]").forEach((el) => {
+    const key = el.dataset.i18nAria;
+    if (key) el.setAttribute("aria-label", t(key));
+  });
+}
+function installI18n(getLanguage) {
+  window.obsidianApiGetLanguage = getLanguage;
+  locale = detectLocale();
+  window.__chenggaoT = (key, vars) => t(key, vars);
+  window.__chenggaoLocale = locale;
+}
+
 // src/view.ts
 var import_obsidian4 = require("obsidian");
 
 // src/workspace.html
-var workspace_default = '<main class="workspace">\n      <aside id="historySidebar" class="history-sidebar" aria-label="\u5386\u53F2\u8BB0\u5F55">\n        <button id="historyToggleBtn" class="history-tab" type="button" title="\u6253\u5F00\u5386\u53F2\u8BB0\u5F55" aria-label="\u6253\u5F00\u5386\u53F2\u8BB0\u5F55">\n          <i data-lucide="panel-left-open"></i>\n        </button>\n        <div class="history-drawer">\n          <div class="history-head">\n            <span>\u5386\u53F2\u8BB0\u5F55</span>\n            <button id="historyCloseBtn" class="icon-button ghost" type="button" title="\u6536\u8D77\u5386\u53F2\u8BB0\u5F55" aria-label="\u6536\u8D77\u5386\u53F2\u8BB0\u5F55">\n              <i data-lucide="panel-left-close"></i>\n            </button>\n          </div>\n          <small class="history-note">\u81EA\u52A8\u4FDD\u5B58\uFF0C\u70B9\u51FB\u6062\u590D</small>\n          <div class="history-filter" aria-label="\u5386\u53F2\u8BB0\u5F55\u7B5B\u9009">\n            <button type="button" class="active" data-history-filter="all">\u5168\u90E8</button>\n            <button type="button" data-history-filter="cards">\u56FE\u6587</button>\n            <button type="button" data-history-filter="article">\u957F\u6587</button>\n          </div>\n          <div id="projectHistory" class="history-list"></div>\n        </div>\n      </aside>\n      <button class="panel-resizer" data-panel-resize="history" type="button" aria-label="\u62D6\u52A8\u8C03\u6574\u5386\u53F2\u680F\u5BBD\u5EA6"></button>\n\n      <aside class="editor-panel" aria-label="\u7F16\u8F91\u5668">\n        <div class="brand-row">\n          <div class="brand-title">\n            <h1>\u6210\u7A3F\u9884\u89C8</h1>\n            <span class="brand-english">Chenggao</span>\n            <p id="pageCount">0 \u5F20\u56FE\u7247</p>\n          </div>\n          <div class="brand-actions">\n            <button class="icon-button" id="newProjectBtn" type="button" title="\u65B0\u5EFA\u56FE\u6587" aria-label="\u65B0\u5EFA\u56FE\u6587">\n              <i data-lucide="plus"></i>\n            </button>\n            <button class="secondary-button convert-mode-button" id="convertModeBtn" type="button">\n              <i data-lucide="repeat-2"></i>\n              <span>\u8F6C\u957F\u6587</span>\n            </button>\n            <button class="secondary-button header-mode-button" id="headerModeToggleBtn" type="button">\n              <i data-lucide="user-round"></i>\n              \u6BCF\u9875\u5934\u50CF\n            </button>\n            <button class="icon-button" id="themeToggleBtn" type="button" title="\u5207\u6362\u9ED1\u767D\u4E3B\u9898" aria-label="\u5207\u6362\u9ED1\u767D\u4E3B\u9898">\n              <i data-lucide="palette"></i>\n            </button>\n          </div>\n        </div>\n\n        <section class="editor-controls" aria-label="\u7F16\u8F91\u5DE5\u5177">\n          <div class="profile-inline">\n            <label class="avatar-picker" title="\u4FEE\u6539\u5934\u50CF">\n              <img id="avatarPreview" alt="\u5934\u50CF\u9884\u89C8" />\n              <input id="avatarInput" type="file" accept="image/*" />\n            </label>\n            <input id="displayNameInput" class="compact-input name-input" type="text" aria-label="\u540D\u79F0" />\n            <input id="handleInput" class="compact-input handle-input" type="text" aria-label="\u82F1\u6587\u6635\u79F0" placeholder="\u53EF\u7559\u7A7A" />\n            <button id="cropAvatarBtn" class="tool-button" type="button" title="\u88C1\u526A\u5934\u50CF" aria-label="\u88C1\u526A\u5934\u50CF">\n              <i data-lucide="crop"></i>\n            </button>\n          </div>\n\n          <div class="toolbar" aria-label="\u6587\u5B57\u6837\u5F0F">\n            <button type="button" class="tool-button" data-format="h1" title="\u5927\u6807\u9898">H1</button>\n            <button type="button" class="tool-button" data-format="h2" title="\u5C0F\u6807\u9898">H2</button>\n            <button type="button" class="tool-button" data-format="bold" title="\u52A0\u7C97"><strong>B</strong></button>\n            <button type="button" class="tool-button" data-format="italic" title="\u659C\u4F53"><em>I</em></button>\n            <details id="underlineMenu" class="tool-menu underline-menu">\n              <summary class="tool-button" title="\u4E0B\u5212\u7EBF" aria-label="\u4E0B\u5212\u7EBF">\n                <i data-lucide="underline"></i>\n              </summary>\n              <div class="tool-popover underline-popover">\n                <div class="color-guide">\n                  <strong>\u4E0B\u5212\u7EBF</strong>\n                  <span>\u7EBF\u8DDD\u56FA\u5B9A 15 px\u3002\u518D\u6B21\u9009\u62E9\u540C\u6B3E\u53EF\u53D6\u6D88\uFF0C\u4E5F\u53EF\u76F4\u63A5\u70B9\u201C\u53D6\u6D88\u201D\u3002</span>\n                </div>\n                <div class="underline-options" role="group" aria-label="\u4E0B\u5212\u7EBF\u6837\u5F0F">\n                  <button type="button" class="underline-option" data-format="underline-solid">\n                    <span class="underline-option-preview is-solid">\u5B9E\u7EBF</span>\n                  </button>\n                  <button type="button" class="underline-option" data-format="underline-dashed">\n                    <span class="underline-option-preview is-dashed">\u865A\u7EBF</span>\n                  </button>\n                  <button type="button" class="underline-option" data-format="underline-none">\n                    <span class="underline-option-preview is-none">\u53D6\u6D88</span>\n                  </button>\n                </div>\n              </div>\n            </details>\n            <button type="button" class="tool-button" data-format="quote" title="\u91CD\u70B9\u5F15\u7528"><i data-lucide="quote"></i></button>\n            <label class="tool-button file-tool" title="\u63D2\u5165\u56FE\u7247" aria-label="\u63D2\u5165\u56FE\u7247">\n              <i data-lucide="image-plus"></i>\n              <input id="contentImageInput" type="file" accept="image/*" multiple />\n            </label>\n            <label id="livePhotoToolbarBtn" class="tool-button file-tool feature-anchor" title="\u63D2\u5165\u5B9E\u51B5\u56FE\u7247" aria-label="\u63D2\u5165\u5B9E\u51B5\u56FE\u7247">\n              <i data-lucide="video"></i>\n              <span class="feature-new-badge" data-feature-badge="live" aria-label="\u65B0\u529F\u80FD">\u65B0</span>\n              <input id="contentVideoInput" type="file" accept="video/mp4,video/quicktime,video/webm,.mp4,.mov,.webm" />\n            </label>\n            <details id="obsidianImportMenu" class="tool-menu obsidian-import-menu">\n              <summary class="tool-button feature-anchor" title="Obsidian \u53CC\u5411\u540C\u6B65" aria-label="Obsidian \u53CC\u5411\u540C\u6B65">\n                <i data-lucide="clipboard-paste"></i>\n                <span class="feature-new-badge" data-feature-badge="obsidian" aria-label="\u65B0\u529F\u80FD">\u65B0</span>\n              </summary>\n              <div class="tool-popover obsidian-import-popover">\n                <div class="obsidian-import-heading">\n                  <strong>Obsidian \u53CC\u5411\u540C\u6B65</strong>\n                  <span>\u7C98\u8D34\u7B14\u8BB0\u65F6\u8BFB\u53D6\u56FE\u7247\uFF0C\u4FEE\u6539\u540E\u53EF\u540C\u6B65\u56DE\u4ED3\u5E93\u3002</span>\n                </div>\n                <div class="obsidian-vault-row">\n                  <div class="obsidian-vault-actions">\n                    <button id="connectObsidianVaultBtn" class="secondary-button" type="button">\n                      <i data-lucide="folder-open"></i>\n                      \u8FDE\u63A5\u4ED3\u5E93\n                    </button>\n                    <button id="syncObsidianVaultBtn" class="primary-button" type="button">\n                      <i data-lucide="upload-cloud"></i>\n                      \u540C\u6B65\u56DE Obsidian\n                    </button>\n                  </div>\n                  <input id="obsidianVaultFolderInput" class="obsidian-vault-folder-input" type="file" webkitdirectory directory multiple />\n                  <span id="obsidianVaultStatus">\u5C1A\u672A\u8FDE\u63A5\u4ED3\u5E93</span>\n                </div>\n                <p class="obsidian-direct-paste-hint">\u5DF2\u8FDE\u63A5\u4ED3\u5E93\u3002\u7C98\u8D34 Obsidian Markdown \u4F1A\u81EA\u52A8\u8BFB\u53D6\u56FE\u7247\uFF1B\u540C\u6B65\u5185\u5BB9\u4FDD\u5B58\u5728\u4ED3\u5E93\u7684\u201C\u6210\u7A3F\u9884\u89C8\u201D\u6587\u4EF6\u5939\u3002</p>\n              </div>\n            </details>\n            <details id="colorMenu" class="tool-menu">\n              <summary class="tool-button color-tool" title="\u9009\u4E2D\u6587\u5B57\u989C\u8272" aria-label="\u9009\u4E2D\u6587\u5B57\u989C\u8272">\n                <i data-lucide="paintbrush"></i>\n              </summary>\n              <div class="tool-popover color-popover">\n                <div class="color-guide">\n                  <strong>\u6587\u5B57\u4E0A\u8272</strong>\n                  <span>\u5148\u9009\u4E2D\u6587\u5B57\u548C\u81EA\u5B9A\u4E49\u989C\u8272\uFF0C\u518D\u51B3\u5B9A\u4EC5\u672C\u6B21\u4F7F\u7528\u6216\u4FDD\u5B58\u5230\u8272\u677F\u3002</span>\n                </div>\n                <label>\n                  \u5B57\u4F53\u989C\u8272\n                  <input id="inlineColorInput" type="color" value="#2563eb" />\n                </label>\n                <div class="custom-color-actions" role="group" aria-label="\u5B57\u4F53\u989C\u8272\u4FDD\u5B58\u65B9\u5F0F">\n                  <button type="button" class="custom-color-action" data-custom-color-action data-color-kind="color" data-color-save="false">\u4EC5\u672C\u6B21</button>\n                  <button type="button" class="custom-color-action is-save" data-custom-color-action data-color-kind="color" data-color-save="true">\u4FDD\u5B58\u5E76\u4F7F\u7528</button>\n                </div>\n              </div>\n            </details>\n\n            <details id="bgColorMenu" class="tool-menu">\n              <summary class="tool-button bg-color-tool" title="\u9009\u4E2D\u6587\u5B57\u80CC\u666F\u8272" aria-label="\u9009\u4E2D\u6587\u5B57\u80CC\u666F\u8272">\n                <i data-lucide="highlighter"></i>\n              </summary>\n              <div class="tool-popover color-popover">\n                <div class="color-guide">\n                  <strong>\u80CC\u666F\u4E0A\u8272</strong>\n                  <span>\u5148\u9009\u4E2D\u6587\u5B57\u548C\u81EA\u5B9A\u4E49\u80CC\u666F\u8272\uFF0C\u518D\u51B3\u5B9A\u4EC5\u672C\u6B21\u4F7F\u7528\u6216\u4FDD\u5B58\u5230\u8272\u677F\u3002</span>\n                </div>\n                <label>\n                  \u80CC\u666F\u989C\u8272\n                  <input id="inlineBgColorInput" type="color" value="#fff3a3" />\n                </label>\n                <div class="custom-color-actions" role="group" aria-label="\u80CC\u666F\u989C\u8272\u4FDD\u5B58\u65B9\u5F0F">\n                  <button type="button" class="custom-color-action" data-custom-color-action data-color-kind="bg" data-color-save="false">\u4EC5\u672C\u6B21</button>\n                  <button type="button" class="custom-color-action is-save" data-custom-color-action data-color-kind="bg" data-color-save="true">\u4FDD\u5B58\u5E76\u4F7F\u7528</button>\n                </div>\n                <button type="button" class="clear-inline-style-action" data-clear-inline-style="bg">\n                  <i data-lucide="eraser"></i>\n                  \u6E05\u9664\u80CC\u666F\u8272\n                </button>\n              </div>\n            </details>\n\n            <button id="copyPlainTextBtn" class="tool-button" type="button" title="\u590D\u5236\u5168\u6587\uFF08\u53BB\u9664\u56FE\u7247\u4E0E\u683C\u5F0F\uFF09" aria-label="\u590D\u5236\u5168\u6587\uFF0C\u53BB\u9664\u56FE\u7247\u4E0E\u683C\u5F0F">\n              <i data-lucide="copy"></i>\n            </button>\n\n            <details id="searchMenu" class="tool-menu">\n              <summary class="tool-button search-tool-button" title="\u67E5\u627E\u66FF\u6362" aria-label="\u67E5\u627E\u66FF\u6362">\n                <i data-lucide="search"></i>\n                <svg class="search-replace-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">\n                  <path d="M4 8h9"></path>\n                  <path d="M10 5l3 3-3 3"></path>\n                  <path d="M20 16h-9"></path>\n                  <path d="M14 13l-3 3 3 3"></path>\n                </svg>\n              </summary>\n              <div class="tool-popover search-popover">\n                <label>\n                  \u67E5\u627E\n                  <input id="findInput" type="text" autocomplete="off" />\n                </label>\n                <label>\n                  \u66FF\u6362\u4E3A\n                  <input id="replaceInput" type="text" autocomplete="off" />\n                </label>\n                <span id="findMatchCount" class="search-match-count" aria-live="polite"></span>\n                <button id="findNextBtn" class="secondary-button" type="button">\n                  <i data-lucide="search"></i>\n                  \u67E5\u627E\n                </button>\n                <button id="replaceOneBtn" class="secondary-button" type="button">\n                  <i data-lucide="replace"></i>\n                  \u66FF\u6362\u5F53\u524D\n                </button>\n                <button id="replaceAllBtn" class="secondary-button wide" type="button">\n                  <i data-lucide="replace-all"></i>\n                  \u5168\u6587\u66FF\u6362\n                </button>\n              </div>\n            </details>\n\n            <details class="tool-menu">\n              <summary class="tool-button" title="\u56FE\u7247\u88C1\u526A" aria-label="\u56FE\u7247\u88C1\u526A">\n                <i data-lucide="images"></i>\n              </summary>\n              <div class="tool-popover image-popover">\n                <div class="image-batch-controls">\n                  <label>\n                    \u56FE\u7247\u5BBD\u5EA6\n                    <span class="percent-input">\n                      <input id="imageWidthPercentInput" type="number" min="25" max="100" step="1" value="100" />\n                      <b>%</b>\n                    </span>\n                  </label>\n                  <button id="applyImageWidthBtn" class="secondary-button" type="button">\n                    \u6279\u91CF\u5E94\u7528\n                  </button>\n                  <label>\n                    \u56FA\u5B9A\u5BBD\n                    <span class="unit-input">\n                      <input id="fixedImageWidthInput" type="number" min="80" max="780" step="1" placeholder="\u5BBD" />\n                      <b>px</b>\n                    </span>\n                  </label>\n                  <label>\n                    \u56FA\u5B9A\u9AD8\n                    <span class="unit-input">\n                      <input id="fixedImageHeightInput" type="number" min="80" max="1048" step="1" placeholder="\u9AD8" />\n                      <b>px</b>\n                    </span>\n                  </label>\n                  <button id="applyFixedImageSizeBtn" class="secondary-button wide" type="button">\n                    \u5E94\u7528\u56FA\u5B9A\u5BBD\u9AD8\n                  </button>\n                </div>\n                <div id="imageList" class="image-list"></div>\n              </div>\n            </details>\n\n            <details class="tool-menu settings-menu">\n              <summary class="tool-button" title="\u8BBE\u8BA1\u8BBE\u7F6E" aria-label="\u8BBE\u8BA1\u8BBE\u7F6E">\n                <i data-lucide="sliders-horizontal"></i>\n              </summary>\n              <div class="tool-popover settings-popover">\n                <div class="settings-grid">\n                  <label>\n                    \u6587\u5B57\u8272\n                    <input id="textColorInput" type="color" value="#202938" />\n                  </label>\n                  <label>\n                    \u5F3A\u8C03\u8272\n                    <input id="accentColorInput" type="color" value="#2563eb" />\n                  </label>\n                  <label>\n                    \u80CC\u666F\u8272\n                    <input id="bgColorInput" type="color" value="#ffffff" />\n                  </label>\n                  <label>\n                    \u5B57\u53F7\n                    <input id="fontSizeInput" type="number" min="24" max="40" value="34" />\n                  </label>\n                  <label>\n                    \u884C\u8DDD\n                    <input id="lineHeightInput" type="number" min="1" max="2.4" step="0.05" value="1.85" />\n                  </label>\n                  <label>\n                    \u4E2D\u6587\u5B57\u4F53\n                    <select id="zhFontInput">\n                      <option value="zh-system">\u82F9\u65B9 / \u7CFB\u7EDF\u9ED1\u4F53</option>\n                      <option value="zh-song">\u5B8B\u4F53</option>\n                      <option value="zh-kai">\u6977\u4F53</option>\n                      <option value="zh-hei">\u9ED1\u4F53</option>\n                    </select>\n                  </label>\n                  <label>\n                    \u82F1\u6587\u5B57\u4F53\n                    <select id="enFontInput">\n                      <option value="en-system">\u7CFB\u7EDF\u65E0\u886C\u7EBF</option>\n                      <option value="en-serif">Serif</option>\n                      <option value="en-rounded">Rounded</option>\n                      <option value="en-mono">Mono</option>\n                    </select>\n                  </label>\n                  <label>\n                    \u56FE\u7247\u6700\u5927\u9AD8\n                    <input id="imageHeightInput" type="number" min="220" max="1048" value="1048" />\n                  </label>\n                </div>\n              </div>\n            </details>\n          </div>\n\n        </section>\n\n        <textarea id="contentInput" class="editor-textarea" spellcheck="false"></textarea>\n      </aside>\n      <button class="panel-resizer" data-panel-resize="editor" type="button" aria-label="\u62D6\u52A8\u8C03\u6574\u7F16\u8F91\u533A\u5BBD\u5EA6"></button>\n\n      <section id="previewPanel" class="preview-panel" aria-label="\u56FE\u7247\u9884\u89C8">\n        <div class="preview-topbar">\n          <div>\n            <div id="appModeSwitch" class="mode-switch" aria-label="\u5207\u6362\u5DE5\u4F5C\u533A">\n              <button type="button" class="active" data-app-mode="cards">\u56FE\u6587\u5361\u7247</button>\n              <button type="button" data-app-mode="article">\u957F\u6587</button>\n            </div>\n            <h2>\u9884\u89C8\u4E0E\u4E0B\u8F7D</h2>\n            <span id="statusText">\u81EA\u52A8\u5206\u9875\u5DF2\u5F00\u542F</span>\n          </div>\n          <div class="topbar-actions">\n            <div id="cardSettings" class="card-settings">\n              <details class="tool-menu article-setting-menu">\n                <summary class="icon-button" title="\u56FE\u6587\u6392\u7248" aria-label="\u56FE\u6587\u6392\u7248">\n                  <i data-lucide="rows-3"></i>\n                </summary>\n                <div class="tool-popover">\n                  <div class="color-guide">\n                    <strong>\u56FE\u6587\u6392\u7248</strong>\n                  </div>\n                  <button type="button" id="keepHeadingBtn" class="article-option active" aria-pressed="true">\n                    \u6807\u9898\u4E0D\u843D\u5728\u9875\u5E95\n                  </button>\n                </div>\n              </details>\n            </div>\n            <div id="articleSettings" class="article-settings" hidden>\n              <details class="tool-menu article-setting-menu">\n                <summary class="icon-button" title="\u4E3B\u9898" aria-label="\u4E3B\u9898">\n                  <i data-lucide="swatch-book"></i>\n                </summary>\n                <div class="tool-popover">\n                  <div class="color-guide">\n                    <strong>\u4E3B\u9898</strong>\n                  </div>\n                  <div class="article-option-grid">\n                    <button type="button" class="article-option active" data-article-theme="classic">\u7ECF\u5178</button>\n                    <button type="button" class="article-option" data-article-theme="elegant">\u4F18\u96C5</button>\n                    <button type="button" class="article-option" data-article-theme="clean">\u7B80\u6D01</button>\n                    <button type="button" class="article-option" data-article-theme="wechat">\u5FAE\u4FE1\u7EFF</button>\n                    <button type="button" class="article-option" data-article-theme="colorful">\u591A\u5F69\u5FAE\u4FE1</button>\n                  </div>\n                </div>\n              </details>\n              <details class="tool-menu article-setting-menu">\n                <summary class="icon-button" title="\u5B57\u4F53" aria-label="\u5B57\u4F53">\n                  <i data-lucide="type"></i>\n                </summary>\n                <div class="tool-popover">\n                  <div class="color-guide">\n                    <strong>\u5B57\u4F53</strong>\n                  </div>\n                  <div class="article-option-grid three">\n                    <button type="button" class="article-option active" data-article-font="sans">\u65E0\u886C\u7EBF</button>\n                    <button type="button" class="article-option" data-article-font="serif">\u886C\u7EBF</button>\n                    <button type="button" class="article-option" data-article-font="mono">\u7B49\u5BBD</button>\n                  </div>\n                </div>\n              </details>\n              <details class="tool-menu article-setting-menu">\n                <summary class="icon-button" title="\u5B57\u53F7" aria-label="\u5B57\u53F7">\n                  <i data-lucide="a-large-small"></i>\n                </summary>\n                <div class="tool-popover">\n                  <div class="color-guide">\n                    <strong>\u5B57\u53F7</strong>\n                  </div>\n                  <div class="article-option-grid three">\n                    <button type="button" class="article-option" data-article-size="small">\u66F4\u5C0F</button>\n                    <button type="button" class="article-option active" data-article-size="normal">\u63A8\u8350</button>\n                    <button type="button" class="article-option" data-article-size="large">\u7A0D\u5927</button>\n                  </div>\n                </div>\n              </details>\n              <details class="tool-menu article-setting-menu">\n                <summary class="icon-button" title="\u4E3B\u9898\u8272" aria-label="\u4E3B\u9898\u8272">\n                  <i data-lucide="pipette"></i>\n                </summary>\n                <div class="tool-popover">\n                  <div class="color-guide">\n                    <strong>\u4E3B\u9898\u8272</strong>\n                  </div>\n                  <div class="article-color-grid">\n                    <button type="button" class="article-color active" data-article-color="#0f766e" style="--swatch:#0f766e">\u7FE1\u7FE0\u7EFF</button>\n                    <button type="button" class="article-color" data-article-color="#2563eb" style="--swatch:#2563eb">\u7ECF\u5178\u84DD</button>\n                    <button type="button" class="article-color" data-article-color="#ef4444" style="--swatch:#ef4444">\u6D3B\u529B\u6A58</button>\n                    <button type="button" class="article-color" data-article-color="#7c3aed" style="--swatch:#7c3aed">\u85B0\u8863\u7D2B</button>\n                    <button type="button" class="article-color" data-article-color="#111827" style="--swatch:#111827">\u77F3\u58A8\u9ED1</button>\n                  </div>\n                </div>\n              </details>\n            </div>\n            <button id="downloadZipBtn" class="primary-button" type="button">\n              <i data-lucide="download"></i>\n              \u6279\u91CF\u4E0B\u8F7D\n            </button>\n            <button id="downloadArticleBtn" class="primary-button" type="button" hidden>\n              <i data-lucide="download"></i>\n              \u4E0B\u8F7D\u957F\u56FE\n            </button>\n            <button id="copyWechatBtn" class="secondary-button" type="button" hidden>\n              <i data-lucide="copy"></i>\n              \u590D\u5236\u516C\u4F17\u53F7\u683C\u5F0F\n            </button>\n            <button id="syncWechatBtn" class="primary-button" type="button" hidden>\n              <i data-lucide="send"></i>\n              \u540C\u6B65\u8349\u7A3F\u7BB1\n            </button>\n          </div>\n        </div>\n        <div class="preview-body">\n          <div id="pages" class="pages"></div>\n        </div>\n      </section>\n    </main>\n\n    <footer class="site-footer">\n      <div class="footer-actions">\n        <button id="feedbackBtn" class="feedback-dock-button" type="button" aria-label="\u53CD\u9988\u95EE\u9898" aria-haspopup="dialog" aria-controls="feedbackModal">\n          <i data-lucide="message-square-warning"></i>\n          <span>\u95EE\u9898\u53CD\u9988</span>\n        </button>\n        <div id="accountDock" class="account-dock">\n        <div id="accountMenu" class="account-menu hidden" role="dialog" aria-label="\u8D26\u53F7\u83DC\u5355">\n          <div class="account-menu-summary">\n            <span class="account-menu-avatar"><i data-lucide="circle-user-round"></i></span>\n            <div>\n              <strong id="accountMenuTitle">\u6E38\u5BA2\u6A21\u5F0F</strong>\n              <span id="accountMenuDescription">\u8349\u7A3F\u4EC5\u4E34\u65F6\u4FDD\u5B58\u5728\u5F53\u524D\u6807\u7B7E\u9875</span>\n            </div>\n          </div>\n          <section id="accountMenuSwitchSection" class="account-menu-switch" hidden aria-label="\u5DF2\u767B\u5F55\u8D26\u53F7">\n            <div class="account-menu-switch-heading">\n              <strong>\u5DF2\u767B\u5F55\u8D26\u53F7</strong>\n              <span>\u70B9\u51FB\u5373\u53EF\u5207\u6362</span>\n            </div>\n            <div id="accountMenuAccountList" class="account-account-list"></div>\n            <button id="accountMenuAddBtn" class="account-menu-text-button account-menu-add" type="button">\n              <i data-lucide="user-plus"></i>\u6DFB\u52A0\u5176\u4ED6\u8D26\u53F7\n            </button>\n          </section>\n          <div class="account-menu-actions">\n            <button id="accountMenuLoginBtn" class="primary-button" type="button">\n              <i data-lucide="log-in"></i>\u767B\u5F55\u5E76\u540C\u6B65\n            </button>\n            <button id="accountMenuManageBtn" class="secondary-button" type="button" hidden>\n              <i data-lucide="settings"></i>\u8D26\u53F7\u8BBE\u7F6E\n            </button>\n            <button id="accountMenuSwitchBtn" class="secondary-button" type="button" hidden>\n              <i data-lucide="arrow-left-right"></i>\u5207\u6362\u8D26\u53F7\n            </button>\n            <button id="accountMenuWhatsNewBtn" class="account-menu-text-button" type="button">\n              <i data-lucide="sparkles"></i>\u672C\u6B21\u66F4\u65B0\n              <span class="account-menu-new-dot" data-feature-badge="updates" aria-label="\u6709\u65B0\u529F\u80FD"></span>\n            </button>\n            <button id="accountMenuSignOutBtn" class="account-menu-text-button danger" type="button" hidden>\n              <i data-lucide="log-out"></i>\u9000\u51FA\u767B\u5F55\n            </button>\n          </div>\n          <p id="accountMenuHint" class="account-menu-hint">\u7EE7\u7EED\u4F7F\u7528\u6E38\u5BA2\u6A21\u5F0F\u65E0\u9700\u64CD\u4F5C\uFF0C\u70B9\u51FB\u83DC\u5355\u5916\u5373\u53EF\u5173\u95ED\u3002</p>\n        </div>\n        <button class="account-dock-button feature-anchor" id="accountBtn" type="button" title="\u8D26\u53F7\u4E0E\u767B\u5F55" aria-label="\u6253\u5F00\u8D26\u53F7\u83DC\u5355" aria-controls="accountMenu" aria-expanded="false">\n          <span class="account-status-dot" aria-hidden="true"></span>\n          <i data-lucide="circle-user-round"></i>\n          <span id="accountButtonLabel">\u8D26\u53F7</span>\n          <span class="feature-new-badge compact" data-feature-badge="account" aria-label="\u65B0\u529F\u80FD">\u65B0</span>\n          <i class="account-dock-chevron" data-lucide="chevron-up"></i>\n        </button>\n        </div>\n      </div>\n      <nav class="site-credit" hidden aria-hidden="true">\n        <span class="site-credit-by"></span>\n        <a hidden href="#" aria-hidden="true">\n          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/></svg>\n        </a>\n        <a hidden class="is-cjk" href="#" aria-hidden="true">\n          <span aria-hidden="true">\u7EA2</span>\n        </a>\n        <a hidden href="#" aria-hidden="true">\n          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>\n        </a>\n        <a hidden href="#" aria-hidden="true">\n          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>\n        </a>\n      </nav>\n    </footer>\n\n    <div id="entryChoiceModal" class="entry-choice-modal" role="dialog" aria-modal="true" aria-labelledby="entryChoiceTitle">\n      <section class="entry-choice-card">\n        <div id="entryChoiceLoading" class="entry-choice-loading" aria-live="polite">\n          <span class="entry-choice-spinner" aria-hidden="true"></span>\n          <strong>\u6B63\u5728\u68C0\u67E5\u767B\u5F55\u72B6\u6001\u2026</strong>\n          <p>\u767B\u5F55\u8FC7\u7684\u7528\u6237\u4F1A\u76F4\u63A5\u8FDB\u5165\u81EA\u5DF1\u7684\u5DE5\u4F5C\u533A\u3002</p>\n        </div>\n        <div id="entryChoiceContent" class="entry-choice-content" hidden>\n          <header class="entry-choice-head">\n            <span class="entry-choice-brand">\u6210\u7A3F\u9884\u89C8</span>\n            <h2 id="entryChoiceTitle">\u8FD9\u6B21\u60F3\u600E\u4E48\u4F7F\u7528\uFF1F</h2>\n            <p>\u4E34\u65F6\u6392\u7248\u53EF\u4EE5\u76F4\u63A5\u8FDB\u5165\uFF1B\u9700\u8981\u957F\u671F\u4FDD\u5B58\u548C\u8DE8\u8BBE\u5907\u4F7F\u7528\u65F6\u518D\u767B\u5F55\u3002</p>\n          </header>\n          <div id="entryChoiceNotice" class="entry-choice-notice" hidden></div>\n          <div class="entry-choice-options">\n            <article class="entry-choice-option guest-option">\n              <span class="entry-choice-option-icon"><i data-lucide="zap"></i></span>\n              <div>\n                <span class="entry-choice-kicker">\u4E34\u65F6\u4F7F\u7528</span>\n                <h3>\u6E38\u5BA2\u6A21\u5F0F</h3>\n                <p>\u4E0D\u6CE8\u518C\uFF0C\u76F4\u63A5\u6392\u7248\u548C\u5BFC\u51FA\u3002\u5185\u5BB9\u53EA\u7559\u5728\u5F53\u524D\u6D4F\u89C8\u5668\u6807\u7B7E\u9875\uFF0C\u5173\u95ED\u540E\u4E0D\u4FDD\u8BC1\u4FDD\u7559\u3002</p>\n              </div>\n              <ul>\n                <li><i data-lucide="check"></i>\u7ACB\u5373\u5F00\u59CB\uFF0C\u4E0D\u4E0A\u4F20\u4E91\u7AEF</li>\n                <li><i data-lucide="clock-3"></i>\u9002\u5408\u4E00\u6B21\u6027\u3001\u7D27\u6025\u6392\u7248</li>\n              </ul>\n              <button id="chooseGuestBtn" class="secondary-button entry-choice-button" type="button">\n                \u4EE5\u6E38\u5BA2\u8EAB\u4EFD\u8FDB\u5165<i data-lucide="arrow-right"></i>\n              </button>\n            </article>\n            <article class="entry-choice-option account-option">\n              <span class="entry-choice-recommended">\u957F\u671F\u4F7F\u7528\u63A8\u8350</span>\n              <span class="entry-choice-option-icon"><i data-lucide="cloud-check"></i></span>\n              <div>\n                <span class="entry-choice-kicker">\u957F\u671F\u4FDD\u5B58</span>\n                <h3>\u767B\u5F55\u5DE5\u4F5C\u533A</h3>\n                <p>\u6309\u8D26\u53F7\u4FDD\u5B58\u5934\u50CF\u3001\u6635\u79F0\u3001\u56FE\u6587\u548C\u7D20\u6750\uFF0C\u6362\u8BBE\u5907\u767B\u5F55\u540E\u4ECD\u80FD\u7EE7\u7EED\u7F16\u8F91\u3002</p>\n              </div>\n              <ul>\n                <li><i data-lucide="check"></i>\u81EA\u52A8\u540C\u6B65\u5230 Supabase</li>\n                <li><i data-lucide="check"></i>\u4E0D\u540C\u8D26\u53F7\u7684\u6570\u636E\u76F8\u4E92\u9694\u79BB</li>\n              </ul>\n              <span id="entryChoiceReturningHint" class="entry-choice-returning" hidden></span>\n              <button id="chooseLoginBtn" class="primary-button entry-choice-button" type="button">\n                \u767B\u5F55\u5E76\u957F\u671F\u4FDD\u5B58<i data-lucide="arrow-right"></i>\n              </button>\n            </article>\n          </div>\n          <p class="entry-choice-footnote">\u4E4B\u540E\u4E5F\u53EF\u4EE5\u901A\u8FC7\u53F3\u4E0B\u89D2\u7684\u8D26\u53F7\u5165\u53E3\u968F\u65F6\u767B\u5F55\u6216\u9000\u51FA\u3002</p>\n        </div>\n      </section>\n    </div>\n\n    <div id="welcomeBackModal" class="welcome-back-modal hidden" role="dialog" aria-modal="true" aria-labelledby="welcomeBackTitle">\n      <section class="welcome-back-card">\n        <button id="welcomeBackCloseBtn" class="icon-button ghost welcome-back-close" type="button" title="\u5173\u95ED" aria-label="\u76F4\u63A5\u8FDB\u5165\u5DE5\u4F5C\u533A">\n          <i data-lucide="x"></i>\n        </button>\n        <header class="welcome-back-head">\n          <h2 id="welcomeBackTitle">\u6B22\u8FCE\u56DE\u6765\uFF0C\u64CD\u4F5C\u65B9\u5F0F\u6CA1\u6709\u53D8</h2>\n          <p>\u4F60\u4ECD\u7136\u53EF\u4EE5\u50CF\u4EE5\u524D\u4E00\u6837\u76F4\u63A5\u6392\u7248\u548C\u4E0B\u8F7D\u3002</p>\n        </header>\n        <div class="welcome-back-features" aria-label="\u672C\u6B21\u65B0\u589E\u529F\u80FD">\n          <article>\n            <span class="welcome-back-feature-icon"><i data-lucide="layout-grid"></i></span>\n            <div><strong>\u53CC\u56FE\u62FC\u56FE</strong><p>\u70B9\u9009\u56FE\u7247\u540E\u6309\u53F3\u4FA7 \uFF0B\uFF0C\u628A\u7B2C\u4E8C\u5F20\u56FE\u62FC\u5728\u53F3\u8FB9</p></div>\n            <span class="welcome-back-feature-state">\u65B0\u529F\u80FD</span>\n          </article>\n          <article>\n            <span class="welcome-back-feature-icon"><i data-lucide="sliders-horizontal"></i></span>\n            <div><strong>\u62FC\u56FE\u8C03\u6574</strong><p>\u5F39\u7A97\u91CC\u9009\u6574\u4F53\u6BD4\u4F8B\u3001\u5DE6\u53F3\u4E92\u6362\u3001\u4E24\u5F20\u56FE\u5206\u522B\u88C1\u526A</p></div>\n            <span class="welcome-back-feature-state">\u65B0\u529F\u80FD</span>\n          </article>\n          <article>\n            <span class="welcome-back-feature-icon"><i data-lucide="bold"></i></span>\n            <div><strong>\u591A\u884C\u52A0\u7C97</strong><p>\u8DE8\u884C\u9009\u4E2D\u52A0\u7C97\u3001\u659C\u4F53\u9010\u884C\u751F\u6548\uFF0C\u518D\u70B9\u4E00\u6B21\u53D6\u6D88</p></div>\n            <span class="welcome-back-feature-state">\u5DF2\u4FEE\u590D</span>\n          </article>\n          <article>\n            <span class="welcome-back-feature-icon"><i data-lucide="crop"></i></span>\n            <div><strong>\u88C1\u526A\u4E0E\u5207\u6362\u8D26\u53F7</strong><p>\u88C1\u526A\u6846\u89D2\u67C4\u5728\u8FB9\u7F18\u4E5F\u80FD\u62D6\u52A8\uFF1B\u5207\u6362\u8D26\u53F7\u540E\u9884\u89C8\u7ACB\u5373\u5237\u65B0</p></div>\n            <span class="welcome-back-feature-state">\u5DF2\u4FEE\u590D</span>\n          </article>\n        </div>\n        <div class="welcome-back-actions">\n          <button id="welcomeBackDirectBtn" class="primary-button" type="button">\u76F4\u63A5\u8FDB\u5165\u5DE5\u4F5C\u533A</button>\n          <button id="welcomeBackTourBtn" class="secondary-button" type="button">\u7528 30 \u79D2\u770B\u770B\u65B0\u529F\u80FD</button>\n        </div>\n        <p class="welcome-back-footnote">\u672C\u6B22\u8FCE\u9875\u5728\u5F53\u524D\u7248\u672C\u4EC5\u663E\u793A\u4E00\u6B21\uFF0C\u4E4B\u540E\u53EF\u4ECE\u53F3\u4E0B\u89D2\u201C\u672C\u6B21\u66F4\u65B0\u201D\u91CD\u65B0\u67E5\u770B\u3002</p>\n      </section>\n    </div>\n\n    <div id="accountModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="accountModalTitle">\n      <div class="modal-card account-modal-card">\n        <button id="accountCloseBtn" class="icon-button ghost account-modal-close" type="button" title="\u5173\u95ED" aria-label="\u5173\u95ED\u8D26\u53F7\u9762\u677F">\n          <i data-lucide="x"></i>\n        </button>\n\n        <aside class="account-value-pane">\n          <span class="account-value-brand">\u6210\u7A3F\u9884\u89C8</span>\n          <h3 id="accountModalTitle">\u767B\u5F55\u540E\uFF0C<br />\u7EE7\u7EED\u4E0A\u6B21\u7684\u521B\u4F5C</h3>\n          <div class="account-benefits" aria-label="\u767B\u5F55\u540E\u53EF\u7528\u529F\u80FD">\n            <div class="account-benefit-row">\n              <span class="account-benefit-icon"><i data-lucide="user-round"></i></span>\n              <div><strong>\u540C\u6B65\u5934\u50CF\u4E0E\u6635\u79F0</strong><span>\u5728\u6240\u6709\u8BBE\u5907\u4E0A\u4FDD\u6301\u4E00\u81F4</span></div>\n            </div>\n            <div class="account-benefit-row">\n              <span class="account-benefit-icon"><i data-lucide="file-text"></i></span>\n              <div><strong>\u4FDD\u5B58\u56FE\u6587\u8349\u7A3F</strong><span>\u81EA\u52A8\u4FDD\u5B58\uFF0C\u4E0D\u518D\u4E22\u5931</span></div>\n            </div>\n            <div class="account-benefit-row">\n              <span class="account-benefit-icon"><i data-lucide="laptop"></i></span>\n              <div><strong>\u8DE8\u8BBE\u5907\u7EE7\u7EED\u7F16\u8F91</strong><span>\u968F\u65F6\u968F\u5730\u7EE7\u7EED\u4F60\u7684\u521B\u4F5C</span></div>\n            </div>\n          </div>\n        </aside>\n\n        <section class="account-modal-body">\n          <div id="accountConfigNotice" class="account-notice" hidden></div>\n\n          <div id="accountOauth" class="account-oauth" hidden>\n            <button id="accountGoogleBtn" class="account-oauth-button" type="button">\n              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">\n                <path fill="#4285F4" d="M23.06 12.25c0-.85-.08-1.67-.22-2.45H12v4.64h6.2a5.3 5.3 0 0 1-2.3 3.48v2.89h3.72c2.17-2 3.44-4.95 3.44-8.56z"/>\n                <path fill="#34A853" d="M12 23.5c3.11 0 5.72-1.03 7.62-2.79l-3.72-2.89c-1.03.69-2.35 1.1-3.9 1.1-3 0-5.54-2.03-6.45-4.75H1.7v2.98A11.5 11.5 0 0 0 12 23.5z"/>\n                <path fill="#FBBC05" d="M5.55 14.17a6.9 6.9 0 0 1 0-4.34V6.85H1.7a11.5 11.5 0 0 0 0 10.3l3.85-2.98z"/>\n                <path fill="#EA4335" d="M12 4.75c1.69 0 3.21.58 4.4 1.72l3.3-3.3C17.72 1.3 15.11.25 12 .25A11.5 11.5 0 0 0 1.7 6.85l3.85 2.98C6.46 7.11 9 4.75 12 4.75z"/>\n              </svg>\n              \u4F7F\u7528 Google \u8D26\u53F7\u7EE7\u7EED\n            </button>\n            <p class="account-oauth-hint">\u7528 Gmail \u7684\u8BDD\u6700\u5FEB\uFF0C\u4E0D\u7528\u7B49\u786E\u8BA4\u90AE\u4EF6\u3002</p>\n            <div class="account-oauth-divider"><span>\u6216\u8005\u7528\u90AE\u7BB1</span></div>\n          </div>\n\n          <form id="accountAuthForm" class="account-auth-form">\n            <div class="account-auth-mode" role="tablist" aria-label="\u9009\u62E9\u8D26\u53F7\u64CD\u4F5C">\n              <button id="accountSignInModeBtn" class="is-active" type="button" role="tab" aria-selected="true">\n                \u767B\u5F55\n              </button>\n              <button id="accountSignUpBtn" type="button" role="tab" aria-selected="false">\n                \u6CE8\u518C\n              </button>\n            </div>\n            <label>\n              <span>\u90AE\u7BB1</span>\n              <input id="accountEmailInput" type="email" autocomplete="email" placeholder="name@example.com" required />\n            </label>\n            <label>\n              <span>\u5BC6\u7801</span>\n              <span class="account-input-wrap">\n                <input id="accountPasswordInput" type="password" autocomplete="current-password" minlength="8" placeholder="\u81F3\u5C11 8 \u4F4D" required />\n                <button id="accountPasswordToggleBtn" class="account-password-toggle" type="button" title="\u663E\u793A\u5BC6\u7801" aria-label="\u663E\u793A\u5BC6\u7801">\n                  <i data-lucide="eye"></i>\n                </button>\n              </span>\n            </label>\n            <label id="accountPasswordConfirmField" hidden>\n              <span>\u518D\u6B21\u8F93\u5165\u5BC6\u7801</span>\n              <input id="accountPasswordConfirmInput" type="password" autocomplete="new-password" minlength="8" placeholder="\u518D\u6B21\u8F93\u5165\u76F8\u540C\u5BC6\u7801" />\n            </label>\n            <label id="accountNewPasswordField" hidden>\n              <span>\u8BBE\u7F6E\u65B0\u5BC6\u7801</span>\n              <input id="accountNewPasswordInput" type="password" autocomplete="new-password" minlength="8" placeholder="\u81F3\u5C11 8 \u4F4D" />\n            </label>\n            <div class="account-auth-actions">\n              <button id="accountSignInBtn" class="primary-button" type="submit">\u767B\u5F55</button>\n            </div>\n            <button id="accountResendConfirmationBtn" class="account-resend-confirmation" type="button" hidden>\n              \u6CA1\u6709\u6536\u5230\u786E\u8BA4\u90AE\u4EF6\uFF1F<span>\u91CD\u65B0\u53D1\u9001</span>\n            </button>\n            <button id="accountForgotPasswordBtn" class="account-resend-confirmation" type="button">\n              \u5FD8\u8BB0\u5BC6\u7801\uFF1F<span>\u53D1\u9001\u91CD\u7F6E\u90AE\u4EF6</span>\n            </button>\n          </form>\n\n          <section id="accountSignedIn" class="account-signed-in" hidden>\n            <div class="account-user-card">\n              <img id="accountAvatar" alt="\u8D26\u53F7\u5934\u50CF" />\n              <div>\n                <strong id="accountDisplayName">\u5DF2\u767B\u5F55</strong>\n                <span id="accountEmail"></span>\n              </div>\n              <span class="account-online"><i data-lucide="cloud-check"></i>\u5DF2\u8FDE\u63A5</span>\n            </div>\n            <div class="account-sync-card">\n              <strong>\u4E91\u7AEF\u56FE\u6587</strong>\n              <span id="accountSyncStatus">\u6B63\u5728\u8BFB\u53D6\u8D26\u53F7\u6570\u636E\u2026</span>\n            </div>\n            <div class="account-switch-panel">\n              <div class="account-switch-heading">\n                <div>\n                  <strong>\u5DF2\u767B\u5F55\u8D26\u53F7</strong>\n                  <span>\u70B9\u51FB\u5373\u53EF\u5207\u6362\uFF0C\u4E0D\u9700\u8981\u9000\u51FA</span>\n                </div>\n                <i data-lucide="arrow-left-right" aria-hidden="true"></i>\n              </div>\n              <div id="accountModalAccountList" class="account-account-list"></div>\n              <button id="accountAddAnotherBtn" class="secondary-button account-wide-button" type="button">\n                <i data-lucide="user-plus"></i>\n                \u6DFB\u52A0\u5176\u4ED6\u8D26\u53F7\n              </button>\n            </div>\n            <button id="accountImportLocalBtn" class="secondary-button account-wide-button" type="button">\n              <i data-lucide="cloud-upload"></i>\n              \u628A\u6E38\u5BA2 / \u65E7\u672C\u673A\u8349\u7A3F\u5BFC\u5165\u6B64\u8D26\u53F7\n            </button>\n            <button id="accountSignOutBtn" class="ghost-button account-wide-button" type="button">\u9000\u51FA\u767B\u5F55</button>\n          </section>\n        </section>\n      </div>\n    </div>\n\n    <div id="feedbackModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="feedbackModalTitle" tabindex="-1">\n      <div class="modal-card feedback-modal-card">\n        <div class="modal-head feedback-modal-head">\n          <div>\n            <span class="feedback-kicker">\u6210\u7A3F\u9884\u89C8</span>\n            <h3 id="feedbackModalTitle">\u53CD\u9988\u95EE\u9898</h3>\n            <p>\u628A\u9047\u5230\u7684\u95EE\u9898\u5199\u6E05\u695A\uFF0C\u622A\u56FE\u53EF\u4EE5\u5E2E\u52A9\u6211\u66F4\u5FEB\u5B9A\u4F4D\u3002</p>\n          </div>\n          <button id="feedbackCloseBtn" class="icon-button ghost" type="button" title="\u5173\u95ED" aria-label="\u5173\u95ED\u95EE\u9898\u53CD\u9988">\n            <i data-lucide="x"></i>\n          </button>\n        </div>\n        <form\n          id="feedbackForm"\n          class="feedback-form"\n          method="POST"\n          enctype="multipart/form-data"\n        >\n          <input type="hidden" name="_subject" value="\u3010\u6210\u7A3F\u9884\u89C8\u3011\u65B0\u7684\u95EE\u9898\u53CD\u9988" />\n          <input type="hidden" name="_template" value="table" />\n          <input class="feedback-honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />\n          <label class="feedback-field">\n            <span>\u95EE\u9898\u63CF\u8FF0 <b aria-hidden="true">*</b></span>\n            <textarea id="feedbackMessageInput" name="\u95EE\u9898\u63CF\u8FF0" minlength="5" maxlength="2000" rows="6" placeholder="\u4F8B\u5982\uFF1A\u6211\u9009\u4E2D\u4E86\u4E24\u884C\u6587\u5B57\uFF0C\u70B9\u51FB\u4E0B\u5212\u7EBF\u540E\uFF0C\u9884\u89C8\u91CC\u51FA\u73B0\u4E86 {{underline\u2026" required></textarea>\n            <small><span id="feedbackMessageCount">0</span> / 2000</small>\n          </label>\n          <label class="feedback-field">\n            <span>\u8054\u7CFB\u65B9\u5F0F <em>\u9009\u586B</em></span>\n            <input id="feedbackContactInput" name="\u8054\u7CFB\u65B9\u5F0F" type="text" maxlength="120" placeholder="\u90AE\u7BB1\u3001\u5FAE\u4FE1\u6216\u5176\u4ED6\u65B9\u4FBF\u56DE\u590D\u7684\u65B9\u5F0F" />\n          </label>\n          <div class="feedback-upload-field">\n            <div class="feedback-upload-heading">\n              <span>\u95EE\u9898\u622A\u56FE <em>\u9009\u586B</em></span>\n              <small>\u6700\u591A 3 \u5F20\uFF0C\u603B\u8BA1\u4E0D\u8D85\u8FC7 8MB</small>\n            </div>\n            <label id="feedbackUploadDropzone" class="feedback-upload-dropzone" for="feedbackImageInput">\n              <i data-lucide="image-plus"></i>\n              <strong>\u70B9\u51FB\u4E0A\u4F20\u56FE\u7247</strong>\n              <span>\u652F\u6301 PNG\u3001JPG\u3001WebP\u3001GIF\uFF0C\u4E5F\u53EF\u4EE5\u62D6\u5230\u8FD9\u91CC</span>\n              <input id="feedbackImageInput" name="attachment" type="file" accept="image/png,image/jpeg,image/webp,image/gif" multiple />\n            </label>\n            <div id="feedbackImageList" class="feedback-image-list" aria-live="polite"></div>\n          </div>\n          <p class="feedback-privacy">\n            \u8BF7\u52FF\u4E0A\u4F20\u5BC6\u7801\u3001\u5BC6\u94A5\u7B49\u654F\u611F\u4FE1\u606F\u3002\u53CD\u9988\u7531\n            <a href="https://formsubmit.co/privacy.pdf" target="_blank" rel="noopener noreferrer">FormSubmit</a>\n            \u8F6C\u53D1\uFF0C\u53EF\u80FD\u4FDD\u7559\u8868\u5355\u8BB0\u5F55 30 \u5929\u3002\n          </p>\n          <p id="feedbackNotice" class="feedback-notice" role="status" aria-live="polite">\n            \u4E0D\u4F1A\u8BFB\u53D6\u6216\u4E0A\u4F20\u5F53\u524D\u8349\u7A3F\u3002\n          </p>\n          <div class="feedback-actions">\n            <button id="feedbackCancelBtn" class="secondary-button" type="button">\u53D6\u6D88</button>\n            <button id="feedbackSubmitBtn" class="primary-button" type="submit">\n              <i data-lucide="send"></i>\n              \u53D1\u9001\u53CD\u9988\n            </button>\n          </div>\n        </form>\n      </div>\n    </div>\n\n    <div id="pairModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="pairModalTitle">\n      <div class="modal-card pair-modal-card">\n        <div class="modal-head">\n          <div>\n            <h3 id="pairModalTitle">\u8C03\u6574\u62FC\u56FE</h3>\n            <p>\u9009\u62E9\u6574\u4F53\u6BD4\u4F8B\uFF0C\u4E24\u5F20\u56FE\u53EF\u5206\u522B\u88C1\u526A\u6216\u5220\u9664\uFF1B\u5173\u95ED\u4E0D\u4FDD\u5B58\uFF0C\u70B9\u300C\u5B8C\u6210\u300D\u624D\u751F\u6548</p>\n          </div>\n          <button id="pairCloseBtn" class="icon-button ghost" type="button" title="\u5173\u95ED" aria-label="\u5173\u95ED\u62FC\u56FE\u8C03\u6574">\n            <i data-lucide="x"></i>\n          </button>\n        </div>\n        <div class="pair-editor">\n          <div id="pairPreview" class="pair-preview">\n            <div class="pair-cell">\n              <canvas id="pairCanvasLeft"></canvas>\n              <div class="pair-cell-actions">\n                <button id="pairCropLeftBtn" class="secondary-button" type="button" aria-label="\u88C1\u526A\u5DE6\u56FE">\n                  <i data-lucide="crop"></i>\n                  \u88C1\u526A\n                </button>\n                <button id="pairDropLeftBtn" class="secondary-button" type="button" aria-label="\u5220\u9664\u5DE6\u56FE\uFF0C\u53EA\u4FDD\u7559\u53F3\u56FE">\n                  <i data-lucide="trash-2"></i>\n                  \u5220\u9664\n                </button>\n              </div>\n            </div>\n            <div class="pair-cell">\n              <canvas id="pairCanvasRight"></canvas>\n              <div class="pair-cell-actions">\n                <button id="pairCropRightBtn" class="secondary-button" type="button" aria-label="\u88C1\u526A\u53F3\u56FE">\n                  <i data-lucide="crop"></i>\n                  \u88C1\u526A\n                </button>\n                <button id="pairDropRightBtn" class="secondary-button" type="button" aria-label="\u5220\u9664\u53F3\u56FE\uFF0C\u53EA\u4FDD\u7559\u5DE6\u56FE">\n                  <i data-lucide="trash-2"></i>\n                  \u5220\u9664\n                </button>\n              </div>\n            </div>\n          </div>\n          <aside class="pair-controls">\n            <div>\n              <div class="section-title">\u6574\u4F53\u6BD4\u4F8B</div>\n              <div class="ratio-grid">\n                <button class="ratio-button" type="button" data-pair-ratio="16x9">16:9 \u5BBD\u5E45</button>\n                <button class="ratio-button" type="button" data-pair-ratio="3x2">3:2</button>\n                <button class="ratio-button" type="button" data-pair-ratio="4x3">4:3</button>\n                <button class="ratio-button" type="button" data-pair-ratio="1x1">1:1 \u65B9\u5F62</button>\n              </div>\n            </div>\n            <div class="pair-actions">\n              <button id="pairSwapBtn" class="secondary-button" type="button">\n                <i data-lucide="arrow-left-right"></i>\n                \u5DE6\u53F3\u4E92\u6362\n              </button>\n              <button id="pairDoneBtn" class="primary-button" type="button">\n                <i data-lucide="check"></i>\n                \u5B8C\u6210\n              </button>\n            </div>\n          </aside>\n        </div>\n      </div>\n    </div>\n\n    <div id="cropModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="cropTitle">\n      <div class="modal-card">\n        <div class="modal-head">\n          <div>\n            <h3 id="cropTitle">\u88C1\u526A\u56FE\u7247</h3>\n            <p id="cropSubtitle">\u62D6\u52A8\u88C1\u526A\u6846\uFF0C\u9009\u62E9\u8981\u4FDD\u7559\u7684\u533A\u57DF</p>\n          </div>\n          <button id="cropCloseBtn" class="icon-button ghost" type="button" title="\u5173\u95ED" aria-label="\u5173\u95ED\u88C1\u526A">\n            <i data-lucide="x"></i>\n          </button>\n        </div>\n        <div class="crop-layout">\n          <div class="crop-stage">\n            <canvas id="cropCanvas" width="720" height="500"></canvas>\n          </div>\n          <aside class="crop-controls">\n            <div>\n              <div class="section-title">\u6BD4\u4F8B</div>\n              <div class="ratio-grid">\n                <button class="ratio-button active" type="button" data-ratio="free">\u81EA\u7531</button>\n                <button class="ratio-button" type="button" data-ratio="original">\u539F\u56FE</button>\n                <button class="ratio-button" type="button" data-ratio="1">1:1</button>\n                <button class="ratio-button" type="button" data-ratio="1.333333">4:3</button>\n                <button class="ratio-button" type="button" data-ratio="1.777778">16:9</button>\n                <button class="ratio-button" type="button" data-ratio="0.75">3:4</button>\n                <button class="ratio-button" type="button" data-ratio="0.5625">9:16</button>\n              </div>\n            </div>\n            <div class="crop-actions">\n              <button id="cropResetBtn" class="secondary-button" type="button">\n                <i data-lucide="rotate-ccw"></i>\n                \u6062\u590D\u539F\u56FE\n              </button>\n              <button id="cropApplyBtn" class="primary-button" type="button">\n                <i data-lucide="check"></i>\n                \u5E94\u7528\u88C1\u526A\n              </button>\n            </div>\n          </aside>\n        </div>\n      </div>\n    </div>\n\n    <div id="wechatModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="wechatModalTitle">\n      <div class="modal-card wechat-modal-card">\n        <div class="modal-head">\n          <div>\n            <h3 id="wechatModalTitle">\u540C\u6B65\u5230\u516C\u4F17\u53F7\u8349\u7A3F\u7BB1</h3>\n            <p>\u786E\u8BA4\u6807\u9898\u548C\u5C01\u9762\u540E\u521B\u5EFA\u8349\u7A3F\uFF0C\u4E0D\u4F1A\u76F4\u63A5\u53D1\u5E03\u3002</p>\n          </div>\n          <button id="wechatCloseBtn" class="icon-button ghost" type="button" title="\u5173\u95ED" aria-label="\u5173\u95ED\u516C\u4F17\u53F7\u540C\u6B65">\n            <i data-lucide="x"></i>\n          </button>\n        </div>\n        <div class="wechat-sync-form">\n          <label class="wechat-field">\n            <span>\u6587\u7AE0\u6807\u9898</span>\n            <input id="wechatTitleInput" type="text" maxlength="64" />\n          </label>\n          <label class="wechat-field">\n            <span>\u4F5C\u8005\uFF08\u9009\u586B\uFF09</span>\n            <input id="wechatAuthorInput" type="text" maxlength="32" placeholder="\u7559\u7A7A\u5219\u4E0D\u663E\u793A\u4F5C\u8005" />\n          </label>\n          <div class="wechat-cover-field">\n            <div id="wechatCoverPreview" class="wechat-cover-preview">\n              <i data-lucide="image"></i>\n              <span>\u8BF7\u9009\u62E9\u5C01\u9762</span>\n            </div>\n            <div class="wechat-cover-copy">\n              <strong>\u8349\u7A3F\u5C01\u9762</strong>\n              <span id="wechatCoverHint">\u9ED8\u8BA4\u4F7F\u7528\u6B63\u6587\u7B2C\u4E00\u5F20\u56FE\u7247\uFF0C\u4E5F\u53EF\u4EE5\u5355\u72EC\u4E0A\u4F20\u3002</span>\n              <label class="secondary-button wechat-cover-button">\n                <i data-lucide="image-plus"></i>\n                \u66F4\u6362\u5C01\u9762\n                <input id="wechatCoverInput" type="file" accept="image/png,image/jpeg,image/webp,image/gif" />\n              </label>\n            </div>\n          </div>\n          <div id="wechatServiceStatus" class="wechat-service-status">\u6B63\u5728\u68C0\u67E5\u672C\u673A\u516C\u4F17\u53F7\u540C\u6B65\u670D\u52A1\u2026</div>\n          <div class="wechat-sync-actions">\n            <button id="wechatCancelBtn" class="secondary-button" type="button">\u53D6\u6D88</button>\n            <button id="wechatConfirmBtn" class="primary-button" type="button" disabled>\n              <i data-lucide="send"></i>\n              \u786E\u8BA4\u540C\u6B65\u5230\u8349\u7A3F\u7BB1\n            </button>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div id="livePhotoModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="livePhotoModalTitle">\n      <div class="modal-card live-photo-modal-card">\n        <div class="modal-head">\n          <div>\n            <h3 id="livePhotoModalTitle">\u63D2\u5165\u5B9E\u51B5\u56FE\u7247</h3>\n            <p>\u5148\u628A\u89C6\u9891\u4F5C\u4E3A\u5185\u5BB9\u7D20\u6750\u63D2\u5165\u56FE\u6587\uFF1B\u53F3\u4FA7\u4F1A\u81EA\u52A8\u8BC6\u522B\u5E76\u751F\u6210\u5B9E\u51B5\u53D1\u5E03\u5305\uFF0C\u5408\u6210\u5728\u672C\u673A\u6D4F\u89C8\u5668\u91CC\u5B8C\u6210\uFF0C\u539F\u89C6\u9891\u4E0D\u4F1A\u4E0A\u4F20\u3002</p>\n          </div>\n          <button id="livePhotoCloseBtn" class="icon-button ghost" type="button" title="\u5173\u95ED" aria-label="\u5173\u95ED\u5B9E\u51B5\u7167\u7247\u5236\u4F5C">\n            <i data-lucide="x"></i>\n          </button>\n        </div>\n        <div class="live-photo-layout">\n          <section class="live-photo-preview-column" aria-label="\u5B9E\u51B5\u7167\u7247\u9884\u89C8">\n            <div id="livePhotoPreview" class="live-photo-preview">\n              <video id="livePhotoVideo" muted loop playsinline></video>\n              <canvas id="livePhotoCropCanvas" width="720" height="520" aria-label="\u62D6\u52A8\u6216\u7F29\u653E\u5B9E\u51B5\u753B\u9762\u88C1\u526A\u6846"></canvas>\n              <div id="livePhotoEmpty" class="live-photo-empty">\n                <i data-lucide="video"></i>\n                <strong>\u9009\u62E9\u4E00\u6BB5\u89C6\u9891</strong>\n                <span>\u9009\u62E9\u6BD4\u4F8B\u540E\u53EF\u76F4\u63A5\u62D6\u52A8\u548C\u7F29\u653E\u88C1\u526A\u6846</span>\n              </div>\n              <span class="live-photo-badge"><i data-lucide="aperture"></i>LIVE</span>\n            </div>\n            <p class="live-photo-preview-note">\u62D6\u52A8\u767D\u8272\u88C1\u526A\u6846\u8C03\u6574\u4F4D\u7F6E\uFF0C\u62D6\u52A8\u56DB\u89D2\u7F29\u653E\uFF1B\u53EA\u88C1\u5207\u753B\u9762\uFF0C\u4E0D\u62C9\u4F38\u89C6\u9891\u3002</p>\n          </section>\n\n          <form id="livePhotoForm" class="live-photo-form">\n            <div class="live-photo-section">\n              <div class="live-photo-section-title">\n                <strong>\u89C6\u9891\u7D20\u6750</strong>\n                <span id="livePhotoVideoMeta">\u652F\u6301 MP4\u3001MOV\u3001WebM\uFF0C\u5355\u4E2A\u6587\u4EF6\u4E0D\u8D85\u8FC7 350MB</span>\n              </div>\n              <label class="secondary-button live-photo-file-button">\n                <i data-lucide="video"></i>\n                <span id="livePhotoFileLabel">\u9009\u62E9\u89C6\u9891</span>\n                <em id="livePhotoFileSwap" class="live-photo-file-swap" hidden>\u66F4\u6362\u7D20\u6750</em>\n                <input id="livePhotoVideoInput" type="file" accept="video/mp4,video/quicktime,video/webm,.mp4,.mov,.webm" />\n              </label>\n            </div>\n\n            <div class="live-photo-section">\n              <div class="live-photo-section-title">\n                <strong>\u5B9E\u51B5\u65F6\u957F</strong>\n                <span id="livePhotoDurationHint">\u6210\u7247\u56FA\u5B9A 5 \u79D2</span>\n              </div>\n              <div class="live-photo-platforms" role="group" aria-label="\u5B9E\u51B5\u65F6\u957F">\n                <button type="button" data-live-duration="3">3 \u79D2</button>\n                <button class="active" type="button" data-live-duration="5">5 \u79D2</button>\n                <button type="button" data-live-duration="8">8 \u79D2</button>\n              </div>\n            </div>\n\n            <div class="live-photo-section">\n              <div class="live-photo-section-title">\n                <strong>\u500D\u901F</strong>\n                <span id="livePhotoSpeedHint">\u539F\u901F\u64AD\u653E</span>\n              </div>\n              <div class="live-photo-platforms" role="group" aria-label="\u64AD\u653E\u500D\u901F">\n                <button class="active" type="button" data-live-speed="1">\u539F\u901F</button>\n                <button type="button" data-live-speed="1.5">1.5\xD7</button>\n                <button type="button" data-live-speed="2">2\xD7</button>\n                <button type="button" data-live-speed="3">3\xD7</button>\n              </div>\n            </div>\n\n            <div class="live-photo-section">\n              <div class="live-photo-section-title">\n                <strong>\u753B\u9762\u6BD4\u4F8B</strong>\n                <span>\u53EA\u88C1\u5207\u753B\u9762\uFF0C\u4E0D\u62C9\u4F38\u89C6\u9891</span>\n              </div>\n              <div class="ratio-grid live-photo-ratio-grid" role="group" aria-label="\u5B9E\u51B5\u753B\u9762\u6BD4\u4F8B">\n                <button class="ratio-button" type="button" data-live-ratio="free">\u81EA\u7531</button>\n                <button class="ratio-button active" type="button" data-live-ratio="original">\u539F\u89C6\u9891</button>\n                <button class="ratio-button" type="button" data-live-ratio="1">1:1</button>\n                <button class="ratio-button" type="button" data-live-ratio="1.333333">4:3</button>\n                <button class="ratio-button" type="button" data-live-ratio="1.777778">16:9</button>\n                <button class="ratio-button" type="button" data-live-ratio="0.75">3:4</button>\n                <button class="ratio-button" type="button" data-live-ratio="0.5625">9:16</button>\n              </div>\n              <label id="livePhotoCustomRatioRow" class="live-photo-custom-ratio" hidden>\n                <span>\u81EA\u7531\u5BBD\u9AD8\u6BD4 <output id="livePhotoCustomRatioOutput">0.75</output></span>\n                <input id="livePhotoCustomRatioInput" type="range" min="0.4" max="2.5" step="0.01" value="0.75" />\n              </label>\n            </div>\n\n            <div id="livePhotoTrimRow" class="live-photo-trim" hidden>\n              <div class="live-photo-trim-head">\n                <span>\u622A\u53D6\u7247\u6BB5</span>\n                <output id="livePhotoTrimOutput">\u7B2C 0.0 \u2013 5.0 \u79D2</output>\n              </div>\n              <div id="livePhotoTrimTrack" class="live-photo-trim-track" role="slider" tabindex="0"\n                   aria-label="\u62D6\u52A8\u9009\u62E9\u5B9E\u51B5\u7247\u6BB5" aria-valuemin="0" aria-valuenow="0" aria-valuemax="0">\n                <div id="livePhotoTrimStrip" class="live-photo-trim-strip" aria-hidden="true"></div>\n                <div id="livePhotoTrimWindow" class="live-photo-trim-window" aria-hidden="true">\n                  <span class="live-photo-trim-grip"></span>\n                </div>\n              </div>\n              <input id="livePhotoStartInput" type="hidden" value="0" />\n              <small id="livePhotoTrimHint">\u62D6\u52A8\u65B9\u6846\u9009\u62E9\u8981\u505A\u6210\u5B9E\u51B5\u7684\u7247\u6BB5</small>\n            </div>\n            <input id="livePhotoCoverInput" type="hidden" value="0.2" />\n\n            <label class="live-photo-sound-row">\n              <input id="livePhotoSoundInput" type="checkbox" checked />\n              <span>\u4FDD\u7559\u539F\u89C6\u9891\u58F0\u97F3<small>\u5B9E\u51B5\u5728 iPhone \u4E0A\u957F\u6309\u64AD\u653E\u65F6\u4F1A\u6709\u58F0\u97F3</small></span>\n            </label>\n\n            <div id="livePhotoServiceStatus" class="wechat-service-status">\u5B9E\u51B5\u8BBE\u7F6E\u4F1A\u8DDF\u968F\u8FD9\u6BB5\u89C6\u9891\u4FDD\u5B58\uFF0C\u53F3\u4FA7\u4E0B\u8F7D\u65F6\u81EA\u52A8\u5E94\u7528\u3002</div>\n            <div class="live-photo-actions">\n              <button id="livePhotoCancelBtn" class="secondary-button" type="button">\u53D6\u6D88</button>\n              <button id="livePhotoGenerateBtn" class="primary-button" type="submit" disabled>\n                <i data-lucide="image-plus"></i>\n                \u63D2\u5165\u56FE\u6587\n              </button>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div id="livePhotoHandoffModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="livePhotoHandoffTitle">\n      <div class="modal-card live-photo-handoff-card">\n        <div class="modal-head">\n          <div>\n            <h3 id="livePhotoHandoffTitle">\u5B9E\u51B5\u5BFC\u51FA</h3>\n            <p id="livePhotoHandoffSummary">Live Photo \u5DF2\u751F\u6210\uFF0C\u53EF\u4EE5\u76F4\u63A5\u4EA4\u63A5\u5230\u624B\u673A\u3002</p>\n          </div>\n          <button id="livePhotoHandoffCloseBtn" class="icon-button ghost" type="button" title="\u5173\u95ED" aria-label="\u5173\u95ED\u5BFC\u51FA\u7ED3\u679C">\n            <i data-lucide="x"></i>\n          </button>\n        </div>\n        <div class="live-photo-handoff-layout">\n          <section class="live-photo-handoff-preview" aria-label="\u5BFC\u51FA\u6548\u679C\u9884\u89C8">\n            <div id="livePhotoHandoffPreview" class="live-photo-handoff-preview-main"></div>\n            <p id="livePhotoHandoffPreviewHint" class="live-photo-handoff-preview-hint" hidden>\u957F\u6309\u9884\u89C8\u53EF\u4EE5\u67E5\u770B\u52A8\u6001\u6548\u679C</p>\n            <div id="livePhotoHandoffThumbnails" class="live-photo-handoff-thumbnails" aria-label="\u5168\u90E8\u5BFC\u51FA\u9875\u9762"></div>\n          </section>\n          <section class="live-photo-handoff-results" aria-label="\u5BFC\u51FA\u64CD\u4F5C">\n            <div id="livePhotoHandoffDevice" class="live-photo-handoff-device" hidden>\n              <i data-lucide="circle-check-big" aria-hidden="true"></i>\n              <strong id="livePhotoHandoffDeviceLabel">\u5DF2\u68C0\u6D4B\uFF1AMac \xB7 Safari</strong>\n            </div>\n            <div class="live-photo-handoff-summary-block">\n              <strong id="livePhotoHandoffCount">\u4F60\u4F1A\u4E0B\u8F7D\u5230\u4EC0\u4E48\uFF1F</strong>\n              <span id="livePhotoHandoffDetail">1 \u5F20\u5B9E\u51B5\u7167\u7247</span>\n            </div>\n            <div id="livePhotoHandoffFiles" class="live-photo-handoff-files" aria-label="\u4E0B\u8F7D\u5305\u5185\u5BB9"></div>\n            <section id="livePhotoHandoffProgress" class="export-progress export-progress-compact" aria-live="polite" aria-label="\u5B9E\u51B5\u4E0B\u8F7D\u5904\u7406\u8FDB\u5EA6" hidden>\n              <div class="export-progress-card handoff-progress-card">\n                <div class="export-progress-copy handoff-progress-copy">\n                  <strong id="livePhotoHandoffProgressTitle">\u6B63\u5728\u6574\u7406\u4E0B\u8F7D\u6587\u4EF6</strong>\n                  <span id="livePhotoHandoffProgressDetail">\u8BF7\u7A0D\u5019\uFF0C\u5B8C\u6210\u540E\u4F1A\u81EA\u52A8\u5F00\u59CB\u4E0B\u8F7D\u3002</span>\n                </div>\n                <div class="handoff-progress-ring-wrap" aria-hidden="true">\n                  <span class="export-progress-icon handoff-progress-ring"><i data-lucide="loader-circle"></i></span>\n                  <strong id="livePhotoHandoffProgressPercent" class="export-progress-percent">0%</strong>\n                </div>\n                <div id="livePhotoHandoffProgressSteps" class="handoff-progress-steps" aria-label="\u9875\u9762\u5904\u7406\u72B6\u6001"></div>\n                <span id="livePhotoHandoffProgressMeta" class="export-progress-meta">\u5DF2\u7528\u65F6 0 \u79D2</span>\n                <div id="livePhotoHandoffProgressBar" class="export-progress-track" role="progressbar" aria-label="\u6279\u91CF\u4E0B\u8F7D\u8FDB\u5EA6" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="\u6B63\u5728\u5904\u7406">\n                  <span id="livePhotoHandoffProgressFill" class="export-progress-fill"></span>\n                </div>\n              </div>\n            </section>\n            <div class="live-photo-handoff-primary-actions">\n              <button id="livePhotoHandoffDownloadBtn" class="primary-button" type="button">\n                <i data-lucide="download"></i>\u4E0B\u8F7D\u5B9E\u51B5\u7167\u7247\n              </button>\n              <button id="livePhotoHandoffRevealBtn" class="secondary-button" type="button" hidden>\n                <i data-lucide="folder-open"></i>\u5728 Finder \u4E2D\u627E\u5230\n              </button>\n              <button id="livePhotoHandoffAirdropBtn" class="secondary-button" type="button" hidden aria-hidden="true" tabindex="-1"></button>\n            </div>\n            <p id="livePhotoHandoffHint" class="live-photo-handoff-hint">\u4E0B\u8F7D\u7684\u662F\u4E00\u4E2A ZIP \u538B\u7F29\u5305\uFF0C\u89E3\u538B\u540E\u5373\u53EF\u770B\u5230\u5B8C\u6574\u5B9E\u51B5\u7167\u7247\u3002</p>\n            <button id="livePhotoHandoffCancelBtn" class="live-photo-handoff-cancel" type="button">\u53D6\u6D88</button>\n          </section>\n        </div>\n      </div>\n    </div>\n\n    <!-- \u5FC5\u987B\u4FDD\u6301\u4E3A body \u76F4\u5C5E\u5C42\uFF1AiPad Safari \u4F1A\u88C1\u526A grid/overflow \u9762\u677F\u91CC\u7684 fixed \u9009\u8BCD\u5DE5\u5177\u680F\u3002 -->\n    <div id="selectionToolbar" class="selection-toolbar" role="toolbar" aria-label="\u9009\u4E2D\u6587\u5B57\u6837\u5F0F" hidden>\n      <div class="selection-toolbar-row">\n        <button type="button" class="selection-tool-button selection-format-button" data-format="h1" title="\u5927\u6807\u9898">H1</button>\n        <button type="button" class="selection-tool-button selection-format-button" data-format="h2" title="\u5C0F\u6807\u9898">H2</button>\n        <button type="button" class="selection-tool-button selection-format-button" data-format="bold" title="\u52A0\u7C97"><strong>B</strong></button>\n        <button type="button" class="selection-tool-button selection-format-button" data-format="italic" title="\u659C\u4F53"><em>I</em></button>\n        <button id="selectionUnderlineBtn" class="selection-tool-button selection-format-button" type="button" title="\u4E0B\u5212\u7EBF" aria-label="\u4E0B\u5212\u7EBF">\n          <i data-lucide="underline"></i>\n        </button>\n        <button type="button" class="selection-tool-button selection-format-button" data-format="quote" title="\u91CD\u70B9\u5F15\u7528" aria-label="\u91CD\u70B9\u5F15\u7528"><i data-lucide="quote"></i></button>\n        <button id="selectionColorBtn" class="selection-tool-button" type="button" title="\u5B57\u4F53\u989C\u8272" aria-label="\u5B57\u4F53\u989C\u8272">\n          <i data-lucide="type"></i>\n          <span id="selectionColorDot" class="selection-color-dot" aria-hidden="true"></span>\n        </button>\n        <button id="selectionBgColorBtn" class="selection-tool-button" type="button" title="\u80CC\u666F\u8272" aria-label="\u80CC\u666F\u8272">\n          <i data-lucide="highlighter"></i>\n          <span id="selectionBgColorDot" class="selection-color-dot" aria-hidden="true"></span>\n        </button>\n      </div>\n      <div id="selectionColorPalette" class="selection-palette" hidden>\n        <div id="selectionColorSwatches" class="selection-swatches"></div>\n        <details class="selection-custom-color-disclosure">\n          <summary data-custom-color-toggle>\n            <span>\u81EA\u5B9A\u4E49\u989C\u8272</span>\n            <span class="selection-custom-color-chip is-text" aria-hidden="true"></span>\n          </summary>\n          <div class="selection-custom-color-body">\n            <label class="selection-custom-color">\n              \u9009\u62E9\u989C\u8272\n              <input id="selectionCustomColorInput" type="color" value="#2563eb" />\n            </label>\n            <div class="custom-color-actions" role="group" aria-label="\u5B57\u4F53\u989C\u8272\u4FDD\u5B58\u65B9\u5F0F">\n              <button type="button" class="custom-color-action" data-custom-color-action data-color-kind="color" data-color-save="false">\u4EC5\u672C\u6B21</button>\n              <button type="button" class="custom-color-action is-save" data-custom-color-action data-color-kind="color" data-color-save="true">\u4FDD\u5B58\u5E76\u4F7F\u7528</button>\n            </div>\n          </div>\n        </details>\n      </div>\n      <div id="selectionBgPalette" class="selection-palette" hidden>\n        <button type="button" class="clear-inline-style-action" data-clear-inline-style="bg">\n          <i data-lucide="eraser"></i>\n          \u6E05\u9664\u80CC\u666F\u8272\n        </button>\n        <div id="selectionBgSwatches" class="selection-swatches"></div>\n        <details class="selection-custom-color-disclosure">\n          <summary data-custom-color-toggle>\n            <span>\u81EA\u5B9A\u4E49\u80CC\u666F\u8272</span>\n            <span class="selection-custom-color-chip is-bg" aria-hidden="true"></span>\n          </summary>\n          <div class="selection-custom-color-body">\n            <label class="selection-custom-color">\n              \u9009\u62E9\u80CC\u666F\u8272\n              <input id="selectionCustomBgInput" type="color" value="#fff3a3" />\n            </label>\n            <div class="custom-color-actions" role="group" aria-label="\u80CC\u666F\u989C\u8272\u4FDD\u5B58\u65B9\u5F0F">\n              <button type="button" class="custom-color-action" data-custom-color-action data-color-kind="bg" data-color-save="false">\u4EC5\u672C\u6B21</button>\n              <button type="button" class="custom-color-action is-save" data-custom-color-action data-color-kind="bg" data-color-save="true">\u4FDD\u5B58\u5E76\u4F7F\u7528</button>\n            </div>\n          </div>\n        </details>\n      </div>\n      <div id="selectionUnderlinePalette" class="selection-palette selection-underline-palette" hidden>\n        <div class="selection-underline-options" role="group" aria-label="\u4E0B\u5212\u7EBF\u6837\u5F0F">\n          <button type="button" class="selection-underline-option" data-format="underline-solid">\n            <span class="underline-option-preview is-solid">\u5B9E\u7EBF</span>\n          </button>\n          <button type="button" class="selection-underline-option" data-format="underline-dashed">\n            <span class="underline-option-preview is-dashed">\u865A\u7EBF</span>\n          </button>\n          <button type="button" class="selection-underline-option" data-format="underline-none">\n            <span class="underline-option-preview is-none">\u53D6\u6D88</span>\n          </button>\n        </div>\n      </div>\n    </div>\n\n    <!-- \u5FC5\u987B\u4FDD\u6301\u4E3A body \u76F4\u5C5E\u5C42\uFF1AiPad Safari \u4F1A\u88C1\u526A sticky/overflow \u9762\u677F\u91CC\u7684 fixed \u4E0B\u8F7D\u906E\u7F69\u3002 -->\n    <section id="exportProgress" class="export-progress" aria-live="polite" aria-label="\u5BFC\u51FA\u5904\u7406\u8FDB\u5EA6" hidden>\n      <div class="export-progress-card">\n        <span class="export-progress-icon" aria-hidden="true"><i data-lucide="loader-circle"></i></span>\n        <div class="export-progress-copy">\n          <strong id="exportProgressTitle">\u6B63\u5728\u51C6\u5907\u5BFC\u51FA</strong>\n          <span id="exportProgressDetail">\u7CFB\u7EDF\u6B63\u5728\u5904\u7406\uFF0C\u8BF7\u4E0D\u8981\u5173\u95ED\u9875\u9762\u3002</span>\n        </div>\n        <strong id="exportProgressPercent" class="export-progress-percent">0%</strong>\n        <span id="exportProgressMeta" class="export-progress-meta">\u5DF2\u7528\u65F6 0 \u79D2</span>\n        <div id="exportProgressBar" class="export-progress-track" role="progressbar" aria-label="\u5BFC\u51FA\u8FDB\u5EA6" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="\u6B63\u5728\u5904\u7406">\n          <span id="exportProgressFill" class="export-progress-fill"></span>\n        </div>\n      </div>\n    </section>\n\n    <div id="onboardingTour" class="onboarding-tour hidden" role="dialog" aria-modal="true" aria-labelledby="onboardingTitle">\n      <div id="onboardingFocus" class="onboarding-focus" aria-hidden="true"></div>\n      <section id="onboardingTooltip" class="onboarding-tooltip">\n        <span id="onboardingArrow" class="onboarding-arrow" aria-hidden="true"></span>\n        <h3 id="onboardingTitle">\u5148\u521B\u5EFA\u81EA\u5DF1\u7684\u5185\u5BB9</h3>\n        <p id="onboardingBody">\u5DE6\u4FA7\u4E24\u4E2A\u5185\u5BB9\u662F\u793A\u4F8B\u6A21\u677F\u3002\u70B9\u51FB\u8FD9\u91CC\uFF0C\u65B0\u5EFA\u4F60\u7684\u56FE\u6587\u5361\u7247\u6216\u516C\u4F17\u53F7\u957F\u6587\u3002</p>\n        <button id="onboardingActionBtn" class="onboarding-action-button secondary-button" type="button" hidden></button>\n        <div class="onboarding-actions">\n          <span id="onboardingProgress">1 / 4</span>\n          <div>\n            <button id="onboardingSkipBtn" class="secondary-button" type="button">\u8DF3\u8FC7</button>\n            <button id="onboardingNextBtn" class="primary-button" type="button">\u4E0B\u4E00\u6B65</button>\n          </div>\n        </div>\n      </section>\n    </div>';
+var workspace_default = '<main class="workspace">\n      <aside id="historySidebar" class="history-sidebar" aria-label="\u5386\u53F2\u8BB0\u5F55">\n        <button id="historyToggleBtn" class="history-tab" type="button" title="\u6253\u5F00\u5386\u53F2\u8BB0\u5F55" aria-label="\u6253\u5F00\u5386\u53F2\u8BB0\u5F55">\n          <i data-lucide="panel-left-open"></i>\n        </button>\n        <div class="history-drawer">\n          <div class="history-head">\n            <span>\u5386\u53F2\u8BB0\u5F55</span>\n            <button id="historyCloseBtn" class="icon-button ghost" type="button" title="\u6536\u8D77\u5386\u53F2\u8BB0\u5F55" aria-label="\u6536\u8D77\u5386\u53F2\u8BB0\u5F55">\n              <i data-lucide="panel-left-close"></i>\n            </button>\n          </div>\n          <small class="history-note">\u81EA\u52A8\u4FDD\u5B58\uFF0C\u70B9\u51FB\u6062\u590D</small>\n          <div class="history-filter" aria-label="\u5386\u53F2\u8BB0\u5F55\u7B5B\u9009">\n            <button type="button" class="active" data-history-filter="all">\u5168\u90E8</button>\n            <button type="button" data-history-filter="cards">\u56FE\u6587</button>\n            <button type="button" data-history-filter="article">\u957F\u6587</button>\n          </div>\n          <div id="projectHistory" class="history-list"></div>\n        </div>\n      </aside>\n      <button class="panel-resizer" data-panel-resize="history" type="button" aria-label="\u62D6\u52A8\u8C03\u6574\u5386\u53F2\u680F\u5BBD\u5EA6"></button>\n\n      <aside class="editor-panel" aria-label="\u7F16\u8F91\u5668">\n        <div class="brand-row">\n          <div class="brand-title">\n            <h1>\u6210\u7A3F\u9884\u89C8</h1>\n            <span class="brand-english">Chenggao</span>\n            <p id="pageCount">0 \u5F20\u56FE\u7247</p>\n          </div>\n          <div class="brand-actions">\n            <button class="icon-button" id="newProjectBtn" type="button" title="\u65B0\u5EFA\u56FE\u6587" aria-label="\u65B0\u5EFA\u56FE\u6587">\n              <i data-lucide="plus"></i>\n            </button>\n            <button class="secondary-button convert-mode-button" id="convertModeBtn" type="button">\n              <i data-lucide="repeat-2"></i>\n              <span>\u8F6C\u957F\u6587</span>\n            </button>\n            <button class="secondary-button header-mode-button" id="headerModeToggleBtn" type="button">\n              <i data-lucide="user-round"></i>\n              \u6BCF\u9875\u5934\u50CF\n            </button>\n            <button class="icon-button" id="themeToggleBtn" type="button" title="\u5207\u6362\u9ED1\u767D\u4E3B\u9898" aria-label="\u5207\u6362\u9ED1\u767D\u4E3B\u9898">\n              <i data-lucide="palette"></i>\n            </button>\n          </div>\n        </div>\n\n        <section class="editor-controls" aria-label="\u7F16\u8F91\u5DE5\u5177">\n          <div class="profile-inline">\n            <label class="avatar-picker" title="\u4FEE\u6539\u5934\u50CF">\n              <img id="avatarPreview" alt="\u5934\u50CF\u9884\u89C8" />\n              <input id="avatarInput" type="file" accept="image/*" />\n            </label>\n            <input id="displayNameInput" class="compact-input name-input" type="text" aria-label="\u540D\u79F0" />\n            <input id="handleInput" class="compact-input handle-input" type="text" aria-label="\u82F1\u6587\u6635\u79F0" placeholder="\u53EF\u7559\u7A7A" />\n            <button id="cropAvatarBtn" class="tool-button" type="button" title="\u88C1\u526A\u5934\u50CF" aria-label="\u88C1\u526A\u5934\u50CF">\n              <i data-lucide="crop"></i>\n            </button>\n          </div>\n\n          <div class="toolbar" aria-label="\u6587\u5B57\u6837\u5F0F">\n            <button type="button" class="tool-button" data-format="h1" title="\u5927\u6807\u9898">H1</button>\n            <button type="button" class="tool-button" data-format="h2" title="\u5C0F\u6807\u9898">H2</button>\n            <button type="button" class="tool-button" data-format="bold" title="\u52A0\u7C97"><strong>B</strong></button>\n            <button type="button" class="tool-button" data-format="italic" title="\u659C\u4F53"><em>I</em></button>\n            <details id="underlineMenu" class="tool-menu underline-menu">\n              <summary class="tool-button" title="\u4E0B\u5212\u7EBF" aria-label="\u4E0B\u5212\u7EBF">\n                <i data-lucide="underline"></i>\n              </summary>\n              <div class="tool-popover underline-popover">\n                <div class="color-guide">\n                  <strong>\u4E0B\u5212\u7EBF</strong>\n                  <span>\u7EBF\u8DDD\u56FA\u5B9A 15 px\u3002\u518D\u6B21\u9009\u62E9\u540C\u6B3E\u53EF\u53D6\u6D88\uFF0C\u4E5F\u53EF\u76F4\u63A5\u70B9\u201C\u53D6\u6D88\u201D\u3002</span>\n                </div>\n                <div class="underline-options" role="group" aria-label="\u4E0B\u5212\u7EBF\u6837\u5F0F">\n                  <button type="button" class="underline-option" data-format="underline-solid">\n                    <span class="underline-option-preview is-solid">\u5B9E\u7EBF</span>\n                  </button>\n                  <button type="button" class="underline-option" data-format="underline-dashed">\n                    <span class="underline-option-preview is-dashed">\u865A\u7EBF</span>\n                  </button>\n                  <button type="button" class="underline-option" data-format="underline-none">\n                    <span class="underline-option-preview is-none">\u53D6\u6D88</span>\n                  </button>\n                </div>\n              </div>\n            </details>\n            <button type="button" class="tool-button" data-format="quote" title="\u91CD\u70B9\u5F15\u7528"><i data-lucide="quote"></i></button>\n            <label class="tool-button file-tool" title="\u63D2\u5165\u56FE\u7247" aria-label="\u63D2\u5165\u56FE\u7247">\n              <i data-lucide="image-plus"></i>\n              <input id="contentImageInput" type="file" accept="image/*" multiple />\n            </label>\n            <label id="livePhotoToolbarBtn" class="tool-button file-tool feature-anchor" title="\u63D2\u5165\u5B9E\u51B5\u56FE\u7247" aria-label="\u63D2\u5165\u5B9E\u51B5\u56FE\u7247">\n              <i data-lucide="video"></i>\n              <span class="feature-new-badge" data-feature-badge="live" aria-label="\u65B0\u529F\u80FD">\u65B0</span>\n              <input id="contentVideoInput" type="file" accept="video/mp4,video/quicktime,video/webm,.mp4,.mov,.webm" />\n            </label>\n            <details id="obsidianImportMenu" class="tool-menu obsidian-import-menu">\n              <summary class="tool-button feature-anchor" title="Obsidian \u53CC\u5411\u540C\u6B65" aria-label="Obsidian \u53CC\u5411\u540C\u6B65">\n                <i data-lucide="clipboard-paste"></i>\n                <span class="feature-new-badge" data-feature-badge="obsidian" aria-label="\u65B0\u529F\u80FD">\u65B0</span>\n              </summary>\n              <div class="tool-popover obsidian-import-popover">\n                <div class="obsidian-import-heading">\n                  <strong>Obsidian \u53CC\u5411\u540C\u6B65</strong>\n                  <span>\u7C98\u8D34\u7B14\u8BB0\u65F6\u8BFB\u53D6\u56FE\u7247\uFF0C\u4FEE\u6539\u540E\u53EF\u540C\u6B65\u56DE\u4ED3\u5E93\u3002</span>\n                </div>\n                <div class="obsidian-vault-row">\n                  <div class="obsidian-vault-actions">\n                    <button id="connectObsidianVaultBtn" class="secondary-button" type="button">\n                      <i data-lucide="folder-open"></i>\n                      \u8FDE\u63A5\u4ED3\u5E93\n                    </button>\n                    <button id="syncObsidianVaultBtn" class="primary-button" type="button">\n                      <i data-lucide="upload-cloud"></i>\n                      \u540C\u6B65\u56DE Obsidian\n                    </button>\n                  </div>\n                  <input id="obsidianVaultFolderInput" class="obsidian-vault-folder-input" type="file" webkitdirectory directory multiple />\n                  <span id="obsidianVaultStatus">\u5C1A\u672A\u8FDE\u63A5\u4ED3\u5E93</span>\n                </div>\n                <p class="obsidian-direct-paste-hint">\u5DF2\u8FDE\u63A5\u4ED3\u5E93\u3002\u7C98\u8D34 Obsidian Markdown \u4F1A\u81EA\u52A8\u8BFB\u53D6\u56FE\u7247\uFF1B\u540C\u6B65\u5185\u5BB9\u4FDD\u5B58\u5728\u4ED3\u5E93\u7684\u201C\u6210\u7A3F\u9884\u89C8\u201D\u6587\u4EF6\u5939\u3002</p>\n              </div>\n            </details>\n            <details id="colorMenu" class="tool-menu">\n              <summary class="tool-button color-tool" title="\u9009\u4E2D\u6587\u5B57\u989C\u8272" aria-label="\u9009\u4E2D\u6587\u5B57\u989C\u8272">\n                <i data-lucide="paintbrush"></i>\n              </summary>\n              <div class="tool-popover color-popover">\n                <div class="color-guide">\n                  <strong>\u6587\u5B57\u4E0A\u8272</strong>\n                  <span>\u5148\u9009\u4E2D\u6587\u5B57\u548C\u81EA\u5B9A\u4E49\u989C\u8272\uFF0C\u518D\u51B3\u5B9A\u4EC5\u672C\u6B21\u4F7F\u7528\u6216\u4FDD\u5B58\u5230\u8272\u677F\u3002</span>\n                </div>\n                <label>\n                  \u5B57\u4F53\u989C\u8272\n                  <input id="inlineColorInput" type="color" value="#2563eb" />\n                </label>\n                <div class="custom-color-actions" role="group" aria-label="\u5B57\u4F53\u989C\u8272\u4FDD\u5B58\u65B9\u5F0F">\n                  <button type="button" class="custom-color-action" data-custom-color-action data-color-kind="color" data-color-save="false">\u4EC5\u672C\u6B21</button>\n                  <button type="button" class="custom-color-action is-save" data-custom-color-action data-color-kind="color" data-color-save="true">\u4FDD\u5B58\u5E76\u4F7F\u7528</button>\n                </div>\n              </div>\n            </details>\n\n            <details id="bgColorMenu" class="tool-menu">\n              <summary class="tool-button bg-color-tool" title="\u9009\u4E2D\u6587\u5B57\u80CC\u666F\u8272" aria-label="\u9009\u4E2D\u6587\u5B57\u80CC\u666F\u8272">\n                <i data-lucide="highlighter"></i>\n              </summary>\n              <div class="tool-popover color-popover">\n                <div class="color-guide">\n                  <strong>\u80CC\u666F\u4E0A\u8272</strong>\n                  <span>\u5148\u9009\u4E2D\u6587\u5B57\u548C\u81EA\u5B9A\u4E49\u80CC\u666F\u8272\uFF0C\u518D\u51B3\u5B9A\u4EC5\u672C\u6B21\u4F7F\u7528\u6216\u4FDD\u5B58\u5230\u8272\u677F\u3002</span>\n                </div>\n                <label>\n                  \u80CC\u666F\u989C\u8272\n                  <input id="inlineBgColorInput" type="color" value="#fff3a3" />\n                </label>\n                <div class="custom-color-actions" role="group" aria-label="\u80CC\u666F\u989C\u8272\u4FDD\u5B58\u65B9\u5F0F">\n                  <button type="button" class="custom-color-action" data-custom-color-action data-color-kind="bg" data-color-save="false">\u4EC5\u672C\u6B21</button>\n                  <button type="button" class="custom-color-action is-save" data-custom-color-action data-color-kind="bg" data-color-save="true">\u4FDD\u5B58\u5E76\u4F7F\u7528</button>\n                </div>\n                <button type="button" class="clear-inline-style-action" data-clear-inline-style="bg">\n                  <i data-lucide="eraser"></i>\n                  \u6E05\u9664\u80CC\u666F\u8272\n                </button>\n              </div>\n            </details>\n\n            <button id="copyPlainTextBtn" class="tool-button" type="button" title="\u590D\u5236\u5168\u6587\uFF08\u53BB\u9664\u56FE\u7247\u4E0E\u683C\u5F0F\uFF09" aria-label="\u590D\u5236\u5168\u6587\uFF0C\u53BB\u9664\u56FE\u7247\u4E0E\u683C\u5F0F">\n              <i data-lucide="copy"></i>\n            </button>\n\n            <details id="searchMenu" class="tool-menu">\n              <summary class="tool-button search-tool-button" title="\u67E5\u627E\u66FF\u6362" aria-label="\u67E5\u627E\u66FF\u6362">\n                <i data-lucide="search"></i>\n                <svg class="search-replace-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">\n                  <path d="M4 8h9"></path>\n                  <path d="M10 5l3 3-3 3"></path>\n                  <path d="M20 16h-9"></path>\n                  <path d="M14 13l-3 3 3 3"></path>\n                </svg>\n              </summary>\n              <div class="tool-popover search-popover">\n                <label>\n                  \u67E5\u627E\n                  <input id="findInput" type="text" autocomplete="off" />\n                </label>\n                <label>\n                  \u66FF\u6362\u4E3A\n                  <input id="replaceInput" type="text" autocomplete="off" />\n                </label>\n                <span id="findMatchCount" class="search-match-count" aria-live="polite"></span>\n                <button id="findNextBtn" class="secondary-button" type="button">\n                  <i data-lucide="search"></i>\n                  \u67E5\u627E\n                </button>\n                <button id="replaceOneBtn" class="secondary-button" type="button">\n                  <i data-lucide="replace"></i>\n                  \u66FF\u6362\u5F53\u524D\n                </button>\n                <button id="replaceAllBtn" class="secondary-button wide" type="button">\n                  <i data-lucide="replace-all"></i>\n                  \u5168\u6587\u66FF\u6362\n                </button>\n              </div>\n            </details>\n\n            <details class="tool-menu">\n              <summary class="tool-button" title="\u56FE\u7247\u88C1\u526A" aria-label="\u56FE\u7247\u88C1\u526A">\n                <i data-lucide="images"></i>\n              </summary>\n              <div class="tool-popover image-popover">\n                <div class="image-batch-controls">\n                  <label>\n                    \u56FE\u7247\u5BBD\u5EA6\n                    <span class="percent-input">\n                      <input id="imageWidthPercentInput" type="number" min="25" max="100" step="1" value="100" />\n                      <b>%</b>\n                    </span>\n                  </label>\n                  <button id="applyImageWidthBtn" class="secondary-button" type="button">\n                    \u6279\u91CF\u5E94\u7528\n                  </button>\n                  <label>\n                    \u56FA\u5B9A\u5BBD\n                    <span class="unit-input">\n                      <input id="fixedImageWidthInput" type="number" min="80" max="780" step="1" placeholder="\u5BBD" />\n                      <b>px</b>\n                    </span>\n                  </label>\n                  <label>\n                    \u56FA\u5B9A\u9AD8\n                    <span class="unit-input">\n                      <input id="fixedImageHeightInput" type="number" min="80" max="1048" step="1" placeholder="\u9AD8" />\n                      <b>px</b>\n                    </span>\n                  </label>\n                  <button id="applyFixedImageSizeBtn" class="secondary-button wide" type="button">\n                    \u5E94\u7528\u56FA\u5B9A\u5BBD\u9AD8\n                  </button>\n                </div>\n                <div id="imageList" class="image-list"></div>\n              </div>\n            </details>\n\n            <details class="tool-menu settings-menu">\n              <summary class="tool-button" title="\u8BBE\u8BA1\u8BBE\u7F6E" aria-label="\u8BBE\u8BA1\u8BBE\u7F6E">\n                <i data-lucide="sliders-horizontal"></i>\n              </summary>\n              <div class="tool-popover settings-popover">\n                <div class="settings-grid">\n                  <label>\n                    \u6587\u5B57\u8272\n                    <input id="textColorInput" type="color" value="#202938" />\n                  </label>\n                  <label>\n                    \u5F3A\u8C03\u8272\n                    <input id="accentColorInput" type="color" value="#2563eb" />\n                  </label>\n                  <label>\n                    \u80CC\u666F\u8272\n                    <input id="bgColorInput" type="color" value="#ffffff" />\n                  </label>\n                  <label>\n                    \u5B57\u53F7\n                    <input id="fontSizeInput" type="number" min="24" max="40" value="34" />\n                  </label>\n                  <label>\n                    \u884C\u8DDD\n                    <input id="lineHeightInput" type="number" min="1" max="2.4" step="0.05" value="1.85" />\n                  </label>\n                  <label>\n                    \u4E2D\u6587\u5B57\u4F53\n                    <select id="zhFontInput">\n                      <option value="zh-system">\u82F9\u65B9 / \u7CFB\u7EDF\u9ED1\u4F53</option>\n                      <option value="zh-song">\u5B8B\u4F53</option>\n                      <option value="zh-kai">\u6977\u4F53</option>\n                      <option value="zh-hei">\u9ED1\u4F53</option>\n                    </select>\n                  </label>\n                  <label>\n                    \u82F1\u6587\u5B57\u4F53\n                    <select id="enFontInput">\n                      <option value="en-system">\u7CFB\u7EDF\u65E0\u886C\u7EBF</option>\n                      <option value="en-serif">Serif</option>\n                      <option value="en-rounded">Rounded</option>\n                      <option value="en-mono">Mono</option>\n                    </select>\n                  </label>\n                  <label>\n                    \u56FE\u7247\u6700\u5927\u9AD8\n                    <input id="imageHeightInput" type="number" min="220" max="1048" value="1048" />\n                  </label>\n                </div>\n              </div>\n            </details>\n          </div>\n\n        </section>\n\n        <textarea id="contentInput" class="editor-textarea" spellcheck="false"></textarea>\n      </aside>\n      <button class="panel-resizer" data-panel-resize="editor" type="button" aria-label="\u62D6\u52A8\u8C03\u6574\u7F16\u8F91\u533A\u5BBD\u5EA6"></button>\n\n      <section id="previewPanel" class="preview-panel" data-i18n-aria="preview.aria" aria-label="Preview">\n        <div class="preview-topbar">\n          <div>\n            <div id="appModeSwitch" class="mode-switch" data-i18n-aria="mode.aria" aria-label="Preview mode">\n              <button type="button" class="active" data-app-mode="cards" data-i18n="mode.cards">Cards</button>\n              <button type="button" data-app-mode="article" data-i18n="mode.article">Article</button>\n            </div>\n            <h2 data-i18n="preview.heading">Preview and export</h2>\n            <span id="statusText" data-i18n="preview.statusReady">Auto pagination is on</span>\n          </div>\n          <div class="topbar-actions">\n            <div id="cardSettings" class="card-settings">\n              <details class="tool-menu article-setting-menu">\n                <summary class="icon-button" data-i18n-title="layout.title" data-i18n-aria="layout.title" title="Card layout" aria-label="Card layout">\n                  <i data-lucide="rows-3"></i>\n                </summary>\n                <div class="tool-popover">\n                  <div class="color-guide">\n                    <strong data-i18n="layout.title">Card layout</strong>\n                  </div>\n                  <button type="button" id="keepHeadingBtn" class="article-option active" aria-pressed="true" data-i18n="layout.keepHeading">\n                    Keep headings off the last line\n                  </button>\n                </div>\n              </details>\n            </div>\n            <div id="articleSettings" class="article-settings" hidden>\n              <details class="tool-menu article-setting-menu">\n                <summary class="icon-button" data-i18n-title="theme.title" data-i18n-aria="theme.title" title="Theme" aria-label="Theme">\n                  <i data-lucide="swatch-book"></i>\n                </summary>\n                <div class="tool-popover">\n                  <div class="color-guide">\n                    <strong data-i18n="theme.title">Theme</strong>\n                  </div>\n                  <div class="article-option-grid">\n                    <button type="button" class="article-option active" data-article-theme="classic" data-i18n="theme.classic">Classic</button>\n                    <button type="button" class="article-option" data-article-theme="elegant" data-i18n="theme.elegant">Elegant</button>\n                    <button type="button" class="article-option" data-article-theme="clean" data-i18n="theme.clean">Clean</button>\n                    <button type="button" class="article-option" data-article-theme="wechat" data-i18n="theme.wechat">WeChat green</button>\n                    <button type="button" class="article-option" data-article-theme="colorful" data-i18n="theme.colorful">Colorful WeChat</button>\n                  </div>\n                </div>\n              </details>\n              <details class="tool-menu article-setting-menu">\n                <summary class="icon-button" data-i18n-title="font.title" data-i18n-aria="font.title" title="Font" aria-label="Font">\n                  <i data-lucide="type"></i>\n                </summary>\n                <div class="tool-popover">\n                  <div class="color-guide">\n                    <strong data-i18n="font.title">Font</strong>\n                  </div>\n                  <div class="article-option-grid three">\n                    <button type="button" class="article-option active" data-article-font="sans" data-i18n="font.sans">Sans</button>\n                    <button type="button" class="article-option" data-article-font="serif" data-i18n="font.serif">Serif</button>\n                    <button type="button" class="article-option" data-article-font="mono" data-i18n="font.mono">Mono</button>\n                  </div>\n                </div>\n              </details>\n              <details class="tool-menu article-setting-menu">\n                <summary class="icon-button" data-i18n-title="size.title" data-i18n-aria="size.title" title="Size" aria-label="Size">\n                  <i data-lucide="a-large-small"></i>\n                </summary>\n                <div class="tool-popover">\n                  <div class="color-guide">\n                    <strong data-i18n="size.title">Size</strong>\n                  </div>\n                  <div class="article-option-grid three">\n                    <button type="button" class="article-option" data-article-size="small" data-i18n="size.small">Smaller</button>\n                    <button type="button" class="article-option active" data-article-size="normal" data-i18n="size.normal">Default</button>\n                    <button type="button" class="article-option" data-article-size="large" data-i18n="size.large">Larger</button>\n                  </div>\n                </div>\n              </details>\n              <details class="tool-menu article-setting-menu">\n                <summary class="icon-button" data-i18n-title="color.title" data-i18n-aria="color.title" title="Accent" aria-label="Accent">\n                  <i data-lucide="pipette"></i>\n                </summary>\n                <div class="tool-popover">\n                  <div class="color-guide">\n                    <strong data-i18n="color.title">Accent</strong>\n                  </div>\n                  <div class="article-color-grid">\n                    <button type="button" class="article-color active" data-article-color="#0f766e" style="--swatch:#0f766e" data-i18n="color.teal">Jade</button>\n                    <button type="button" class="article-color" data-article-color="#2563eb" style="--swatch:#2563eb" data-i18n="color.blue">Blue</button>\n                    <button type="button" class="article-color" data-article-color="#ef4444" style="--swatch:#ef4444" data-i18n="color.orange">Coral</button>\n                    <button type="button" class="article-color" data-article-color="#7c3aed" style="--swatch:#7c3aed" data-i18n="color.purple">Violet</button>\n                    <button type="button" class="article-color" data-article-color="#111827" style="--swatch:#111827" data-i18n="color.black">Ink</button>\n                  </div>\n                </div>\n              </details>\n            </div>\n            <button id="downloadZipBtn" class="primary-button" type="button">\n              <i data-lucide="download"></i>\n              <span data-i18n="action.exportImages">Export images</span>\n            </button>\n            <button id="downloadArticleBtn" class="primary-button" type="button" hidden>\n              <i data-lucide="download"></i>\n              <span data-i18n="action.exportArticle">Export long image</span>\n            </button>\n            <button id="copyWechatBtn" class="secondary-button" type="button" hidden>\n              <i data-lucide="copy"></i>\n              <span data-i18n="action.copyWechat">Copy WeChat format</span>\n            </button>\n            <button id="syncWechatBtn" class="primary-button" type="button" hidden>\n              <i data-lucide="send"></i>\n              \u540C\u6B65\u8349\u7A3F\u7BB1\n            </button>\n          </div>\n        </div>\n        <div class="preview-body">\n          <div id="pages" class="pages"></div>\n        </div>\n      </section>\n    </main>\n\n    <footer class="site-footer">\n      <div class="footer-actions">\n        <button id="feedbackBtn" class="feedback-dock-button" type="button" aria-label="\u53CD\u9988\u95EE\u9898" aria-haspopup="dialog" aria-controls="feedbackModal">\n          <i data-lucide="message-square-warning"></i>\n          <span>\u95EE\u9898\u53CD\u9988</span>\n        </button>\n        <div id="accountDock" class="account-dock">\n        <div id="accountMenu" class="account-menu hidden" role="dialog" aria-label="\u8D26\u53F7\u83DC\u5355">\n          <div class="account-menu-summary">\n            <span class="account-menu-avatar"><i data-lucide="circle-user-round"></i></span>\n            <div>\n              <strong id="accountMenuTitle">\u6E38\u5BA2\u6A21\u5F0F</strong>\n              <span id="accountMenuDescription">\u8349\u7A3F\u4EC5\u4E34\u65F6\u4FDD\u5B58\u5728\u5F53\u524D\u6807\u7B7E\u9875</span>\n            </div>\n          </div>\n          <section id="accountMenuSwitchSection" class="account-menu-switch" hidden aria-label="\u5DF2\u767B\u5F55\u8D26\u53F7">\n            <div class="account-menu-switch-heading">\n              <strong>\u5DF2\u767B\u5F55\u8D26\u53F7</strong>\n              <span>\u70B9\u51FB\u5373\u53EF\u5207\u6362</span>\n            </div>\n            <div id="accountMenuAccountList" class="account-account-list"></div>\n            <button id="accountMenuAddBtn" class="account-menu-text-button account-menu-add" type="button">\n              <i data-lucide="user-plus"></i>\u6DFB\u52A0\u5176\u4ED6\u8D26\u53F7\n            </button>\n          </section>\n          <div class="account-menu-actions">\n            <button id="accountMenuLoginBtn" class="primary-button" type="button">\n              <i data-lucide="log-in"></i>\u767B\u5F55\u5E76\u540C\u6B65\n            </button>\n            <button id="accountMenuManageBtn" class="secondary-button" type="button" hidden>\n              <i data-lucide="settings"></i>\u8D26\u53F7\u8BBE\u7F6E\n            </button>\n            <button id="accountMenuSwitchBtn" class="secondary-button" type="button" hidden>\n              <i data-lucide="arrow-left-right"></i>\u5207\u6362\u8D26\u53F7\n            </button>\n            <button id="accountMenuWhatsNewBtn" class="account-menu-text-button" type="button">\n              <i data-lucide="sparkles"></i>\u672C\u6B21\u66F4\u65B0\n              <span class="account-menu-new-dot" data-feature-badge="updates" aria-label="\u6709\u65B0\u529F\u80FD"></span>\n            </button>\n            <button id="accountMenuSignOutBtn" class="account-menu-text-button danger" type="button" hidden>\n              <i data-lucide="log-out"></i>\u9000\u51FA\u767B\u5F55\n            </button>\n          </div>\n          <p id="accountMenuHint" class="account-menu-hint">\u7EE7\u7EED\u4F7F\u7528\u6E38\u5BA2\u6A21\u5F0F\u65E0\u9700\u64CD\u4F5C\uFF0C\u70B9\u51FB\u83DC\u5355\u5916\u5373\u53EF\u5173\u95ED\u3002</p>\n        </div>\n        <button class="account-dock-button feature-anchor" id="accountBtn" type="button" title="\u8D26\u53F7\u4E0E\u767B\u5F55" aria-label="\u6253\u5F00\u8D26\u53F7\u83DC\u5355" aria-controls="accountMenu" aria-expanded="false">\n          <span class="account-status-dot" aria-hidden="true"></span>\n          <i data-lucide="circle-user-round"></i>\n          <span id="accountButtonLabel">\u8D26\u53F7</span>\n          <span class="feature-new-badge compact" data-feature-badge="account" aria-label="\u65B0\u529F\u80FD">\u65B0</span>\n          <i class="account-dock-chevron" data-lucide="chevron-up"></i>\n        </button>\n        </div>\n      </div>\n      <nav class="site-credit" hidden aria-hidden="true">\n        <span class="site-credit-by"></span>\n        <a hidden href="#" aria-hidden="true">\n          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/></svg>\n        </a>\n        <a hidden class="is-cjk" href="#" aria-hidden="true">\n          <span aria-hidden="true">\u7EA2</span>\n        </a>\n        <a hidden href="#" aria-hidden="true">\n          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>\n        </a>\n        <a hidden href="#" aria-hidden="true">\n          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>\n        </a>\n      </nav>\n    </footer>\n\n    <div id="entryChoiceModal" class="entry-choice-modal" role="dialog" aria-modal="true" aria-labelledby="entryChoiceTitle">\n      <section class="entry-choice-card">\n        <div id="entryChoiceLoading" class="entry-choice-loading" aria-live="polite">\n          <span class="entry-choice-spinner" aria-hidden="true"></span>\n          <strong>\u6B63\u5728\u68C0\u67E5\u767B\u5F55\u72B6\u6001\u2026</strong>\n          <p>\u767B\u5F55\u8FC7\u7684\u7528\u6237\u4F1A\u76F4\u63A5\u8FDB\u5165\u81EA\u5DF1\u7684\u5DE5\u4F5C\u533A\u3002</p>\n        </div>\n        <div id="entryChoiceContent" class="entry-choice-content" hidden>\n          <header class="entry-choice-head">\n            <span class="entry-choice-brand">\u6210\u7A3F\u9884\u89C8</span>\n            <h2 id="entryChoiceTitle">\u8FD9\u6B21\u60F3\u600E\u4E48\u4F7F\u7528\uFF1F</h2>\n            <p>\u4E34\u65F6\u6392\u7248\u53EF\u4EE5\u76F4\u63A5\u8FDB\u5165\uFF1B\u9700\u8981\u957F\u671F\u4FDD\u5B58\u548C\u8DE8\u8BBE\u5907\u4F7F\u7528\u65F6\u518D\u767B\u5F55\u3002</p>\n          </header>\n          <div id="entryChoiceNotice" class="entry-choice-notice" hidden></div>\n          <div class="entry-choice-options">\n            <article class="entry-choice-option guest-option">\n              <span class="entry-choice-option-icon"><i data-lucide="zap"></i></span>\n              <div>\n                <span class="entry-choice-kicker">\u4E34\u65F6\u4F7F\u7528</span>\n                <h3>\u6E38\u5BA2\u6A21\u5F0F</h3>\n                <p>\u4E0D\u6CE8\u518C\uFF0C\u76F4\u63A5\u6392\u7248\u548C\u5BFC\u51FA\u3002\u5185\u5BB9\u53EA\u7559\u5728\u5F53\u524D\u6D4F\u89C8\u5668\u6807\u7B7E\u9875\uFF0C\u5173\u95ED\u540E\u4E0D\u4FDD\u8BC1\u4FDD\u7559\u3002</p>\n              </div>\n              <ul>\n                <li><i data-lucide="check"></i>\u7ACB\u5373\u5F00\u59CB\uFF0C\u4E0D\u4E0A\u4F20\u4E91\u7AEF</li>\n                <li><i data-lucide="clock-3"></i>\u9002\u5408\u4E00\u6B21\u6027\u3001\u7D27\u6025\u6392\u7248</li>\n              </ul>\n              <button id="chooseGuestBtn" class="secondary-button entry-choice-button" type="button">\n                \u4EE5\u6E38\u5BA2\u8EAB\u4EFD\u8FDB\u5165<i data-lucide="arrow-right"></i>\n              </button>\n            </article>\n            <article class="entry-choice-option account-option">\n              <span class="entry-choice-recommended">\u957F\u671F\u4F7F\u7528\u63A8\u8350</span>\n              <span class="entry-choice-option-icon"><i data-lucide="cloud-check"></i></span>\n              <div>\n                <span class="entry-choice-kicker">\u957F\u671F\u4FDD\u5B58</span>\n                <h3>\u767B\u5F55\u5DE5\u4F5C\u533A</h3>\n                <p>\u6309\u8D26\u53F7\u4FDD\u5B58\u5934\u50CF\u3001\u6635\u79F0\u3001\u56FE\u6587\u548C\u7D20\u6750\uFF0C\u6362\u8BBE\u5907\u767B\u5F55\u540E\u4ECD\u80FD\u7EE7\u7EED\u7F16\u8F91\u3002</p>\n              </div>\n              <ul>\n                <li><i data-lucide="check"></i>\u81EA\u52A8\u540C\u6B65\u5230 Supabase</li>\n                <li><i data-lucide="check"></i>\u4E0D\u540C\u8D26\u53F7\u7684\u6570\u636E\u76F8\u4E92\u9694\u79BB</li>\n              </ul>\n              <span id="entryChoiceReturningHint" class="entry-choice-returning" hidden></span>\n              <button id="chooseLoginBtn" class="primary-button entry-choice-button" type="button">\n                \u767B\u5F55\u5E76\u957F\u671F\u4FDD\u5B58<i data-lucide="arrow-right"></i>\n              </button>\n            </article>\n          </div>\n          <p class="entry-choice-footnote">\u4E4B\u540E\u4E5F\u53EF\u4EE5\u901A\u8FC7\u53F3\u4E0B\u89D2\u7684\u8D26\u53F7\u5165\u53E3\u968F\u65F6\u767B\u5F55\u6216\u9000\u51FA\u3002</p>\n        </div>\n      </section>\n    </div>\n\n    <div id="welcomeBackModal" class="welcome-back-modal hidden" role="dialog" aria-modal="true" aria-labelledby="welcomeBackTitle">\n      <section class="welcome-back-card">\n        <button id="welcomeBackCloseBtn" class="icon-button ghost welcome-back-close" type="button" title="\u5173\u95ED" aria-label="\u76F4\u63A5\u8FDB\u5165\u5DE5\u4F5C\u533A">\n          <i data-lucide="x"></i>\n        </button>\n        <header class="welcome-back-head">\n          <h2 id="welcomeBackTitle">\u6B22\u8FCE\u56DE\u6765\uFF0C\u64CD\u4F5C\u65B9\u5F0F\u6CA1\u6709\u53D8</h2>\n          <p>\u4F60\u4ECD\u7136\u53EF\u4EE5\u50CF\u4EE5\u524D\u4E00\u6837\u76F4\u63A5\u6392\u7248\u548C\u4E0B\u8F7D\u3002</p>\n        </header>\n        <div class="welcome-back-features" aria-label="\u672C\u6B21\u65B0\u589E\u529F\u80FD">\n          <article>\n            <span class="welcome-back-feature-icon"><i data-lucide="layout-grid"></i></span>\n            <div><strong>\u53CC\u56FE\u62FC\u56FE</strong><p>\u70B9\u9009\u56FE\u7247\u540E\u6309\u53F3\u4FA7 \uFF0B\uFF0C\u628A\u7B2C\u4E8C\u5F20\u56FE\u62FC\u5728\u53F3\u8FB9</p></div>\n            <span class="welcome-back-feature-state">\u65B0\u529F\u80FD</span>\n          </article>\n          <article>\n            <span class="welcome-back-feature-icon"><i data-lucide="sliders-horizontal"></i></span>\n            <div><strong>\u62FC\u56FE\u8C03\u6574</strong><p>\u5F39\u7A97\u91CC\u9009\u6574\u4F53\u6BD4\u4F8B\u3001\u5DE6\u53F3\u4E92\u6362\u3001\u4E24\u5F20\u56FE\u5206\u522B\u88C1\u526A</p></div>\n            <span class="welcome-back-feature-state">\u65B0\u529F\u80FD</span>\n          </article>\n          <article>\n            <span class="welcome-back-feature-icon"><i data-lucide="bold"></i></span>\n            <div><strong>\u591A\u884C\u52A0\u7C97</strong><p>\u8DE8\u884C\u9009\u4E2D\u52A0\u7C97\u3001\u659C\u4F53\u9010\u884C\u751F\u6548\uFF0C\u518D\u70B9\u4E00\u6B21\u53D6\u6D88</p></div>\n            <span class="welcome-back-feature-state">\u5DF2\u4FEE\u590D</span>\n          </article>\n          <article>\n            <span class="welcome-back-feature-icon"><i data-lucide="crop"></i></span>\n            <div><strong>\u88C1\u526A\u4E0E\u5207\u6362\u8D26\u53F7</strong><p>\u88C1\u526A\u6846\u89D2\u67C4\u5728\u8FB9\u7F18\u4E5F\u80FD\u62D6\u52A8\uFF1B\u5207\u6362\u8D26\u53F7\u540E\u9884\u89C8\u7ACB\u5373\u5237\u65B0</p></div>\n            <span class="welcome-back-feature-state">\u5DF2\u4FEE\u590D</span>\n          </article>\n        </div>\n        <div class="welcome-back-actions">\n          <button id="welcomeBackDirectBtn" class="primary-button" type="button">\u76F4\u63A5\u8FDB\u5165\u5DE5\u4F5C\u533A</button>\n          <button id="welcomeBackTourBtn" class="secondary-button" type="button">\u7528 30 \u79D2\u770B\u770B\u65B0\u529F\u80FD</button>\n        </div>\n        <p class="welcome-back-footnote">\u672C\u6B22\u8FCE\u9875\u5728\u5F53\u524D\u7248\u672C\u4EC5\u663E\u793A\u4E00\u6B21\uFF0C\u4E4B\u540E\u53EF\u4ECE\u53F3\u4E0B\u89D2\u201C\u672C\u6B21\u66F4\u65B0\u201D\u91CD\u65B0\u67E5\u770B\u3002</p>\n      </section>\n    </div>\n\n    <div id="accountModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="accountModalTitle">\n      <div class="modal-card account-modal-card">\n        <button id="accountCloseBtn" class="icon-button ghost account-modal-close" type="button" title="\u5173\u95ED" aria-label="\u5173\u95ED\u8D26\u53F7\u9762\u677F">\n          <i data-lucide="x"></i>\n        </button>\n\n        <aside class="account-value-pane">\n          <span class="account-value-brand">\u6210\u7A3F\u9884\u89C8</span>\n          <h3 id="accountModalTitle">\u767B\u5F55\u540E\uFF0C<br />\u7EE7\u7EED\u4E0A\u6B21\u7684\u521B\u4F5C</h3>\n          <div class="account-benefits" aria-label="\u767B\u5F55\u540E\u53EF\u7528\u529F\u80FD">\n            <div class="account-benefit-row">\n              <span class="account-benefit-icon"><i data-lucide="user-round"></i></span>\n              <div><strong>\u540C\u6B65\u5934\u50CF\u4E0E\u6635\u79F0</strong><span>\u5728\u6240\u6709\u8BBE\u5907\u4E0A\u4FDD\u6301\u4E00\u81F4</span></div>\n            </div>\n            <div class="account-benefit-row">\n              <span class="account-benefit-icon"><i data-lucide="file-text"></i></span>\n              <div><strong>\u4FDD\u5B58\u56FE\u6587\u8349\u7A3F</strong><span>\u81EA\u52A8\u4FDD\u5B58\uFF0C\u4E0D\u518D\u4E22\u5931</span></div>\n            </div>\n            <div class="account-benefit-row">\n              <span class="account-benefit-icon"><i data-lucide="laptop"></i></span>\n              <div><strong>\u8DE8\u8BBE\u5907\u7EE7\u7EED\u7F16\u8F91</strong><span>\u968F\u65F6\u968F\u5730\u7EE7\u7EED\u4F60\u7684\u521B\u4F5C</span></div>\n            </div>\n          </div>\n        </aside>\n\n        <section class="account-modal-body">\n          <div id="accountConfigNotice" class="account-notice" hidden></div>\n\n          <div id="accountOauth" class="account-oauth" hidden>\n            <button id="accountGoogleBtn" class="account-oauth-button" type="button">\n              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">\n                <path fill="#4285F4" d="M23.06 12.25c0-.85-.08-1.67-.22-2.45H12v4.64h6.2a5.3 5.3 0 0 1-2.3 3.48v2.89h3.72c2.17-2 3.44-4.95 3.44-8.56z"/>\n                <path fill="#34A853" d="M12 23.5c3.11 0 5.72-1.03 7.62-2.79l-3.72-2.89c-1.03.69-2.35 1.1-3.9 1.1-3 0-5.54-2.03-6.45-4.75H1.7v2.98A11.5 11.5 0 0 0 12 23.5z"/>\n                <path fill="#FBBC05" d="M5.55 14.17a6.9 6.9 0 0 1 0-4.34V6.85H1.7a11.5 11.5 0 0 0 0 10.3l3.85-2.98z"/>\n                <path fill="#EA4335" d="M12 4.75c1.69 0 3.21.58 4.4 1.72l3.3-3.3C17.72 1.3 15.11.25 12 .25A11.5 11.5 0 0 0 1.7 6.85l3.85 2.98C6.46 7.11 9 4.75 12 4.75z"/>\n              </svg>\n              \u4F7F\u7528 Google \u8D26\u53F7\u7EE7\u7EED\n            </button>\n            <p class="account-oauth-hint">\u7528 Gmail \u7684\u8BDD\u6700\u5FEB\uFF0C\u4E0D\u7528\u7B49\u786E\u8BA4\u90AE\u4EF6\u3002</p>\n            <div class="account-oauth-divider"><span>\u6216\u8005\u7528\u90AE\u7BB1</span></div>\n          </div>\n\n          <form id="accountAuthForm" class="account-auth-form">\n            <div class="account-auth-mode" role="tablist" aria-label="\u9009\u62E9\u8D26\u53F7\u64CD\u4F5C">\n              <button id="accountSignInModeBtn" class="is-active" type="button" role="tab" aria-selected="true">\n                \u767B\u5F55\n              </button>\n              <button id="accountSignUpBtn" type="button" role="tab" aria-selected="false">\n                \u6CE8\u518C\n              </button>\n            </div>\n            <label>\n              <span>\u90AE\u7BB1</span>\n              <input id="accountEmailInput" type="email" autocomplete="email" placeholder="name@example.com" required />\n            </label>\n            <label>\n              <span>\u5BC6\u7801</span>\n              <span class="account-input-wrap">\n                <input id="accountPasswordInput" type="password" autocomplete="current-password" minlength="8" placeholder="\u81F3\u5C11 8 \u4F4D" required />\n                <button id="accountPasswordToggleBtn" class="account-password-toggle" type="button" title="\u663E\u793A\u5BC6\u7801" aria-label="\u663E\u793A\u5BC6\u7801">\n                  <i data-lucide="eye"></i>\n                </button>\n              </span>\n            </label>\n            <label id="accountPasswordConfirmField" hidden>\n              <span>\u518D\u6B21\u8F93\u5165\u5BC6\u7801</span>\n              <input id="accountPasswordConfirmInput" type="password" autocomplete="new-password" minlength="8" placeholder="\u518D\u6B21\u8F93\u5165\u76F8\u540C\u5BC6\u7801" />\n            </label>\n            <label id="accountNewPasswordField" hidden>\n              <span>\u8BBE\u7F6E\u65B0\u5BC6\u7801</span>\n              <input id="accountNewPasswordInput" type="password" autocomplete="new-password" minlength="8" placeholder="\u81F3\u5C11 8 \u4F4D" />\n            </label>\n            <div class="account-auth-actions">\n              <button id="accountSignInBtn" class="primary-button" type="submit">\u767B\u5F55</button>\n            </div>\n            <button id="accountResendConfirmationBtn" class="account-resend-confirmation" type="button" hidden>\n              \u6CA1\u6709\u6536\u5230\u786E\u8BA4\u90AE\u4EF6\uFF1F<span>\u91CD\u65B0\u53D1\u9001</span>\n            </button>\n            <button id="accountForgotPasswordBtn" class="account-resend-confirmation" type="button">\n              \u5FD8\u8BB0\u5BC6\u7801\uFF1F<span>\u53D1\u9001\u91CD\u7F6E\u90AE\u4EF6</span>\n            </button>\n          </form>\n\n          <section id="accountSignedIn" class="account-signed-in" hidden>\n            <div class="account-user-card">\n              <img id="accountAvatar" alt="\u8D26\u53F7\u5934\u50CF" />\n              <div>\n                <strong id="accountDisplayName">\u5DF2\u767B\u5F55</strong>\n                <span id="accountEmail"></span>\n              </div>\n              <span class="account-online"><i data-lucide="cloud-check"></i>\u5DF2\u8FDE\u63A5</span>\n            </div>\n            <div class="account-sync-card">\n              <strong>\u4E91\u7AEF\u56FE\u6587</strong>\n              <span id="accountSyncStatus">\u6B63\u5728\u8BFB\u53D6\u8D26\u53F7\u6570\u636E\u2026</span>\n            </div>\n            <div class="account-switch-panel">\n              <div class="account-switch-heading">\n                <div>\n                  <strong>\u5DF2\u767B\u5F55\u8D26\u53F7</strong>\n                  <span>\u70B9\u51FB\u5373\u53EF\u5207\u6362\uFF0C\u4E0D\u9700\u8981\u9000\u51FA</span>\n                </div>\n                <i data-lucide="arrow-left-right" aria-hidden="true"></i>\n              </div>\n              <div id="accountModalAccountList" class="account-account-list"></div>\n              <button id="accountAddAnotherBtn" class="secondary-button account-wide-button" type="button">\n                <i data-lucide="user-plus"></i>\n                \u6DFB\u52A0\u5176\u4ED6\u8D26\u53F7\n              </button>\n            </div>\n            <button id="accountImportLocalBtn" class="secondary-button account-wide-button" type="button">\n              <i data-lucide="cloud-upload"></i>\n              \u628A\u6E38\u5BA2 / \u65E7\u672C\u673A\u8349\u7A3F\u5BFC\u5165\u6B64\u8D26\u53F7\n            </button>\n            <button id="accountSignOutBtn" class="ghost-button account-wide-button" type="button">\u9000\u51FA\u767B\u5F55</button>\n          </section>\n        </section>\n      </div>\n    </div>\n\n    <div id="feedbackModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="feedbackModalTitle" tabindex="-1">\n      <div class="modal-card feedback-modal-card">\n        <div class="modal-head feedback-modal-head">\n          <div>\n            <span class="feedback-kicker">\u6210\u7A3F\u9884\u89C8</span>\n            <h3 id="feedbackModalTitle">\u53CD\u9988\u95EE\u9898</h3>\n            <p>\u628A\u9047\u5230\u7684\u95EE\u9898\u5199\u6E05\u695A\uFF0C\u622A\u56FE\u53EF\u4EE5\u5E2E\u52A9\u6211\u66F4\u5FEB\u5B9A\u4F4D\u3002</p>\n          </div>\n          <button id="feedbackCloseBtn" class="icon-button ghost" type="button" title="\u5173\u95ED" aria-label="\u5173\u95ED\u95EE\u9898\u53CD\u9988">\n            <i data-lucide="x"></i>\n          </button>\n        </div>\n        <form\n          id="feedbackForm"\n          class="feedback-form"\n          method="POST"\n          enctype="multipart/form-data"\n        >\n          <input type="hidden" name="_subject" value="\u3010\u6210\u7A3F\u9884\u89C8\u3011\u65B0\u7684\u95EE\u9898\u53CD\u9988" />\n          <input type="hidden" name="_template" value="table" />\n          <input class="feedback-honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />\n          <label class="feedback-field">\n            <span>\u95EE\u9898\u63CF\u8FF0 <b aria-hidden="true">*</b></span>\n            <textarea id="feedbackMessageInput" name="\u95EE\u9898\u63CF\u8FF0" minlength="5" maxlength="2000" rows="6" placeholder="\u4F8B\u5982\uFF1A\u6211\u9009\u4E2D\u4E86\u4E24\u884C\u6587\u5B57\uFF0C\u70B9\u51FB\u4E0B\u5212\u7EBF\u540E\uFF0C\u9884\u89C8\u91CC\u51FA\u73B0\u4E86 {{underline\u2026" required></textarea>\n            <small><span id="feedbackMessageCount">0</span> / 2000</small>\n          </label>\n          <label class="feedback-field">\n            <span>\u8054\u7CFB\u65B9\u5F0F <em>\u9009\u586B</em></span>\n            <input id="feedbackContactInput" name="\u8054\u7CFB\u65B9\u5F0F" type="text" maxlength="120" placeholder="\u90AE\u7BB1\u3001\u5FAE\u4FE1\u6216\u5176\u4ED6\u65B9\u4FBF\u56DE\u590D\u7684\u65B9\u5F0F" />\n          </label>\n          <div class="feedback-upload-field">\n            <div class="feedback-upload-heading">\n              <span>\u95EE\u9898\u622A\u56FE <em>\u9009\u586B</em></span>\n              <small>\u6700\u591A 3 \u5F20\uFF0C\u603B\u8BA1\u4E0D\u8D85\u8FC7 8MB</small>\n            </div>\n            <label id="feedbackUploadDropzone" class="feedback-upload-dropzone" for="feedbackImageInput">\n              <i data-lucide="image-plus"></i>\n              <strong>\u70B9\u51FB\u4E0A\u4F20\u56FE\u7247</strong>\n              <span>\u652F\u6301 PNG\u3001JPG\u3001WebP\u3001GIF\uFF0C\u4E5F\u53EF\u4EE5\u62D6\u5230\u8FD9\u91CC</span>\n              <input id="feedbackImageInput" name="attachment" type="file" accept="image/png,image/jpeg,image/webp,image/gif" multiple />\n            </label>\n            <div id="feedbackImageList" class="feedback-image-list" aria-live="polite"></div>\n          </div>\n          <p class="feedback-privacy">\n            \u8BF7\u52FF\u4E0A\u4F20\u5BC6\u7801\u3001\u5BC6\u94A5\u7B49\u654F\u611F\u4FE1\u606F\u3002\u53CD\u9988\u7531\n            <a href="https://formsubmit.co/privacy.pdf" target="_blank" rel="noopener noreferrer">FormSubmit</a>\n            \u8F6C\u53D1\uFF0C\u53EF\u80FD\u4FDD\u7559\u8868\u5355\u8BB0\u5F55 30 \u5929\u3002\n          </p>\n          <p id="feedbackNotice" class="feedback-notice" role="status" aria-live="polite">\n            \u4E0D\u4F1A\u8BFB\u53D6\u6216\u4E0A\u4F20\u5F53\u524D\u8349\u7A3F\u3002\n          </p>\n          <div class="feedback-actions">\n            <button id="feedbackCancelBtn" class="secondary-button" type="button">\u53D6\u6D88</button>\n            <button id="feedbackSubmitBtn" class="primary-button" type="submit">\n              <i data-lucide="send"></i>\n              \u53D1\u9001\u53CD\u9988\n            </button>\n          </div>\n        </form>\n      </div>\n    </div>\n\n    <div id="pairModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="pairModalTitle">\n      <div class="modal-card pair-modal-card">\n        <div class="modal-head">\n          <div>\n            <h3 id="pairModalTitle">\u8C03\u6574\u62FC\u56FE</h3>\n            <p>\u9009\u62E9\u6574\u4F53\u6BD4\u4F8B\uFF0C\u4E24\u5F20\u56FE\u53EF\u5206\u522B\u88C1\u526A\u6216\u5220\u9664\uFF1B\u5173\u95ED\u4E0D\u4FDD\u5B58\uFF0C\u70B9\u300C\u5B8C\u6210\u300D\u624D\u751F\u6548</p>\n          </div>\n          <button id="pairCloseBtn" class="icon-button ghost" type="button" title="\u5173\u95ED" aria-label="\u5173\u95ED\u62FC\u56FE\u8C03\u6574">\n            <i data-lucide="x"></i>\n          </button>\n        </div>\n        <div class="pair-editor">\n          <div id="pairPreview" class="pair-preview">\n            <div class="pair-cell">\n              <canvas id="pairCanvasLeft"></canvas>\n              <div class="pair-cell-actions">\n                <button id="pairCropLeftBtn" class="secondary-button" type="button" aria-label="\u88C1\u526A\u5DE6\u56FE">\n                  <i data-lucide="crop"></i>\n                  \u88C1\u526A\n                </button>\n                <button id="pairDropLeftBtn" class="secondary-button" type="button" aria-label="\u5220\u9664\u5DE6\u56FE\uFF0C\u53EA\u4FDD\u7559\u53F3\u56FE">\n                  <i data-lucide="trash-2"></i>\n                  \u5220\u9664\n                </button>\n              </div>\n            </div>\n            <div class="pair-cell">\n              <canvas id="pairCanvasRight"></canvas>\n              <div class="pair-cell-actions">\n                <button id="pairCropRightBtn" class="secondary-button" type="button" aria-label="\u88C1\u526A\u53F3\u56FE">\n                  <i data-lucide="crop"></i>\n                  \u88C1\u526A\n                </button>\n                <button id="pairDropRightBtn" class="secondary-button" type="button" aria-label="\u5220\u9664\u53F3\u56FE\uFF0C\u53EA\u4FDD\u7559\u5DE6\u56FE">\n                  <i data-lucide="trash-2"></i>\n                  \u5220\u9664\n                </button>\n              </div>\n            </div>\n          </div>\n          <aside class="pair-controls">\n            <div>\n              <div class="section-title">\u6574\u4F53\u6BD4\u4F8B</div>\n              <div class="ratio-grid">\n                <button class="ratio-button" type="button" data-pair-ratio="16x9">16:9 \u5BBD\u5E45</button>\n                <button class="ratio-button" type="button" data-pair-ratio="3x2">3:2</button>\n                <button class="ratio-button" type="button" data-pair-ratio="4x3">4:3</button>\n                <button class="ratio-button" type="button" data-pair-ratio="1x1">1:1 \u65B9\u5F62</button>\n              </div>\n            </div>\n            <div class="pair-actions">\n              <button id="pairSwapBtn" class="secondary-button" type="button">\n                <i data-lucide="arrow-left-right"></i>\n                \u5DE6\u53F3\u4E92\u6362\n              </button>\n              <button id="pairDoneBtn" class="primary-button" type="button">\n                <i data-lucide="check"></i>\n                \u5B8C\u6210\n              </button>\n            </div>\n          </aside>\n        </div>\n      </div>\n    </div>\n\n    <div id="cropModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="cropTitle">\n      <div class="modal-card">\n        <div class="modal-head">\n          <div>\n            <h3 id="cropTitle">\u88C1\u526A\u56FE\u7247</h3>\n            <p id="cropSubtitle">\u62D6\u52A8\u88C1\u526A\u6846\uFF0C\u9009\u62E9\u8981\u4FDD\u7559\u7684\u533A\u57DF</p>\n          </div>\n          <button id="cropCloseBtn" class="icon-button ghost" type="button" title="\u5173\u95ED" aria-label="\u5173\u95ED\u88C1\u526A">\n            <i data-lucide="x"></i>\n          </button>\n        </div>\n        <div class="crop-layout">\n          <div class="crop-stage">\n            <canvas id="cropCanvas" width="720" height="500"></canvas>\n          </div>\n          <aside class="crop-controls">\n            <div>\n              <div class="section-title">\u6BD4\u4F8B</div>\n              <div class="ratio-grid">\n                <button class="ratio-button active" type="button" data-ratio="free">\u81EA\u7531</button>\n                <button class="ratio-button" type="button" data-ratio="original">\u539F\u56FE</button>\n                <button class="ratio-button" type="button" data-ratio="1">1:1</button>\n                <button class="ratio-button" type="button" data-ratio="1.333333">4:3</button>\n                <button class="ratio-button" type="button" data-ratio="1.777778">16:9</button>\n                <button class="ratio-button" type="button" data-ratio="0.75">3:4</button>\n                <button class="ratio-button" type="button" data-ratio="0.5625">9:16</button>\n              </div>\n            </div>\n            <div class="crop-actions">\n              <button id="cropResetBtn" class="secondary-button" type="button">\n                <i data-lucide="rotate-ccw"></i>\n                \u6062\u590D\u539F\u56FE\n              </button>\n              <button id="cropApplyBtn" class="primary-button" type="button">\n                <i data-lucide="check"></i>\n                \u5E94\u7528\u88C1\u526A\n              </button>\n            </div>\n          </aside>\n        </div>\n      </div>\n    </div>\n\n    <div id="wechatModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="wechatModalTitle">\n      <div class="modal-card wechat-modal-card">\n        <div class="modal-head">\n          <div>\n            <h3 id="wechatModalTitle">\u540C\u6B65\u5230\u516C\u4F17\u53F7\u8349\u7A3F\u7BB1</h3>\n            <p>\u786E\u8BA4\u6807\u9898\u548C\u5C01\u9762\u540E\u521B\u5EFA\u8349\u7A3F\uFF0C\u4E0D\u4F1A\u76F4\u63A5\u53D1\u5E03\u3002</p>\n          </div>\n          <button id="wechatCloseBtn" class="icon-button ghost" type="button" title="\u5173\u95ED" aria-label="\u5173\u95ED\u516C\u4F17\u53F7\u540C\u6B65">\n            <i data-lucide="x"></i>\n          </button>\n        </div>\n        <div class="wechat-sync-form">\n          <label class="wechat-field">\n            <span>\u6587\u7AE0\u6807\u9898</span>\n            <input id="wechatTitleInput" type="text" maxlength="64" />\n          </label>\n          <label class="wechat-field">\n            <span>\u4F5C\u8005\uFF08\u9009\u586B\uFF09</span>\n            <input id="wechatAuthorInput" type="text" maxlength="32" placeholder="\u7559\u7A7A\u5219\u4E0D\u663E\u793A\u4F5C\u8005" />\n          </label>\n          <div class="wechat-cover-field">\n            <div id="wechatCoverPreview" class="wechat-cover-preview">\n              <i data-lucide="image"></i>\n              <span>\u8BF7\u9009\u62E9\u5C01\u9762</span>\n            </div>\n            <div class="wechat-cover-copy">\n              <strong>\u8349\u7A3F\u5C01\u9762</strong>\n              <span id="wechatCoverHint">\u9ED8\u8BA4\u4F7F\u7528\u6B63\u6587\u7B2C\u4E00\u5F20\u56FE\u7247\uFF0C\u4E5F\u53EF\u4EE5\u5355\u72EC\u4E0A\u4F20\u3002</span>\n              <label class="secondary-button wechat-cover-button">\n                <i data-lucide="image-plus"></i>\n                \u66F4\u6362\u5C01\u9762\n                <input id="wechatCoverInput" type="file" accept="image/png,image/jpeg,image/webp,image/gif" />\n              </label>\n            </div>\n          </div>\n          <div id="wechatServiceStatus" class="wechat-service-status">\u6B63\u5728\u68C0\u67E5\u672C\u673A\u516C\u4F17\u53F7\u540C\u6B65\u670D\u52A1\u2026</div>\n          <div class="wechat-sync-actions">\n            <button id="wechatCancelBtn" class="secondary-button" type="button">\u53D6\u6D88</button>\n            <button id="wechatConfirmBtn" class="primary-button" type="button" disabled>\n              <i data-lucide="send"></i>\n              \u786E\u8BA4\u540C\u6B65\u5230\u8349\u7A3F\u7BB1\n            </button>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div id="livePhotoModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="livePhotoModalTitle">\n      <div class="modal-card live-photo-modal-card">\n        <div class="modal-head">\n          <div>\n            <h3 id="livePhotoModalTitle">\u63D2\u5165\u5B9E\u51B5\u56FE\u7247</h3>\n            <p>\u5148\u628A\u89C6\u9891\u4F5C\u4E3A\u5185\u5BB9\u7D20\u6750\u63D2\u5165\u56FE\u6587\uFF1B\u53F3\u4FA7\u4F1A\u81EA\u52A8\u8BC6\u522B\u5E76\u751F\u6210\u5B9E\u51B5\u53D1\u5E03\u5305\uFF0C\u5408\u6210\u5728\u672C\u673A\u6D4F\u89C8\u5668\u91CC\u5B8C\u6210\uFF0C\u539F\u89C6\u9891\u4E0D\u4F1A\u4E0A\u4F20\u3002</p>\n          </div>\n          <button id="livePhotoCloseBtn" class="icon-button ghost" type="button" title="\u5173\u95ED" aria-label="\u5173\u95ED\u5B9E\u51B5\u7167\u7247\u5236\u4F5C">\n            <i data-lucide="x"></i>\n          </button>\n        </div>\n        <div class="live-photo-layout">\n          <section class="live-photo-preview-column" aria-label="\u5B9E\u51B5\u7167\u7247\u9884\u89C8">\n            <div id="livePhotoPreview" class="live-photo-preview">\n              <video id="livePhotoVideo" muted loop playsinline></video>\n              <canvas id="livePhotoCropCanvas" width="720" height="520" aria-label="\u62D6\u52A8\u6216\u7F29\u653E\u5B9E\u51B5\u753B\u9762\u88C1\u526A\u6846"></canvas>\n              <div id="livePhotoEmpty" class="live-photo-empty">\n                <i data-lucide="video"></i>\n                <strong>\u9009\u62E9\u4E00\u6BB5\u89C6\u9891</strong>\n                <span>\u9009\u62E9\u6BD4\u4F8B\u540E\u53EF\u76F4\u63A5\u62D6\u52A8\u548C\u7F29\u653E\u88C1\u526A\u6846</span>\n              </div>\n              <span class="live-photo-badge"><i data-lucide="aperture"></i>LIVE</span>\n            </div>\n            <p class="live-photo-preview-note">\u62D6\u52A8\u767D\u8272\u88C1\u526A\u6846\u8C03\u6574\u4F4D\u7F6E\uFF0C\u62D6\u52A8\u56DB\u89D2\u7F29\u653E\uFF1B\u53EA\u88C1\u5207\u753B\u9762\uFF0C\u4E0D\u62C9\u4F38\u89C6\u9891\u3002</p>\n          </section>\n\n          <form id="livePhotoForm" class="live-photo-form">\n            <div class="live-photo-section">\n              <div class="live-photo-section-title">\n                <strong>\u89C6\u9891\u7D20\u6750</strong>\n                <span id="livePhotoVideoMeta">\u652F\u6301 MP4\u3001MOV\u3001WebM\uFF0C\u5355\u4E2A\u6587\u4EF6\u4E0D\u8D85\u8FC7 350MB</span>\n              </div>\n              <label class="secondary-button live-photo-file-button">\n                <i data-lucide="video"></i>\n                <span id="livePhotoFileLabel">\u9009\u62E9\u89C6\u9891</span>\n                <em id="livePhotoFileSwap" class="live-photo-file-swap" hidden>\u66F4\u6362\u7D20\u6750</em>\n                <input id="livePhotoVideoInput" type="file" accept="video/mp4,video/quicktime,video/webm,.mp4,.mov,.webm" />\n              </label>\n            </div>\n\n            <div class="live-photo-section">\n              <div class="live-photo-section-title">\n                <strong>\u5B9E\u51B5\u65F6\u957F</strong>\n                <span id="livePhotoDurationHint">\u6210\u7247\u56FA\u5B9A 5 \u79D2</span>\n              </div>\n              <div class="live-photo-platforms" role="group" aria-label="\u5B9E\u51B5\u65F6\u957F">\n                <button type="button" data-live-duration="3">3 \u79D2</button>\n                <button class="active" type="button" data-live-duration="5">5 \u79D2</button>\n                <button type="button" data-live-duration="8">8 \u79D2</button>\n              </div>\n            </div>\n\n            <div class="live-photo-section">\n              <div class="live-photo-section-title">\n                <strong>\u500D\u901F</strong>\n                <span id="livePhotoSpeedHint">\u539F\u901F\u64AD\u653E</span>\n              </div>\n              <div class="live-photo-platforms" role="group" aria-label="\u64AD\u653E\u500D\u901F">\n                <button class="active" type="button" data-live-speed="1">\u539F\u901F</button>\n                <button type="button" data-live-speed="1.5">1.5\xD7</button>\n                <button type="button" data-live-speed="2">2\xD7</button>\n                <button type="button" data-live-speed="3">3\xD7</button>\n              </div>\n            </div>\n\n            <div class="live-photo-section">\n              <div class="live-photo-section-title">\n                <strong>\u753B\u9762\u6BD4\u4F8B</strong>\n                <span>\u53EA\u88C1\u5207\u753B\u9762\uFF0C\u4E0D\u62C9\u4F38\u89C6\u9891</span>\n              </div>\n              <div class="ratio-grid live-photo-ratio-grid" role="group" aria-label="\u5B9E\u51B5\u753B\u9762\u6BD4\u4F8B">\n                <button class="ratio-button" type="button" data-live-ratio="free">\u81EA\u7531</button>\n                <button class="ratio-button active" type="button" data-live-ratio="original">\u539F\u89C6\u9891</button>\n                <button class="ratio-button" type="button" data-live-ratio="1">1:1</button>\n                <button class="ratio-button" type="button" data-live-ratio="1.333333">4:3</button>\n                <button class="ratio-button" type="button" data-live-ratio="1.777778">16:9</button>\n                <button class="ratio-button" type="button" data-live-ratio="0.75">3:4</button>\n                <button class="ratio-button" type="button" data-live-ratio="0.5625">9:16</button>\n              </div>\n              <label id="livePhotoCustomRatioRow" class="live-photo-custom-ratio" hidden>\n                <span>\u81EA\u7531\u5BBD\u9AD8\u6BD4 <output id="livePhotoCustomRatioOutput">0.75</output></span>\n                <input id="livePhotoCustomRatioInput" type="range" min="0.4" max="2.5" step="0.01" value="0.75" />\n              </label>\n            </div>\n\n            <div id="livePhotoTrimRow" class="live-photo-trim" hidden>\n              <div class="live-photo-trim-head">\n                <span>\u622A\u53D6\u7247\u6BB5</span>\n                <output id="livePhotoTrimOutput">\u7B2C 0.0 \u2013 5.0 \u79D2</output>\n              </div>\n              <div id="livePhotoTrimTrack" class="live-photo-trim-track" role="slider" tabindex="0"\n                   aria-label="\u62D6\u52A8\u9009\u62E9\u5B9E\u51B5\u7247\u6BB5" aria-valuemin="0" aria-valuenow="0" aria-valuemax="0">\n                <div id="livePhotoTrimStrip" class="live-photo-trim-strip" aria-hidden="true"></div>\n                <div id="livePhotoTrimWindow" class="live-photo-trim-window" aria-hidden="true">\n                  <span class="live-photo-trim-grip"></span>\n                </div>\n              </div>\n              <input id="livePhotoStartInput" type="hidden" value="0" />\n              <small id="livePhotoTrimHint">\u62D6\u52A8\u65B9\u6846\u9009\u62E9\u8981\u505A\u6210\u5B9E\u51B5\u7684\u7247\u6BB5</small>\n            </div>\n            <input id="livePhotoCoverInput" type="hidden" value="0.2" />\n\n            <label class="live-photo-sound-row">\n              <input id="livePhotoSoundInput" type="checkbox" checked />\n              <span>\u4FDD\u7559\u539F\u89C6\u9891\u58F0\u97F3<small>\u5B9E\u51B5\u5728 iPhone \u4E0A\u957F\u6309\u64AD\u653E\u65F6\u4F1A\u6709\u58F0\u97F3</small></span>\n            </label>\n\n            <div id="livePhotoServiceStatus" class="wechat-service-status">\u5B9E\u51B5\u8BBE\u7F6E\u4F1A\u8DDF\u968F\u8FD9\u6BB5\u89C6\u9891\u4FDD\u5B58\uFF0C\u53F3\u4FA7\u4E0B\u8F7D\u65F6\u81EA\u52A8\u5E94\u7528\u3002</div>\n            <div class="live-photo-actions">\n              <button id="livePhotoCancelBtn" class="secondary-button" type="button">\u53D6\u6D88</button>\n              <button id="livePhotoGenerateBtn" class="primary-button" type="submit" disabled>\n                <i data-lucide="image-plus"></i>\n                \u63D2\u5165\u56FE\u6587\n              </button>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n\n    <div id="livePhotoHandoffModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="livePhotoHandoffTitle">\n      <div class="modal-card live-photo-handoff-card">\n        <div class="modal-head">\n          <div>\n            <h3 id="livePhotoHandoffTitle">\u5B9E\u51B5\u5BFC\u51FA</h3>\n            <p id="livePhotoHandoffSummary">Live Photo \u5DF2\u751F\u6210\uFF0C\u53EF\u4EE5\u76F4\u63A5\u4EA4\u63A5\u5230\u624B\u673A\u3002</p>\n          </div>\n          <button id="livePhotoHandoffCloseBtn" class="icon-button ghost" type="button" title="\u5173\u95ED" aria-label="\u5173\u95ED\u5BFC\u51FA\u7ED3\u679C">\n            <i data-lucide="x"></i>\n          </button>\n        </div>\n        <div class="live-photo-handoff-layout">\n          <section class="live-photo-handoff-preview" aria-label="\u5BFC\u51FA\u6548\u679C\u9884\u89C8">\n            <div id="livePhotoHandoffPreview" class="live-photo-handoff-preview-main"></div>\n            <p id="livePhotoHandoffPreviewHint" class="live-photo-handoff-preview-hint" hidden>\u957F\u6309\u9884\u89C8\u53EF\u4EE5\u67E5\u770B\u52A8\u6001\u6548\u679C</p>\n            <div id="livePhotoHandoffThumbnails" class="live-photo-handoff-thumbnails" aria-label="\u5168\u90E8\u5BFC\u51FA\u9875\u9762"></div>\n          </section>\n          <section class="live-photo-handoff-results" aria-label="\u5BFC\u51FA\u64CD\u4F5C">\n            <div id="livePhotoHandoffDevice" class="live-photo-handoff-device" hidden>\n              <i data-lucide="circle-check-big" aria-hidden="true"></i>\n              <strong id="livePhotoHandoffDeviceLabel">\u5DF2\u68C0\u6D4B\uFF1AMac \xB7 Safari</strong>\n            </div>\n            <div class="live-photo-handoff-summary-block">\n              <strong id="livePhotoHandoffCount">\u4F60\u4F1A\u4E0B\u8F7D\u5230\u4EC0\u4E48\uFF1F</strong>\n              <span id="livePhotoHandoffDetail">1 \u5F20\u5B9E\u51B5\u7167\u7247</span>\n            </div>\n            <div id="livePhotoHandoffFiles" class="live-photo-handoff-files" aria-label="\u4E0B\u8F7D\u5305\u5185\u5BB9"></div>\n            <section id="livePhotoHandoffProgress" class="export-progress export-progress-compact" aria-live="polite" aria-label="\u5B9E\u51B5\u4E0B\u8F7D\u5904\u7406\u8FDB\u5EA6" hidden>\n              <div class="export-progress-card handoff-progress-card">\n                <div class="export-progress-copy handoff-progress-copy">\n                  <strong id="livePhotoHandoffProgressTitle">\u6B63\u5728\u6574\u7406\u4E0B\u8F7D\u6587\u4EF6</strong>\n                  <span id="livePhotoHandoffProgressDetail">\u8BF7\u7A0D\u5019\uFF0C\u5B8C\u6210\u540E\u4F1A\u81EA\u52A8\u5F00\u59CB\u4E0B\u8F7D\u3002</span>\n                </div>\n                <div class="handoff-progress-ring-wrap" aria-hidden="true">\n                  <span class="export-progress-icon handoff-progress-ring"><i data-lucide="loader-circle"></i></span>\n                  <strong id="livePhotoHandoffProgressPercent" class="export-progress-percent">0%</strong>\n                </div>\n                <div id="livePhotoHandoffProgressSteps" class="handoff-progress-steps" aria-label="\u9875\u9762\u5904\u7406\u72B6\u6001"></div>\n                <span id="livePhotoHandoffProgressMeta" class="export-progress-meta">\u5DF2\u7528\u65F6 0 \u79D2</span>\n                <div id="livePhotoHandoffProgressBar" class="export-progress-track" role="progressbar" aria-label="\u6279\u91CF\u4E0B\u8F7D\u8FDB\u5EA6" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="\u6B63\u5728\u5904\u7406">\n                  <span id="livePhotoHandoffProgressFill" class="export-progress-fill"></span>\n                </div>\n              </div>\n            </section>\n            <div class="live-photo-handoff-primary-actions">\n              <button id="livePhotoHandoffDownloadBtn" class="primary-button" type="button">\n                <i data-lucide="download"></i>\u4E0B\u8F7D\u5B9E\u51B5\u7167\u7247\n              </button>\n              <button id="livePhotoHandoffRevealBtn" class="secondary-button" type="button" hidden>\n                <i data-lucide="folder-open"></i>\u5728 Finder \u4E2D\u627E\u5230\n              </button>\n              <button id="livePhotoHandoffAirdropBtn" class="secondary-button" type="button" hidden aria-hidden="true" tabindex="-1"></button>\n            </div>\n            <p id="livePhotoHandoffHint" class="live-photo-handoff-hint">\u4E0B\u8F7D\u7684\u662F\u4E00\u4E2A ZIP \u538B\u7F29\u5305\uFF0C\u89E3\u538B\u540E\u5373\u53EF\u770B\u5230\u5B8C\u6574\u5B9E\u51B5\u7167\u7247\u3002</p>\n            <button id="livePhotoHandoffCancelBtn" class="live-photo-handoff-cancel" type="button">\u53D6\u6D88</button>\n          </section>\n        </div>\n      </div>\n    </div>\n\n    <!-- \u5FC5\u987B\u4FDD\u6301\u4E3A body \u76F4\u5C5E\u5C42\uFF1AiPad Safari \u4F1A\u88C1\u526A grid/overflow \u9762\u677F\u91CC\u7684 fixed \u9009\u8BCD\u5DE5\u5177\u680F\u3002 -->\n    <div id="selectionToolbar" class="selection-toolbar" role="toolbar" aria-label="\u9009\u4E2D\u6587\u5B57\u6837\u5F0F" hidden>\n      <div class="selection-toolbar-row">\n        <button type="button" class="selection-tool-button selection-format-button" data-format="h1" title="\u5927\u6807\u9898">H1</button>\n        <button type="button" class="selection-tool-button selection-format-button" data-format="h2" title="\u5C0F\u6807\u9898">H2</button>\n        <button type="button" class="selection-tool-button selection-format-button" data-format="bold" title="\u52A0\u7C97"><strong>B</strong></button>\n        <button type="button" class="selection-tool-button selection-format-button" data-format="italic" title="\u659C\u4F53"><em>I</em></button>\n        <button id="selectionUnderlineBtn" class="selection-tool-button selection-format-button" type="button" title="\u4E0B\u5212\u7EBF" aria-label="\u4E0B\u5212\u7EBF">\n          <i data-lucide="underline"></i>\n        </button>\n        <button type="button" class="selection-tool-button selection-format-button" data-format="quote" title="\u91CD\u70B9\u5F15\u7528" aria-label="\u91CD\u70B9\u5F15\u7528"><i data-lucide="quote"></i></button>\n        <button id="selectionColorBtn" class="selection-tool-button" type="button" title="\u5B57\u4F53\u989C\u8272" aria-label="\u5B57\u4F53\u989C\u8272">\n          <i data-lucide="type"></i>\n          <span id="selectionColorDot" class="selection-color-dot" aria-hidden="true"></span>\n        </button>\n        <button id="selectionBgColorBtn" class="selection-tool-button" type="button" title="\u80CC\u666F\u8272" aria-label="\u80CC\u666F\u8272">\n          <i data-lucide="highlighter"></i>\n          <span id="selectionBgColorDot" class="selection-color-dot" aria-hidden="true"></span>\n        </button>\n      </div>\n      <div id="selectionColorPalette" class="selection-palette" hidden>\n        <div id="selectionColorSwatches" class="selection-swatches"></div>\n        <details class="selection-custom-color-disclosure">\n          <summary data-custom-color-toggle>\n            <span>\u81EA\u5B9A\u4E49\u989C\u8272</span>\n            <span class="selection-custom-color-chip is-text" aria-hidden="true"></span>\n          </summary>\n          <div class="selection-custom-color-body">\n            <label class="selection-custom-color">\n              \u9009\u62E9\u989C\u8272\n              <input id="selectionCustomColorInput" type="color" value="#2563eb" />\n            </label>\n            <div class="custom-color-actions" role="group" aria-label="\u5B57\u4F53\u989C\u8272\u4FDD\u5B58\u65B9\u5F0F">\n              <button type="button" class="custom-color-action" data-custom-color-action data-color-kind="color" data-color-save="false">\u4EC5\u672C\u6B21</button>\n              <button type="button" class="custom-color-action is-save" data-custom-color-action data-color-kind="color" data-color-save="true">\u4FDD\u5B58\u5E76\u4F7F\u7528</button>\n            </div>\n          </div>\n        </details>\n      </div>\n      <div id="selectionBgPalette" class="selection-palette" hidden>\n        <button type="button" class="clear-inline-style-action" data-clear-inline-style="bg">\n          <i data-lucide="eraser"></i>\n          \u6E05\u9664\u80CC\u666F\u8272\n        </button>\n        <div id="selectionBgSwatches" class="selection-swatches"></div>\n        <details class="selection-custom-color-disclosure">\n          <summary data-custom-color-toggle>\n            <span>\u81EA\u5B9A\u4E49\u80CC\u666F\u8272</span>\n            <span class="selection-custom-color-chip is-bg" aria-hidden="true"></span>\n          </summary>\n          <div class="selection-custom-color-body">\n            <label class="selection-custom-color">\n              \u9009\u62E9\u80CC\u666F\u8272\n              <input id="selectionCustomBgInput" type="color" value="#fff3a3" />\n            </label>\n            <div class="custom-color-actions" role="group" aria-label="\u80CC\u666F\u989C\u8272\u4FDD\u5B58\u65B9\u5F0F">\n              <button type="button" class="custom-color-action" data-custom-color-action data-color-kind="bg" data-color-save="false">\u4EC5\u672C\u6B21</button>\n              <button type="button" class="custom-color-action is-save" data-custom-color-action data-color-kind="bg" data-color-save="true">\u4FDD\u5B58\u5E76\u4F7F\u7528</button>\n            </div>\n          </div>\n        </details>\n      </div>\n      <div id="selectionUnderlinePalette" class="selection-palette selection-underline-palette" hidden>\n        <div class="selection-underline-options" role="group" aria-label="\u4E0B\u5212\u7EBF\u6837\u5F0F">\n          <button type="button" class="selection-underline-option" data-format="underline-solid">\n            <span class="underline-option-preview is-solid">\u5B9E\u7EBF</span>\n          </button>\n          <button type="button" class="selection-underline-option" data-format="underline-dashed">\n            <span class="underline-option-preview is-dashed">\u865A\u7EBF</span>\n          </button>\n          <button type="button" class="selection-underline-option" data-format="underline-none">\n            <span class="underline-option-preview is-none">\u53D6\u6D88</span>\n          </button>\n        </div>\n      </div>\n    </div>\n\n    <!-- \u5FC5\u987B\u4FDD\u6301\u4E3A body \u76F4\u5C5E\u5C42\uFF1AiPad Safari \u4F1A\u88C1\u526A sticky/overflow \u9762\u677F\u91CC\u7684 fixed \u4E0B\u8F7D\u906E\u7F69\u3002 -->\n    <section id="exportProgress" class="export-progress" aria-live="polite" aria-label="\u5BFC\u51FA\u5904\u7406\u8FDB\u5EA6" hidden>\n      <div class="export-progress-card">\n        <span class="export-progress-icon" aria-hidden="true"><i data-lucide="loader-circle"></i></span>\n        <div class="export-progress-copy">\n          <strong id="exportProgressTitle">\u6B63\u5728\u51C6\u5907\u5BFC\u51FA</strong>\n          <span id="exportProgressDetail">\u7CFB\u7EDF\u6B63\u5728\u5904\u7406\uFF0C\u8BF7\u4E0D\u8981\u5173\u95ED\u9875\u9762\u3002</span>\n        </div>\n        <strong id="exportProgressPercent" class="export-progress-percent">0%</strong>\n        <span id="exportProgressMeta" class="export-progress-meta">\u5DF2\u7528\u65F6 0 \u79D2</span>\n        <div id="exportProgressBar" class="export-progress-track" role="progressbar" aria-label="\u5BFC\u51FA\u8FDB\u5EA6" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="\u6B63\u5728\u5904\u7406">\n          <span id="exportProgressFill" class="export-progress-fill"></span>\n        </div>\n      </div>\n    </section>\n\n    <div id="onboardingTour" class="onboarding-tour hidden" role="dialog" aria-modal="true" aria-labelledby="onboardingTitle">\n      <div id="onboardingFocus" class="onboarding-focus" aria-hidden="true"></div>\n      <section id="onboardingTooltip" class="onboarding-tooltip">\n        <span id="onboardingArrow" class="onboarding-arrow" aria-hidden="true"></span>\n        <h3 id="onboardingTitle">\u5148\u521B\u5EFA\u81EA\u5DF1\u7684\u5185\u5BB9</h3>\n        <p id="onboardingBody">\u5DE6\u4FA7\u4E24\u4E2A\u5185\u5BB9\u662F\u793A\u4F8B\u6A21\u677F\u3002\u70B9\u51FB\u8FD9\u91CC\uFF0C\u65B0\u5EFA\u4F60\u7684\u56FE\u6587\u5361\u7247\u6216\u516C\u4F17\u53F7\u957F\u6587\u3002</p>\n        <button id="onboardingActionBtn" class="onboarding-action-button secondary-button" type="button" hidden></button>\n        <div class="onboarding-actions">\n          <span id="onboardingProgress">1 / 4</span>\n          <div>\n            <button id="onboardingSkipBtn" class="secondary-button" type="button">\u8DF3\u8FC7</button>\n            <button id="onboardingNextBtn" class="primary-button" type="button">\u4E0B\u4E00\u6B65</button>\n          </div>\n        </div>\n      </section>\n    </div>';
 
 // src/host.ts
 var import_obsidian3 = require("obsidian");
@@ -10319,7 +10529,7 @@ async function fileToDataUrl(app, file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onload = () => resolve(String(reader.result || ""));
-    reader.onerror = () => reject(reader.error || new Error("\u56FE\u7247\u8BFB\u53D6\u5931\u8D25"));
+    reader.onerror = () => reject(reader.error || new Error(t("error.imageRead")));
     reader.readAsDataURL(blob);
   });
 }
@@ -10408,12 +10618,12 @@ function createPluginHost(app, file, root, frontmatter) {
     async loadNote() {
       var _a2;
       const current = app.vault.getAbstractFileByPath(host.notePath);
-      if (!(current instanceof import_obsidian3.TFile)) throw new Error("\u5F53\u524D\u7B14\u8BB0\u5DF2\u4E0D\u5B58\u5728\u3002");
+      if (!(current instanceof import_obsidian3.TFile)) throw new Error(t("error.noteMissing"));
       return loadNote(app, current, (_a2 = host.liveMarkdown) != null ? _a2 : void 0);
     },
     async writeNote(data) {
       const current = app.vault.getAbstractFileByPath(host.notePath);
-      if (!(current instanceof import_obsidian3.TFile)) throw new Error("\u5F53\u524D\u7B14\u8BB0\u5DF2\u4E0D\u5B58\u5728\u3002");
+      if (!(current instanceof import_obsidian3.TFile)) throw new Error(t("error.noteMissing"));
       await writeNote(app, current, host.frontmatter, data.markdown, data.attachments || []);
     },
     async resolveImages(references) {
@@ -28938,6 +29148,11 @@ var EXPORT_IMAGE_MIME = "image/png";
 var DEFAULT_HANDLE = "";
 var EXPORT_IMAGE_EXTENSION = ".png";
 var EXPORT_ZIP_COMPRESSION = "STORE";
+function t2(key, vars) {
+  const translate = window.__chenggaoT;
+  if (typeof translate === "function") return translate(key, vars);
+  return key;
+}
 var LIVE_PHOTO_API_BASE = window.location.protocol === "file:" ? "http://127.0.0.1:5173" : "";
 var LIVE_PHOTO_LOCAL_GUIDE_URL = "";
 var OBSIDIAN_VAULT_DB = "writeThenPublishObsidianVault";
@@ -29884,13 +30099,13 @@ function updateKeepHeadingButton() {
   const on = state.keepHeadingWithBody !== false;
   els.keepHeading.classList.toggle("active", on);
   els.keepHeading.setAttribute("aria-pressed", on ? "true" : "false");
-  els.keepHeading.title = on ? "\u6807\u9898\u4E0D\u843D\u5728\u9875\u5E95\uFF1A\u5DF2\u5F00\u542F" : "\u6807\u9898\u4E0D\u843D\u5728\u9875\u5E95\uFF1A\u5DF2\u5173\u95ED";
+  els.keepHeading.title = on ? t2("layout.keepHeadingOn") : t2("layout.keepHeadingOff");
 }
 async function toggleKeepHeadingWithBody() {
   state.keepHeadingWithBody = state.keepHeadingWithBody === false;
   updateKeepHeadingButton();
   await render();
-  els.status.textContent = state.keepHeadingWithBody !== false ? "\u5DF2\u5F00\u542F\uFF1A\u6807\u9898\u5C3D\u91CF\u4E0D\u5355\u72EC\u51FA\u73B0\u5728\u9875\u5E95" : "\u5DF2\u5173\u95ED\uFF1A\u6807\u9898\u6309\u539F\u4F4D\u7F6E\u5206\u9875";
+  els.status.textContent = state.keepHeadingWithBody !== false ? t2("layout.keepHeadingEnabled") : t2("layout.keepHeadingDisabled");
 }
 function updateHeaderModeButton() {
   if (!els.headerModeToggle) return;
@@ -29931,7 +30146,7 @@ function updateAppMode() {
   if (els.syncWechat) els.syncWechat.hidden = true;
   if (els.headerModeToggle) els.headerModeToggle.hidden = state.appMode === "article";
 }
-function showCardRenderPlaceholder(message = "\u6B63\u5728\u751F\u6210\u56FE\u6587\u5361\u7247\u2026") {
+function showCardRenderPlaceholder(message = t2("status.renderingCards")) {
   if (!els.pages) return;
   els.pages.className = "pages";
   els.pages.innerHTML = `<div class="empty-state">${escapeHtml(message)}</div>`;
@@ -36032,7 +36247,7 @@ function serializeArticleForWechat() {
     article = els.pages.querySelector(".article-preview");
   }
   if (!article || !readForm().content.trim()) {
-    throw new Error("\u957F\u6587\u5185\u5BB9\u4E3A\u7A7A\uFF0C\u8BF7\u5148\u8F93\u5165\u6B63\u6587\u3002");
+    throw new Error(t2("error.emptyArticle"));
   }
   const clone = article.cloneNode(true);
   const sourceNodes = [article, ...article.querySelectorAll("*")];
@@ -36099,7 +36314,7 @@ async function writeRichClipboard(html, text) {
   const copied = document.execCommand("copy");
   selection.removeAllRanges();
   holder.remove();
-  if (!copied) throw new Error("\u6D4F\u89C8\u5668\u6CA1\u6709\u5141\u8BB8\u590D\u5236\u3002");
+  if (!copied) throw new Error(t2("error.copyBlocked"));
 }
 async function copyArticleToWechat() {
   var _a2, _b, _c;
@@ -36108,13 +36323,13 @@ async function copyArticleToWechat() {
     await writeRichClipboard(serialized.html, serialized.text);
     if (isPluginMode() && ((_a2 = pluginHost()) == null ? void 0 : _a2.saveWechatHtml)) {
       const path = await pluginHost().saveWechatHtml(serialized.html);
-      els.status.textContent = `\u5DF2\u590D\u5236\u516C\u4F17\u53F7\u5BCC\u6587\u672C\uFF0C\u5E76\u4FDD\u5B58 ${path}`;
+      els.status.textContent = t2("status.copiedWechatSaved", { path });
       (_c = (_b = pluginHost()).notify) == null ? void 0 : _c.call(_b, els.status.textContent);
       return;
     }
-    els.status.textContent = "\u5DF2\u590D\u5236\u516C\u4F17\u53F7\u5BCC\u6587\u672C\uFF0C\u53EF\u76F4\u63A5\u7C98\u8D34\u5230\u516C\u4F17\u53F7\u7F16\u8F91\u5668";
+    els.status.textContent = t2("status.copiedWechat");
   } catch (error) {
-    els.status.textContent = (error == null ? void 0 : error.message) || "\u590D\u5236\u5931\u8D25\uFF0C\u8BF7\u5141\u8BB8\u6D4F\u89C8\u5668\u8BBF\u95EE\u526A\u8D34\u677F\u3002";
+    els.status.textContent = (error == null ? void 0 : error.message) || t2("error.copyFailed");
   }
 }
 function wechatTitleFromContent() {
@@ -37118,9 +37333,9 @@ async function render() {
     console.error(error);
     if (seq !== renderSequence) return;
     if (state.appMode === "cards") {
-      showCardRenderPlaceholder((error == null ? void 0 : error.message) || "\u56FE\u6587\u5361\u7247\u751F\u6210\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u6B63\u6587\u540E\u518D\u8BD5");
+      showCardRenderPlaceholder((error == null ? void 0 : error.message) || t2("error.renderCards"));
     }
-    if (els.status) els.status.textContent = (error == null ? void 0 : error.message) || "\u56FE\u6587\u5361\u7247\u751F\u6210\u5931\u8D25";
+    if (els.status) els.status.textContent = (error == null ? void 0 : error.message) || t2("error.renderCards");
   }
 }
 async function cancelStaleLivePhotoPrewarm(entry) {
@@ -37214,7 +37429,7 @@ function drawPreview(canvases) {
   if (!canvases.length) {
     const empty = document.createElement("div");
     empty.className = "empty-state";
-    empty.textContent = "\u6682\u65E0\u5185\u5BB9";
+    empty.textContent = t2("status.empty");
     els.pages.append(empty);
   }
   canvases.forEach((canvas, index) => {
@@ -37248,7 +37463,7 @@ function drawPreview(canvases) {
   });
   const livePageCount = canvases.filter((canvas) => liveImageHitsForCanvas(canvas).length).length;
   els.pageCount.textContent = `${canvases.length} \u5F20\u56FE\u7247${livePageCount ? ` \xB7 ${livePageCount} \u5F20\u5B9E\u51B5` : ""}`;
-  els.status.textContent = livePageCount && needsLivePhotoStaticFallback() ? `\u5DF2\u751F\u6210 ${canvases.length} \u5F20 \xB7 ${livePageCount} \u5F20\u5B9E\u51B5\uFF1B\u5F53\u524D\u7AD9\u70B9\u5C1A\u672A\u8FDE\u63A5\u4E91\u7AEF\u5B9E\u51B5\u670D\u52A1` : `\u5DF2\u751F\u6210 ${canvases.length} \u5F20${livePageCount ? `\uFF0C\u5176\u4E2D ${livePageCount} \u5F20\u4F1A\u81EA\u52A8\u5BFC\u51FA Live Photo` : ""}\uFF0C\u9AD8\u6E05\u5C3A\u5BF8 ${OUTPUT_CANVAS_WIDTH}x${OUTPUT_CANVAS_HEIGHT}`;
+  els.status.textContent = livePageCount && needsLivePhotoStaticFallback() ? t2("status.generated", { n: canvases.length, width: OUTPUT_CANVAS_WIDTH, height: OUTPUT_CANVAS_HEIGHT }) : t2("status.generated", { n: canvases.length, width: OUTPUT_CANVAS_WIDTH, height: OUTPUT_CANVAS_HEIGHT });
   syncExportBusyState();
   if (window.lucide) window.lucide.createIcons();
 }
@@ -39208,9 +39423,9 @@ async function saveBlob(blob, filename, writable = null) {
   var _a2;
   if (isPluginMode() || (writable == null ? void 0 : writable.plugin)) {
     const host = pluginHost();
-    if (!(host == null ? void 0 : host.saveExport)) throw new Error("Obsidian \u63D2\u4EF6\u672A\u51C6\u5907\u597D\u5BFC\u51FA\u3002");
+    if (!(host == null ? void 0 : host.saveExport)) throw new Error(t2("error.pluginExport"));
     const path = await host.saveExport(blob, (writable == null ? void 0 : writable.filename) || filename);
-    (_a2 = host.notify) == null ? void 0 : _a2.call(host, `\u5DF2\u4FDD\u5B58 ${path}`);
+    (_a2 = host.notify) == null ? void 0 : _a2.call(host, t2("status.savedPath", { path }));
     return;
   }
   if (writable) {
@@ -39275,29 +39490,29 @@ async function downloadArticleImage() {
   renderArticlePreview(settings);
   const article = els.pages.querySelector(".article-preview");
   if (!article) {
-    els.status.textContent = "\u957F\u6587\u751F\u6210\u5931\u8D25\uFF0C\u8BF7\u5148\u68C0\u67E5\u5185\u5BB9";
+    els.status.textContent = t2("error.renderArticle");
     return;
   }
   if (!window.html2canvas) {
-    els.status.textContent = "\u957F\u56FE\u4E0B\u8F7D\u7EC4\u4EF6\u672A\u52A0\u8F7D\uFF0C\u8BF7\u5237\u65B0\u9875\u9762\u540E\u91CD\u8BD5";
+    els.status.textContent = t2("error.html2canvas");
     return;
   }
   if (!beginExportProgress("main", {
-    title: "\u6B63\u5728\u751F\u6210\u957F\u6587\u56FE\u7247",
-    detail: "\u6B63\u5728\u51C6\u5907\u5B8C\u6574\u6587\u7AE0\u753B\u9762\u2026",
+    title: t2("progress.article"),
+    detail: t2("progress.articlePrepare"),
     value: 5
   })) return;
   const filename = "chenggao-article.png";
   try {
-    updateExportProgress("main", { title: "\u8BF7\u9009\u62E9\u4FDD\u5B58\u4F4D\u7F6E", detail: "\u786E\u8BA4\u540E\u4F1A\u5F00\u59CB\u751F\u6210\u9AD8\u6E05\u957F\u56FE\u3002", value: 18 });
+    updateExportProgress("main", { title: t2("progress.article"), detail: t2("progress.articlePrepare"), value: 18 });
     const writable = await chooseSaveTarget(filename, EXPORT_IMAGE_MIME, EXPORT_IMAGE_EXTENSION);
     if (writable === false) {
-      els.status.textContent = "\u5DF2\u53D6\u6D88\u4E0B\u8F7D";
-      finishExportProgress("main", { cancelled: true, title: "\u957F\u56FE\u4E0B\u8F7D\u5DF2\u53D6\u6D88", detail: "\u6CA1\u6709\u5199\u5165\u4EFB\u4F55\u6587\u4EF6\u3002" });
+      els.status.textContent = t2("status.cancelled");
+      finishExportProgress("main", { cancelled: true, title: t2("status.cancelled"), detail: t2("status.cancelled") });
       return;
     }
-    els.status.textContent = "\u6B63\u5728\u751F\u6210\u957F\u56FE...";
-    updateExportProgress("main", { title: "\u6B63\u5728\u6E32\u67D3\u5B8C\u6574\u957F\u6587", detail: "\u6B63\u5728\u5408\u6210\u957F\u6587\u4E3B\u9898\u3001\u6587\u5B57\u548C\u56FE\u7247\u2026", value: 42 });
+    els.status.textContent = t2("progress.article");
+    updateExportProgress("main", { title: t2("progress.article"), detail: t2("progress.articleRender"), value: 42 });
     const canvas = await window.html2canvas(article, {
       // 编辑/导出按钮只是预览里的操作入口，不该被印进长图。
       ignoreElements: (node) => {
@@ -39316,16 +39531,16 @@ async function downloadArticleImage() {
       windowWidth: Math.max(document.documentElement.clientWidth, article.scrollWidth),
       windowHeight: Math.max(document.documentElement.clientHeight, article.scrollHeight)
     });
-    updateExportProgress("main", { title: "\u6B63\u5728\u751F\u6210 PNG", detail: "\u957F\u6587\u753B\u9762\u5DF2\u6E32\u67D3\uFF0C\u6B63\u5728\u8F6C\u6362\u4E3A\u9AD8\u6E05\u56FE\u7247\u2026", value: 82 });
+    updateExportProgress("main", { title: t2("progress.articlePng"), detail: t2("progress.articlePng"), value: 82 });
     const blob = await canvasToLosslessPngBlob(canvas);
-    if (!blob) throw new Error("\u957F\u56FE\u751F\u6210\u5931\u8D25\uFF0C\u8BF7\u8C03\u6574\u5185\u5BB9\u540E\u518D\u8BD5");
-    updateExportProgress("main", { title: "\u6B63\u5728\u4FDD\u5B58\u957F\u56FE", detail: "\u56FE\u7247\u5DF2\u7ECF\u751F\u6210\uFF0C\u6B63\u5728\u5199\u5165\u4E0B\u8F7D\u4F4D\u7F6E\u2026", value: 96 });
+    if (!blob) throw new Error(t2("error.exportArticle"));
+    updateExportProgress("main", { title: t2("progress.articleSave"), detail: t2("progress.articlePng"), value: 96 });
     await saveBlob(blob, filename, writable);
-    els.status.textContent = writable ? `\u5DF2\u4FDD\u5B58 ${filename}` : `\u5DF2\u4EA4\u7ED9\u6D4F\u89C8\u5668\u4E0B\u8F7D ${filename}`;
-    finishExportProgress("main", { title: "\u957F\u56FE\u4E0B\u8F7D\u5B8C\u6210", detail: els.status.textContent });
+    els.status.textContent = t2("status.savedPath", { path: filename });
+    finishExportProgress("main", { title: t2("progress.articleDone"), detail: els.status.textContent });
   } catch (error) {
-    els.status.textContent = (error == null ? void 0 : error.message) || "\u957F\u56FE\u4E0B\u8F7D\u5931\u8D25\uFF0C\u8BF7\u7A0D\u540E\u91CD\u8BD5";
-    finishExportProgress("main", { success: false, title: "\u957F\u56FE\u4E0B\u8F7D\u5931\u8D25", detail: els.status.textContent });
+    els.status.textContent = (error == null ? void 0 : error.message) || t2("error.exportArticle");
+    finishExportProgress("main", { success: false, title: t2("progress.articleFail"), detail: els.status.textContent });
   }
 }
 function canvasToLosslessPngBlob(canvas) {
@@ -39361,34 +39576,34 @@ async function isZipBlob(blob) {
 async function downloadCanvasesToPluginVault() {
   var _a2, _b;
   const host = pluginHost();
-  if (!(host == null ? void 0 : host.saveImage)) throw new Error("Obsidian \u63D2\u4EF6\u672A\u51C6\u5907\u597D\u5BFC\u51FA\u3002");
+  if (!(host == null ? void 0 : host.saveImage)) throw new Error(t2("error.pluginExport"));
   if (!beginExportProgress("main", {
-    title: "\u6B63\u5728\u5BFC\u51FA\u56FE\u7247",
-    detail: "\u6B63\u5728\u5199\u5165\u7B14\u8BB0\u540C\u7EA7\u7684\u56FE\u7247\u6587\u4EF6\u5939\u2026",
+    title: t2("progress.exportImages"),
+    detail: t2("progress.exportImagesDetail"),
     value: 8
   })) return;
   const paths = [];
   try {
     for (const [index, canvas] of state.canvases.entries()) {
       updateExportProgress("main", {
-        title: `\u6B63\u5728\u5BFC\u51FA ${index + 1}/${state.canvases.length}`,
-        detail: "\u6B63\u5728\u751F\u6210\u9AD8\u6E05 PNG\u2026",
+        title: t2("progress.exportPage", { current: index + 1, total: state.canvases.length }),
+        detail: t2("progress.exportPng"),
         current: index + 1,
         total: state.canvases.length,
         value: 10 + index / state.canvases.length * 80
       });
       const blob = await canvasToLosslessPngBlob(canvas);
-      if (!blob) throw new Error("\u56FE\u7247\u751F\u6210\u5931\u8D25\uFF0C\u8BF7\u8C03\u6574\u5185\u5BB9\u540E\u518D\u8BD5");
+      if (!blob) throw new Error(t2("error.renderCards"));
       const filename = `layout-page-${String(index + 1).padStart(2, "0")}.png`;
       paths.push(await host.saveImage(blob, filename));
     }
-    const folder = ((_a2 = paths[0]) == null ? void 0 : _a2.split("/").slice(0, -1).join("/")) || "\u56FE\u7247";
-    els.status.textContent = `\u5DF2\u5BFC\u51FA ${paths.length} \u5F20\u56FE\u7247\u5230 ${folder}`;
+    const folder = ((_a2 = paths[0]) == null ? void 0 : _a2.split("/").slice(0, -1).join("/")) || t2("folder.images");
+    els.status.textContent = t2("status.exportedImages", { n: paths.length, folder });
     (_b = host.notify) == null ? void 0 : _b.call(host, els.status.textContent);
-    finishExportProgress("main", { title: "\u56FE\u7247\u5BFC\u51FA\u5B8C\u6210", detail: els.status.textContent });
+    finishExportProgress("main", { title: t2("progress.exportDone"), detail: els.status.textContent });
   } catch (error) {
-    els.status.textContent = (error == null ? void 0 : error.message) || "\u5BFC\u51FA\u56FE\u7247\u5931\u8D25";
-    finishExportProgress("main", { success: false, title: "\u56FE\u7247\u5BFC\u51FA\u5931\u8D25", detail: els.status.textContent });
+    els.status.textContent = (error == null ? void 0 : error.message) || t2("error.exportImages");
+    finishExportProgress("main", { success: false, title: t2("progress.exportFail"), detail: els.status.textContent });
   }
 }
 async function downloadCanvasesIndividually(onProgress = null) {
@@ -40032,14 +40247,16 @@ function applyPluginHostUi() {
   appShell().classList.add("local-deployment", "wtp-obsidian-plugin");
   appShell().classList.remove("entry-choice-pending", "cloud-session-checking");
   if (els.downloadZip) {
-    els.downloadZip.innerHTML = '<i data-lucide="download"></i> \u5BFC\u51FA\u56FE\u7247';
+    const label = els.downloadZip.querySelector("[data-i18n]") || els.downloadZip.querySelector("span");
+    if (label) label.textContent = t2("action.exportImages");
   }
   if (els.downloadArticle) {
-    els.downloadArticle.innerHTML = '<i data-lucide="download"></i> \u5BFC\u51FA\u957F\u56FE';
+    const label = els.downloadArticle.querySelector("[data-i18n]") || els.downloadArticle.querySelector("span");
+    if (label) label.textContent = t2("action.exportArticle");
   }
   if (els.status) {
     const host = pluginHost();
-    els.status.textContent = (host == null ? void 0 : host.notePath) ? `\u6B63\u5728\u6392\u7248 ${host.notePath}` : "\u6B63\u5728\u6392\u7248\u5F53\u524D\u7B14\u8BB0";
+    els.status.textContent = (host == null ? void 0 : host.notePath) ? t2("preview.statusNote", { path: host.notePath }) : t2("preview.statusCurrent");
   }
 }
 function schedulePluginNoteWrite() {
@@ -40060,7 +40277,7 @@ async function persistPluginNote() {
       attachments: exportData.attachments
     });
   } catch (error) {
-    els.status.textContent = (error == null ? void 0 : error.message) || "\u5199\u56DE\u5F53\u524D\u7B14\u8BB0\u5931\u8D25";
+    els.status.textContent = (error == null ? void 0 : error.message) || t2("error.writeNote");
   }
 }
 function mergePluginImages(images) {
@@ -40176,7 +40393,7 @@ var _ChenggaoView = class _ChenggaoView extends import_obsidian4.ItemView {
     return VIEW_TYPE_CHENGGAO;
   }
   getDisplayText() {
-    return this.boundFile ? `\u6210\u7A3F\u9884\u89C8 \xB7 ${this.boundFile.basename}` : "\u6210\u7A3F\u9884\u89C8";
+    return this.boundFile ? t("tab.titleNote", { name: this.boundFile.basename }) : t("tab.title");
   }
   getIcon() {
     return "chenggao";
@@ -40225,8 +40442,8 @@ var _ChenggaoView = class _ChenggaoView extends import_obsidian4.ItemView {
     this.mounted = false;
     if (!this.boundFile) {
       this.contentEl.createDiv({ cls: "wtp-empty-state" }, (el) => {
-        el.createEl("strong", { text: "\u5148\u6253\u5F00\u4E00\u7BC7 Markdown \u7B14\u8BB0" });
-        el.createEl("p", { text: "\u5DE6\u4FA7\u7EE7\u7EED\u7528 Obsidian \u7F16\u8F91\uFF0C\u8FD9\u91CC\u4F1A\u663E\u793A\u56FE\u6587\u5361\u7247\u6216\u957F\u6587\u9884\u89C8\u3002" });
+        el.createEl("strong", { text: t("empty.title") });
+        el.createEl("p", { text: t("empty.body") });
       });
       return;
     }
@@ -40234,6 +40451,7 @@ var _ChenggaoView = class _ChenggaoView extends import_obsidian4.ItemView {
     root.setAttribute("data-write-then-publish-local-mode", "true");
     root.setAttribute("data-ui-theme", "light");
     root.innerHTML = workspace_default;
+    applyI18n(root);
     this.host = createPluginHost(this.app, this.boundFile, root, this.frontmatter);
     this.host.liveMarkdown = null;
     window.WRITE_THEN_PUBLISH_HOST = this.host;
@@ -40274,31 +40492,38 @@ var ChenggaoView = _ChenggaoView;
 // src/main.ts
 var ChenggaoPlugin = class extends import_obsidian5.Plugin {
   async onload() {
+    installI18n(() => {
+      try {
+        return window.localStorage.getItem("language") || "";
+      } catch (e) {
+        return "";
+      }
+    });
     this.addIcon(CHENGGAO_ICON_ID, CHENGGAO_ICON_SVG);
     this.registerView(VIEW_TYPE_CHENGGAO, (leaf) => new ChenggaoView(leaf));
-    this.addRibbonIcon(CHENGGAO_ICON_ID, "\u6210\u7A3F\u9884\u89C8", () => {
+    this.addRibbonIcon(CHENGGAO_ICON_ID, t("plugin.name"), () => {
       void this.openPreview();
     });
     this.addCommand({
       id: "open-workspace",
-      name: "\u6253\u5F00\u6392\u7248\u9884\u89C8",
+      name: t("command.openPreview"),
       callback: () => void this.openPreview()
     });
     this.addCommand({
       id: "copy-wechat-html",
-      name: "\u590D\u5236\u516C\u4F17\u53F7\u683C\u5F0F",
+      name: t("command.copyWechat"),
       callback: () => void this.runOnOpenView((view) => view.copyWechat())
     });
     this.addCommand({
       id: "export-images",
-      name: "\u5BFC\u51FA\u56FE\u7247\u5230\u540C\u7EA7\u56FE\u7247\u6587\u4EF6\u5939",
+      name: t("command.exportImages"),
       callback: () => void this.runOnOpenView((view) => view.exportImages())
     });
     this.registerEvent(
       this.app.workspace.on("file-menu", (menu, file) => {
         if (!(file instanceof import_obsidian5.TFile) || file.extension !== "md") return;
         menu.addItem((item) => {
-          item.setTitle("\u7528\u6210\u7A3F\u9884\u89C8\u6253\u5F00").setIcon(CHENGGAO_ICON_ID).onClick(() => void this.openPreview(file));
+          item.setTitle(t("menu.openWith")).setIcon(CHENGGAO_ICON_ID).onClick(() => void this.openPreview(file));
         });
       })
     );
@@ -40350,7 +40575,7 @@ var ChenggaoPlugin = class extends import_obsidian5.Plugin {
   async openPreview(file) {
     const note = this.markdownFile(file);
     if (!note) {
-      new import_obsidian5.Notice("\u8BF7\u5148\u6253\u5F00\u4E00\u7BC7 Markdown \u7B14\u8BB0\u3002");
+      new import_obsidian5.Notice(t("notice.openNoteFirst"));
       return;
     }
     const markdownLeaf = this.markdownLeafFor(note);
@@ -40359,7 +40584,7 @@ var ChenggaoPlugin = class extends import_obsidian5.Plugin {
       leaf = markdownLeaf ? this.app.workspace.createLeafBySplit(markdownLeaf, "vertical") : this.app.workspace.getRightLeaf(false);
     }
     if (!leaf) {
-      new import_obsidian5.Notice("\u65E0\u6CD5\u6253\u5F00\u9884\u89C8\u5206\u680F\u3002");
+      new import_obsidian5.Notice(t("notice.cannotSplit"));
       return;
     }
     ChenggaoView.pendingFile = note;

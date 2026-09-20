@@ -303,109 +303,109 @@
       </aside>
       <button class="panel-resizer" data-panel-resize="editor" type="button" aria-label="拖动调整编辑区宽度"></button>
 
-      <section id="previewPanel" class="preview-panel" aria-label="图片预览">
+      <section id="previewPanel" class="preview-panel" data-i18n-aria="preview.aria" aria-label="Preview">
         <div class="preview-topbar">
           <div>
-            <div id="appModeSwitch" class="mode-switch" aria-label="切换工作区">
-              <button type="button" class="active" data-app-mode="cards">图文卡片</button>
-              <button type="button" data-app-mode="article">长文</button>
+            <div id="appModeSwitch" class="mode-switch" data-i18n-aria="mode.aria" aria-label="Preview mode">
+              <button type="button" class="active" data-app-mode="cards" data-i18n="mode.cards">Cards</button>
+              <button type="button" data-app-mode="article" data-i18n="mode.article">Article</button>
             </div>
-            <h2>预览与下载</h2>
-            <span id="statusText">自动分页已开启</span>
+            <h2 data-i18n="preview.heading">Preview and export</h2>
+            <span id="statusText" data-i18n="preview.statusReady">Auto pagination is on</span>
           </div>
           <div class="topbar-actions">
             <div id="cardSettings" class="card-settings">
               <details class="tool-menu article-setting-menu">
-                <summary class="icon-button" title="图文排版" aria-label="图文排版">
+                <summary class="icon-button" data-i18n-title="layout.title" data-i18n-aria="layout.title" title="Card layout" aria-label="Card layout">
                   <i data-lucide="rows-3"></i>
                 </summary>
                 <div class="tool-popover">
                   <div class="color-guide">
-                    <strong>图文排版</strong>
+                    <strong data-i18n="layout.title">Card layout</strong>
                   </div>
-                  <button type="button" id="keepHeadingBtn" class="article-option active" aria-pressed="true">
-                    标题不落在页底
+                  <button type="button" id="keepHeadingBtn" class="article-option active" aria-pressed="true" data-i18n="layout.keepHeading">
+                    Keep headings off the last line
                   </button>
                 </div>
               </details>
             </div>
             <div id="articleSettings" class="article-settings" hidden>
               <details class="tool-menu article-setting-menu">
-                <summary class="icon-button" title="主题" aria-label="主题">
+                <summary class="icon-button" data-i18n-title="theme.title" data-i18n-aria="theme.title" title="Theme" aria-label="Theme">
                   <i data-lucide="swatch-book"></i>
                 </summary>
                 <div class="tool-popover">
                   <div class="color-guide">
-                    <strong>主题</strong>
+                    <strong data-i18n="theme.title">Theme</strong>
                   </div>
                   <div class="article-option-grid">
-                    <button type="button" class="article-option active" data-article-theme="classic">经典</button>
-                    <button type="button" class="article-option" data-article-theme="elegant">优雅</button>
-                    <button type="button" class="article-option" data-article-theme="clean">简洁</button>
-                    <button type="button" class="article-option" data-article-theme="wechat">微信绿</button>
-                    <button type="button" class="article-option" data-article-theme="colorful">多彩微信</button>
+                    <button type="button" class="article-option active" data-article-theme="classic" data-i18n="theme.classic">Classic</button>
+                    <button type="button" class="article-option" data-article-theme="elegant" data-i18n="theme.elegant">Elegant</button>
+                    <button type="button" class="article-option" data-article-theme="clean" data-i18n="theme.clean">Clean</button>
+                    <button type="button" class="article-option" data-article-theme="wechat" data-i18n="theme.wechat">WeChat green</button>
+                    <button type="button" class="article-option" data-article-theme="colorful" data-i18n="theme.colorful">Colorful WeChat</button>
                   </div>
                 </div>
               </details>
               <details class="tool-menu article-setting-menu">
-                <summary class="icon-button" title="字体" aria-label="字体">
+                <summary class="icon-button" data-i18n-title="font.title" data-i18n-aria="font.title" title="Font" aria-label="Font">
                   <i data-lucide="type"></i>
                 </summary>
                 <div class="tool-popover">
                   <div class="color-guide">
-                    <strong>字体</strong>
+                    <strong data-i18n="font.title">Font</strong>
                   </div>
                   <div class="article-option-grid three">
-                    <button type="button" class="article-option active" data-article-font="sans">无衬线</button>
-                    <button type="button" class="article-option" data-article-font="serif">衬线</button>
-                    <button type="button" class="article-option" data-article-font="mono">等宽</button>
+                    <button type="button" class="article-option active" data-article-font="sans" data-i18n="font.sans">Sans</button>
+                    <button type="button" class="article-option" data-article-font="serif" data-i18n="font.serif">Serif</button>
+                    <button type="button" class="article-option" data-article-font="mono" data-i18n="font.mono">Mono</button>
                   </div>
                 </div>
               </details>
               <details class="tool-menu article-setting-menu">
-                <summary class="icon-button" title="字号" aria-label="字号">
+                <summary class="icon-button" data-i18n-title="size.title" data-i18n-aria="size.title" title="Size" aria-label="Size">
                   <i data-lucide="a-large-small"></i>
                 </summary>
                 <div class="tool-popover">
                   <div class="color-guide">
-                    <strong>字号</strong>
+                    <strong data-i18n="size.title">Size</strong>
                   </div>
                   <div class="article-option-grid three">
-                    <button type="button" class="article-option" data-article-size="small">更小</button>
-                    <button type="button" class="article-option active" data-article-size="normal">推荐</button>
-                    <button type="button" class="article-option" data-article-size="large">稍大</button>
+                    <button type="button" class="article-option" data-article-size="small" data-i18n="size.small">Smaller</button>
+                    <button type="button" class="article-option active" data-article-size="normal" data-i18n="size.normal">Default</button>
+                    <button type="button" class="article-option" data-article-size="large" data-i18n="size.large">Larger</button>
                   </div>
                 </div>
               </details>
               <details class="tool-menu article-setting-menu">
-                <summary class="icon-button" title="主题色" aria-label="主题色">
+                <summary class="icon-button" data-i18n-title="color.title" data-i18n-aria="color.title" title="Accent" aria-label="Accent">
                   <i data-lucide="pipette"></i>
                 </summary>
                 <div class="tool-popover">
                   <div class="color-guide">
-                    <strong>主题色</strong>
+                    <strong data-i18n="color.title">Accent</strong>
                   </div>
                   <div class="article-color-grid">
-                    <button type="button" class="article-color active" data-article-color="#0f766e" style="--swatch:#0f766e">翡翠绿</button>
-                    <button type="button" class="article-color" data-article-color="#2563eb" style="--swatch:#2563eb">经典蓝</button>
-                    <button type="button" class="article-color" data-article-color="#ef4444" style="--swatch:#ef4444">活力橘</button>
-                    <button type="button" class="article-color" data-article-color="#7c3aed" style="--swatch:#7c3aed">薰衣紫</button>
-                    <button type="button" class="article-color" data-article-color="#111827" style="--swatch:#111827">石墨黑</button>
+                    <button type="button" class="article-color active" data-article-color="#0f766e" style="--swatch:#0f766e" data-i18n="color.teal">Jade</button>
+                    <button type="button" class="article-color" data-article-color="#2563eb" style="--swatch:#2563eb" data-i18n="color.blue">Blue</button>
+                    <button type="button" class="article-color" data-article-color="#ef4444" style="--swatch:#ef4444" data-i18n="color.orange">Coral</button>
+                    <button type="button" class="article-color" data-article-color="#7c3aed" style="--swatch:#7c3aed" data-i18n="color.purple">Violet</button>
+                    <button type="button" class="article-color" data-article-color="#111827" style="--swatch:#111827" data-i18n="color.black">Ink</button>
                   </div>
                 </div>
               </details>
             </div>
             <button id="downloadZipBtn" class="primary-button" type="button">
               <i data-lucide="download"></i>
-              批量下载
+              <span data-i18n="action.exportImages">Export images</span>
             </button>
             <button id="downloadArticleBtn" class="primary-button" type="button" hidden>
               <i data-lucide="download"></i>
-              下载长图
+              <span data-i18n="action.exportArticle">Export long image</span>
             </button>
             <button id="copyWechatBtn" class="secondary-button" type="button" hidden>
               <i data-lucide="copy"></i>
-              复制公众号格式
+              <span data-i18n="action.copyWechat">Copy WeChat format</span>
             </button>
             <button id="syncWechatBtn" class="primary-button" type="button" hidden>
               <i data-lucide="send"></i>

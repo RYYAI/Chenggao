@@ -1,6 +1,7 @@
 import { ItemView, TFile, WorkspaceLeaf } from "obsidian";
 import workspaceHtml from "./workspace.html";
 import { createPluginHost, type WriteThenPublishHost } from "./host";
+import { applyI18n, t } from "./i18n";
 import { splitFrontmatter } from "./note-bridge";
 import "./app-shims";
 import "./live-photo-browser.js";
@@ -26,7 +27,7 @@ export class ChenggaoView extends ItemView {
   }
 
   getDisplayText(): string {
-    return this.boundFile ? `成稿预览 · ${this.boundFile.basename}` : "成稿预览";
+    return this.boundFile ? t("tab.titleNote", { name: this.boundFile.basename }) : t("tab.title");
   }
 
   getIcon(): string {
@@ -82,8 +83,8 @@ export class ChenggaoView extends ItemView {
 
     if (!this.boundFile) {
       this.contentEl.createDiv({ cls: "wtp-empty-state" }, (el) => {
-        el.createEl("strong", { text: "先打开一篇 Markdown 笔记" });
-        el.createEl("p", { text: "左侧继续用 Obsidian 编辑，这里会显示图文卡片或长文预览。" });
+        el.createEl("strong", { text: t("empty.title") });
+        el.createEl("p", { text: t("empty.body") });
       });
       return;
     }
@@ -92,6 +93,7 @@ export class ChenggaoView extends ItemView {
     root.setAttribute("data-write-then-publish-local-mode", "true");
     root.setAttribute("data-ui-theme", "light");
     root.innerHTML = workspaceHtml;
+    applyI18n(root);
 
     this.host = createPluginHost(this.app, this.boundFile, root, this.frontmatter);
     this.host.liveMarkdown = null;

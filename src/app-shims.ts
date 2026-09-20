@@ -14,6 +14,9 @@ declare global {
     bootWriteThenPublish?: () => void | Promise<void>;
     reloadWriteThenPublishNote?: () => void | Promise<void>;
     WriteThenPublishBrowserLivePhoto?: { supported: () => boolean };
+    __chenggaoT?: (key: string, vars?: Record<string, string | number>) => string;
+    __chenggaoLocale?: "en" | "zh";
+    obsidianApiGetLanguage?: () => string;
   }
 }
 

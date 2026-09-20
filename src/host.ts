@@ -1,4 +1,5 @@
 import { App, Notice, TFile } from "obsidian";
+import { t } from "./i18n";
 import { loadNote, resolveImages, writeNote, type PluginAttachment, type PluginNote } from "./note-bridge";
 import {
   blobToArrayBuffer,
@@ -44,12 +45,12 @@ export function createPluginHost(app: App, file: TFile, root: HTMLElement, front
     },
     async loadNote() {
       const current = app.vault.getAbstractFileByPath(host.notePath);
-      if (!(current instanceof TFile)) throw new Error("当前笔记已不存在。");
+      if (!(current instanceof TFile)) throw new Error(t("error.noteMissing"));
       return loadNote(app, current, host.liveMarkdown ?? undefined);
     },
     async writeNote(data) {
       const current = app.vault.getAbstractFileByPath(host.notePath);
-      if (!(current instanceof TFile)) throw new Error("当前笔记已不存在。");
+      if (!(current instanceof TFile)) throw new Error(t("error.noteMissing"));
       await writeNote(app, current, host.frontmatter, data.markdown, data.attachments || []);
     },
     async resolveImages(references) {

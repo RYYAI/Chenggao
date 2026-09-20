@@ -1,31 +1,39 @@
 import { MarkdownView, Notice, Plugin, TFile } from "obsidian";
 import { CHENGGAO_ICON_ID, CHENGGAO_ICON_SVG } from "./icon";
+import { installI18n, t } from "./i18n";
 import { ChenggaoView, VIEW_TYPE_CHENGGAO } from "./view";
 
 export default class ChenggaoPlugin extends Plugin {
   async onload(): Promise<void> {
+    installI18n(() => {
+      try {
+        return window.localStorage.getItem("language") || "";
+      } catch {
+        return "";
+      }
+    });
     this.addIcon(CHENGGAO_ICON_ID, CHENGGAO_ICON_SVG);
     this.registerView(VIEW_TYPE_CHENGGAO, (leaf) => new ChenggaoView(leaf));
 
-    this.addRibbonIcon(CHENGGAO_ICON_ID, "成稿预览", () => {
+    this.addRibbonIcon(CHENGGAO_ICON_ID, t("plugin.name"), () => {
       void this.openPreview();
     });
 
     this.addCommand({
       id: "open-workspace",
-      name: "打开排版预览",
+      name: t("command.openPreview"),
       callback: () => void this.openPreview(),
     });
 
     this.addCommand({
       id: "copy-wechat-html",
-      name: "复制公众号格式",
+      name: t("command.copyWechat"),
       callback: () => void this.runOnOpenView((view) => view.copyWechat()),
     });
 
     this.addCommand({
       id: "export-images",
-      name: "导出图片到同级图片文件夹",
+      name: t("command.exportImages"),
       callback: () => void this.runOnOpenView((view) => view.exportImages()),
     });
 
@@ -34,7 +42,7 @@ export default class ChenggaoPlugin extends Plugin {
         if (!(file instanceof TFile) || file.extension !== "md") return;
         menu.addItem((item) => {
           item
-            .setTitle("用成稿预览打开")
+            .setTitle(t("menu.openWith"))
             .setIcon(CHENGGAO_ICON_ID)
             .onClick(() => void this.openPreview(file));
         });
@@ -96,7 +104,7 @@ export default class ChenggaoPlugin extends Plugin {
   private async openPreview(file?: TFile): Promise<void> {
     const note = this.markdownFile(file);
     if (!note) {
-      new Notice("请先打开一篇 Markdown 笔记。");
+      new Notice(t("notice.openNoteFirst"));
       return;
     }
 
@@ -108,7 +116,7 @@ export default class ChenggaoPlugin extends Plugin {
         : this.app.workspace.getRightLeaf(false);
     }
     if (!leaf) {
-      new Notice("无法打开预览分栏。");
+      new Notice(t("notice.cannotSplit"));
       return;
     }
 

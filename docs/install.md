@@ -1,15 +1,17 @@
-# 安装
+# Install
 
-本仓库是 Chenggao（成稿预览）的 Obsidian 插件源码。尚未上架社区市场时，用手动安装或符号链接。
+This repository is the Chenggao Obsidian plugin. Until it is listed in the community directory, install it manually or with a symlink.
 
-## 系统要求
+Chinese notes: [zh/install.md](zh/install.md)
 
-- Obsidian 桌面端 1.6.0 或更高
-- Node.js 20 或更高（从源码构建时）
+## Requirements
 
-## 手动安装
+- Obsidian desktop 1.6.0 or later
+- Node.js 20 or later when building from source
 
-1. 构建插件：
+## Manual install
+
+1. Build the plugin:
 
 ```bash
 git clone https://github.com/RYYAI/Chenggao.git
@@ -18,24 +20,24 @@ npm install
 npm run build
 ```
 
-2. 在库里创建插件目录：
+2. Create this folder in your vault:
 
 ```
-<你的库>/.obsidian/plugins/chenggao/
+<vault>/.obsidian/plugins/chenggao/
 ```
 
-3. 复制这三个文件：
+The folder name must match the plugin `id` in `manifest.json`.
+
+3. Copy these files into that folder:
 
 - `manifest.json`
 - `main.js`
 - `styles.css`
 
-4. 打开 Obsidian → **设置 → 第三方插件**，关闭安全模式（如已开启），启用 **Chenggao**。
-5. 设置里的版本应与 `manifest.json` 一致。
+4. In Obsidian open **Settings → Community plugins**, turn off Restricted mode if needed, and enable **Chenggao**.
+5. The version shown in settings should match `manifest.json`.
 
-## 开发安装（符号链接）
-
-构建一次后，把文件链到库里，之后每次 `npm run build` 都会更新：
+## Development install (symlink)
 
 ```bash
 PLUGIN="$HOME/Documents/Obsidian Vault/.obsidian/plugins/chenggao"
@@ -45,12 +47,12 @@ ln -sf "$(pwd)/manifest.json" "$PLUGIN/manifest.json"
 ln -sf "$(pwd)/styles.css" "$PLUGIN/styles.css"
 ```
 
-改代码后重载插件：
+Reload after a rebuild:
 
-- **⌘Q** 退出 Obsidian 再打开，或
-- **设置 → 第三方插件** 关掉再打开 Chenggao，或
-- 命令面板运行 `Reload app without saving`
+- Quit Obsidian fully (**⌘Q** on macOS) and open it again, or
+- Disable and enable Chenggao, or
+- Run **Reload app without saving**
 
-## 启用后
+## After enabling
 
-打开一篇 `.md` 笔记，运行 **Chenggao: 打开排版预览**。左侧是笔记，右侧是预览。
+Open a `.md` note and run **Chenggao: Open layout preview**. The note stays on the left; the preview opens on the right.

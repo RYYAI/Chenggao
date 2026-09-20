@@ -1,4 +1,5 @@
 import { App, TFile } from "obsidian";
+import { t } from "./i18n";
 import { IMAGE_FOLDER, noteDir, wikiPathForNoteImage, writeBinary } from "./vault-io";
 
 export interface PluginNoteImage {
@@ -62,7 +63,7 @@ export async function fileToDataUrl(app: App, file: TFile): Promise<string> {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onload = () => resolve(String(reader.result || ""));
-    reader.onerror = () => reject(reader.error || new Error("图片读取失败"));
+    reader.onerror = () => reject(reader.error || new Error(t("error.imageRead")));
     reader.readAsDataURL(blob);
   });
 }
