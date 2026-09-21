@@ -40,6 +40,17 @@ const EN = {
   "layout.keepHeadingOff": "Keep headings off the last line: off",
   "layout.keepHeadingEnabled": "On: a heading will move to the next page with its body when it would sit alone at the bottom.",
   "layout.keepHeadingDisabled": "Off: headings paginate where they land.",
+  "profile.title": "Card profile",
+  "profile.name": "Name",
+  "profile.handle": "Twitter handle",
+  "profile.namePlaceholder": "Name",
+  "profile.handlePlaceholder": "@username",
+  "profile.avatar": "Change avatar",
+  "profile.crop": "Crop avatar",
+  "profile.everyPage": "Show on every page",
+  "profile.firstPage": "First page only",
+  "profile.everyPageHint": "Avatar and name currently appear on every page. Click to show them on the first page only.",
+  "profile.firstPageHint": "Avatar and name currently appear on the first page only. Click to show them on every page.",
   "theme.title": "Theme",
   "theme.classic": "Classic",
   "theme.elegant": "Elegant",
@@ -70,6 +81,9 @@ const EN = {
   "status.renderingCards": "Rendering cards…",
   "status.empty": "Nothing to preview yet",
   "status.generated": "Generated {n} page(s), {width}×{height} px",
+  "status.articlePreview": "Article preview ready, about {n} characters",
+  "status.switchedArticle": "Switched to article preview",
+  "status.switchedCards": "Switched to cards and paginated the note",
   "status.cancelled": "Export cancelled",
   "progress.exportImages": "Exporting images",
   "progress.exportImagesDetail": "Writing into the Images folder next to the note…",
@@ -126,6 +140,17 @@ const ZH: Record<keyof typeof EN, string> = {
   "layout.keepHeadingOff": "标题不落在页底：已关闭",
   "layout.keepHeadingEnabled": "已开启：标题尽量不单独出现在页底",
   "layout.keepHeadingDisabled": "已关闭：标题按原位置分页",
+  "profile.title": "卡片资料",
+  "profile.name": "名称",
+  "profile.handle": "推特账号",
+  "profile.namePlaceholder": "名称",
+  "profile.handlePlaceholder": "@username",
+  "profile.avatar": "更换头像",
+  "profile.crop": "裁剪头像",
+  "profile.everyPage": "每页显示",
+  "profile.firstPage": "仅首页显示",
+  "profile.everyPageHint": "当前每页显示头像昵称，点击改为仅首页显示",
+  "profile.firstPageHint": "当前仅首页显示头像昵称，点击改为每页显示",
   "theme.title": "主题",
   "theme.classic": "经典",
   "theme.elegant": "优雅",
@@ -156,6 +181,9 @@ const ZH: Record<keyof typeof EN, string> = {
   "status.renderingCards": "正在生成图文卡片…",
   "status.empty": "暂无内容",
   "status.generated": "已生成 {n} 张，高清尺寸 {width}x{height}",
+  "status.articlePreview": "已生成长文预览，约 {n} 字",
+  "status.switchedArticle": "已转为长文",
+  "status.switchedCards": "已转为图文卡片，并自动分页排版",
   "status.cancelled": "已取消下载",
   "progress.exportImages": "正在导出图片",
   "progress.exportImagesDetail": "正在写入笔记同级的图片文件夹…",
@@ -177,9 +205,7 @@ const ZH: Record<keyof typeof EN, string> = {
 export type MessageKey = keyof typeof EN;
 
 function detectLocale(): Locale {
-  const runtime = window.obsidianApiGetLanguage?.() || "";
-  const stored = typeof localStorage !== "undefined" ? localStorage.getItem("language") || "" : "";
-  const language = runtime || stored;
+  const language = window.obsidianApiGetLanguage?.() || "";
   return /^zh/i.test(language) ? "zh" : "en";
 }
 
@@ -195,7 +221,7 @@ export function t(key: MessageKey, vars?: Vars): string {
   let value = TABLES[locale][key] || EN[key];
   if (vars) {
     for (const [name, replacement] of Object.entries(vars)) {
-      value = value.replaceAll(`{${name}}`, String(replacement));
+      value = value.split(`{${name}}`).join(String(replacement));
     }
   }
   return value;
@@ -213,6 +239,10 @@ export function applyI18n(root: ParentNode): void {
   root.querySelectorAll<HTMLElement>("[data-i18n-aria]").forEach((el) => {
     const key = el.dataset.i18nAria as MessageKey | undefined;
     if (key) el.setAttribute("aria-label", t(key));
+  });
+  root.querySelectorAll<HTMLElement>("[data-i18n-placeholder]").forEach((el) => {
+    const key = el.dataset.i18nPlaceholder as MessageKey | undefined;
+    if (key) el.setAttribute("placeholder", t(key));
   });
 }
 

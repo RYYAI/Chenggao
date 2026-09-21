@@ -40,7 +40,14 @@ const context = await esbuild.context({
   target: "es2018",
   outfile: "main.js",
   banner: {
-    js: "window.WRITE_THEN_PUBLISH_DEFER_BOOT = true;",
+    js: `window.WRITE_THEN_PUBLISH_DEFER_BOOT = true;
+if (typeof globalThis.setImmediate !== "function") {
+  globalThis.setImmediate = (fn, ...args) => setTimeout(fn, 0, ...args);
+  globalThis.clearImmediate = (id) => clearTimeout(id);
+}`,
+  },
+  footer: {
+    js: "module.exports = ChenggaoPlugin;",
   },
   external: ["obsidian", "electron"],
   loader: {

@@ -1,34 +1,35 @@
-import { App, TFile, TFolder } from "obsidian";
+import { App, TFile, TFolder, normalizePath } from "obsidian";
 
 export const IMAGE_FOLDER = "图片";
 
 export function noteDir(path: string): string {
-  const index = path.lastIndexOf("/");
-  return index === -1 ? "" : path.slice(0, index);
+  const normalized = normalizePath(path);
+  const index = normalized.lastIndexOf("/");
+  return index === -1 ? "" : normalized.slice(0, index);
 }
 
 export function noteBasename(path: string): string {
-  const name = path.split("/").pop() || "未命名";
+  const name = normalizePath(path).split("/").pop() || "未命名";
   return name.replace(/\.md$/i, "");
 }
 
 export function imageFolderPath(notePath: string): string {
   const directory = noteDir(notePath);
-  return directory ? `${directory}/${IMAGE_FOLDER}` : IMAGE_FOLDER;
+  return normalizePath(directory ? `${directory}/${IMAGE_FOLDER}` : IMAGE_FOLDER);
 }
 
 export function imageFilePath(notePath: string, filename: string): string {
-  return `${imageFolderPath(notePath)}/${filename}`;
+  return normalizePath(`${imageFolderPath(notePath)}/${filename}`);
 }
 
 export function wechatHtmlPath(notePath: string): string {
   const directory = noteDir(notePath);
   const base = noteBasename(notePath);
-  return directory ? `${directory}/${base}.wechat.html` : `${base}.wechat.html`;
+  return normalizePath(directory ? `${directory}/${base}.wechat.html` : `${base}.wechat.html`);
 }
 
 export function wikiPathForNoteImage(filename: string): string {
-  return `${IMAGE_FOLDER}/${filename}`;
+  return normalizePath(`${IMAGE_FOLDER}/${filename}`);
 }
 
 export function exportImageName(notePath: string, filename: string): string {

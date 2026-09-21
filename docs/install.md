@@ -6,7 +6,7 @@ Chinese notes: [zh/install.md](zh/install.md)
 
 ## Requirements
 
-- Obsidian desktop 1.6.0 or later
+- Obsidian desktop 1.8.7 or later
 - Node.js 20 or later when building from source
 
 ## Manual install

@@ -1254,6 +1254,70 @@ body[data-app-mode="article"] .profile-inline {
   object-fit: cover;
 }
 
+.card-settings {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.card-settings[hidden] {
+  display: none;
+}
+
+.card-profile-popover {
+  display: grid;
+  gap: 10px;
+  width: 280px;
+}
+
+.card-profile-title {
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.card-profile-fields {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 8px 10px;
+  align-items: center;
+}
+
+.card-profile-avatar {
+  width: 56px;
+  height: 56px;
+}
+
+.card-profile-avatar input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+  opacity: 0;
+}
+
+.card-profile-text {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.card-profile-text .compact-input {
+  width: 100%;
+  min-width: 0;
+  height: 32px;
+  box-sizing: border-box;
+}
+
+.card-profile-action {
+  grid-column: 1 / -1;
+}
+
 .profile-fields {
   display: grid;
   gap: 10px;

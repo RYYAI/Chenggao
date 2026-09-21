@@ -13,8 +13,8 @@
 (function initializeBrowserLivePhoto() {
   "use strict";
 
-  const OUTPUT_WIDTH = 1206;
-  const OUTPUT_HEIGHT = 2622;
+  const OUTPUT_WIDTH = 1080;
+  const OUTPUT_HEIGHT = 1440;
   const OUTPUT_FPS = 30;
   const LIVE_DURATIONS = [3, 5, 8];
   const LIVE_SPEEDS = [1, 1.5, 2, 3];

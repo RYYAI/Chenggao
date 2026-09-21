@@ -1,6 +1,6 @@
 import { ItemView, TFile, WorkspaceLeaf } from "obsidian";
 import workspaceHtml from "./workspace.html";
-import { createPluginHost, type WriteThenPublishHost } from "./host";
+import { createPluginHost, type CardProfileStore, type WriteThenPublishHost } from "./host";
 import { applyI18n, t } from "./i18n";
 import { splitFrontmatter } from "./note-bridge";
 import "./app-shims";
@@ -8,6 +8,13 @@ import "./live-photo-browser.js";
 import "./app.js";
 
 export const VIEW_TYPE_CHENGGAO = "chenggao";
+
+function mountStaticHtml(root: HTMLElement, html: string): void {
+  const parsed = new DOMParser().parseFromString(`<div>${html}</div>`, "text/html");
+  const wrap = parsed.body.firstElementChild;
+  if (!wrap) return;
+  root.append(...Array.from(wrap.childNodes));
+}
 
 export class ChenggaoView extends ItemView {
   static pendingFile: TFile | null = null;
@@ -17,9 +24,11 @@ export class ChenggaoView extends ItemView {
   private frontmatter = "";
   private mounted = false;
   private previewTimer = 0;
+  private readonly profileStore: CardProfileStore;
 
-  constructor(leaf: WorkspaceLeaf) {
+  constructor(leaf: WorkspaceLeaf, profileStore: CardProfileStore) {
     super(leaf);
+    this.profileStore = profileStore;
   }
 
   getViewType(): string {
@@ -77,8 +86,6 @@ export class ChenggaoView extends ItemView {
   private async mount(): Promise<void> {
     this.contentEl.empty();
     this.contentEl.addClass("wtp-plugin-view");
-    this.contentEl.style.padding = "0";
-    this.contentEl.style.overflow = "hidden";
     this.mounted = false;
 
     if (!this.boundFile) {
@@ -92,14 +99,13 @@ export class ChenggaoView extends ItemView {
     const root = this.contentEl.createDiv({ cls: "wtp-root local-deployment wtp-obsidian-plugin" });
     root.setAttribute("data-write-then-publish-local-mode", "true");
     root.setAttribute("data-ui-theme", "light");
-    root.innerHTML = workspaceHtml;
+    mountStaticHtml(root, workspaceHtml);
     applyI18n(root);
 
-    this.host = createPluginHost(this.app, this.boundFile, root, this.frontmatter);
+    this.host = createPluginHost(this.app, this.boundFile, root, this.frontmatter, this.profileStore);
     this.host.liveMarkdown = null;
     window.WRITE_THEN_PUBLISH_HOST = this.host;
     window.WRITE_THEN_PUBLISH_DEFER_BOOT = true;
-    document.documentElement.dataset.writeThenPublishLocalMode = "true";
 
     if (typeof window.bootWriteThenPublish === "function") {
       await window.bootWriteThenPublish();
@@ -109,6 +115,9 @@ export class ChenggaoView extends ItemView {
 
   async onClose(): Promise<void> {
     window.clearTimeout(this.previewTimer);
+    if (typeof window.flushWriteThenPublishProfile === "function") {
+      await window.flushWriteThenPublishProfile();
+    }
     if (window.WRITE_THEN_PUBLISH_HOST === this.host) {
       delete window.WRITE_THEN_PUBLISH_HOST;
     }

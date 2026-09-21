@@ -26,6 +26,8 @@ Chinese notes: [zh/develop.md](zh/develop.md)
 
 UI copy lives in `src/i18n.ts`. If the Obsidian language starts with `zh`, the preview uses Chinese; otherwise it uses English.
 
+`npx eslint .` runs the same community-scanner ruleset locally.
+
 ## Release
 
 1. Set `version` in `manifest.json` and `versions.json` to `x.y.z`

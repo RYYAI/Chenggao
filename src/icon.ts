@@ -1,6 +1,6 @@
 export const CHENGGAO_ICON_ID = "chenggao";
 
-/** Inner SVG for `Plugin.addIcon` (viewBox 0 0 100 100). */
+/** Inner SVG for Obsidian `addIcon` (viewBox 0 0 100 100). */
 export const CHENGGAO_ICON_SVG = `
 <rect x="12" y="22" width="46" height="64" rx="7" fill="none" stroke="currentColor" stroke-width="6"/>
 <path d="M22 38h26M22 50h22M22 62h16" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>

@@ -18,7 +18,9 @@ When you switch notes, an already open preview follows the new note.
 
 ## Cards
 
-Use the top bar to switch to **Cards**. Pages follow iPhone Notes screenshot size and export at 1206×2622.
+Use the top bar to switch to **Cards**. Pages use the Twitter-style header (avatar, name, handle) and export at 1728×2304.
+
+- The user icon in the top bar sets the card **avatar**, **name**, and **Twitter handle** (`@username` by default). These are saved on this computer.
 
 - **Export images** writes `图片/<note>-01.png`, `-02.png`, …
 - **Card layout → Keep headings off the last line** is on by default. If a heading would sit alone at the bottom of a page, it moves to the next page with the following body.
@@ -46,4 +48,4 @@ Both `![[image.png]]` wiki links and standard Markdown images are resolved throu
 | Chenggao: Copy WeChat article format | Copy the current article as WeChat-ready rich text |
 | Chenggao: Export images next to the note | Export PNG pages or a long image |
 
-This plugin is desktop-only.
+This plugin is desktop-only. It does not require an account and does not contact remote servers. Copying uses the clipboard; exporting writes into the vault.

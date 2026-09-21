@@ -13,6 +13,7 @@ declare global {
     WRITE_THEN_PUBLISH_HOST?: unknown;
     bootWriteThenPublish?: () => void | Promise<void>;
     reloadWriteThenPublishNote?: () => void | Promise<void>;
+    flushWriteThenPublishProfile?: () => void | Promise<void>;
     WriteThenPublishBrowserLivePhoto?: { supported: () => boolean };
     __chenggaoT?: (key: string, vars?: Record<string, string | number>) => string;
     __chenggaoLocale?: "en" | "zh";

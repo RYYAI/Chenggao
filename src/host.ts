@@ -11,6 +11,19 @@ import {
   writeText,
 } from "./vault-io";
 
+export type CardProfile = {
+  displayName: string;
+  handle: string;
+  avatar: string;
+  avatarCrop: { x: number; y: number; width: number; height: number } | null;
+  headerMode?: "every" | "first";
+};
+
+export interface CardProfileStore {
+  loadCardProfile(): CardProfile | null;
+  saveCardProfile(profile: CardProfile): Promise<void>;
+}
+
 export interface WriteThenPublishHost {
   isPlugin: true;
   root: HTMLElement;
@@ -28,9 +41,17 @@ export interface WriteThenPublishHost {
   saveWechatHtml(html: string): Promise<string>;
   saveExport(blob: Blob, filename: string): Promise<string>;
   notify(message: string): void;
+  loadCardProfile(): CardProfile | null;
+  saveCardProfile(profile: CardProfile): Promise<void>;
 }
 
-export function createPluginHost(app: App, file: TFile, root: HTMLElement, frontmatter: string): WriteThenPublishHost {
+export function createPluginHost(
+  app: App,
+  file: TFile,
+  root: HTMLElement,
+  frontmatter: string,
+  profileStore?: CardProfileStore,
+): WriteThenPublishHost {
   const host: WriteThenPublishHost = {
     isPlugin: true,
     root,
@@ -75,6 +96,13 @@ export function createPluginHost(app: App, file: TFile, root: HTMLElement, front
     },
     notify(message) {
       new Notice(message);
+    },
+    loadCardProfile() {
+      return profileStore?.loadCardProfile() || null;
+    },
+    async saveCardProfile(profile) {
+      if (!profileStore) return;
+      await profileStore.saveCardProfile(profile);
     },
   };
   return host;

@@ -2,13 +2,25 @@
 
 <img src="docs/icon.png" width="96" height="96" alt="Chenggao icon" />
 
-Obsidian desktop plugin. Keep writing Markdown on the left; preview Notes-style cards or a WeChat article on the right. Edits update the preview as you type.
+Obsidian desktop plugin. Keep writing Markdown on the left; preview Twitter-style cards or a WeChat article on the right. Edits update the preview as you type.
 
 中文说明见 [README.zh.md](README.zh.md). The in-app UI follows the Obsidian language (Chinese when it starts with `zh`, otherwise English).
 
-- **Cards**: paginated iPhone 17 screenshot size (1206×2622)
+- **Cards**: paginated Twitter-style cards (1728×2304)
 - **Article**: WeChat-style preview you can copy into the official editor
 - **Export**: PNGs go to a sibling `图片/` folder; article HTML can be saved as `.wechat.html`
+
+## Preview
+
+Left: keep writing in Obsidian. Right: Chenggao updates as you type.
+
+**Cards** paginates the note into Twitter-style images.
+
+<img src="docs/cards-mode.png" alt="Chenggao Cards mode: Obsidian note on the left, paginated Twitter-style cards on the right" />
+
+**Article** shows a WeChat-style long preview you can copy into the official editor.
+
+<img src="docs/article-mode.png" alt="Chenggao Article mode: Obsidian note on the left, WeChat-style article preview on the right" />
 
 ## Install
 
@@ -61,6 +73,10 @@ Relative to the current note:
 
 Desktop only.
 
+## Privacy
+
+Chenggao does not require an account and does not contact remote servers. There is no telemetry. Copying a WeChat article uses the system clipboard. Exporting writes images and optional HTML into the current vault.
+
 ## Develop
 
 ```bash
@@ -69,6 +85,10 @@ npm run dev
 ```
 
 Source lives in `src/`. Reload the plugin after a rebuild. See [develop](docs/develop.md).
+
+## Libraries
+
+The release bundle includes html2canvas (MIT), JSZip (MIT or GPLv3), and Lucide (ISC).
 
 ## License
 

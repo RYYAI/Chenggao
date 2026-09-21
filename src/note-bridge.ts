@@ -1,4 +1,4 @@
-import { App, TFile } from "obsidian";
+import { App, TFile, normalizePath } from "obsidian";
 import { t } from "./i18n";
 import { IMAGE_FOLDER, noteDir, wikiPathForNoteImage, writeBinary } from "./vault-io";
 
@@ -62,7 +62,7 @@ export async function fileToDataUrl(app: App, file: TFile): Promise<string> {
   const blob = new Blob([data], { type: mimeFromExtension(file.extension) });
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
-    reader.onload = () => resolve(String(reader.result || ""));
+    reader.onload = () => resolve(typeof reader.result === "string" ? reader.result : "");
     reader.onerror = () => reject(reader.error || new Error(t("error.imageRead")));
     reader.readAsDataURL(blob);
   });
@@ -75,7 +75,7 @@ export function resolveVaultFile(app: App, reference: string, sourcePath: string
   } catch {
     // Keep the original wiki target when it is not URI-encoded.
   }
-  path = path.replace(/\\/g, "/").replace(/^\.\//, "").split("|")[0].trim();
+  path = normalizePath(path.replace(/\\/g, "/").replace(/^\.\//, "").split("|")[0].trim());
   if (!path || /^https?:/i.test(path) || /^data:/i.test(path)) return null;
 
   const dest = app.metadataCache.getFirstLinkpathDest(path, sourcePath);
@@ -84,11 +84,12 @@ export function resolveVaultFile(app: App, reference: string, sourcePath: string
   const exact = app.vault.getAbstractFileByPath(path);
   if (exact instanceof TFile) return exact;
 
-  const fromNote = app.vault.getAbstractFileByPath(`${noteDir(sourcePath)}/${path}`.replace(/^\/+/, ""));
+  const fromNote = app.vault.getAbstractFileByPath(normalizePath(`${noteDir(sourcePath)}/${path}`.replace(/^\/+/, "")));
   if (fromNote instanceof TFile) return fromNote;
 
   const name = path.split("/").pop() || "";
-  return app.vault.getFiles().find((file) => file.name.toLowerCase() === name.toLowerCase()) || null;
+  const byName = name ? app.metadataCache.getFirstLinkpathDest(name, sourcePath) : null;
+  return byName instanceof TFile ? byName : null;
 }
 
 export async function loadNote(app: App, file: TFile, rawText?: string): Promise<PluginNote> {
@@ -146,7 +147,9 @@ export async function writeNote(
   let nextMarkdown = markdown;
   for (const attachment of attachments) {
     const fileName = attachment.fileName.replace(/[\\/]/g, "-");
-    const vaultPath = `${noteDir(file.path) ? `${noteDir(file.path)}/` : ""}${IMAGE_FOLDER}/${fileName}`;
+    const vaultPath = normalizePath(
+      `${noteDir(file.path) ? `${noteDir(file.path)}/` : ""}${IMAGE_FOLDER}/${fileName}`,
+    );
     await writeBinary(app, vaultPath, await attachment.blob.arrayBuffer());
     const wiki = wikiPathForNoteImage(fileName);
     if (attachment.path) {

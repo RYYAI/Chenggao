@@ -1,28 +1,22 @@
-const CANVAS_WIDTH = 402;
-const CANVAS_HEIGHT = 874;
-const CANVAS_RENDER_SCALE = 3;
+const CANVAS_WIDTH = 864;
+const CANVAS_HEIGHT = 1152;
+const CANVAS_RENDER_SCALE = 2;
 const OUTPUT_CANVAS_WIDTH = CANVAS_WIDTH * CANVAS_RENDER_SCALE;
 const OUTPUT_CANVAS_HEIGHT = CANVAS_HEIGHT * CANVAS_RENDER_SCALE;
-const LIVE_PAGE_WIDTH = OUTPUT_CANVAS_WIDTH;
-const LIVE_PAGE_HEIGHT = OUTPUT_CANVAS_HEIGHT;
-const CARD_SIDE_PADDING = 20;
+const LIVE_PAGE_WIDTH = 1080;
+const LIVE_PAGE_HEIGHT = 1440;
+const CARD_SIDE_PADDING = 42;
 const CARD_CONTENT_WIDTH = CANVAS_WIDTH - CARD_SIDE_PADDING * 2;
-const NOTES_STATUS_HEIGHT = 54;
-const NOTES_SAFE_TOP = 62;
-const NOTES_TOOLBAR_HEIGHT = 44;
-const NOTES_HOME_INSET = 34;
-const NOTES_QUOTE_INSET = 12;
-const NOTES_CHROME_TOP = NOTES_SAFE_TOP + NOTES_TOOLBAR_HEIGHT + 10;
-const NOTES_CHROME_BOTTOM = NOTES_HOME_INSET + 10;
-const CARD_MAX_IMAGE_HEIGHT = CANVAS_HEIGHT - NOTES_CHROME_TOP - NOTES_CHROME_BOTTOM;
-const CARD_IMAGE_RADIUS = 6;
-const DEFAULT_CARD_FONT_SIZE = 17;
-const DEFAULT_CARD_LINE_HEIGHT = 1.38;
+const CARD_QUOTE_INSET = 12;
+const CARD_MAX_IMAGE_HEIGHT = CANVAS_HEIGHT - CARD_SIDE_PADDING - 62;
+const CARD_IMAGE_RADIUS = 13;
+const DEFAULT_CARD_FONT_SIZE = 34;
+const DEFAULT_CARD_LINE_HEIGHT = 1.85;
 const UNDERLINE_GAP = 15;
 const CARD_BODY_FONT_WEIGHT = 400;
 const CARD_BODY_STROKE_WIDTH = 0;
 const EXPORT_IMAGE_MIME = "image/png";
-const DEFAULT_HANDLE = "";
+const DEFAULT_HANDLE = "@username";
 const EXPORT_IMAGE_EXTENSION = ".png";
 const EXPORT_ZIP_COMPRESSION = "STORE";
 function t(key, vars) {
@@ -31,7 +25,41 @@ function t(key, vars) {
   return key;
 }
 
-const LIVE_PHOTO_API_BASE = window.location.protocol === "file:" ? "http://127.0.0.1:5173" : "";
+function setHtml(el, html) {
+  if (!el) return;
+  const parsed = new DOMParser().parseFromString(`<div>${String(html ?? "")}</div>`, "text/html");
+  const wrap = parsed.body.firstElementChild;
+  el.replaceChildren(...(wrap ? Array.from(wrap.childNodes) : []));
+}
+
+function decodeDataUrl(src) {
+  const comma = src.indexOf(",");
+  if (comma < 0) throw new Error("Invalid data URL");
+  const header = src.slice(0, comma);
+  const data = src.slice(comma + 1);
+  const mime = header.match(/^data:([^;,]+)/i)?.[1] || "application/octet-stream";
+  const bytes = header.includes(";base64")
+    ? Uint8Array.from(atob(data), (c) => c.charCodeAt(0))
+    : new TextEncoder().encode(decodeURIComponent(data));
+  return new Blob([bytes], { type: mime });
+}
+
+async function localOnlyFetch(url) {
+  const target = String(url || "");
+  if (target.startsWith("data:")) {
+    const blob = decodeDataUrl(target);
+    return {
+      ok: true,
+      status: 200,
+      blob: async () => blob,
+      text: async () => blob.text(),
+      json: async () => JSON.parse(await blob.text()),
+    };
+  }
+  throw new Error("Remote network access is disabled");
+}
+
+const LIVE_PHOTO_API_BASE = "";
 const LIVE_PHOTO_LOCAL_GUIDE_URL = "";
 const OBSIDIAN_VAULT_DB = "writeThenPublishObsidianVault";
 const OBSIDIAN_VAULT_STORE = "settings";
@@ -63,6 +91,8 @@ const FEEDBACK_ALLOWED_IMAGE_TYPES = new Set(["image/png", "image/jpeg", "image/
 let LOCAL_DEPLOYMENT_MODE = document.documentElement.dataset.writeThenPublishLocalMode === "true";
 let activeStorageScope = "guest";
 let pluginNoteWriteTimer = 0;
+let pluginProfileSaveTimer = 0;
+let pendingPluginProfile = null;
 let pluginNoteHydrating = false;
 
 function pluginHost() {
@@ -273,6 +303,12 @@ function initElements() {
   avatarInput: $("#avatarInput"),
   avatarPreview: $("#avatarPreview"),
   cropAvatar: $("#cropAvatarBtn"),
+  cardProfileName: $("#cardProfileNameInput"),
+  cardProfileHandle: $("#cardProfileHandleInput"),
+  cardProfileAvatarInput: $("#cardProfileAvatarInput"),
+  cardProfileAvatarPreview: $("#cardProfileAvatarPreview"),
+  cardProfileCrop: $("#cardProfileCropBtn"),
+  cardHeaderMode: $("#cardHeaderModeBtn"),
   imageList: $("#imageList"),
   imageWidthPercent: $("#imageWidthPercentInput"),
   applyImageWidth: $("#applyImageWidthBtn"),
@@ -467,14 +503,14 @@ const UI_THEME_LABELS = {
 
 const CARD_THEME_COLORS = {
   light: {
-    textColor: "#1c1c1e",
-    accentColor: "#c9a227",
+    textColor: "#202938",
+    accentColor: "#17202f",
     bgColor: "#ffffff",
   },
   dark: {
-    textColor: "#f5f5f7",
-    accentColor: "#f5d76e",
-    bgColor: "#1c1c1e",
+    textColor: "#ffffff",
+    accentColor: "#ffffff",
+    bgColor: "#050505",
   },
 };
 
@@ -901,7 +937,7 @@ function readForm() {
     textColor: els.textColor.value,
     accentColor: els.accentColor.value,
     bgColor: els.bgColor.value,
-    fontSize: clamp(Number(els.fontSize.value) || DEFAULT_CARD_FONT_SIZE, 14, 28),
+    fontSize: clamp(Number(els.fontSize.value) || DEFAULT_CARD_FONT_SIZE, 24, 40),
     lineHeight: clamp(Number(els.lineHeight.value) || DEFAULT_CARD_LINE_HEIGHT, 1, 2.4),
     zhFont: FONT_STACKS[els.zhFont.value] ? els.zhFont.value : "zh-system",
     enFont: FONT_STACKS[els.enFont.value] ? els.enFont.value : "en-system",
@@ -933,14 +969,22 @@ function normalizeAuthorProfile(data = {}) {
     : null;
   return {
     displayName,
-    // 留空是合法状态：清掉之后不要再被默认值顶回来。
-    handle: normalizeHandle(data.handle),
+    handle: normalizeHandle(data.handle) || DEFAULT_HANDLE,
     avatar: typeof data.avatar === "string" && data.avatar ? data.avatar : sampleAvatar,
     avatarCrop,
+    headerMode: data.headerMode === "first" ? "first" : "every",
   };
 }
 
 function loadStoredAuthorProfile() {
+  if (isPluginMode()) {
+    try {
+      const profile = pluginHost()?.loadCardProfile?.();
+      return profile ? normalizeAuthorProfile(profile) : null;
+    } catch {
+      return null;
+    }
+  }
   try {
     const raw = storageForScope().getItem(scopedStorageKey(AUTHOR_PROFILE_STORAGE_KEY));
     return raw ? normalizeAuthorProfile(JSON.parse(raw)) : null;
@@ -951,13 +995,73 @@ function loadStoredAuthorProfile() {
 
 function saveAuthorProfile(data = readForm()) {
   if (isBuiltInProjectId(state.currentProjectId)) return false;
+  const profile = normalizeAuthorProfile(data);
+  if (isPluginMode()) {
+    schedulePluginProfileSave(profile);
+    return true;
+  }
   try {
-    storageForScope().setItem(scopedStorageKey(AUTHOR_PROFILE_STORAGE_KEY), JSON.stringify(normalizeAuthorProfile(data)));
+    storageForScope().setItem(scopedStorageKey(AUTHOR_PROFILE_STORAGE_KEY), JSON.stringify(profile));
     scheduleCloudProfileSync();
     return true;
   } catch {
     els.status.textContent = "头像文件过大，作者资料暂时无法写入本机缓存";
     return false;
+  }
+}
+
+function schedulePluginProfileSave(profile) {
+  pendingPluginProfile = profile;
+  window.clearTimeout(pluginProfileSaveTimer);
+  pluginProfileSaveTimer = window.setTimeout(() => {
+    void persistPluginCardProfile(pendingPluginProfile);
+  }, 200);
+}
+
+async function persistPluginCardProfile(profile) {
+  const host = pluginHost();
+  if (!host?.saveCardProfile || !profile) return;
+  pendingPluginProfile = null;
+  try {
+    const compact = await compactCardProfile(profile);
+    await host.saveCardProfile(compact);
+  } catch (error) {
+    console.error("Chenggao could not save card profile", error);
+    if (els.status) els.status.textContent = "头像或卡片资料无法保存到插件设置";
+  }
+}
+
+async function flushPluginCardProfile() {
+  window.clearTimeout(pluginProfileSaveTimer);
+  if (pendingPluginProfile) await persistPluginCardProfile(pendingPluginProfile);
+}
+
+async function compactCardProfile(profile) {
+  const avatar = await compactAvatarDataUrl(profile.avatar, profile.avatarCrop);
+  return {
+    ...profile,
+    avatar,
+    avatarCrop: null,
+  };
+}
+
+async function compactAvatarDataUrl(src, crop) {
+  if (!src || src === sampleAvatar) return src || sampleAvatar;
+  if (!crop && src.startsWith("data:image/") && src.length < 80_000) return src;
+  try {
+    const image = await loadImage(src);
+    const sourceRect = getImageSourceRect(image, crop);
+    const size = 320;
+    const canvas = document.createElement("canvas");
+    canvas.width = size;
+    canvas.height = size;
+    const ctx = canvas.getContext("2d");
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = "high";
+    drawSourceCoverImage(ctx, image, sourceRect, 0, 0, size, size);
+    return canvas.toDataURL("image/jpeg", 0.88);
+  } catch {
+    return src;
   }
 }
 
@@ -968,7 +1072,9 @@ function applyForm(data) {
     : loadStoredAuthorProfile() || projectProfile;
   els.content.value = data.content ?? defaultText;
   els.displayName.value = profile.displayName;
+  if (els.cardProfileName) els.cardProfileName.value = profile.displayName;
   els.handle.value = profile.handle;
+  if (els.cardProfileHandle) els.cardProfileHandle.value = profile.handle;
   els.textColor.value = data.textColor ?? "#202938";
   els.accentColor.value = data.accentColor ?? "#2563eb";
   els.bgColor.value = data.bgColor ?? "#ffffff";
@@ -980,7 +1086,7 @@ function applyForm(data) {
   els.imageHeight.value = ["380", "520"].includes(storedImageHeight)
     ? String(CARD_MAX_IMAGE_HEIGHT)
     : storedImageHeight;
-  state.headerMode = data.headerMode === "first" ? "first" : "every";
+  state.headerMode = (profile.headerMode || data.headerMode) === "first" ? "first" : "every";
   state.keepHeadingWithBody = data.keepHeadingWithBody !== false;
   state.appMode = data.appMode === "article" ? "article" : "cards";
   state.articleTheme = normalizeArticleTheme(data.articleTheme);
@@ -1051,12 +1157,25 @@ async function toggleKeepHeadingWithBody() {
 }
 
 function updateHeaderModeButton() {
-  if (!els.headerModeToggle) return;
+  if (!els.headerModeToggle && !els.cardHeaderMode) return;
   const firstOnly = state.headerMode === "first";
-  els.headerModeToggle.classList.toggle("active", firstOnly);
-  els.headerModeToggle.innerHTML = `<i data-lucide="${firstOnly ? "user-round-check" : "user-round"}"></i>${firstOnly ? "仅首页头像" : "每页头像"}`;
-  els.headerModeToggle.title = firstOnly ? "当前仅首页显示头像昵称，点击改为每页显示" : "当前每页显示头像昵称，点击改为仅首页显示";
-  els.headerModeToggle.setAttribute("aria-label", els.headerModeToggle.title);
+  const label = firstOnly
+    ? (t("profile.firstPage") === "profile.firstPage" ? "仅首页显示" : t("profile.firstPage"))
+    : (t("profile.everyPage") === "profile.everyPage" ? "每页显示" : t("profile.everyPage"));
+  const title = firstOnly
+    ? (t("profile.firstPageHint") === "profile.firstPageHint" ? "当前仅首页显示头像昵称，点击改为每页显示" : t("profile.firstPageHint"))
+    : (t("profile.everyPageHint") === "profile.everyPageHint" ? "当前每页显示头像昵称，点击改为仅首页显示" : t("profile.everyPageHint"));
+  if (els.headerModeToggle) {
+    els.headerModeToggle.classList.toggle("active", firstOnly);
+    setHtml(els.headerModeToggle, `<i data-lucide="${firstOnly ? "user-round-check" : "user-round"}"></i>${label}`);
+    els.headerModeToggle.title = title;
+    els.headerModeToggle.setAttribute("aria-label", title);
+  }
+  if (els.cardHeaderMode) {
+    els.cardHeaderMode.classList.toggle("active", firstOnly);
+    els.cardHeaderMode.textContent = label;
+    els.cardHeaderMode.setAttribute("aria-pressed", firstOnly ? "true" : "false");
+  }
   if (window.lucide) window.lucide.createIcons();
 }
 
@@ -1096,7 +1215,7 @@ function updateAppMode() {
 function showCardRenderPlaceholder(message = t("status.renderingCards")) {
   if (!els.pages) return;
   els.pages.className = "pages";
-  els.pages.innerHTML = `<div class="empty-state">${escapeHtml(message)}</div>`;
+  setHtml(els.pages, `<div class="empty-state">${escapeHtml(message)}</div>`);
   if (els.articleSettings) els.articleSettings.hidden = true;
 }
 
@@ -1112,7 +1231,7 @@ async function setAppMode(mode) {
 async function convertCurrentMode() {
   const nextMode = state.appMode === "article" ? "cards" : "article";
   await setAppMode(nextMode);
-  els.status.textContent = nextMode === "article" ? "已转为长文" : "已转为图文卡片，并自动分页排版";
+  els.status.textContent = nextMode === "article" ? t("status.switchedArticle") : t("status.switchedCards");
 }
 
 function updateArticleControls() {
@@ -1132,8 +1251,12 @@ async function setArticleOption(type, value) {
 }
 
 function normalizeHandle(value) {
-  // 不再强制补「@」，也不给默认值：这一栏留空即可，由用户自由填写。
-  return (value || "").trim();
+  const raw = String(value || "").trim().replace(/^@+/, "");
+  return raw ? `@${raw}` : "";
+}
+
+function cardHandleText(handle) {
+  return normalizeHandle(handle) || DEFAULT_HANDLE;
 }
 
 /** 浏览器自带 WebCodecs 就能本地合成实况，不用云端也不用本机中继。 */
@@ -1682,8 +1805,10 @@ function updateAccountUi() {
     els.accountDisplayName.textContent = els.displayName.value.trim() || "未命名作者";
     els.accountEmailLabel.textContent = cloudState.user.email || "";
     const localCount = cloudState.localImportProjects.length;
-    els.accountImportLocal.hidden = localCount < 1;
-    if (localCount) els.accountImportLocal.innerHTML = `<i data-lucide="cloud-upload"></i>导入 ${localCount} 条游客 / 旧本机草稿到此账号`;
+    if (els.accountImportLocal) els.accountImportLocal.hidden = localCount < 1;
+    if (localCount && els.accountImportLocal) {
+      setHtml(els.accountImportLocal, `<i data-lucide="cloud-upload"></i>导入 ${localCount} 条游客 / 旧本机草稿到此账号`);
+    }
   }
   updateFeatureBadges();
   if (window.lucide) window.lucide.createIcons();
@@ -1765,7 +1890,7 @@ function renderFeedbackFiles() {
     remove.title = `移除 ${file.name}`;
     remove.setAttribute("aria-label", `移除截图 ${index + 1}`);
     remove.disabled = feedbackSending;
-    remove.innerHTML = '<i data-lucide="x"></i>';
+    setHtml(remove, '<i data-lucide="x"></i>');
     remove.addEventListener("click", () => {
       if (feedbackSending) return;
       markFeedbackChanged();
@@ -1847,11 +1972,14 @@ function setFeedbackSending(sending) {
   if (els.feedbackSubmit) {
     els.feedbackSubmit.disabled = feedbackSending || feedbackSubmissionAccepted;
     els.feedbackSubmit.classList.toggle("is-sending", feedbackSending);
-    els.feedbackSubmit.innerHTML = feedbackSending
-      ? '<i data-lucide="loader-circle"></i>正在发送…'
-      : feedbackSubmissionAccepted
-        ? '<i data-lucide="circle-check"></i>已受理'
-        : '<i data-lucide="send"></i>发送反馈';
+    setHtml(
+      els.feedbackSubmit,
+      feedbackSending
+        ? '<i data-lucide="loader-circle"></i>正在发送…'
+        : feedbackSubmissionAccepted
+          ? '<i data-lucide="circle-check"></i>已受理'
+          : '<i data-lucide="send"></i>发送反馈',
+    );
   }
   els.feedbackImageList?.querySelectorAll("button").forEach((button) => {
     button.disabled = feedbackSending;
@@ -1968,7 +2096,7 @@ async function submitFeedback(event) {
   setFeedbackNotice("正在上传反馈和图片，请不要关闭页面。");
 
   try {
-    const response = await fetch(FEEDBACK_ENDPOINT, {
+    const response = await localOnlyFetch(FEEDBACK_ENDPOINT, {
       method: "POST",
       headers: { Accept: "application/json" },
       body: payload,
@@ -2898,7 +3026,7 @@ async function prepareProjectForCloud(project) {
     }
     if (!sourceImage.storagePath && sourceImage.src && !/^https?:/i.test(sourceImage.src)) {
       try {
-        const blob = await fetch(sourceImage.src).then((response) => response.blob());
+        const blob = await localOnlyFetch(sourceImage.src).then((response) => response.blob());
         sourceImage.storagePath = await api.uploadProjectAsset(project.id, `${id}-cover`, blob, sourceImage.name || `${id}.jpg`);
       } catch (error) {
         console.error("图片上传失败", error);
@@ -3167,7 +3295,7 @@ function projectTypeLabel(type) {
 
 function updateProjectHistory() {
   if (!els.projectHistory) return;
-  els.projectHistory.innerHTML = "";
+  els.projectHistory.replaceChildren();
   els.historyFilterButtons.forEach((button) => {
     button.classList.toggle("active", button.dataset.historyFilter === state.historyFilter);
   });
@@ -3194,7 +3322,7 @@ function updateProjectHistory() {
     item.classList.toggle("active", project.id === state.currentProjectId);
     item.dataset.projectType = type;
     item.dataset.projectId = project.id;
-    item.innerHTML = `
+    setHtml(item, `
       <button type="button" class="history-open">
         <span>${escapeHtml(project.title || "未命名图文")}</span>
         <small><b>${builtIn ? "说明" : projectTypeLabel(type)}</b>${builtIn ? projectTypeLabel(type) : formatProjectTime(project.updatedAt)}</small>
@@ -3206,7 +3334,7 @@ function updateProjectHistory() {
               <i data-lucide="trash-2"></i>
             </button>`
       }
-    `;
+    `);
     item.querySelector(".history-open").addEventListener("click", () => openProject(project.id));
     item.querySelector(".history-delete")?.addEventListener("click", () => deleteProject(project.id));
     els.projectHistory.append(item);
@@ -5171,15 +5299,18 @@ async function saveObsidianVault(handle) {
 function setObsidianVaultStatus(message, connected = false) {
   const statusText = String(message || "");
   if (statusText.startsWith("已连接：")) {
-    els.obsidianVaultStatus.innerHTML = `已连接：<b>${escapeHtml(statusText.replace(/^已连接：/, ""))}</b>`;
+    setHtml(els.obsidianVaultStatus, `已连接：<b>${escapeHtml(statusText.replace(/^已连接：/, ""))}</b>`);
   } else {
     els.obsidianVaultStatus.textContent = statusText;
   }
   els.obsidianVaultStatus.parentElement?.classList.toggle("is-connected", connected);
   els.obsidianImportMenu?.classList.toggle("is-vault-connected", hasConnectedObsidianVault());
-  els.connectObsidianVault.innerHTML = connected
-    ? '<i data-lucide="folder-cog"></i> 更换仓库'
-    : '<i data-lucide="folder-open"></i> 连接仓库';
+  setHtml(
+    els.connectObsidianVault,
+    connected
+      ? '<i data-lucide="folder-cog"></i> 更换仓库'
+      : '<i data-lucide="folder-open"></i> 连接仓库',
+  );
   if (window.lucide) window.lucide.createIcons();
 }
 
@@ -5338,7 +5469,7 @@ function imageExtensionFromSource(image, blob) {
 }
 
 async function imageBlobForObsidian(image) {
-  const response = await fetch(image.src);
+  const response = await localOnlyFetch(image.src);
   if (!response.ok) throw new Error("图片读取失败");
   return response.blob();
 }
@@ -5685,9 +5816,13 @@ async function handleAvatar(event) {
 }
 
 async function updateAvatarPreview() {
-  if (!els.avatarPreview) return;
+  const previews = [els.avatarPreview, els.cardProfileAvatarPreview].filter(Boolean);
+  if (!previews.length) return;
+  const apply = (src) => {
+    for (const preview of previews) preview.src = src;
+  };
   if (!state.avatarCrop) {
-    els.avatarPreview.src = state.avatar;
+    apply(state.avatar);
     return;
   }
 
@@ -5700,15 +5835,15 @@ async function updateAvatarPreview() {
     const ctx = canvas.getContext("2d");
     ctx.imageSmoothingQuality = "high";
     drawSourceCoverImage(ctx, image, crop, 0, 0, canvas.width, canvas.height);
-    els.avatarPreview.src = canvas.toDataURL("image/png");
+    apply(canvas.toDataURL("image/png"));
   } catch {
-    els.avatarPreview.src = state.avatar;
+    apply(state.avatar);
   }
 }
 
 function updateImageList() {
   if (!els.imageList) return;
-  els.imageList.innerHTML = "";
+  els.imageList.replaceChildren();
   const entries = Object.entries(state.images);
 
   if (!entries.length) {
@@ -5757,14 +5892,14 @@ function updateImageList() {
     cropButton.type = "button";
     cropButton.title = image.kind === "live" ? "编辑实况" : "裁剪图片";
     cropButton.setAttribute("aria-label", `${image.kind === "live" ? "编辑实况" : "裁剪"} ${image.name || id}`);
-    cropButton.innerHTML = `<i data-lucide="${image.kind === "live" ? "aperture" : "crop"}"></i>`;
+    setHtml(cropButton, `<i data-lucide="${image.kind === "live" ? "aperture" : "crop"}"></i>`);
     cropButton.addEventListener("click", () => image.kind === "live" ? openLivePhotoEditor(id) : openCropper("image", id));
 
     const resetButton = document.createElement("button");
     resetButton.type = "button";
     resetButton.title = "恢复原图";
     resetButton.setAttribute("aria-label", `恢复 ${image.name || id}`);
-    resetButton.innerHTML = '<i data-lucide="rotate-ccw"></i>';
+    setHtml(resetButton, '<i data-lucide="rotate-ccw"></i>');
     resetButton.disabled = image.kind === "live" || !image.crop;
     resetButton.addEventListener("click", () => {
       image.crop = null;
@@ -6679,12 +6814,12 @@ function styleForBlock(type, settings) {
   if (type === "h1") {
     return {
       ...fontSettings,
-      size: Math.round(baseSize * 1.65),
-      lineHeight: 1.25,
-      weight: 700,
+      size: Math.round(baseSize * 1.36),
+      lineHeight: 1.45,
+      weight: 650,
       italic: false,
-      marginTop: 10,
-      marginBottom: 18,
+      marginTop: 22,
+      marginBottom: 10,
       color: settings.textColor,
     };
   }
@@ -6977,12 +7112,12 @@ function imageMaxHeightForLayout(layout, fallbackMaxHeight, absoluteMaxHeight = 
   return clamp(normalized.fixedHeight, 80, Math.max(80, absoluteMaxHeight));
 }
 
-function contentBoundsForHeader(_showHeader) {
+function contentBoundsForHeader(showHeader) {
   return {
     left: CARD_SIDE_PADDING,
     right: CANVAS_WIDTH - CARD_SIDE_PADDING,
-    top: NOTES_CHROME_TOP,
-    bottom: CANVAS_HEIGHT - NOTES_CHROME_BOTTOM,
+    top: showHeader ? 158 : CARD_SIDE_PADDING,
+    bottom: CANVAS_HEIGHT - 62,
   };
 }
 
@@ -7006,7 +7141,7 @@ function headingFollowKeepHeight(ctx, next, settings, contentWidth, emptyCapacit
   } else {
     const style = styleForBlock(next.type, settings);
     const lineHeight = Math.ceil(style.size * style.lineHeight);
-    const width = style.quote ? contentWidth - NOTES_QUOTE_INSET : contentWidth;
+    const width = style.quote ? contentWidth - CARD_QUOTE_INSET : contentWidth;
     const lines = wrapBlockLines(ctx, next, style, width);
     const keepLines = Math.min(Math.max(lines.length, 0), 2);
     follow = (keepLines ? style.marginTop : 0) + keepLines * lineHeight;
@@ -7158,7 +7293,7 @@ async function buildPages(settings) {
 
     const style = styleForBlock(block.type, settings);
     const lineHeight = Math.ceil(style.size * style.lineHeight);
-    const textWidth = style.quote ? contentWidth - NOTES_QUOTE_INSET : contentWidth;
+    const textWidth = style.quote ? contentWidth - CARD_QUOTE_INSET : contentWidth;
     const lines = wrapBlockLines(ctx, block, style, textWidth);
     let firstLine = true;
     if (settings.keepHeadingWithBody !== false && isHeadingBlock(block.type) && lines.length) {
@@ -7186,7 +7321,7 @@ async function buildPages(settings) {
         blockType: block.type,
         line,
         style,
-        x: page.bounds.left + (style.quote ? NOTES_QUOTE_INSET : 0),
+        x: page.bounds.left + (style.quote ? CARD_QUOTE_INSET : 0),
         y,
         lineHeight,
         sourceStart: line.find((token) => Number.isFinite(token.sourceStart))?.sourceStart ?? block.sourceStart,
@@ -7224,7 +7359,9 @@ function renderPage(page, index, total) {
 
 function drawPageToContext(ctx, page) {
   drawBackground(ctx, page.settings);
-  drawNotesChrome(ctx, page.settings);
+  if (page.showHeader !== false) {
+    drawHeader(ctx, page.settings, page.avatar, page.badge);
+  }
 
   for (const item of page.items) {
     if (item.type === "image") drawImageBlock(ctx, item);
@@ -7274,118 +7411,50 @@ function drawBackground(ctx, settings) {
   ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 }
 
-function notesTint(settings) {
-  return isDarkHexColor(settings.bgColor) ? "#f5d76e" : "#c9a227";
-}
-
-function notesForeground(settings) {
-  return isDarkHexColor(settings.bgColor) ? "#f5f5f7" : "#000000";
-}
-
-function drawNotesChrome(ctx, settings) {
-  const dark = isDarkHexColor(settings.bgColor);
-  const fg = notesForeground(settings);
-  const tint = notesTint(settings);
-  const font = `${FONT_STACKS["en-system"]}, ${FONT_STACKS["zh-system"]}`;
+function drawHeader(ctx, settings, avatar, badge) {
+  const x = 42;
+  const y = 38;
+  const size = 82;
+  const darkCard = isDarkHexColor(settings.bgColor);
 
   ctx.save();
-  ctx.fillStyle = "#000";
-  roundedRect(ctx, CANVAS_WIDTH / 2 - 63, 11, 126, 36, 18);
-  ctx.fill();
+  ctx.beginPath();
+  ctx.arc(x + size / 2, y + size / 2, size / 2, 0, Math.PI * 2);
+  ctx.clip();
+  if (avatar) {
+    drawSourceCoverImage(ctx, avatar, getImageSourceRect(avatar, settings.avatarCrop), x, y, size, size);
+  } else {
+    ctx.fillStyle = "#d8edc0";
+    ctx.fillRect(x, y, size, size);
+  }
+  ctx.restore();
 
-  ctx.fillStyle = fg;
-  ctx.font = `600 16px ${font}`;
-  ctx.textBaseline = "middle";
-  ctx.textAlign = "left";
-  ctx.fillText("9:41", 21, 27);
-  drawIosStatusIcons(ctx, fg, CANVAS_WIDTH - 16, 27);
-
-  const toolbarY = NOTES_SAFE_TOP + NOTES_TOOLBAR_HEIGHT / 2;
-  ctx.strokeStyle = tint;
   ctx.lineWidth = 2;
-  ctx.lineCap = "round";
-  ctx.lineJoin = "round";
+  ctx.strokeStyle = darkCard ? "rgba(255,255,255,.2)" : "rgba(32,41,56,.12)";
   ctx.beginPath();
-  ctx.moveTo(28, toolbarY - 7);
-  ctx.lineTo(19, toolbarY);
-  ctx.lineTo(28, toolbarY + 7);
+  ctx.arc(x + size / 2, y + size / 2, size / 2, 0, Math.PI * 2);
   ctx.stroke();
-  ctx.fillStyle = tint;
-  ctx.font = `400 17px ${font}`;
-  ctx.fillText("备忘录", 34, toolbarY);
-  drawNotesToolbarIcons(ctx, tint, CANVAS_WIDTH - 18, toolbarY);
 
-  ctx.fillStyle = dark ? "rgba(255,255,255,.34)" : "rgba(0,0,0,.2)";
-  roundedRect(ctx, CANVAS_WIDTH / 2 - 67, CANVAS_HEIGHT - 9, 134, 5, 2.5);
-  ctx.fill();
-  ctx.restore();
-}
+  const textX = 152;
+  ctx.fillStyle = settings.textColor;
+  ctx.font = `650 30px ${fontFamilyForText(settings.displayName, settings)}`;
+  ctx.textBaseline = "alphabetic";
+  const name = clampText(ctx, settings.displayName, 430);
+  ctx.fillText(name, textX, 72);
 
-function drawIosStatusIcons(ctx, color, right, cy) {
-  ctx.save();
-  ctx.fillStyle = color;
-  ctx.strokeStyle = color;
-  let x = right;
+  const nameWidth = ctx.measureText(name).width;
+  drawVerifiedBadge(ctx, badge, textX + nameWidth + 24, 59);
 
-  x -= 24;
-  ctx.lineWidth = 1.2;
-  roundedRect(ctx, x, cy - 5, 21, 11, 2.5);
-  ctx.stroke();
-  ctx.fillRect(x + 2.2, cy - 3, 14.5, 7);
-  ctx.fillRect(x + 21.6, cy - 1.5, 1.6, 3);
+  ctx.fillStyle = darkCard ? "rgba(255,255,255,.72)" : "#6f7785";
+  ctx.font = `400 29px ${fontFamilyForText(settings.handle, settings)}`;
+  ctx.fillText(clampText(ctx, cardHandleText(settings.handle), 480), textX, 113);
 
-  x -= 22;
-  ctx.lineWidth = 1.6;
-  ctx.lineCap = "round";
-  for (const [radius, start] of [[8, 1.2], [5, 1.15]]) {
+  ctx.fillStyle = darkCard ? "rgba(255,255,255,.5)" : "#9aa2af";
+  for (let i = 0; i < 3; i += 1) {
     ctx.beginPath();
-    ctx.arc(x + 7, cy + 3.5, radius, Math.PI + start, -start, false);
-    ctx.stroke();
-  }
-  ctx.beginPath();
-  ctx.arc(x + 7, cy + 4, 1.3, 0, Math.PI * 2);
-  ctx.fill();
-
-  x -= 20;
-  for (let i = 0; i < 4; i += 1) {
-    const height = 3.5 + i * 2.1;
-    ctx.fillRect(x + i * 3.6, cy + 4.5 - height, 2.3, height);
-  }
-  ctx.restore();
-}
-
-function drawNotesToolbarIcons(ctx, color, right, cy) {
-  ctx.save();
-  ctx.strokeStyle = color;
-  ctx.fillStyle = color;
-  ctx.lineWidth = 1.6;
-  ctx.lineCap = "round";
-  ctx.lineJoin = "round";
-
-  let x = right - 6;
-  ctx.beginPath();
-  ctx.arc(x, cy, 8, 0, Math.PI * 2);
-  ctx.stroke();
-  for (const offset of [-3.4, 0, 3.4]) {
-    ctx.beginPath();
-    ctx.arc(x + offset, cy, 1, 0, Math.PI * 2);
+    ctx.arc(769 + i * 16, 79, 5, 0, Math.PI * 2);
     ctx.fill();
   }
-
-  x -= 28;
-  ctx.strokeRect(x - 6, cy - 1, 12, 9);
-  ctx.beginPath();
-  ctx.moveTo(x, cy - 9);
-  ctx.lineTo(x, cy + 1);
-  ctx.moveTo(x - 3.5, cy - 5.5);
-  ctx.lineTo(x, cy - 9);
-  ctx.lineTo(x + 3.5, cy - 5.5);
-  ctx.stroke();
-  ctx.restore();
-}
-
-function drawHeader(ctx, settings) {
-  drawNotesChrome(ctx, settings);
 }
 
 function isDarkHexColor(hex) {
@@ -7496,7 +7565,7 @@ function drawTextLine(ctx, item, settings) {
   const { style, line, x, y, lineHeight } = item;
   if (style.quote) {
     ctx.fillStyle = settings.accentColor;
-    roundedRect(ctx, x - NOTES_QUOTE_INSET, y + 4, 3, Math.max(8, lineHeight - 8), 1.5);
+    roundedRect(ctx, x - CARD_QUOTE_INSET, y + 4, 3, Math.max(8, lineHeight - 8), 1.5);
     ctx.fill();
   }
 
@@ -7600,7 +7669,7 @@ function clampText(ctx, text, maxWidth) {
 
 function renderArticlePreview(settings) {
   state.canvases = [];
-  els.pages.innerHTML = "";
+  els.pages.replaceChildren();
   els.pages.className = "pages article-mode";
   els.articleSettings.hidden = false;
 
@@ -7608,13 +7677,13 @@ function renderArticlePreview(settings) {
   article.className = `article-preview article-theme-${settings.articleTheme} article-font-${settings.articleFont} article-size-${settings.articleSize}`;
   article.style.setProperty("--article-accent", settings.articleColor);
   article.style.setProperty("--article-underline-gap", `${UNDERLINE_GAP}px`);
-  article.innerHTML = markdownToArticleHtml(settings.content, settings.images);
+  setHtml(article, markdownToArticleHtml(settings.content, settings.images));
   hydrateArticleLiveMedia(article, settings.images);
   els.pages.append(article);
 
   const wordCount = settings.content.replace(/\s/g, "").length;
-  els.pageCount.textContent = "长文";
-  els.status.textContent = `已生成长文预览，约 ${wordCount} 字`;
+  els.pageCount.textContent = t("mode.article");
+  els.status.textContent = t("status.articlePreview", { n: wordCount });
   syncExportBusyState();
   if (window.lucide) window.lucide.createIcons();
 }
@@ -7848,7 +7917,7 @@ function hydrateArticleLiveMedia(article, images) {
     if (!video) return;
     const badge = document.createElement("span");
     badge.className = "article-live-badge";
-    badge.innerHTML = '<i data-lucide="aperture"></i>LIVE';
+    setHtml(badge, '<i data-lucide="aperture"></i>LIVE');
     stage.append(video, badge, buildArticleLiveActions(imageId));
   });
 }
@@ -7863,7 +7932,7 @@ function buildArticleLiveActions(imageId) {
   edit.className = "article-live-action";
   edit.title = "编辑这段实况";
   edit.setAttribute("aria-label", "编辑这段实况");
-  edit.innerHTML = '<i data-lucide="pencil"></i>';
+  setHtml(edit, '<i data-lucide="pencil"></i>');
   edit.addEventListener("click", (event) => {
     event.preventDefault();
     void openLivePhotoEditor(imageId);
@@ -8072,7 +8141,7 @@ async function writeRichClipboard(html, text) {
   holder.contentEditable = "true";
   holder.style.position = "fixed";
   holder.style.left = "-10000px";
-  holder.innerHTML = html;
+  setHtml(holder, html);
   appShell().append(holder);
   const range = document.createRange();
   range.selectNodeContents(holder);
@@ -8120,7 +8189,7 @@ function isWechatDataImage(source) {
 
 function setWechatCover(source = "", label = "") {
   wechatCoverData = isWechatDataImage(source) ? source : "";
-  els.wechatCoverPreview.innerHTML = "";
+  els.wechatCoverPreview.replaceChildren();
   if (wechatCoverData) {
     const image = document.createElement("img");
     image.src = wechatCoverData;
@@ -8128,7 +8197,7 @@ function setWechatCover(source = "", label = "") {
     els.wechatCoverPreview.append(image);
     els.wechatCoverHint.textContent = label || "已选择封面，同步时会保留原图数据。";
   } else {
-    els.wechatCoverPreview.innerHTML = '<i data-lucide="image"></i><span>请选择封面</span>';
+    setHtml(els.wechatCoverPreview, '<i data-lucide="image"></i><span>请选择封面</span>');
     els.wechatCoverHint.textContent = "正文没有可用图片，请单独上传一张封面。";
   }
   updateWechatConfirmState();
@@ -8155,7 +8224,7 @@ async function checkWechatService() {
     return;
   }
   try {
-    const response = await fetch("/api/wechat/status", { cache: "no-store" });
+    const response = await localOnlyFetch("/api/wechat/status", { cache: "no-store" });
     if (!response.ok) throw new Error("服务不可用");
     const status = await response.json();
     wechatServiceReady = Boolean(status.ready);
@@ -8225,7 +8294,7 @@ async function syncArticleToWechatDraft() {
   updateWechatConfirmState();
   setWechatServiceMessage("正在上传正文图片并创建公众号草稿，请不要关闭页面…");
   try {
-    const response = await fetch("/api/wechat/drafts", {
+    const response = await localOnlyFetch("/api/wechat/drafts", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -8698,7 +8767,7 @@ async function buildLivePhotoTrimStrip() {
   const token = `${livePhotoState.objectUrl}:${livePhotoState.sourceDuration}`;
   if (strip.dataset.token === token) return;
   strip.dataset.token = token;
-  strip.innerHTML = "";
+  strip.replaceChildren();
 
   const total = livePhotoState.sourceDuration;
   const count = 8;
@@ -8916,7 +8985,7 @@ function handleLivePhotoVideo(event) {
   releaseLivePhotoObjectUrl();
   if (event.target === els.contentVideo) {
     livePhotoState.editingId = "";
-    els.livePhotoGenerate.innerHTML = '<i data-lucide="image-plus"></i>插入图文';
+    setHtml(els.livePhotoGenerate, '<i data-lucide="image-plus"></i>插入图文');
     resetLivePhotoForm();
   }
   livePhotoState.file = file;
@@ -8998,7 +9067,7 @@ async function ensureLivePhotoServiceReady() {
   livePhotoState.serviceMode = "none";
   if (!/^(?:https?:|file:)$/.test(window.location.protocol)) return false;
   try {
-    const response = await fetch(livePhotoApiUrl("/api/live-photo/status"), { cache: "no-store" });
+    const response = await localOnlyFetch(livePhotoApiUrl("/api/live-photo/status"), { cache: "no-store" });
     if (response.ok) {
       const status = await response.json();
       livePhotoState.localReady = Boolean(status.ready);
@@ -9056,7 +9125,7 @@ async function openLivePhotoEditor(imageId) {
   els.livePhotoVideoMeta.textContent = `${formatLivePhotoFileSize(media.blob.size)} · ${formatLivePhotoDuration(livePhotoState.sourceDuration)}`;
   els.livePhotoVideo.src = livePhotoState.objectUrl;
   els.livePhotoPreview.classList.add("has-video");
-  els.livePhotoGenerate.innerHTML = '<i data-lucide="check"></i>保存修改';
+  setHtml(els.livePhotoGenerate, '<i data-lucide="check"></i>保存修改');
   resetLivePhotoForm(image.liveSettings);
   els.livePhotoModal.classList.remove("hidden");
   els.livePhotoVideo.load();
@@ -9080,7 +9149,7 @@ function closeLivePhotoModal() {
   livePhotoState.editingId = "";
   els.contentVideo.value = "";
   els.livePhotoVideoInput.value = "";
-  els.livePhotoGenerate.innerHTML = '<i data-lucide="image-plus"></i>插入图文';
+  setHtml(els.livePhotoGenerate, '<i data-lucide="image-plus"></i>插入图文');
 }
 
 function waitForLivePhotoSeek(video, target) {
@@ -9307,7 +9376,7 @@ function scheduleLivePhotoPrewarm() {
 
 function drawPreview(canvases) {
   if (!els.pages) return;
-  els.pages.innerHTML = "";
+  els.pages.replaceChildren();
   els.pages.className = "pages";
   if (els.articleSettings) els.articleSettings.hidden = true;
   if (previewImageSelection && !String(els.content.value || "").includes(`[[image:${previewImageSelection.imageId}]]`)) {
@@ -9345,7 +9414,7 @@ function drawPreview(canvases) {
       ? needsLivePhotoStaticFallback() ? "查看实况导出选项" : "自动生成 Live Photo 发布包"
       : "下载单张 PNG";
     button.setAttribute("aria-label", liveHits.length ? `导出第 ${index + 1} 张实况` : `下载第 ${index + 1} 张`);
-    button.innerHTML = `<i data-lucide="${liveHits.length ? "aperture" : "download"}"></i>`;
+    setHtml(button, `<i data-lucide="${liveHits.length ? "aperture" : "download"}"></i>`);
     const filename = `layout-page-${String(index + 1).padStart(2, "0")}.png`;
     button.addEventListener("click", () => exportCanvasAutomatically(canvas, filename, index));
     actions.append(label, button);
@@ -9605,7 +9674,7 @@ function createImageEditLayer(canvas) {
       if (video) box.append(video);
       const badge = document.createElement("span");
       badge.className = "preview-live-badge";
-      badge.innerHTML = '<i data-lucide="aperture"></i>LIVE';
+      setHtml(badge, '<i data-lucide="aperture"></i>LIVE');
       box.append(badge);
     }
 
@@ -9621,7 +9690,7 @@ function createImageEditLayer(canvas) {
       button.dataset.align = align;
       button.title = label;
       button.setAttribute("aria-label", label);
-      button.innerHTML = `<i data-lucide="${icon}"></i>`;
+      setHtml(button, `<i data-lucide="${icon}"></i>`);
       button.addEventListener("click", setPreviewImageAlign);
       alignBar.append(button);
     });
@@ -9631,7 +9700,7 @@ function createImageEditLayer(canvas) {
     cropButton.className = "preview-image-crop";
     cropButton.title = isLive ? "编辑当前实况" : "裁剪当前图片";
     cropButton.setAttribute("aria-label", isLive ? "编辑当前实况" : "裁剪当前图片");
-    cropButton.innerHTML = `<i data-lucide="${isLive ? "aperture" : "crop"}"></i>`;
+    setHtml(cropButton, `<i data-lucide="${isLive ? "aperture" : "crop"}"></i>`);
     cropButton.addEventListener("click", (event) => {
       event.preventDefault();
       event.stopPropagation();
@@ -9656,7 +9725,7 @@ function createImageEditLayer(canvas) {
       pairButton.className = "preview-image-pair";
       pairButton.title = "再拼一张图在右边";
       pairButton.setAttribute("aria-label", "再拼一张图在右边");
-      pairButton.innerHTML = '<i data-lucide="plus"></i>';
+      setHtml(pairButton, '<i data-lucide="plus"></i>');
       pairButton.addEventListener("click", (event) => {
         event.preventDefault();
         event.stopPropagation();
@@ -9679,7 +9748,7 @@ function createImageEditLayer(canvas) {
     applyImageBoxStyle(box, item);
     const badge = document.createElement("span");
     badge.className = "preview-pair-badge";
-    badge.innerHTML = '<i data-lucide="layout-grid"></i>调整拼图';
+    setHtml(badge, '<i data-lucide="layout-grid"></i>调整拼图');
     box.append(badge);
     const openFromItem = () => {
       const segment = els.content.value.slice(item.sourceStart, item.sourceEnd);
@@ -10265,7 +10334,7 @@ function renderLivePhotoHandoffFiles() {
   const liveCount = livePhotoHandoffState.items.filter((item) => item.type === "live").length;
   const staticCount = livePhotoHandoffState.items.length - liveCount;
   if (livePhotoHandoffState.onlineFallback) {
-    els.livePhotoHandoffFiles.innerHTML = `
+    setHtml(els.livePhotoHandoffFiles, `
       <div class="live-photo-package-card is-static-fallback">
         <div class="live-photo-package-lead">
           <span class="live-photo-package-icon"><i data-lucide="image" aria-hidden="true"></i></span>
@@ -10277,7 +10346,7 @@ function renderLivePhotoHandoffFiles() {
         <i data-lucide="info" aria-hidden="true"></i>
         <span><strong>为什么不是实况？</strong><small>在线站点还没有接入云端视频处理服务。这里下载的文件不会带“实况”标识。</small></span>
       </div>
-    `;
+    `);
     if (window.lucide) window.lucide.createIcons();
     return;
   }
@@ -10296,7 +10365,7 @@ function renderLivePhotoHandoffFiles() {
     const platform = single?.duration
       ? `${single.duration} 秒${Number(single.speed) > 1 ? ` · ${single.speed}× 倍速` : ""}`
       : "";
-    els.livePhotoHandoffFiles.innerHTML = `
+    setHtml(els.livePhotoHandoffFiles, `
       <div class="live-photo-package-card">
         <div class="live-photo-package-row">
           <i data-lucide="aperture" aria-hidden="true"></i>
@@ -10304,7 +10373,7 @@ function renderLivePhotoHandoffFiles() {
         </div>
       </div>
       ${steps}
-    `;
+    `);
     if (window.lucide) window.lucide.createIcons();
     return;
   }
@@ -10324,27 +10393,27 @@ function renderLivePhotoHandoffFiles() {
       <em>${staticCount} 张</em>
     </div>`);
   }
-  els.livePhotoHandoffFiles.innerHTML = `
+  setHtml(els.livePhotoHandoffFiles, `
     <div class="live-photo-package-card">${rows.join("")}</div>
     ${liveCount ? steps : ""}
-  `;
+  `);
   if (window.lucide) window.lucide.createIcons();
 }
 
 function updateLivePhotoHandoffProgressSteps(activePageIndex = -1, completedPageIndexes = []) {
   if (!els.livePhotoHandoffProgressSteps) return;
   const completed = new Set(completedPageIndexes.map(Number));
-  els.livePhotoHandoffProgressSteps.innerHTML = "";
+  els.livePhotoHandoffProgressSteps.replaceChildren();
   for (const item of livePhotoHandoffState.items) {
     const isComplete = completed.has(item.pageIndex);
     const isActive = item.pageIndex === activePageIndex && !isComplete;
     const copy = livePhotoHandoffItemCopy(item);
     const step = document.createElement("div");
     step.className = `handoff-progress-step${isComplete ? " is-complete" : isActive ? " is-active" : ""}`;
-    step.innerHTML = `
+    setHtml(step, `
       <span>${item.type === "live" ? "实况" : "图片"} ${copy.page}</span>
       <strong><i data-lucide="${isComplete ? "check" : isActive ? "loader-circle" : "clock-3"}" aria-hidden="true"></i>${isComplete ? "已完成" : isActive ? "处理中" : "等待中"}</strong>
-    `;
+    `);
     els.livePhotoHandoffProgressSteps.append(step);
   }
   if (window.lucide) window.lucide.createIcons();
@@ -10413,7 +10482,7 @@ function beginExportProgress(scope, options = {}) {
   stateForScope.value = 0;
   elements.root.hidden = false;
   elements.root.className = `export-progress${scope === "handoff" ? " export-progress-compact" : ""}`;
-  elements.root.querySelector(".export-progress-icon").innerHTML = '<i data-lucide="loader-circle"></i>';
+  setHtml(elements.root.querySelector(".export-progress-icon"), '<i data-lucide="loader-circle"></i>');
   elements.title.textContent = options.title || "正在准备导出";
   elements.detail.textContent = options.detail || "系统正在处理，请不要关闭页面。";
   setExportProgressValue(scope, Number.isFinite(options.value) ? options.value : 5);
@@ -10462,7 +10531,7 @@ function finishExportProgress(scope, options = {}) {
   stateForScope.timer = 0;
   elements.root.classList.remove("is-success", "is-error", "is-cancelled");
   elements.root.classList.add(cancelled ? "is-cancelled" : success ? "is-success" : "is-error");
-  elements.root.querySelector(".export-progress-icon").innerHTML = `<i data-lucide="${cancelled ? "x" : success ? "check" : "circle-alert"}"></i>`;
+  setHtml(elements.root.querySelector(".export-progress-icon"), `<i data-lucide="${cancelled ? "x" : success ? "check" : "circle-alert"}"></i>`);
   elements.title.textContent = options.title || (cancelled ? "已取消下载" : success ? "导出处理完成" : "导出没有完成");
   elements.detail.textContent = options.detail || (cancelled ? "没有写入或下载任何文件。" : success ? "文件已经准备好。" : "请根据提示处理后重试。");
   setExportProgressValue(scope, success ? 100 : cancelled ? 0 : stateForScope.value);
@@ -10497,7 +10566,7 @@ function resetExportProgress(scope) {
   elements.fill.style.width = "0%";
   elements.bar.setAttribute("aria-valuenow", "0");
   if (scope === "handoff" && els.livePhotoHandoffProgressSteps) {
-    els.livePhotoHandoffProgressSteps.innerHTML = "";
+    els.livePhotoHandoffProgressSteps.replaceChildren();
   }
   syncExportBusyState();
 }
@@ -10625,7 +10694,7 @@ async function generateLivePackageForCanvas(canvas, pageIndex, reveal = true, se
   }
   payload.append("reveal", reveal ? "1" : "0");
   onStage?.("package", "正在合成 JPG、MOV 与 .pvt，这一步可能需要一些时间…");
-  const response = await fetch(livePhotoApiUrl("/api/live-photo/render"), { method: "POST", body: payload });
+  const response = await localOnlyFetch(livePhotoApiUrl("/api/live-photo/render"), { method: "POST", body: payload });
   const result = await response.json().catch(() => ({}));
   if (!response.ok || !result.ok) throw new Error(result.error || `第 ${pageIndex + 1} 页实况发布包生成失败。`);
   result.pageIndex = pageIndex;
@@ -10660,9 +10729,9 @@ function closeLivePhotoHandoff() {
   if (exportProgressState.handoff.active) return;
   resetExportProgress("handoff");
   els.livePhotoHandoffModal.classList.add("hidden");
-  els.livePhotoHandoffPreview.innerHTML = "";
-  els.livePhotoHandoffThumbnails.innerHTML = "";
-  els.livePhotoHandoffFiles.innerHTML = "";
+  els.livePhotoHandoffPreview.replaceChildren();
+  els.livePhotoHandoffThumbnails.replaceChildren();
+  els.livePhotoHandoffFiles.replaceChildren();
   els.livePhotoHandoffDevice.hidden = true;
   els.livePhotoHandoffPreviewHint.hidden = true;
   livePhotoHandoffState.onlineFallback = false;
@@ -10696,7 +10765,7 @@ function createLivePhotoHandoffPreviewFrame(pageIndex, compact = false) {
     if (!compact) {
       const badge = document.createElement("span");
       badge.className = "live-photo-handoff-live-badge";
-      badge.innerHTML = '<i data-lucide="aperture"></i>LIVE';
+      setHtml(badge, '<i data-lucide="aperture"></i>LIVE');
       well.append(badge);
     }
     frame.append(well);
@@ -10710,7 +10779,7 @@ function selectLivePhotoHandoffPage(pageIndex) {
   livePhotoHandoffState.selectedPageIndex = item.pageIndex;
   const result = item.type === "live" ? item.result : null;
   livePhotoHandoffState.selectedJobId = result?.job_id || "";
-  els.livePhotoHandoffPreview.innerHTML = "";
+  els.livePhotoHandoffPreview.replaceChildren();
   els.livePhotoHandoffPreview.append(createLivePhotoHandoffPreviewFrame(item.pageIndex));
   els.livePhotoHandoffThumbnails.querySelectorAll("[data-handoff-page]").forEach((button) => {
     button.classList.toggle("active", Number(button.dataset.handoffPage) === item.pageIndex);
@@ -10727,13 +10796,13 @@ function selectLivePhotoHandoffPage(pageIndex) {
 }
 
 async function fetchCloudLivePhotoArchive(result) {
-  let response = await fetch(result.archive_url);
+  let response = await localOnlyFetch(result.archive_url);
   if (!response.ok && result.cloud_access_token && cloudApi()?.getCloudLivePhotoJob) {
     const refreshed = await cloudApi().getCloudLivePhotoJob(result.job_id, result.cloud_access_token);
     if (refreshed.archive_url) {
       result.archive_url = refreshed.archive_url;
       result.archive_bytes = refreshed.archive_bytes || result.archive_bytes;
-      response = await fetch(result.archive_url);
+      response = await localOnlyFetch(result.archive_url);
     }
   }
   if (!response.ok) throw new Error("云端实况下载地址已经失效，请重新生成。");
@@ -10835,7 +10904,7 @@ async function ensureLivePhotoBatchPrepared() {
     for (const file of livePhotoHandoffState.staticPackage?.files || []) {
       payload.append(`static_${file.pageIndex}`, file.blob, file.filename);
     }
-    const response = await fetch(livePhotoApiUrl("/api/live-photo/batch"), { method: "POST", body: payload });
+    const response = await localOnlyFetch(livePhotoApiUrl("/api/live-photo/batch"), { method: "POST", body: payload });
     const result = await response.json().catch(() => ({}));
     if (!response.ok || !result.ok) throw new Error(result.error || "批量发布包整理失败。");
     livePhotoHandoffState.batch = result;
@@ -10998,7 +11067,7 @@ async function revealLivePhotoHandoff() {
     path = "/api/live-photo/batch-reveal";
     payload = { batch_id: batch.batch_id };
   }
-  const response = await fetch(livePhotoApiUrl(path), {
+  const response = await localOnlyFetch(livePhotoApiUrl(path), {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
@@ -11079,7 +11148,7 @@ async function airdropLivePhotoHandoff() {
       total: isBatch ? livePhotoHandoffState.items.length : null,
       value: 97,
     });
-    const response = await fetch(livePhotoApiUrl(path), {
+    const response = await localOnlyFetch(livePhotoApiUrl(path), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
@@ -11100,7 +11169,7 @@ async function airdropLivePhotoHandoff() {
     els.livePhotoHandoffAirdrop.disabled = false;
     els.livePhotoHandoffDownload.disabled = false;
     els.livePhotoHandoffReveal.disabled = isBatch ? !livePhotoHandoffState.batch : !livePhotoHandoffState.selectedJobId;
-    els.livePhotoHandoffAirdrop.innerHTML = `<i data-lucide="share"></i>${isBatch ? "AirDrop 全部到手机" : "AirDrop"}`;
+    setHtml(els.livePhotoHandoffAirdrop, `<i data-lucide="share"></i>${isBatch ? "AirDrop 全部到手机" : "AirDrop"}`);
     if (window.lucide) window.lucide.createIcons();
   }
 }
@@ -11120,7 +11189,7 @@ async function downloadOnlineLivePhotoAsImages() {
   els.livePhotoHandoffDownload.disabled = true;
   els.livePhotoHandoffAirdrop.disabled = true;
   els.livePhotoHandoffReveal.disabled = true;
-  els.livePhotoHandoffDownload.innerHTML = '<i data-lucide="loader-circle"></i>正在生成图片版…';
+  setHtml(els.livePhotoHandoffDownload, '<i data-lucide="loader-circle"></i>正在生成图片版…');
   if (window.lucide) window.lucide.createIcons();
 
   try {
@@ -11160,7 +11229,7 @@ async function downloadOnlineLivePhotoAsImages() {
     }
 
     completed = true;
-    els.livePhotoHandoffDownload.innerHTML = '<i data-lucide="check"></i>图片版已下载';
+    setHtml(els.livePhotoHandoffDownload, '<i data-lucide="check"></i>图片版已下载');
     els.livePhotoHandoffHint.textContent = "下载的是普通图片，不包含“实况”标识；视频素材仍保留在当前项目中。";
     els.status.textContent = entries.length > 1
       ? `已下载 ${entries.length} 页普通图片版；完整 Live Photo 仍需 macOS 本地版生成。`
@@ -11175,7 +11244,7 @@ async function downloadOnlineLivePhotoAsImages() {
   } finally {
     els.livePhotoHandoffDownload.disabled = false;
     els.livePhotoHandoffAirdrop.disabled = false;
-    if (!completed) els.livePhotoHandoffDownload.innerHTML = '<i data-lucide="download"></i>下载普通图片版';
+    if (!completed) setHtml(els.livePhotoHandoffDownload, '<i data-lucide="download"></i>下载普通图片版');
     if (window.lucide) window.lucide.createIcons();
   }
 }
@@ -11214,11 +11283,11 @@ async function downloadLivePhotoBatch() {
     });
     let archiveBlob = archive.archive_blob || null;
     if (!archiveBlob) {
-      let response = await fetch(archive.archive_url);
+      let response = await localOnlyFetch(archive.archive_url);
       if (!response.ok && archive.provider === "cloud" && archive.cloud_access_token) {
         const refreshed = await cloudApi().getCloudLivePhotoJob(archive.job_id, archive.cloud_access_token);
         archive.archive_url = refreshed.archive_url || archive.archive_url;
-        response = await fetch(archive.archive_url);
+        response = await localOnlyFetch(archive.archive_url);
       }
       if (!response.ok) throw new Error(isBatch ? "批量压缩包下载失败。" : "实况照片压缩包下载失败。");
       archiveBlob = await responseBlobWithProgress(response, (loaded, total) => {
@@ -11232,7 +11301,7 @@ async function downloadLivePhotoBatch() {
     updateExportProgress("handoff", { title: "正在保存下载文件", detail: "传输完成，正在交给浏览器保存…", value: 96 });
     const archiveName = archive.archive_name || (isBatch ? "成稿预览-批量导出.zip" : "成稿预览-实况照片.zip");
     await saveBlob(archiveBlob, archiveName);
-    els.livePhotoHandoffDownload.innerHTML = `<i data-lucide="check"></i>${isBatch ? "全部内容已下载" : "实况照片已下载"}`;
+    setHtml(els.livePhotoHandoffDownload, `<i data-lucide="check"></i>${isBatch ? "全部内容已下载" : "实况照片已下载"}`);
     els.livePhotoHandoffReveal.hidden = !livePhotoHandoffHasLocalFile();
     els.livePhotoHandoffHint.textContent = "";
     els.status.textContent = isBatch
@@ -11245,7 +11314,7 @@ async function downloadLivePhotoBatch() {
     });
   } catch (error) {
     els.livePhotoHandoffDownload.disabled = false;
-    els.livePhotoHandoffDownload.innerHTML = `<i data-lucide="download"></i>${isBatch ? "下载全部内容" : "下载实况照片"}`;
+    setHtml(els.livePhotoHandoffDownload, `<i data-lucide="download"></i>${isBatch ? "下载全部内容" : "下载实况照片"}`);
     els.status.textContent = error?.message || (isBatch ? "批量下载失败。" : "实况照片下载失败。");
     finishExportProgress("handoff", { success: false, title: isBatch ? "批量下载失败" : "实况照片下载失败", detail: els.status.textContent });
   }
@@ -11256,7 +11325,7 @@ async function downloadLivePhotoBatch() {
 }
 
 function renderLivePhotoHandoffThumbnails() {
-  els.livePhotoHandoffThumbnails.innerHTML = "";
+  els.livePhotoHandoffThumbnails.replaceChildren();
   for (const item of livePhotoHandoffState.items) {
     const button = document.createElement("button");
     button.type = "button";
@@ -11281,9 +11350,9 @@ function applyBatchLivePhotoHandoffCopy(liveCount, staticCount, total) {
   els.livePhotoHandoffAirdrop.hidden = true;
   els.livePhotoHandoffDownload.hidden = false;
   els.livePhotoHandoffDownload.disabled = false;
-  els.livePhotoHandoffDownload.innerHTML = '<i data-lucide="download"></i>下载全部内容';
+  setHtml(els.livePhotoHandoffDownload, '<i data-lucide="download"></i>下载全部内容');
   els.livePhotoHandoffReveal.hidden = true;
-  els.livePhotoHandoffReveal.innerHTML = '<i data-lucide="folder-open"></i>在 Finder 中找到';
+  setHtml(els.livePhotoHandoffReveal, '<i data-lucide="folder-open"></i>在 Finder 中找到');
   els.livePhotoHandoffHint.textContent = "";
   els.livePhotoHandoffPreviewHint.hidden = true;
   els.livePhotoHandoffThumbnails.hidden = false;
@@ -11360,9 +11429,9 @@ function showLivePhotoHandoff(liveResults, staticEntries = [], staticPackage = n
     els.livePhotoHandoffAirdrop.hidden = true;
     els.livePhotoHandoffDownload.hidden = false;
     els.livePhotoHandoffDownload.disabled = !(result.archive_url || result.archive_blob);
-    els.livePhotoHandoffDownload.innerHTML = `<i data-lucide="download"></i>下载实况照片${result.archive_bytes ? `　${formatLivePhotoFileSize(result.archive_bytes)}` : ""}`;
+    setHtml(els.livePhotoHandoffDownload, `<i data-lucide="download"></i>下载实况照片${result.archive_bytes ? `　${formatLivePhotoFileSize(result.archive_bytes)}` : ""}`);
     els.livePhotoHandoffReveal.hidden = true;
-    els.livePhotoHandoffReveal.innerHTML = '<i data-lucide="folder-open"></i>在 Finder 中找到';
+    setHtml(els.livePhotoHandoffReveal, '<i data-lucide="folder-open"></i>在 Finder 中找到');
     els.livePhotoHandoffHint.textContent = "";
     els.livePhotoHandoffPreviewHint.hidden = false;
     els.livePhotoHandoffThumbnails.hidden = false;
@@ -11408,7 +11477,7 @@ function showOnlineLivePhotoFallback(entries) {
   els.livePhotoHandoffAirdrop.hidden = true;
   els.livePhotoHandoffDownload.hidden = false;
   els.livePhotoHandoffDownload.disabled = false;
-  els.livePhotoHandoffDownload.innerHTML = `<i data-lucide="download"></i>${livePhotoHandoffState.isBatch ? "下载全部图片版" : "下载当前图片版"}`;
+  setHtml(els.livePhotoHandoffDownload, `<i data-lucide="download"></i>${livePhotoHandoffState.isBatch ? "下载全部图片版" : "下载当前图片版"}`);
   els.livePhotoHandoffReveal.hidden = true;
   els.livePhotoHandoffReveal.disabled = true;
   els.livePhotoHandoffHint.textContent = "这里下载的是普通 PNG，不会显示“实况”标识。";
@@ -11665,7 +11734,7 @@ function canvasToLosslessPngBlob(canvas) {
   });
 }
 
-// 实况成片按 iPhone 17 截图像素输出，避免先画一张再二次缩放。
+// 实况成片固定 1080x1440，避免先画一张再二次缩放。
 function canvasToLivePagePngBlob(canvas) {
   const target = document.createElement("canvas");
   target.width = LIVE_PAGE_WIDTH;
@@ -11849,8 +11918,18 @@ function positionToolPopover(menu) {
   if (!popover) return;
 
   if (menu.classList.contains("article-setting-menu")) {
-    popover.style.left = "auto";
-    popover.style.right = "0";
+    const rootRect = (pluginHost()?.root || appShell())?.getBoundingClientRect?.();
+    const menuRect = menu.getBoundingClientRect();
+    const width = Math.max(popover.offsetWidth || 0, 196);
+    const spaceRight = (rootRect?.right ?? window.innerWidth) - menuRect.left;
+    const spaceLeft = menuRect.right - (rootRect?.left ?? 0);
+    if (spaceRight >= width + 8 || spaceRight >= spaceLeft) {
+      popover.style.left = "0";
+      popover.style.right = "auto";
+    } else {
+      popover.style.left = "auto";
+      popover.style.right = "0";
+    }
     return;
   }
 
@@ -11962,19 +12041,19 @@ function bindEvents() {
     });
   });
 
-  els.content.addEventListener("input", () => {
+  els.content?.addEventListener("input", () => {
     scheduleTextHistoryCommit();
     requestRender();
     hideSelectionToolbar();
     schedulePluginNoteWrite();
   });
-  els.content.addEventListener("keydown", handleTextShortcut);
+  els.content?.addEventListener("keydown", handleTextShortcut);
   document.addEventListener("keydown", handlePreviewImageDeleteKey);
-  els.content.addEventListener("paste", handleEditorPaste);
-  els.content.addEventListener("dragover", (event) => {
+  els.content?.addEventListener("paste", handleEditorPaste);
+  els.content?.addEventListener("dragover", (event) => {
     if (Array.from(event.dataTransfer?.types || []).includes("Files")) event.preventDefault();
   });
-  els.content.addEventListener("drop", handleEditorDrop);
+  els.content?.addEventListener("drop", handleEditorDrop);
 
   [
     els.displayName,
@@ -11988,18 +12067,41 @@ function bindEvents() {
     els.enFont,
     els.imageHeight,
   ].forEach((input) => {
+    if (!input) return;
     input.addEventListener("input", requestRender);
     input.addEventListener("change", requestRender);
   });
+  const bindProfilePair = (source, target) => {
+    source?.addEventListener("input", () => {
+      if (target) target.value = source.value;
+      requestRender();
+    });
+    source?.addEventListener("change", () => {
+      if (target) target.value = source.value;
+      requestRender();
+    });
+  };
+  bindProfilePair(els.displayName, els.cardProfileName);
+  bindProfilePair(els.cardProfileName, els.displayName);
+  bindProfilePair(els.handle, els.cardProfileHandle);
+  bindProfilePair(els.cardProfileHandle, els.handle);
+  [els.handle, els.cardProfileHandle].forEach((input) => {
+    input?.addEventListener("change", () => {
+      const next = cardHandleText(input.value);
+      input.value = next;
+      if (els.handle) els.handle.value = next;
+      if (els.cardProfileHandle) els.cardProfileHandle.value = next;
+    });
+  });
 
-  els.inlineColor.addEventListener("input", () => {
+  els.inlineColor?.addEventListener("input", () => {
     updatePendingCustomColor("color", els.inlineColor.value);
   });
-  els.inlineBgColor.addEventListener("input", () => {
+  els.inlineBgColor?.addEventListener("input", () => {
     updatePendingCustomColor("bg", els.inlineBgColor.value);
   });
-  els.inlineColor.addEventListener("change", () => updatePendingCustomColor("color", els.inlineColor.value));
-  els.inlineBgColor.addEventListener("change", () => updatePendingCustomColor("bg", els.inlineBgColor.value));
+  els.inlineColor?.addEventListener("change", () => updatePendingCustomColor("color", els.inlineColor.value));
+  els.inlineBgColor?.addEventListener("change", () => updatePendingCustomColor("bg", els.inlineBgColor.value));
   document.addEventListener("pointerdown", handleSelectionInteractionStart, true);
   document.addEventListener("touchstart", handleSelectionInteractionStart, { capture: true, passive: true });
   document.addEventListener("selectionchange", () => {
@@ -12010,29 +12112,29 @@ function bindEvents() {
     }
     scheduleSelectionToolbar();
   });
-  els.content.addEventListener("focus", () => claimTextareaSelection());
-  els.content.addEventListener("select", () => {
+  els.content?.addEventListener("focus", () => claimTextareaSelection());
+  els.content?.addEventListener("select", () => {
     claimTextareaSelection();
     rescheduleSelectionToolbar();
   });
-  els.content.addEventListener("mouseup", () => {
+  els.content?.addEventListener("mouseup", () => {
     claimTextareaSelection();
     rescheduleSelectionToolbar();
   });
-  els.content.addEventListener("touchend", finishTouchSelection, { passive: true });
-  els.content.addEventListener("touchcancel", finishTouchSelection, { passive: true });
-  els.content.addEventListener("contextmenu", () => {
+  els.content?.addEventListener("touchend", finishTouchSelection, { passive: true });
+  els.content?.addEventListener("touchcancel", finishTouchSelection, { passive: true });
+  els.content?.addEventListener("contextmenu", () => {
     claimTextareaSelection({ touch: true });
     finishTouchSelection();
   });
-  els.content.addEventListener("keyup", (event) => {
+  els.content?.addEventListener("keyup", (event) => {
     const key = event.key || "";
     if (event.shiftKey || key.startsWith("Arrow") || key === "Home" || key === "End" || (event.metaKey || event.ctrlKey) && key.toLowerCase() === "a") {
       claimTextareaSelection();
       rescheduleSelectionToolbar();
     }
   });
-  els.content.addEventListener("focusout", (event) => {
+  els.content?.addEventListener("focusout", (event) => {
     if (event.relatedTarget && els.selectionToolbar.contains(event.relatedTarget)) return;
     if (Date.now() < touchSelectionGraceUntil || Date.now() < selectionToolbarInteractionUntil) {
       window.setTimeout(scheduleSelectionToolbar, 180);
@@ -12041,7 +12143,7 @@ function bindEvents() {
     textareaOwnsSelection = false;
     hideSelectionToolbar();
   });
-  els.content.addEventListener("scroll", hideSelectionToolbar);
+  els.content?.addEventListener("scroll", hideSelectionToolbar);
   els.selectionColorBtn?.addEventListener("mousedown", keepTextareaSelection);
   els.selectionBgColorBtn?.addEventListener("mousedown", keepTextareaSelection);
   els.selectionUnderlineBtn?.addEventListener("mousedown", keepTextareaSelection);
@@ -12100,20 +12202,22 @@ function bindEvents() {
   });
   buildSelectionSwatches("color");
   buildSelectionSwatches("bg");
-  els.contentImage.addEventListener("change", handleContentImage);
+  els.contentImage?.addEventListener("change", handleContentImage);
   els.copyPlainText?.addEventListener("click", () => void copyPlainTextToClipboard());
-  els.contentVideo.addEventListener("change", handleLivePhotoVideo);
+  els.contentVideo?.addEventListener("change", handleLivePhotoVideo);
   els.connectObsidianVault?.addEventListener("click", connectObsidianVault);
   els.syncObsidianVault?.addEventListener("click", syncCurrentNoteToObsidian);
   els.obsidianVaultFolder?.addEventListener("change", handleObsidianVaultFolder);
   els.applyImageWidth?.addEventListener("click", applyImageWidthToAll);
   els.applyFixedImageSize?.addEventListener("click", applyFixedImageSizeToAll);
-  els.avatarInput.addEventListener("change", handleAvatar);
-  els.cropAvatar.addEventListener("click", () => openCropper("avatar"));
-  els.cropClose.addEventListener("click", closeCropper);
-  els.cropApply.addEventListener("click", applyCropper);
-  els.cropReset.addEventListener("click", resetCropperTarget);
-  els.cropModal.addEventListener("click", (event) => {
+  els.avatarInput?.addEventListener("change", handleAvatar);
+  els.cardProfileAvatarInput?.addEventListener("change", handleAvatar);
+  els.cropAvatar?.addEventListener("click", () => openCropper("avatar"));
+  els.cardProfileCrop?.addEventListener("click", () => openCropper("avatar"));
+  els.cropClose?.addEventListener("click", closeCropper);
+  els.cropApply?.addEventListener("click", applyCropper);
+  els.cropReset?.addEventListener("click", resetCropperTarget);
+  els.cropModal?.addEventListener("click", (event) => {
     if (event.target === els.cropModal) closeCropper();
   });
   els.pairClose?.addEventListener("click", cancelPairEditor);
@@ -12129,13 +12233,13 @@ function bindEvents() {
   els.pairModal?.addEventListener("click", (event) => {
     if (event.target === els.pairModal) cancelPairEditor();
   });
-  els.wechatModal.addEventListener("click", (event) => {
+  els.wechatModal?.addEventListener("click", (event) => {
     if (event.target === els.wechatModal) closeWechatModal();
   });
-  els.livePhotoModal.addEventListener("click", (event) => {
+  els.livePhotoModal?.addEventListener("click", (event) => {
     if (event.target === els.livePhotoModal) closeLivePhotoModal();
   });
-  els.accountModal.addEventListener("click", (event) => {
+  els.accountModal?.addEventListener("click", (event) => {
     if (event.target === els.accountModal) closeAccountModal();
   });
   els.feedbackModal?.addEventListener("click", (event) => {
@@ -12144,27 +12248,27 @@ function bindEvents() {
   els.welcomeBackModal?.addEventListener("click", (event) => {
     if (event.target === els.welcomeBackModal) closeWelcomeBack();
   });
-  els.livePhotoHandoffModal.addEventListener("click", (event) => {
+  els.livePhotoHandoffModal?.addEventListener("click", (event) => {
     if (event.target === els.livePhotoHandoffModal) closeLivePhotoHandoff();
   });
-  els.wechatClose.addEventListener("click", closeWechatModal);
-  els.wechatCancel.addEventListener("click", closeWechatModal);
-  els.wechatTitle.addEventListener("input", updateWechatConfirmState);
-  els.wechatCover.addEventListener("change", handleWechatCover);
-  els.wechatConfirm.addEventListener("click", syncArticleToWechatDraft);
-  els.livePhotoClose.addEventListener("click", closeLivePhotoModal);
-  els.livePhotoCancel.addEventListener("click", closeLivePhotoModal);
-  els.livePhotoHandoffClose.addEventListener("click", closeLivePhotoHandoff);
-  els.livePhotoHandoffCancel.addEventListener("click", closeLivePhotoHandoff);
-  els.livePhotoHandoffReveal.addEventListener("click", revealLivePhotoHandoff);
-  els.livePhotoHandoffAirdrop.addEventListener("click", airdropLivePhotoHandoff);
-  els.livePhotoHandoffDownload.addEventListener("click", downloadLivePhotoBatch);
-  els.onboardingSkip.addEventListener("click", finishOnboarding);
-  els.onboardingNext.addEventListener("click", advanceOnboarding);
+  els.wechatClose?.addEventListener("click", closeWechatModal);
+  els.wechatCancel?.addEventListener("click", closeWechatModal);
+  els.wechatTitle?.addEventListener("input", updateWechatConfirmState);
+  els.wechatCover?.addEventListener("change", handleWechatCover);
+  els.wechatConfirm?.addEventListener("click", syncArticleToWechatDraft);
+  els.livePhotoClose?.addEventListener("click", closeLivePhotoModal);
+  els.livePhotoCancel?.addEventListener("click", closeLivePhotoModal);
+  els.livePhotoHandoffClose?.addEventListener("click", closeLivePhotoHandoff);
+  els.livePhotoHandoffCancel?.addEventListener("click", closeLivePhotoHandoff);
+  els.livePhotoHandoffReveal?.addEventListener("click", revealLivePhotoHandoff);
+  els.livePhotoHandoffAirdrop?.addEventListener("click", airdropLivePhotoHandoff);
+  els.livePhotoHandoffDownload?.addEventListener("click", downloadLivePhotoBatch);
+  els.onboardingSkip?.addEventListener("click", finishOnboarding);
+  els.onboardingNext?.addEventListener("click", advanceOnboarding);
   els.welcomeBackClose?.addEventListener("click", () => closeWelcomeBack());
   els.welcomeBackDirect?.addEventListener("click", () => closeWelcomeBack());
   els.welcomeBackTour?.addEventListener("click", () => closeWelcomeBack({ startTour: true }));
-  els.account.addEventListener("click", toggleAccountMenu);
+  els.account?.addEventListener("click", toggleAccountMenu);
   els.feedback?.addEventListener("click", openFeedbackModal);
   els.feedbackClose?.addEventListener("click", closeFeedbackModal);
   els.feedbackCancel?.addEventListener("click", closeFeedbackModal);
@@ -12219,20 +12323,20 @@ function bindEvents() {
   });
   els.chooseGuest?.addEventListener("click", () => void chooseGuestMode());
   els.chooseLogin?.addEventListener("click", chooseLoginMode);
-  els.accountClose.addEventListener("click", closeAccountModal);
-  els.accountAuthForm.addEventListener("submit", submitAccountAuth);
-  els.accountSignInMode.addEventListener("click", () => setAccountAuthMode("signin"));
-  els.accountSignUp.addEventListener("click", () => setAccountAuthMode("signup"));
+  els.accountClose?.addEventListener("click", closeAccountModal);
+  els.accountAuthForm?.addEventListener("submit", submitAccountAuth);
+  els.accountSignInMode?.addEventListener("click", () => setAccountAuthMode("signin"));
+  els.accountSignUp?.addEventListener("click", () => setAccountAuthMode("signup"));
   els.accountPasswordToggle?.addEventListener("click", () => {
     setAccountPasswordVisible(els.accountPassword.type === "password");
     els.accountPassword.focus();
   });
-  els.accountResendConfirmation.addEventListener("click", resendAccountConfirmation);
+  els.accountResendConfirmation?.addEventListener("click", resendAccountConfirmation);
   els.accountForgotPassword?.addEventListener("click", () => void requestPasswordReset());
   els.accountGoogle?.addEventListener("click", () => void signInWithGoogleAccount());
-  els.accountSignOut.addEventListener("click", signOutAccount);
+  els.accountSignOut?.addEventListener("click", signOutAccount);
   els.accountAddAnother?.addEventListener("click", () => startAddingAccount());
-  els.accountImportLocal.addEventListener("click", importLocalProjectsToAccount);
+  els.accountImportLocal?.addEventListener("click", importLocalProjectsToAccount);
   document.addEventListener("pointerdown", (event) => {
     if (accountMenuIsOpen() && !els.accountDock?.contains(event.target)) closeAccountMenu();
   });
@@ -12242,17 +12346,17 @@ function bindEvents() {
   });
   window.addEventListener("resize", positionOnboardingStep);
   window.addEventListener("scroll", positionOnboardingStep, true);
-  els.livePhotoForm.addEventListener("submit", applyLivePhotoAsset);
-  els.livePhotoVideoInput.addEventListener("change", handleLivePhotoVideo);
-  els.livePhotoVideo.addEventListener("loadedmetadata", handleLivePhotoMetadata);
-  els.livePhotoVideo.addEventListener("timeupdate", keepLivePhotoPreviewInRange);
-  els.livePhotoVideo.addEventListener("play", animateLivePhotoCropper);
-  els.livePhotoVideo.addEventListener("seeked", drawLivePhotoCropper);
-  els.livePhotoCropCanvas.addEventListener("pointerdown", startLivePhotoCropDrag);
-  els.livePhotoCropCanvas.addEventListener("pointermove", moveLivePhotoCropDrag);
-  els.livePhotoCropCanvas.addEventListener("pointermove", updateLivePhotoCropCursor);
-  els.livePhotoCropCanvas.addEventListener("pointerup", stopLivePhotoCropDrag);
-  els.livePhotoCropCanvas.addEventListener("pointercancel", stopLivePhotoCropDrag);
+  els.livePhotoForm?.addEventListener("submit", applyLivePhotoAsset);
+  els.livePhotoVideoInput?.addEventListener("change", handleLivePhotoVideo);
+  els.livePhotoVideo?.addEventListener("loadedmetadata", handleLivePhotoMetadata);
+  els.livePhotoVideo?.addEventListener("timeupdate", keepLivePhotoPreviewInRange);
+  els.livePhotoVideo?.addEventListener("play", animateLivePhotoCropper);
+  els.livePhotoVideo?.addEventListener("seeked", drawLivePhotoCropper);
+  els.livePhotoCropCanvas?.addEventListener("pointerdown", startLivePhotoCropDrag);
+  els.livePhotoCropCanvas?.addEventListener("pointermove", moveLivePhotoCropDrag);
+  els.livePhotoCropCanvas?.addEventListener("pointermove", updateLivePhotoCropCursor);
+  els.livePhotoCropCanvas?.addEventListener("pointerup", stopLivePhotoCropDrag);
+  els.livePhotoCropCanvas?.addEventListener("pointercancel", stopLivePhotoCropDrag);
   els.livePhotoDurationButtons.forEach((button) => {
     button.addEventListener("click", () => setLivePhotoDuration(button.dataset.liveDuration));
   });
@@ -12265,7 +12369,7 @@ function bindEvents() {
       updateLivePhotoPreview();
     });
   });
-  els.livePhotoCustomRatio.addEventListener("input", () => {
+  els.livePhotoCustomRatio?.addEventListener("input", () => {
     livePhotoState.customAspect = clamp(finiteNumber(els.livePhotoCustomRatio.value, 0.75), 0.4, 2.5);
     els.livePhotoCustomRatioOutput.value = livePhotoState.customAspect.toFixed(2);
     if (livePhotoState.aspect === "free") {
@@ -12275,12 +12379,12 @@ function bindEvents() {
     }
   });
   bindLivePhotoTrimTrack();
-  els.livePhotoCover.addEventListener("input", () => seekLivePhotoPreview(true));
+  els.livePhotoCover?.addEventListener("input", () => seekLivePhotoPreview(true));
   els.livePhotoSound?.addEventListener("change", applyLivePhotoPreviewSound);
   els.ratioButtons.forEach((button) => {
     button.addEventListener("click", () => setCropAspect(button.dataset.ratio));
   });
-  els.cropCanvas.addEventListener("mousedown", startCropDrag);
+  els.cropCanvas?.addEventListener("mousedown", startCropDrag);
   window.addEventListener("mousemove", moveCropDrag);
   window.addEventListener("mouseup", stopCropDrag);
   window.addEventListener("keydown", (event) => {
@@ -12320,16 +12424,16 @@ function bindEvents() {
       }
     }
   });
-  els.findNext.addEventListener("click", findNext);
-  els.replaceOne.addEventListener("click", replaceCurrent);
-  els.replaceAll.addEventListener("click", replaceAll);
-  els.find.addEventListener("input", updateFindMatchCount);
-  els.find.addEventListener("keydown", (event) => {
+  els.findNext?.addEventListener("click", findNext);
+  els.replaceOne?.addEventListener("click", replaceCurrent);
+  els.replaceAll?.addEventListener("click", replaceAll);
+  els.find?.addEventListener("input", updateFindMatchCount);
+  els.find?.addEventListener("keydown", (event) => {
     if (event.key !== "Enter") return;
     event.preventDefault();
     findNext();
   });
-  els.replace.addEventListener("keydown", (event) => {
+  els.replace?.addEventListener("keydown", (event) => {
     if (event.key !== "Enter") return;
     event.preventDefault();
     if (event.metaKey || event.ctrlKey) {
@@ -12346,26 +12450,27 @@ function bindEvents() {
       updateFindMatchCount();
     });
   });
-  els.historyToggle.addEventListener("click", toggleHistory);
-  els.historyClose.addEventListener("click", () => setHistoryOpen(false));
+  els.historyToggle?.addEventListener("click", toggleHistory);
+  els.historyClose?.addEventListener("click", () => setHistoryOpen(false));
   els.historyFilterButtons.forEach((button) => {
     button.addEventListener("click", () => setHistoryFilter(button.dataset.historyFilter));
   });
-  els.newProject.addEventListener("click", async () => {
+  els.newProject?.addEventListener("click", async () => {
     await createNewProject();
     if (onboardingMode === "first-run" && onboardingIsOpen() && onboardingStepIndex === 0) showOnboardingStep(1);
   });
-  els.convertMode.addEventListener("click", convertCurrentMode);
-  els.headerModeToggle.addEventListener("click", toggleHeaderMode);
+  els.convertMode?.addEventListener("click", convertCurrentMode);
+  els.headerModeToggle?.addEventListener("click", toggleHeaderMode);
+  els.cardHeaderMode?.addEventListener("click", toggleHeaderMode);
   els.keepHeading?.addEventListener("click", () => {
     void toggleKeepHeadingWithBody();
     els.keepHeading.closest("details")?.removeAttribute("open");
   });
-  els.themeToggle.addEventListener("click", toggleUiTheme);
-  els.downloadZip.addEventListener("click", downloadAll);
-  els.downloadArticle.addEventListener("click", downloadArticleImage);
-  els.copyWechat.addEventListener("click", copyArticleToWechat);
-  els.syncWechat.addEventListener("click", openWechatModal);
+  els.themeToggle?.addEventListener("click", toggleUiTheme);
+  els.downloadZip?.addEventListener("click", downloadAll);
+  els.downloadArticle?.addEventListener("click", downloadArticleImage);
+  els.copyWechat?.addEventListener("click", copyArticleToWechat);
+  els.syncWechat?.addEventListener("click", openWechatModal);
 }
 
 function applyPluginHostUi() {
@@ -12509,6 +12614,7 @@ async function reloadWriteThenPublishNote() {
 
 window.bootWriteThenPublish = bootWriteThenPublish;
 window.reloadWriteThenPublishNote = reloadWriteThenPublishNote;
+window.flushWriteThenPublishProfile = flushPluginCardProfile;
 if (!window.WRITE_THEN_PUBLISH_DEFER_BOOT) {
   void bootWriteThenPublish();
 }
