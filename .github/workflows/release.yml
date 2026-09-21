@@ -30,7 +30,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          gh release delete "${GITHUB_REF_NAME}" --yes || true
           gh release create "${GITHUB_REF_NAME}" \
             main.js manifest.json styles.css \
             --title "Chenggao ${GITHUB_REF_NAME}" \
-            --notes "Preview Notes-style cards and WeChat articles beside the current Markdown note."
+            --notes "Preview Notes-style cards and WeChat articles beside the current Markdown note. Desktop only; no account or remote network access."
