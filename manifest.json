@@ -1,7 +1,7 @@
 {
   "id": "chenggao",
   "name": "Chenggao",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "minAppVersion": "1.8.7",
   "description": "Preview Notes-style cards and WeChat articles beside the current Markdown note.",
   "author": "RYYAI",

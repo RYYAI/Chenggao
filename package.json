@@ -1,6 +1,6 @@
 {
   "name": "chenggao",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Chenggao: preview Notes-style cards and WeChat articles beside the current Obsidian note",
   "private": true,
   "scripts": {
