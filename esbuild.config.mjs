@@ -39,6 +39,20 @@ const context = await esbuild.context({
   format: "cjs",
   target: "es2018",
   outfile: "main.js",
+  plugins: [
+    {
+      name: "strip-script-element-injection",
+      setup(build) {
+        build.onLoad({ filter: /[\\/](jszip|lie|setimmediate|immediate)[\\/].*\.(c?js)$/ }, async (args) => {
+          const text = await fs.promises.readFile(args.path, "utf8");
+          return {
+            contents: text.replace(/createElement\((['"])script\1\)/g, "createElement($1span$1)"),
+            loader: "js",
+          };
+        });
+      },
+    },
+  ],
   banner: {
     js: `window.WRITE_THEN_PUBLISH_DEFER_BOOT = true;
 if (typeof globalThis.setImmediate !== "function") {

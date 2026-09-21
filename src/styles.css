@@ -6200,3 +6200,43 @@ body.onboarding-account-step .site-footer {
     grid-template-columns: 1fr;
   }
 }
+
+.wtp-offscreen-copy {
+  position: fixed;
+  left: -10000px;
+  opacity: 0;
+}
+
+.wtp-selection-mirror {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+  white-space: pre-wrap;
+}
+
+.wtp-live-probe {
+  position: fixed;
+  left: -9999px;
+  width: 2px;
+  height: 2px;
+}
+
+.wtp-cropped-video {
+  right: auto;
+  bottom: auto;
+  object-fit: fill;
+}
+
+.tool-popover.is-align-start {
+  left: 0;
+  right: auto;
+}
+
+.tool-popover.is-align-end {
+  left: auto;
+  right: 0;
+}

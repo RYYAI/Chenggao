@@ -3836,8 +3836,7 @@ async function copyPlainTextToClipboard() {
   } catch {
     const helper = document.createElement("textarea");
     helper.value = text;
-    helper.style.position = "fixed";
-    helper.style.opacity = "0";
+    helper.className = "wtp-offscreen-copy";
     appShell().append(helper);
     helper.select();
     copied = document.execCommand("copy");
@@ -4669,7 +4668,7 @@ function ensureSelectionMirror() {
   if (selectionMirror) return selectionMirror;
   const mirror = document.createElement("div");
   mirror.setAttribute("aria-hidden", "true");
-  mirror.style.cssText = "position:fixed;left:0;top:0;visibility:hidden;overflow:hidden;pointer-events:none;z-index:-1;white-space:pre-wrap;";
+  mirror.className = "wtp-selection-mirror";
   appShell().appendChild(mirror);
   selectionMirror = mirror;
   return mirror;
@@ -5315,10 +5314,9 @@ function setObsidianVaultStatus(message, connected = false) {
 }
 
 function canUseDirectoryPickerSafely() {
-  const userAgent = navigator.userAgent || "";
-  const embeddedBrowser = /Electron|Codex|ChatGPT|OpenAI/i.test(userAgent);
+  if (isPluginMode()) return false;
   const localPage = ["localhost", "127.0.0.1", ""].includes(window.location.hostname) || window.location.protocol === "file:";
-  return Boolean(window.showDirectoryPicker && window.isSecureContext && !embeddedBrowser && !localPage);
+  return Boolean(window.showDirectoryPicker && window.isSecureContext && !localPage);
 }
 
 function hasConnectedObsidianVault() {
@@ -7882,14 +7880,13 @@ function createLivePreviewVideo(image, imageId, className) {
   video.setAttribute("muted", "");
   video.setAttribute("playsinline", "");
   if (settings.crop) {
-    video.style.objectFit = "fill";
+    video.classList.add("wtp-cropped-video");
     video.style.width = `${100 / settings.crop.width}%`;
     video.style.height = `${100 / settings.crop.height}%`;
     video.style.left = `${(-settings.crop.x / settings.crop.width) * 100}%`;
     video.style.top = `${(-settings.crop.y / settings.crop.height) * 100}%`;
-    video.style.right = "auto";
-    video.style.bottom = "auto";
   } else {
+    video.classList.remove("wtp-cropped-video");
     video.style.objectPosition = `${settings.focusX}% ${settings.focusY}%`;
   }
   video.addEventListener("loadedmetadata", () => {
@@ -8139,8 +8136,7 @@ async function writeRichClipboard(html, text) {
 
   const holder = document.createElement("div");
   holder.contentEditable = "true";
-  holder.style.position = "fixed";
-  holder.style.left = "-10000px";
+  holder.className = "wtp-offscreen-copy";
   setHtml(holder, html);
   appShell().append(holder);
   const range = document.createRange();
@@ -8778,7 +8774,7 @@ async function buildLivePhotoTrimStrip() {
   probe.muted = true;
   probe.playsInline = true;
   probe.preload = "auto";
-  probe.style.cssText = "position:fixed;left:-9999px;width:2px;height:2px";
+  probe.className = "wtp-live-probe";
   appShell().appendChild(probe);
   try {
     await Promise.race([
@@ -10309,19 +10305,6 @@ function exportProgressElements(scope = "main") {
   };
 }
 
-function livePhotoHandoffDeviceText() {
-  const userAgent = navigator.userAgent || "";
-  const platform = /Mac/i.test(navigator.platform || userAgent) ? "Mac" : "当前设备";
-  const browser = /Safari/i.test(userAgent) && !/(Chrome|Chromium|Edg)/i.test(userAgent)
-    ? "Safari"
-    : /Edg/i.test(userAgent)
-      ? "Edge"
-      : /(Chrome|Chromium)/i.test(userAgent)
-        ? "Chrome"
-        : "浏览器";
-  return `已检测：${platform} · ${browser}`;
-}
-
 function livePhotoHandoffItemCopy(item) {
   const page = String(item.pageIndex + 1).padStart(2, "0");
   return item.type === "live"
@@ -10563,7 +10546,7 @@ function resetExportProgress(scope) {
   elements.root.hidden = true;
   elements.root.className = `export-progress${scope === "handoff" ? " export-progress-compact" : ""}`;
   elements.percent.textContent = "0%";
-  elements.fill.style.width = "0%";
+  elements.fill.style.removeProperty("width");
   elements.bar.setAttribute("aria-valuenow", "0");
   if (scope === "handoff" && els.livePhotoHandoffProgressSteps) {
     els.livePhotoHandoffProgressSteps.replaceChildren();
@@ -11923,18 +11906,14 @@ function positionToolPopover(menu) {
     const width = Math.max(popover.offsetWidth || 0, 196);
     const spaceRight = (rootRect?.right ?? window.innerWidth) - menuRect.left;
     const spaceLeft = menuRect.right - (rootRect?.left ?? 0);
-    if (spaceRight >= width + 8 || spaceRight >= spaceLeft) {
-      popover.style.left = "0";
-      popover.style.right = "auto";
-    } else {
-      popover.style.left = "auto";
-      popover.style.right = "0";
-    }
+    popover.classList.toggle("is-align-start", spaceRight >= width + 8 || spaceRight >= spaceLeft);
+    popover.classList.toggle("is-align-end", !(spaceRight >= width + 8 || spaceRight >= spaceLeft));
     return;
   }
 
-  popover.style.left = "";
-  popover.style.right = "";
+  popover.classList.remove("is-align-start", "is-align-end");
+  popover.style.removeProperty("left");
+  popover.style.removeProperty("right");
 
   if (window.matchMedia("(max-width: 620px)").matches) return;
 
